@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-black;
+  }
+
+  body {
+    @apply bg-black text-white min-h-screen;
+    
+  }
+}
+
+
+.stroke-text {
+  -webkit-text-stroke: 1px white;
+}
+
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-shine {
+  animation: shine 2.5s ease-in-out infinite;
+}
+
+svg {
+  display: inline;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* //////// */
+
+.team-segment .segment-shape{
+  transition: all 0.35s ease;
+}
+
+/* dim all segments when hovering the circle */
+.teamcircle:hover .team-segment{
+  opacity:0.35;
+}
+
+/* hovered segment */
+.teamcircle .team-segment:hover{
+  opacity:1;
+}
+
+.teamcircle .team-segment:hover .segment-shape{
+  stroke:#00eaff;
+  stroke-width:2;
+  filter: drop-shadow(0 0 8px #00eaff);
+  fill:#c9c8c7;
+}
+
+.segment-shape {
+  transition: stroke 0.25s ease, stroke-width 0.25s ease, filter 0.35s ease;
+}
+
+
