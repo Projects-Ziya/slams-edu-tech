@@ -1,4 +1,4 @@
-import robo from "../../assets/roboo.png";
+import robo from "../../assets/roboo.webp";
 import CountUp from "../../components/CountUp";
 import { useEffect, useState, lazy, Suspense } from "react";
 

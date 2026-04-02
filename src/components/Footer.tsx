@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa";
 import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
 import Loop from "./scrolllogo/Loop";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 
 const Footer: React.FC = () => {

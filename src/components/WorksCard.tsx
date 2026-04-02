@@ -18,7 +18,7 @@ export default function WorksCard({
     <div className="w-full max-w-[390px] mx-auto relative group">
 
       {/* CARD SHAPE */}
-      <div className="w-full aspect-[390/396]">
+      <div className="w-full aspect-[390/396] overflow-hidden">
 
         <svg
           viewBox="0 0 390 396"
@@ -44,25 +44,32 @@ export default function WorksCard({
             </clipPath>
           </defs>
 
-          {/* ✅ IMAGE (Safari-safe) */}
-          <image
-            href={image}
-            width="100%"
-            height="100%"
-            preserveAspectRatio="xMidYMid slice"
-            clipPath={`url(#${clipId})`}
-            className="transition duration-700 group-hover:scale-110 origin-center"
-          />
+          {/* 🔥 CLIPPED GROUP */}
+          <g clipPath={`url(#${clipId})`}>
 
-          {/* Overlay (optional if you want later) */}
-          <rect
-            width="100%"
-            height="100%"
-            fill="transparent"
-            clipPath={`url(#${clipId})`}
-          />
+            {/* ✅ IMAGE (same animation style as CustomShapeCard) */}
+            <image
+              href={image}
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid slice"
+              className="transition-all duration-700 ease-out group-hover:scale-[1.08]"
+              style={{
+                transformBox: "fill-box",
+                transformOrigin: "center",
+              }}
+            />
 
-          {/* Border */}
+            {/* Overlay (optional) */}
+            <rect
+              width="100%"
+              height="100%"
+              fill="transparent"
+            />
+
+          </g>
+
+          {/* BORDER */}
           <path
             d="M319.8 0
             L390 71.28
@@ -83,7 +90,7 @@ export default function WorksCard({
 
       </div>
 
-      {/* TEXT SECTION (unchanged, already responsive ✅) */}
+      {/* TEXT SECTION (unchanged ✅) */}
       <div className="pt-4 sm:pt-6 md:pt-8">
 
         <p className="font-bold text-[18px] font-outfit sm:text-[20px] md:text-[22px] lg:text-[24px] leading-tight group-hover:text-blue-400 transition">
