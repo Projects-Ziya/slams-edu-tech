@@ -43,7 +43,7 @@ const WhyChooseSection = () => {
         
       "
     >
-      <source src="/public/globe.mp4" type="video/mp4" />
+      <source src="/globe.mp4" type="video/mp4" />
     </video>
 
   </div>

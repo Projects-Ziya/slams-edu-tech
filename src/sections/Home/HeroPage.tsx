@@ -125,7 +125,7 @@ export default function HeroPage() {
         className="hidden md:block absolute inset-0 w-full h-full object-cover pt-2 px-3 pb-12"
         style={{ clipPath: "url(#heroClip)" }}
       >
-        <source src="/public/robovid.mp4" type="video/mp4" />
+        <source src="/robovid.mp4" type="video/mp4" />
       </video>
 
       {/* MOBILE IMAGE CAROUSEL */}
