@@ -69,7 +69,6 @@
 
 
 
-import vid from "../../assets/robovid.mp4"
 import img1 from "../../assets/works/works2.webp"
 import img2 from "../../assets/works/works2.webp"
 import img3 from "../../assets/works/works3.webp"
@@ -126,7 +125,7 @@ export default function HeroPage() {
         className="hidden md:block absolute inset-0 w-full h-full object-cover pt-2 px-3 pb-12"
         style={{ clipPath: "url(#heroClip)" }}
       >
-        <source src={vid} type="video/mp4" />
+        <source src="/public/robovid.mp4" type="video/mp4" />
       </video>
 
       {/* MOBILE IMAGE CAROUSEL */}
