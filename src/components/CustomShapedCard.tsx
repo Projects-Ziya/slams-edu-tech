@@ -31,25 +31,28 @@ export default function CustomShapeCard({
             </clipPath>
           </defs>
 
-          {/* Image */}
-          <image
-            href={image}
-            width="100%"
-            height="100%"
-            preserveAspectRatio="xMidYMid slice"
-            clipPath={`url(#${clipId})`}
-            className="transition duration-700 group-hover:scale-110 origin-center"
-          />
+          {/* 🔥 CLIPPED CONTAINER */}
+          <g clipPath={`url(#${clipId})`}>
 
-          {/* Overlay */}
-          <rect
-            width="100%"
-            height="100%"
-            fill="rgba(0,0,0,0.3)"
-            clipPath={`url(#${clipId})`}
-          />
+            {/* 🔥 IMAGE ZOOM INSIDE */}
+            <image
+              href={image}
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid slice"
+              className="transition duration-700 ease-out group-hover:scale-110 origin-center"
+            />
 
-          {/* Border */}
+            {/* Overlay */}
+            <rect
+              width="100%"
+              height="100%"
+              fill="rgba(0,0,0,0.3)"
+            />
+
+          </g>
+
+          {/* ✅ BORDER (fixed, clean) */}
           <path
             d="M30 0 H360 Q390 0 390 30 V366 Q390 396 360 396 H207 Q195 396 185 385 L160 350 Q150 340 135 340 H30 Q0 340 0 310 V30 Q0 0 30 0 Z"
             fill="none"
@@ -58,45 +61,20 @@ export default function CustomShapeCard({
           />
         </svg>
 
-        {/* 🔥 RESPONSIVE TEXT */}
+        {/* TEXT */}
         <div className="absolute bottom-[18%] left-[5%] right-[5%] text-white z-10">
-          
-          {/* Title */}
-          <h3 className="
-            font-bold 
-            leading-tight 
-            text-[clamp(14px,2.5vw,22px)]
-            mb-1
-          ">
+          <h3 className="font-bold leading-tight text-[clamp(14px,2.5vw,22px)] mb-1">
             {title}
           </h3>
 
-          {/* Description */}
-          <p className="
-            leading-snug
-            text-[clamp(11px,2vw,14px)]
-            max-w-[90%]
-            line-clamp-2
-          ">
+          <p className="leading-snug text-[clamp(11px,2vw,14px)] max-w-[90%] line-clamp-2">
             {text}
           </p>
         </div>
 
-        {/* 🔥 BUTTON */}
+        {/* BUTTON */}
         <button
-          className="
-            absolute 
-            bottom-[5%] 
-            right-[5%] 
-            z-10 
-            rounded-full 
-            text-blue-600 
-            bg-white 
-            p-[clamp(8px,1.5vw,14px)]
-            group-hover:bg-blue-300 
-            group-hover:text-white 
-            transition
-          "
+          className="absolute bottom-[5%] right-[5%] z-10 rounded-full text-blue-600 bg-white p-[clamp(8px,1.5vw,14px)] group-hover:bg-blue-300 group-hover:text-white transition"
           aria-label="Open project"
         >
           <ArrowUpRight

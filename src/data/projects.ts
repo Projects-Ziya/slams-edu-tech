@@ -8,7 +8,7 @@ import coverimg6 from "../assets/works/works7.webp"
 import coverimg7 from "../assets/works/works8.webp"
 import coverimg8 from "../assets/works/works9.webp"
 import coverimg9 from "../assets/works/works10.webp"
-// import coverimg10 from "../assets/learn-mate/learn1.png"
+// import coverimg10 from "../assets/learn-mate/learn1.webp"
 
 
 
@@ -91,7 +91,7 @@ import grow6 from "../assets/slams-grow/grow6.webp"
 export const projects = [
   {
     id: "juggle-laundry",
-    title: "Jungle Laundry",
+    title: "Juggle Laundry",
     subtitle: "Website",
     coverImage:coverimg1,
 

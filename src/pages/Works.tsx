@@ -1,5 +1,5 @@
 // import WorksCard from '../components/WorksCard';
-// import img1 from "../assets/works/works1.png"
+// import img1 from "../assets/works/works1.webp"
 
 import { Link } from 'react-router-dom';
 import { projects } from '@/data/projects';

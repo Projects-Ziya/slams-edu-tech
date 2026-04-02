@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
-import member1 from "../assets/member1.png";
-import member2 from "../assets/member2.png";
-import member3 from "../assets/member3.png";
-import member4 from "../assets/member4.png";
-import member5 from "../assets/member5.png";
-import member6 from "../assets/member6.png";
+import member1 from "../assets/member1.webp";
+import member2 from "../assets/member2.webp";
+import member3 from "../assets/member3.webp";
+import member4 from "../assets/member4.webp";
+import member5 from "../assets/member5.webp";
+import member6 from "../assets/member6.webp";
 
-import member7 from "../assets/member6.png";
-import member8 from "../assets/member5.png";
-import member9 from "../assets/member4.png";
-import member10 from "../assets/member3.png";
-import member11 from "../assets/member2.png";
-import member12 from "../assets/member1.png";
+import member7 from "../assets/member6.webp";
+import member8 from "../assets/member5.webp";
+import member9 from "../assets/member4.webp";
+import member10 from "../assets/member3.webp";
+import member11 from "../assets/member2.webp";
+import member12 from "../assets/member1.webp";
 
-import sreekutty from "../assets/sreekutty.png";
-import alfread from "../assets/alfred.png";
-import hr from "../assets/HR.png";
-import anoop from "../assets/anoop.png";
-import noufal from "../assets/noufal.png";
-import akshay from "../assets/Akshay-ui.png";
+import sreekutty from "../assets/sreekutty.webp";
+import alfread from "../assets/alfred.webp";
+import hr from "../assets/HR.webp";
+import anoop from "../assets/anoop.webp";
+import noufal from "../assets/noufal.webp";
+import akshay from "../assets/Akshay-ui.webp";
 
 import Segment from "./Segment";
 import { useRef } from "react";
