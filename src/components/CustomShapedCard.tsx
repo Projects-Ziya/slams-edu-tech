@@ -31,16 +31,17 @@ export default function CustomShapeCard({
             </clipPath>
           </defs>
 
-          {/* 🔥 CLIPPED CONTAINER */}
+          {/* 🔥 CLIPPED GROUP */}
           <g clipPath={`url(#${clipId})`}>
 
-            {/* 🔥 IMAGE ZOOM INSIDE */}
+            {/* ✅ IMAGE (NO tailwind scale) */}
             <image
               href={image}
               width="100%"
               height="100%"
               preserveAspectRatio="xMidYMid slice"
-              className="transition duration-700 ease-out group-hover:scale-110 origin-center"
+              className="transition-all duration-700 ease-out group-hover:scale-[1.08] origin-center"
+              style={{ transformBox: "fill-box", transformOrigin: "center" }}
             />
 
             {/* Overlay */}
@@ -52,7 +53,7 @@ export default function CustomShapeCard({
 
           </g>
 
-          {/* ✅ BORDER (fixed, clean) */}
+          {/* BORDER */}
           <path
             d="M30 0 H360 Q390 0 390 30 V366 Q390 396 360 396 H207 Q195 396 185 385 L160 350 Q150 340 135 340 H30 Q0 340 0 310 V30 Q0 0 30 0 Z"
             fill="none"
