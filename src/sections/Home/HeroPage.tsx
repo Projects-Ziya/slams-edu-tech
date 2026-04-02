@@ -72,6 +72,7 @@
 import img1 from "../../assets/works/works2.webp"
 import img2 from "../../assets/works/works2.webp"
 import img3 from "../../assets/works/works3.webp"
+import herovid from "../../assets/robovid.mp4"
 
 import AnimatedLinkButton from "../../components/AnimatedLinkButton";
 import { useState, useEffect } from "react";
@@ -125,7 +126,7 @@ export default function HeroPage() {
         className="hidden md:block absolute inset-0 w-full h-full object-cover pt-2 px-3 pb-12"
         style={{ clipPath: "url(#heroClip)" }}
       >
-        <source src="/robovid.mp4" type="video/mp4" />
+        <source src={herovid} type="video/mp4" />
       </video>
 
       {/* MOBILE IMAGE CAROUSEL */}

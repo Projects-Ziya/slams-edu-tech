@@ -1,4 +1,5 @@
 import NetworkDiagram from "../../components/NetworkDiagram"
+import globe from "../../assets/globe.mp4"
 
 const WhyChooseSection = () => {
   return (
@@ -43,7 +44,7 @@ const WhyChooseSection = () => {
         
       "
     >
-      <source src="/globe.mp4" type="video/mp4" />
+      <source src={globe} type="video/mp4" />
     </video>
 
   </div>
