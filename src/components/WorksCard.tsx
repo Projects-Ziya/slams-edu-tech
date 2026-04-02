@@ -10,7 +10,7 @@ export default function WorksCard({
   image,
   name,
   stack,
-}:WorksCardProps) {
+}: WorksCardProps) {
 
   const clipId = useId();
 
@@ -23,12 +23,12 @@ export default function WorksCard({
         <svg
           viewBox="0 0 390 396"
           className="w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
         >
 
           {/* Clip path */}
           <defs>
-            <clipPath id={clipId} clipPathUnits="userSpaceOnUse">
+            <clipPath id={clipId}>
               <path
                 d="M319.8 0
                 L390 71.28
@@ -44,30 +44,23 @@ export default function WorksCard({
             </clipPath>
           </defs>
 
-          {/* Content */}
-          <foreignObject
-            x="0"
-            y="0"
-            width="390"
-            height="396"
+          {/* ✅ IMAGE (Safari-safe) */}
+          <image
+            href={image}
+            width="100%"
+            height="100%"
+            preserveAspectRatio="xMidYMid slice"
             clipPath={`url(#${clipId})`}
-          >
+            className="transition duration-700 group-hover:scale-110 origin-center"
+          />
 
-            <div className="w-full h-full relative ">
-
-              {/* Image */}
-              <img
-              alt="img"
-                src={image}
-                className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
-              />
-
-              {/* Overlay */}
-              <div className="absolute inset-0"></div>
-
-            </div>
-
-          </foreignObject>
+          {/* Overlay (optional if you want later) */}
+          <rect
+            width="100%"
+            height="100%"
+            fill="transparent"
+            clipPath={`url(#${clipId})`}
+          />
 
           {/* Border */}
           <path
@@ -90,11 +83,10 @@ export default function WorksCard({
 
       </div>
 
-      {/* TEXT SECTION */}
-
+      {/* TEXT SECTION (unchanged, already responsive ✅) */}
       <div className="pt-4 sm:pt-6 md:pt-8">
 
-        <p className="font-bold text-[18px] font-outfit sm:text-[20px] md:text-[22px] lg:text-[24px] leading-tight group-hover:text-blue-400 transition ">
+        <p className="font-bold text-[18px] font-outfit sm:text-[20px] md:text-[22px] lg:text-[24px] leading-tight group-hover:text-blue-400 transition">
           {name}
         </p>
 
