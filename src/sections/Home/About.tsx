@@ -4,8 +4,8 @@ import AboutCard from "../../components/AboutCard"
 import { Gem, Users, CircleCheck, Lightbulb } from "lucide-react"
 import ab1 from "../../assets/about/about1.png"
 import ab2 from "../../assets/about/about2.jpg"
-
 import { lazy, Suspense } from "react";
+import { motion } from "framer-motion";
 
 const Section3D = lazy(() => import("../../components/Section3D"));
 
@@ -33,7 +33,12 @@ const About = () => {
 
 
       {/* MAIN GRID */}
-<div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pl-5">
+<motion.div
+ className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pl-5"
+   initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
+ viewport={{ once: true, amount: 0.2 }}>
   
         {/* LEFT SIDE CONTENT */}
         <div>
@@ -78,12 +83,18 @@ const About = () => {
 
 </div>
 
-      </div>
+      </motion.div>
 
 
 
 {/* big card */}
-<section className="flex flex-col xl:flex-row pt-16 gap-12 justify-between px-6 xl:px-10 pb-10">
+<motion.section 
+className="flex flex-col xl:flex-row pt-16 gap-12 justify-between px-6 xl:px-10 pb-10"
+initial={{ opacity: 0, y: 60 }}
+whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
+viewport={{ once: true, amount: 0.2 }}
+>
 
 {/* LEFT CARD */}
 <div className="pt-0 w-full">
@@ -274,7 +285,7 @@ strokeWidth="1"
 
 </div>
 
-</section>
+</motion.section>
 
 
     </section>
