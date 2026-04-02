@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AboutCard from "../../components/AboutCard"
 // import Section3D from "../../components/Section3D"
 import { Gem, Users, CircleCheck, Lightbulb } from "lucide-react"
-import ab1 from "../../assets/about/about1.png"
+import ab1 from "../../assets/about/about1.webp"
 import ab2 from "../../assets/about/about2.jpg"
 
 import { lazy, Suspense } from "react";
