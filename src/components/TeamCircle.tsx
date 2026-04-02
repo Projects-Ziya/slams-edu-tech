@@ -15,7 +15,7 @@ import member12 from "../assets/member1.png";
 
 import sreekutty from "../assets/sreekutty.png";
 import alfread from "../assets/alfred.png";
-import hr from "../assets/Hr.png";
+import hr from "../assets/HR.png";
 import anoop from "../assets/anoop.png";
 import noufal from "../assets/noufal.png";
 import akshay from "../assets/Akshay-ui.png";

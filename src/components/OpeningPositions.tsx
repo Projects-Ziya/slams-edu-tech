@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import career from "../assets/career.jpg";
+import career from "../assets/career.webp";
 import { openings } from "@/data/openings";
 
 
