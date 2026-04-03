@@ -53,15 +53,21 @@
 
 
 
+import { motion } from "framer-motion";
 import StarBorder from "../../components/StarBorder";
 import WorksCard from '../../components/WorksCard';
-
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
+import ViewMoreButton from "../../components/Button";
 
 const Works = () => {
   return (
-    <section id="works" className='bg-black px-5 md:px-10 md:pt-[112px]'>
+    <motion.section id="works" 
+    className='bg-black px-5 md:px-10 md:pt-[112px]'
+     initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
+ viewport={{ once: true, amount: 0.2 }}>
 
       <p className="font-medium text-[20px] md:text-[24px] text-gray-400">/ Our Works</p>
 
@@ -72,20 +78,11 @@ const Works = () => {
         </p>
 
         {/* Desktop button */}
-        <div className="pt-4 hidden md:block">
-          <StarBorder
-            as={Link}
-            to="/works"
-            className="custom-class"
-            color="cyan"
-            speed="2s"
-            c1="from-gray-950"
-            c2="via-gray-850"
-            c3="to-gray-800"
-          >
-            View more
-          </StarBorder>
-        </div>
+             <div className="pt-4 hidden md:block">
+  <Link to="/works">
+    <ViewMoreButton text=" View More" />
+  </Link>
+</div>
       </div>
 
       <p className="pt-4 text-[#ADADAD] tracking-wider text-[16px] md:text-[20px] font-outfit max-w-[1100px]">
@@ -93,17 +90,44 @@ const Works = () => {
         that help your business grow and stay ahead.
       </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10">
+      <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10"
+          initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15, // 🔥 THIS MAKES IT PREMIUM
+      },
+    },
+  }}>
         {projects.slice(0, 4).map((project) => (
+          <motion.div
+          key={project.id}
+    variants={{
+      hidden: { opacity: 0, y: 40, scale: 0.95 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+          duration: 0.5,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      },
+    }}>
           <Link key={project.id} to={`/project/${project.id}`}>
+            
             <WorksCard
               image={project.coverImage}
               name={project.title}
               stack={project.subtitle}
             />
           </Link>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Mobile View More Button */}
       <div className="mt-10 md:hidden w-full">
@@ -121,7 +145,7 @@ const Works = () => {
         </StarBorder>
       </div>
 
-    </section>
+    </motion.section>
   )
 }
 

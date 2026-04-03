@@ -82,6 +82,8 @@ import CustomShapeCard from "@/components/CustomShapedCard";
 import StarBorder from "../../components/StarBorder";
 import { Link } from "react-router-dom";
 import ViewMoreButton from "../../components/Button";
+import { motion } from "framer-motion";
+
 
 const Service = () => {
   return (
@@ -112,8 +114,35 @@ const Service = () => {
       </p>
 
       {/* cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10">
+           <motion.div 
+         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10"
+          initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15, // 🔥 THIS MAKES IT PREMIUM
+      },
+    },
+  }}>
              {services.slice(0, 4).map((service) => (
+               <motion.div
+    key={service.id}
+    variants={{
+      hidden: { opacity: 0, y: 40, scale: 0.95 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+          duration: 0.5,
+          ease: [0.25, 0.1, 0.25, 1],
+        },
+      },
+    }}
+  >
                 <Link key={service.id} to={`/service/${service.id}`}>
                          <CustomShapeCard
                            image={service.image}
@@ -122,8 +151,10 @@ const Service = () => {
                            buttonLink={`/service/${service.id}`}
                          />
                        </Link>
+                       </motion.div>
              ))}
-           </div>
+        
+           </motion.div> 
 
       {/* Mobile View More Button */}
       <div className="mt-10 md:hidden w-full">
