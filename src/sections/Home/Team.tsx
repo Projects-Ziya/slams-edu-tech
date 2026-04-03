@@ -24,57 +24,54 @@ const Team = () => {
 
   // ✅ MAIN SCROLL LOGIC
   useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
+  const el = sectionRef.current;
+  if (!el) return;
 
-    let isThrottled = false;
+  // ✅ Disable on mobile
+  if (window.innerWidth < 768) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      // 🚨 Only trigger when section is visible
-      if (!isInView) return;
+  let isThrottled = false;
 
-      const isAtTop = groupIndex === 0;
-      const isAtBottom = groupIndex === TOTAL_GROUPS - 1;
+  const handleWheel = (e: WheelEvent) => {
+    if (!isInView) return;
 
-      // ✅ Allow normal scroll at edges
-      if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
-        document.body.style.overflow = "auto";
-        return;
-      }
+    const isAtTop = groupIndex === 0;
+    const isAtBottom = groupIndex === TOTAL_GROUPS - 1;
 
-      // ✅ Lock scroll
-      document.body.style.overflow = "hidden";
-
-      if (isThrottled) return;
-
-      e.preventDefault();
-      isThrottled = true;
-
-      // rotate animation
-      setRotate(e.deltaY > 0 ? 30 : -30);
-
-      setTimeout(() => setRotate(0), 400);
-
-      // change group
-      setTimeout(() => {
-        setGroupIndex(prev =>
-          e.deltaY > 0 ? prev + 1 : prev - 1
-        );
-      }, 500);
-
-      setTimeout(() => {
-        isThrottled = false;
-      }, 900);
-    };
-
-    el.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      el.removeEventListener("wheel", handleWheel);
+    if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
       document.body.style.overflow = "auto";
-    };
-  }, [groupIndex, isInView]);
+      return;
+    }
 
+    document.body.style.overflow = "hidden";
+
+    if (isThrottled) return;
+
+    e.preventDefault();
+    isThrottled = true;
+
+    setRotate(e.deltaY > 0 ? 30 : -30);
+
+    setTimeout(() => setRotate(0), 400);
+
+    setTimeout(() => {
+      setGroupIndex(prev =>
+        e.deltaY > 0 ? prev + 1 : prev - 1
+      );
+    }, 500);
+
+    setTimeout(() => {
+      isThrottled = false;
+    }, 900);
+  };
+
+  el.addEventListener("wheel", handleWheel, { passive: false });
+
+  return () => {
+    el.removeEventListener("wheel", handleWheel);
+    document.body.style.overflow = "auto";
+  };
+}, [groupIndex, isInView]);
   // ✅ AUTO CENTER SECTION (smooth UX)
   useEffect(() => {
     if (isInView) {

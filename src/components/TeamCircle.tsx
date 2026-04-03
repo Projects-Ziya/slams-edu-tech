@@ -97,26 +97,33 @@ const TeamCircle: React.FC<TeamCircleProps> = ({ setActiveMember, groupIndex, ro
   return (
     <div ref={containerRef} className="w-full">
 
-      {/* ✅ MOBILE VIEW */}
-      <div className="md:hidden flex gap-4 overflow-x-auto px-4 py-6">
-        {members.map((member) => (
-          <div
-            key={member.id}
-            onClick={() => setActiveMember(member)}
-            className="min-w-[220px] bg-[#111] rounded-2xl p-4 flex-shrink-0 cursor-pointer"
-          >
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-[240px] object-cover rounded-xl"
-            />
-            <h3 className="text-white mt-4 text-lg font-semibold">
-              {member.name}
-            </h3>
-            <p className="text-gray-400 text-sm">{member.role}</p>
-          </div>
-        ))}
-      </div>
+     {/* ✅ MOBILE VIEW */}
+<div className="md:hidden flex gap-4 overflow-x-auto px-4 py-6 
+snap-x snap-mandatory scroll-smooth">
+
+  {members.map((member) => (
+    <div
+      key={member.id}
+      onClick={() => setActiveMember(member)}
+      className="min-w-[220px] snap-center bg-[#111] rounded-2xl p-4 flex-shrink-0 cursor-pointer"
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-[240px] object-cover rounded-xl"
+      />
+
+      <h3 className="text-white mt-4 text-lg font-semibold">
+        {member.name}
+      </h3>
+
+      <p className="text-gray-400 text-sm">
+        {member.role}
+      </p>
+    </div>
+  ))}
+
+</div>
 
       {/* ✅ DESKTOP VIEW */}
       <motion.div

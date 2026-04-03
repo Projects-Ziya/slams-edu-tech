@@ -3,6 +3,10 @@ export default {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
+       sparkle: {
+      '0%, 100%': { transform: 'translateY(0px)', opacity: '0.4' },
+      '50%': { transform: 'translateY(-6px)', opacity: '1' },
+    },
       fontFamily: {
         heading: ["Urbanist", "sans-serif"],
         outfit: ["Outfit", "sans-serif"],
@@ -10,6 +14,8 @@ export default {
 
       },
       animation: {
+            sparkle: 'sparkle 4s ease-in-out infinite',
+
         "star-movement-bottom": "star-movement-bottom linear infinite",
         "star-movement-top": "star-movement-top linear infinite",
       },

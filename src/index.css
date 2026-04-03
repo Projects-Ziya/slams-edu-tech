@@ -5,10 +5,14 @@
 @layer base {
   html {
     @apply bg-black;
+      overflow-x: hidden;
+
   }
 
   body {
     @apply bg-black text-white min-h-screen;
+      overflow-x: hidden;
+
     
   }
 }
@@ -69,5 +73,14 @@ html {
 .segment-shape {
   transition: stroke 0.25s ease, stroke-width 0.25s ease, filter 0.35s ease;
 }
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
 
 
