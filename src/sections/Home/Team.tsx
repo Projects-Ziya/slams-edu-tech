@@ -83,9 +83,13 @@ const Team = () => {
   }, [isInView]);
 
   return (
-    <section
+    <motion.section
       ref={sectionRef}
       className="relative py-32 px-10 font-outfit overflow-hidden bg-black"
+      initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.7, ease: [0.26, 0.1, 0.26, 1] }} 
+ viewport={{ once: true, amount: 0.2 }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-evenly gap-20">
 
@@ -139,7 +143,7 @@ const Team = () => {
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

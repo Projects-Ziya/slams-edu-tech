@@ -1,9 +1,15 @@
+import { motion } from "framer-motion";
 import ceo from "../../assets/founder.jpg";
 import ConnectorShape from "../../components/ConnectorShape";
 
+
 const FoundersMessage: React.FC = () => {
   return (
-    <section className="relative bg-black text-white py-14 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-20 mb-20 overflow-hidden">
+    <motion.section className="relative bg-black text-white py-14 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-20 mb-20 overflow-hidden"
+    initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
+ viewport={{ once: true, amount: 0.2 }}>
 
       {/* SVG defs for image clip */}
       <svg width="0" height="0">
@@ -111,7 +117,7 @@ const FoundersMessage: React.FC = () => {
 
 
         {/* RIGHT SIDE IMAGE */}
-        <div className=" pt-8
+        <div className=" pt-8 
           relative
           flex
           justify-center
@@ -135,12 +141,13 @@ const FoundersMessage: React.FC = () => {
 
             lg:w-[300px]
             lg:h-[380px]
+            mt-8
           ">
 
             {/* Image */}
             <img
               src={ceo}
-              className="w-full h-full object-cover "
+              className="w-full h-full object-cover  "
               style={{ clipPath: "url(#founderClip)" }}
             />
 
@@ -179,7 +186,7 @@ const FoundersMessage: React.FC = () => {
 
       
 
-    </section>
+    </motion.section>
   );
 };
 
