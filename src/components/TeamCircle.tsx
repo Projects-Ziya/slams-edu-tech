@@ -98,9 +98,9 @@ const TeamCircle: React.FC<TeamCircleProps> = ({ setActiveMember, groupIndex, ro
     <div ref={containerRef} className="w-full">
 
      {/* ✅ MOBILE VIEW */}
-<div className="md:hidden flex gap-4 overflow-x-auto px-4 py-6 
-snap-x snap-mandatory scroll-smooth">
-
+<div className="md:hidden flex flex-nowrap gap-4 overflow-x-auto px-4 py-6 
+snap-x snap-mandatory scroll-smooth 
+[scrollbar-width:none] [-ms-overflow-style:none]">
   {members.map((member) => (
     <div
       key={member.id}

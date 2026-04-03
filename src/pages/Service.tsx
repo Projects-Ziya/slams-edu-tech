@@ -8,7 +8,7 @@ import Loader from "@/components/Loader";
 const CustomShapeCard = lazy(() => import('../components/CustomShapedCard'));
 const Service = () => {
   return (
- <section className="px-10 font-outfit pb-16 pt-20">
+ <section className="px-6 font-outfit pb-16 pt-20">
    <ScrollToTop/>
       <p className="font-medium text-[24px] text-[#70A9FF]">services</p>
       <div className="flex justify-between">

@@ -18,13 +18,13 @@ export default function Careers() {
     <div className="bg-black text-white flex justify-center">
       <ScrollToTop />
 
-      <div className="w-full px-10 py-10">
+      <div className="w-full px-4  sm:px-6 md:px-8 lg:px-10 pt-10 sm:py-9 md:py-10 ">
 
         {/* Tabs */}
-        <div className="grid grid-cols-2 text-[32px] pb-2 pt-10">
+        <div className="grid grid-cols-2 text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] pb-2 pt-6 sm:pt-8 md:pt-10">
           <button
             onClick={() => setActiveTab("openings")}
-            className={`py-6 text-left ${
+            className={`py-4 sm:py-5 md:py-6 text-left ${
               activeTab === "openings" ? "border-b border-white" : ""
             }`}
           >
@@ -33,7 +33,7 @@ export default function Careers() {
 
           <button
             onClick={() => setActiveTab("internships")}
-            className={`py-6 text-left ${
+            className={`py-4 sm:py-5 md:py-6 text-left ${
               activeTab === "internships" ? "border-b border-white" : ""
             }`}
           >
