@@ -28,11 +28,11 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
-    >
+   <header
+  className={`fixed top-0 left-0 w-full z-50 overflow-x-hidden transition-all duration-300 ${
+    scrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"
+  }`}
+>
       <div className="w-full mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
@@ -91,7 +91,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Items */}
-        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium">
+        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium overflow-x-hidden">
           {items.map((item, index) => {
             // ✅ ONLY About Us → HashLink
             if (item.label === "About Us") {
