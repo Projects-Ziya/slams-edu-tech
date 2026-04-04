@@ -83,6 +83,7 @@ const Navbar: React.FC = () => {
         {/* Close Button */}
         <div className="flex items-center px-4 py-4 border-b border-white/10">
           <button
+          title="back"
             onClick={() => setMenuOpen(false)}
             className="text-white border rounded-full p-2 hover:text-gray-300 transition"
           >
