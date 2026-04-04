@@ -22,7 +22,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="relative px-0 md:px-6 pt-[32px] pb-10 min-h-[500px]">
+    <section id="about" className="relative px-0 md:px-6 pt-[100px] pb-10 min-h-[500px]">
     {isLargeScreen && (
   <Suspense fallback={<div className="text-white">Loading 3D...</div>}>
     <Section3D />
@@ -32,27 +32,28 @@ const About = () => {
 
       {/* MAIN GRID */}
 <motion.div
- className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pl-5"
+ className="relative z-10 grid  md:grid-cols-[1fr_1.4fr] gap-16  items-center pl-10"
    initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
  viewport={{ once: true, amount: 0.2 }}>
   
-        <div className="pb-16">
+        <div className="pb-12">
           <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400">
             / About Slams
           </p>
 
           <div className="flex flex-col justify-between pr-3">
-            <p className="pt-4 font-extrabold  font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+            <p className="pt-5 font-extrabold  font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
               Your Partner in <br />
-              <span className="text-blue-400">
+              <span className="text-blue-400 pt-2">
                 Digital Transformation
               </span>
             </p>
 
-            <p className="pt-4 text-[#f1eded] text-[14px] sm:text-[15px] md:text-[18px] lg:text-[20px] font-[150] tracking-wide font-outfit max-w-[800px]">
+            <p className="pt-8 text-[#f1eded] leading-10  text-[14px] sm:text-[15px] lg:text-[18px] font-[150] tracking-wide font-outfit max-w-[600px]">
               SLAMS EDUTECH is an IT and EdTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.
+              We are committed to delivering excellence through cutting-edge technology, creative design, and industry-aligned training programs that empower our clients and learners to succeed in the digital age.
             </p>
           </div>
         </div>
@@ -61,12 +62,12 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         <div className="flex gap-6 ">
 
   <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
-  <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="SSkilled developers, designers, and strategists delivering excellence." />
+  <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers, designers, and strategists delivering excellence." />
 
 </div>
         <div className="flex gap-6 pt-6">
 
-  <AboutCard icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />} title="Proven Results" text="STrack record of successful projects and satisfied clients worldwide." />
+  <AboutCard icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />} title="Proven Results" text="Track record of successful projects and satisfied clients worldwide." />
 
   <AboutCard icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />} title="Innovation-Driven" text="Leveraging cutting-edge technologies to keep you ahead of competition." />
 
@@ -80,7 +81,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
 {/* big card */}
 <motion.section 
-className="flex flex-col xl:flex-row pt-16 gap-12 justify-between px-4 md:px-6 xl:px-10 pb-6"
+className="flex flex-col xl:flex-row pt-20 gap-12 justify-between px-4 md:px-6 xl:px-10 pb-6"
 initial={{ opacity: 0, y: 60 }}
 whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 

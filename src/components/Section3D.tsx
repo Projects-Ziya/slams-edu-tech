@@ -3,10 +3,10 @@ import { TorusKnot, Environment } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const centerX = 5;
-const centerY = 5;
-const radiusX = 2;
-const radiusY = 4;
+const centerX = 3.3;
+const centerY = 4;
+const radiusX = 2.5;
+const radiusY = 5;
 
 const angle = Math.PI / 2;
 
@@ -35,12 +35,23 @@ function Knot(): JSX.Element {
 
   return (
     <TorusKnot ref={ref} args={[0.4, 0.25, 200, 32]}>
-      <meshStandardMaterial
+      {/* <meshStandardMaterial
         color="#d9d9d9"
         metalness={1}
         roughness={0.15}
         envMapIntensity={3}
-      />
+      /> */}
+    <meshPhysicalMaterial
+  color="#8b9efe"
+  metalness={1}
+  roughness={0.05}
+  envMapIntensity={3}
+  clearcoat={1}
+  clearcoatRoughness={0}
+  emissive="#101C34 ,#3B42F6 "
+  emissiveIntensity={0.5}
+/>
+
     </TorusKnot>
   );
 }
@@ -71,22 +82,34 @@ function Ring(): JSX.Element {
   return (
     <mesh ref={ref} rotation={[Math.PI / 2, 0, 0]}>
       <torusGeometry args={[0.4, 0.25, 200, 32]} />
-      <meshStandardMaterial
+      {/* <meshStandardMaterial
         color="#D9D9D9"
         metalness={1}
         roughness={0.15}
         envMapIntensity={3}
-      />
+      /> */}
+
+  <meshPhysicalMaterial
+  color="#8b9efe"
+  metalness={1}
+  roughness={0.05}
+  envMapIntensity={3}
+  clearcoat={1}
+  clearcoatRoughness={0}
+  emissive="#0F48A0 ,#3B42F6 "
+  emissiveIntensity={0.5}
+/>
     </mesh>
   );
 }
 
 export default function Section3D(): JSX.Element {
   return (
-<div className="absolute inset-0 pointer-events-none">      <Canvas  camera={{ position: [0, 0, 20], fov: 50 }}>
+<div className="absolute inset-0 pointer-events-none">     
+   <Canvas  camera={{ position: [0, 0, 20], fov: 50 }}>
 
         {/* THIS LINE FIXES THE STEEL LOOK */}
-        <Environment preset="studio"/>
+        <Environment preset="sunset"/>
 
         <ambientLight intensity={0.4} />
 

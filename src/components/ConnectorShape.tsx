@@ -25,7 +25,7 @@ const ConnectorShape = () => {
   return (
     <div ref={ref} className="absolute inset-0">
       <svg
-        className="absolute left-[-40px] top-[-50px] w-[1200px] h-[450px] pointer-events-none"
+        className="absolute left-[-10px] top-[-50px] w-[1200px] h-[450px] pointer-events-none"
         viewBox="0 0 1200 720"
         fill="none"
       >

@@ -43,11 +43,12 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         md:grid-cols-2
         gap-10
         lg:gap-16
+        xl:gap-20
         items-center
       ">
 
         {/* LEFT SIDE */}
-        <div className="relative z-10 order-2 md:order-1">
+        <div className="relative z-10 order-1 md:order-1">
 
           {/* Heading */}
           <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8 lg:mb-10">
@@ -64,7 +65,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             </h2>
 
             {/* connector line (hide on mobile/tablet small) */}
-            <div className="relative hidden  xl:block">
+            <div className="relative hidden  xl:block ">
               <ConnectorShape />
             </div>
 
@@ -75,12 +76,15 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             space-y-4
             sm:space-y-5
             lg:space-y-6
-            text-gray-300
+            text-[#f1eded]
             text-[14px]
             sm:text-[15px]
-            lg:text-[16px]
-            leading-relaxed
-            max-w-[520px]
+            lg:text-[18px]
+            font-[150]
+            tracking-wide
+            leading-7
+            font-outfit
+            max-w-[550px]
           ">
 
             <p>
@@ -117,14 +121,15 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
 
         {/* RIGHT SIDE IMAGE */}
-        <div className=" pt-8 
+        <div className="  
           relative
           flex
           justify-center
           md:justify-end
           lg:justify-start
-          order-1
+          order-2
           md:order-2
+        
         ">
 
           {/* Image container */}
@@ -139,9 +144,8 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             md:w-[260px]
             md:h-[320px]
 
-            lg:w-[300px]
+            lg:w-[310px]
             lg:h-[380px]
-            mt-8
           ">
 
             {/* Image */}

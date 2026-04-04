@@ -7,30 +7,75 @@ export default function AboutCard({
   buttonLink = "#",
 }) {
   return (
-    <div className="w-full max-w-[370px]  aspect-[370/220] relative group ">
-      <svg
-        viewBox="0 0 370 220"
-        className="w-full h-full "
-        xmlns="http://www.w3.org/2000/svg"
-      >
+    <div className="w-full max-w-[480px] aspect-[380/240] relative group">
 
-        {/* Clip path */}
+      {/* GLOBAL CLIP PATH (used for blur) */}
+      <svg width="0" height="0">
         <defs>
-          <clipPath id="customClip" clipPathUnits="userSpaceOnUse">
+          <clipPath id="cardClip" clipPathUnits="userSpaceOnUse">
             <path
               d="
                 M 199 0
                 Q 210 0 222 11
-                L 241 29
-                Q 251 32 266 33
-                L 370 33
-                Q 370 42 370 50
-                L 370 220
-                Q 362 220 351 220
-                L 19 220
-                Q 0 220 0 208
-                L 0 134
-                Q 0 20 0 0
+                 L 240 27
+                 Q 239 27 249 32
+
+                L 350 33
+                Q 370 30 370 55
+
+                L 370 200
+                Q 370 220 350 220
+
+                L 30 220
+                Q 0 220 0 200
+
+                L 0 20
+                Q 0 0 30 0
+
+                L 199 0
+                Z
+              "
+            />
+          </clipPath>
+        </defs>
+      </svg>
+
+      {/* ✅ BLUR LAYER (NOW SHAPE-CORRECT) */}
+      <div
+        className="absolute inset-0 backdrop-blur-sm bg-white/5 z-0"
+        style={{
+          clipPath: "url(#cardClip)",
+        }}
+      />
+
+      {/* MAIN SVG */}
+      <svg
+        viewBox="0 0 380 240"
+        className="w-full h-full relative z-10"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* CLIP FOR CONTENT */}
+        <defs>
+          <clipPath id="contentClip" clipPathUnits="userSpaceOnUse">
+            <path
+              d="
+                M 199 0
+                Q 210 0 222 11
+                L 240 27
+                Q 239 27 249 32
+
+                L 350 33
+                Q 370 30 370 55
+
+                L 370 200
+                Q 370 220 350 220
+
+                L 30 220
+                Q 0 220 0 200
+
+                L 0 20
+                Q 0 0 30 0
+
                 L 199 0
                 Z
               "
@@ -38,46 +83,49 @@ export default function AboutCard({
           </clipPath>
         </defs>
 
-        {/* Content */}
+        {/* CONTENT */}
         <foreignObject
-  x="0"
-  y="0"
-  width="370"
-  height="220"
-  clipPath="url(#customClip)"
->
-  {/* THIS div gets blur and is clipped */}
-  <div className="w-full h-full  bg-white/5 relative">   
-  {/* backdrop-blur-lg */}
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          clipPath="url(#contentClip)"
+        >
+          <div className="w-full h-full relative">
+            <div className="absolute bottom-12 left-7 text-white">
+              <div>{icon}</div>
 
-    {/* Text */}
-    <div className="absolute  bottom-20 left-5 text-white">
-      <div>{icon}</div>
-      <div className="font-sm text-[20px] pt-4">{title}</div>
-      <div className="text-[16px] text-[#CFCFCF] max-w-[300px]">
-        {text}
-      </div>
-    </div>
+              <div className="text-[26px] font-outfit font-[300] tracking-wide pt-4 pb-2">
+                {title}
+              </div>
 
-  </div>
-</foreignObject>
+              <div className="text-[16px] text-[#CFCFCF] max-w-[320px]">
+                {text}
+              </div>
+            </div>
+          </div>
+        </foreignObject>
 
-        {/* Border */}
+        {/* BORDER */}
         <path
           d="
             M 199 0
             Q 210 0 222 11
-            L 241 29
-            Q 251 32 266 33
-            L 370 33
-            Q 370 42 370 50
-            L 370 220
-            Q 362 220 351 220
-            L 19 220
-            Q 0 220 0 208
-            L 0 134
-            L 0 11
-            Q 0 0 19 0
+            L 240 27
+            Q 239 27 249 32
+
+            L 350 33
+            Q 370 30 370 55
+
+            L 370 200
+            Q 370 220 350 220
+
+            L 30 220
+            Q 0 220 0 200
+
+            L 0 20
+            Q 0 0 30 0
+
             L 199 0
             Z
           "
@@ -85,7 +133,6 @@ export default function AboutCard({
           stroke="#70A9FF"
           strokeWidth="2"
         />
-
       </svg>
     </div>
   );
