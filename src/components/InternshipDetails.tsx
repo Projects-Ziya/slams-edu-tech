@@ -27,7 +27,7 @@ export default function InternshipDetails() {
   if (!data) return <div className="text-white p-6">Internship not found</div>;
 
   return (
-    <div className="w-full mx-auto text-white pt-10 mt-10 px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px]">
+    <div className="w-full mx-auto text-white  px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px]">
       <ScrollToTop />
 
       {/* HERO */}
@@ -37,7 +37,7 @@ export default function InternshipDetails() {
 
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center text-gray-400 text-sm sm:text-base gap-2"
+            className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] mb-6 pt-4"
           >
             <ChevronLeft />
             Back to all Programs
@@ -88,7 +88,7 @@ export default function InternshipDetails() {
         </div>
 
         {/* IMAGE */}
-        <div className="w-full max-w-[700px] h-[250px] sm:h-[320px] md:h-[450px] mx-auto">
+        <div className="w-full max-w-[700px] h-[250px] sm:h-[320px] md:h-[550px] md:pt-24 mx-auto">
           <svg viewBox="0 0 1 1" preserveAspectRatio="none" className="w-full h-full">
             <defs>
               <clipPath id="customClip2" clipPathUnits="objectBoundingBox">
