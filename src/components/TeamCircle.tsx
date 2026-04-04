@@ -41,7 +41,7 @@ const teamGroups: TeamMember[][] = [
   [
     { id: 1, name: "Anugrah Sivadasan", role: "Frontend Developer", image: member1 },
     { id: 2, name: "Jesna", role: "Finance Head", image: member2 },
-    { id: 3, name: "Ashvin Kunnirikkal", role: "AI/ML Engineer", image: member3 },
+    { id: 3, name: "Ashvin Kunnirikkal", role: "AI/ML Developer", image: member3 },
     { id: 4, name: "Akshay", role: "Frontend Developer", image: member4 },
     { id: 5, name: "Athulya Jinu", role: "UI/UX Developer", image: member5 },
     { id: 6, name: "Cinda Sibichan", role: "Python Developer", image: member6 },
@@ -98,9 +98,9 @@ const TeamCircle: React.FC<TeamCircleProps> = ({ setActiveMember, groupIndex, ro
     <div ref={containerRef} className="w-full">
 
      {/* ✅ MOBILE VIEW */}
-<div className="md:hidden flex gap-4 overflow-x-auto px-4 py-6 
-snap-x snap-mandatory scroll-smooth">
-
+<div className="md:hidden flex flex-nowrap gap-4 overflow-x-auto px-4 py-6 
+snap-x snap-mandatory scroll-smooth 
+[scrollbar-width:none] [-ms-overflow-style:none]">
   {members.map((member) => (
     <div
       key={member.id}

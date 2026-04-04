@@ -12,7 +12,7 @@ import { Loader } from 'lucide-react';
 const WorksCard = lazy(() => import('../components/WorksCard'));
 const Works = () => {
   return (
-<section className=' px-10 pt-[112px]'>
+<section className=' px-6 pt-[112px]'>
    <ScrollToTop/>
 
  <p className="font-medium text-[24px] text-[#70A9FF]">Works</p>

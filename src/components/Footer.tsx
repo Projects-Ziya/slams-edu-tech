@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           <div className="flex gap-4 mt-6 justify-center md:justify-start flex-wrap">
             <a
                         title="btn"
-               href="#">
+               href="https://www.instagram.com/slams.tech?igsh=MWJnOTVrYXBtbm9tcA==">
               <FaInstagram
                 size={22}
                 className="text-white hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-500 rounded-md w-8 h-8 p-1 flex items-center justify-center transition-colors duration-300"
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
 
             <a 
             title="btn"
-              href="#"
+              href="https://www.linkedin.com/company/slams-edutech-private-limited/"
               className="hover:bg-blue-600 rounded-md w-8 h-8 flex items-center justify-center transition-colors duration-300"
             >
               <FaLinkedinIn size={18} />

@@ -150,6 +150,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
             {/* Image */}
             <img
+            title="team"
               src={ceo}
               className="w-full h-full object-cover  "
               style={{ clipPath: "url(#founderClip)" }}

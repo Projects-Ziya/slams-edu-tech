@@ -75,12 +75,12 @@ export default function CustomShapeCard({
 
         {/* BUTTON */}
         <button
-          className="absolute bottom-[5%] right-[5%] z-10 rounded-full text-blue-600 bg-white p-[clamp(8px,1.5vw,14px)] group-hover:bg-blue-300 group-hover:text-white transition"
+          className="absolute bottom-[5%] right-[5%] z-10  rounded-full text-blue-600 bg-white p-[clamp(8px,1.5vw,14px)] group-hover:bg-blue-300 group-hover:text-white transition"
           aria-label="Open project"
         >
           <ArrowUpRight
             size={18}
-            className="transition-transform duration-500 group-hover:rotate-45"
+            className="mx-1 transition-transform duration-500 group-hover:rotate-45"
           />
         </button>
 

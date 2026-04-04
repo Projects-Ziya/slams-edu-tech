@@ -106,10 +106,13 @@ const Segment = ({
             `}
           >
             <image
+            
               href={member}
               width="210"
               height="310"
               preserveAspectRatio="xMidYMid slice"
+                aria-label={memberData.name}
+
             />
           </g>
         </g>

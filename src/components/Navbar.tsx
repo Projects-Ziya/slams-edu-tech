@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
 
   return (
    <header
-  className={`fixed top-0 left-0 w-full z-50 overflow-x-hidden transition-all duration-300 ${
+  className={`fixed top-0 left-0 w-full z-50  transition-all duration-300 ${
     scrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"
   }`}
 >
@@ -83,6 +83,7 @@ const Navbar: React.FC = () => {
         {/* Close Button */}
         <div className="flex items-center px-4 py-4 border-b border-white/10">
           <button
+          title="back"
             onClick={() => setMenuOpen(false)}
             className="text-white border rounded-full p-2 hover:text-gray-300 transition"
           >
@@ -91,7 +92,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Items */}
-        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium overflow-x-hidden">
+        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium ">
           {items.map((item, index) => {
             // ✅ ONLY About Us → HashLink
             if (item.label === "About Us") {
