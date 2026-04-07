@@ -108,10 +108,10 @@ export default function Testimonial() {
                   opacity,
                   zIndex,
 
-                  backdropFilter: isActive ? "blur(14px)" : "blur(6px)",
-                  backgroundColor: isActive
-                    ? "rgba(255,255,255,0.10)"
-                    : "rgba(255,255,255,0.04)",
+                  // backdropFilter: isActive ? "blur(14px)" : "blur(6px)",
+                  // backgroundColor: isActive
+                  //   ? "rgba(255,255,255,0.10)"
+                  //   : "rgba(255,255,255,0.04)",
 
                 //   boxShadow: isActive
                 //     ? "0px 0px 40px rgba(112,169,255,0.25)"
