@@ -54,7 +54,7 @@ export default function Testimonial() {
       
       {/* HEADER */}
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent">
           Our Team Speaks
         </h2>
         <p className="text-gray-400 mt-4 text-[18px] sm:text-base  leading-relaxed">

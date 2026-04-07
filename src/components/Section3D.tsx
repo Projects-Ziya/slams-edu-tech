@@ -17,7 +17,7 @@ function Knot(): JSX.Element {
 
   // ✅ Responsive center & radius
   const centerX = viewport.width / 5;   // move right
-const centerY = viewport.height / 5;  // move up slightly
+const centerY = viewport.height / 4;  // move up slightly
 
   const radiusX = viewport.width / 6;
   const radiusY = viewport.height / 4;
