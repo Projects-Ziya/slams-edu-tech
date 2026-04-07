@@ -110,7 +110,7 @@ const ConnectorShape = () => {
           filter="url(#glow)"
         />
         <motion.path
-  d="..."
+  
   stroke="#60A5FA"
   strokeWidth="6"
   strokeLinecap="round"
