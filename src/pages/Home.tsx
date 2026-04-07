@@ -84,11 +84,11 @@ const Home = () => {
         </Suspense>
       </LazySection>
 
-<LazySection>
+{/* <LazySection>
       <Suspense fallback={SectionLoader}>
         <Testimonial />
       </Suspense>
-      </LazySection>
+      </LazySection> */}
 
       {/* 📄 Light Sections */}
       <Suspense fallback={SectionLoader}>
