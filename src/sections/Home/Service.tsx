@@ -127,8 +127,8 @@ const Service = () => {
       },
     },
   }}>
-             {services.slice(0, 4).map((service) => (
-               <motion.div
+           {services.slice(0, 4).map((service) => (
+  <motion.div
     key={service.id}
     variants={{
       hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -143,16 +143,19 @@ const Service = () => {
       },
     }}
   >
-                <Link key={service.id} to={`/service/${service.id}`}>
-                         <CustomShapeCard
-                           image={service.image}
-                           title={service.title}
-                           text={service.text}
-                           buttonLink={`/service/${service.id}`}
-                         />
-                       </Link>
-                       </motion.div>
-             ))}
+    {/* ❌ REMOVE THIS LINK */}
+    {/* <Link to={`/service/${service.id}`}> */}
+
+    <CustomShapeCard
+      image={service.image}
+      title={service.title}
+      text={service.text}
+      buttonLink={`/service/${service.id}`}
+    />
+
+    {/* </Link> */}
+  </motion.div>
+))}
         
            </motion.div> 
 
