@@ -1,4 +1,4 @@
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { TorusKnot, Environment } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -12,6 +12,15 @@ const angle = Math.PI / 2;
 
 function Knot(): JSX.Element {
   const ref = useRef<THREE.Mesh>(null!);
+   const { viewport } = useThree();
+
+
+  // ✅ Responsive center & radius
+  const centerX = viewport.width / 5;   // move right
+const centerY = viewport.height / 4;  // move up slightly
+
+  const radiusX = viewport.width / 6;
+  const radiusY = viewport.height / 4;
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
@@ -48,7 +57,7 @@ function Knot(): JSX.Element {
   envMapIntensity={3}
   clearcoat={1}
   clearcoatRoughness={0}
-  emissive="#101C34 ,#3B42F6 "
+  emissive="#3B42F6 "
   emissiveIntensity={0.5}
 />
 
@@ -58,6 +67,14 @@ function Knot(): JSX.Element {
 
 function Ring(): JSX.Element {
   const ref = useRef<THREE.Mesh>(null!);
+  const { viewport } = useThree();
+
+  // ✅ Responsive center & radius
+  const centerX = viewport.width / 5;   // move right
+const centerY = viewport.height / 4;  // move up slightly
+
+  const radiusX = viewport.width / 6;
+  const radiusY = viewport.height / 4;
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();

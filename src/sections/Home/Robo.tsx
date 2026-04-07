@@ -16,7 +16,7 @@ const Robo = () => {
   }, []);
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10">
+    <div className="p-4 sm:p-6 md:p-8 lg:p-10 mt-5">
 
       {/* SVG */}
       <svg width="0" height="0" className="absolute">

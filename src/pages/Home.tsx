@@ -26,6 +26,7 @@ const FoundersMessage = lazy(() => import("../sections/Home/FounderMessage"));
 const Robo = lazy(() => import("../sections/Home/Robo"));
 const Build = lazy(() => import("../sections/Home/Build"));
 const WhyChooseUs = lazy(() => import("../sections/Home/WhyChooseUs"));
+const Testimonial = lazy(() => import("../sections/Home/Testimonial"));
 const Faq = lazy(() => import("../sections/Home/Faq"));
 const ContactSection = lazy(() => import("../sections/Home/GetInTouch"));
 
@@ -81,6 +82,12 @@ const Home = () => {
         <Suspense fallback={SectionLoader}>
           <WhyChooseUs />
         </Suspense>
+      </LazySection>
+
+<LazySection>
+      <Suspense fallback={SectionLoader}>
+        <Testimonial />
+      </Suspense>
       </LazySection>
 
       {/* 📄 Light Sections */}

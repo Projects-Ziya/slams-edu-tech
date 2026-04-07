@@ -153,7 +153,7 @@ export default function HeroPage() {
           Innovative <span>IT </span> Solutions <br /> for a Digital World
         </p>
 
-        <p className="text-[18px] font-outfit font-[200] md:text-[22px] tracking-wide leading-[22px] md:leading-[24px] md:pl-12 pt-4 font-medium max-w-[840px]">
+        <p className="text-[18px] font-outfit font-[300]  md:text-[22px] tracking-wide sm:leading-4 md:leading-7 md:pl-12 pt-4 max-w-[840px]">
           Slams Edu Tech delivers smart, scalable technology solutions that help businesses
           grow faster, operate more efficiently, and stay ahead through continuous innovation.
         </p>

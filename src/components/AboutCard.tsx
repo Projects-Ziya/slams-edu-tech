@@ -7,7 +7,7 @@ export default function AboutCard({
   buttonLink = "#",
 }) {
   return (
-    <div className="w-full max-w-[480px] aspect-[380/240] relative group">
+    <div className="w-full max-w-[580px] aspect-[380/240] relative group">
 
       {/* GLOBAL CLIP PATH (used for blur) */}
       <svg width="0" height="0">
