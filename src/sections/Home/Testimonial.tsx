@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Sreekutty from "../../assets/Sreekutti.webp";
 import Anoop from "../../assets/Akshay-ui.webp"
 import Hr from "../../assets/HR.webp";
-import Cinda from "../../assets/Cinda.webp";
+import Cinda from "../../assets/cinda.webp"
 
 const testimonials = [
   {
