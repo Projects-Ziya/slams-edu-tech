@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Sreekutty from "../../assets/Sreekutti.webp";
-import Anoop from "../../assets/Anoop.webp";
+import Anoop from "../../assets/Akshay-ui.webp"
 import Hr from "../../assets/HR.webp";
 import Cinda from "../../assets/Cinda.webp";
 
