@@ -51,8 +51,8 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
               </span>
             </p>
 
-            <p className="pt-8 text-[#f1eded] leading-10  text-[14px] sm:text-[15px] lg:text-[18px] font-[150] tracking-wide font-outfit max-w-[600px]">
-              SLAMS EDUTECH is an IT and EdTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.
+            <p className="pt-8 text-[#f1eded] leading-10   text-[14px] sm:text-[15px] lg:text-[22px]  font-[150] tracking-wide font-outfit max-w-[700px]">
+              SLAMS EDUTECH is an IT and EduTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.
               We are committed to delivering excellence through cutting-edge technology, creative design, and industry-aligned training programs that empower our clients and learners to succeed in the digital age.
             </p>
           </div>
@@ -71,13 +71,11 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
   <AboutCard icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />} title="Innovation-Driven" text="Leveraging cutting-edge technologies to keep you ahead of competition." />
 
-</div>
+</div> 
 
 </div>
 
       </motion.div>
-
-
 
 {/* big card */}
 <motion.section 
