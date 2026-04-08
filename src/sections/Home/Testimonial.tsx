@@ -1,11 +1,14 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Sreekutty from "../../assets/Sreekutti.webp";
 import Anoop from "../../assets/Akshay-ui.webp"
 import Hr from "../../assets/HR.webp";
 import Cinda from "../../assets/cinda.webp"
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import staricon from "../../assets/carbon_star-review.svg"
+
 
 const testimonials = [
   {
@@ -24,8 +27,8 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Rahul",
-    role: "Frontend Developer",
+    name: "Fayaz",
+    role: "HR Manager",
     text: "Amazing culture and strong mentorship. I’ve learned more here than anywhere else.",
     image: Hr,
   },
@@ -40,26 +43,47 @@ const testimonials = [
 
 export default function Testimonial() {
   const [active, setActive] = useState(1);
+  const [direction, setDirection] = useState(0);
 
   const next = () => {
-    setActive((prev) => (prev + 1) % testimonials.length);
+  setDirection(1); // moving right
+  setActive((prev) => (prev + 1) % testimonials.length);
+};
+
+const prev = () => {
+  setDirection(-1); // moving left
+  setActive((prev) =>
+    prev === 0 ? testimonials.length - 1 : prev - 1
+  );
+};
+
+useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "ArrowRight") {
+      next();
+    }
+    if (e.key === "ArrowLeft") {
+      prev();
+    }
   };
 
-  const prev = () => {
-    setActive((prev) =>
-      prev === 0 ? testimonials.length - 1 : prev - 1
-    );
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    window.removeEventListener("keydown", handleKeyDown);
   };
+}, []);
+
 
   return (
     <section className="bg-black text-white w-full py-16 px-4 sm:px-8 lg:px-20 overflow-hidden">
       
       {/* HEADER */}
-      <div className="text-center max-w-2xl mx-auto mb-10">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent">
+      <div className="text-center max-w-2xl mx-auto mb-8">
+        <h2 className="text-xl sm:text-xl md:text-[26px] xl:text-[34px] 2xl:text-[40px] font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent mb-4">
           Our Team Speaks
         </h2>
-        <p className="text-gray-400 mt-4 text-[18px] sm:text-base  leading-relaxed">
+        <p className="text-white mt-4 text-[14px] font-outfit sm:text-[14px] md:text-[16px] xl:text-[20px]  2xl:text-[22px] leading-8 font-[200]">
           We build simple, smart tech solutions that help businesses grow and keep things moving. From idea to launch, we turn concepts into easy-to-use digital products using modern tech, creative thinking, and a practical, hands-on approach that just works.
         </p> 
       </div>
@@ -70,7 +94,12 @@ export default function Testimonial() {
         <div className="relative h-[320px] sm:h-[360px] lg:h-[400px] flex items-center justify-center">
 
           {testimonials.map((item, index) => {
-            const position = index - active;
+           const total = testimonials.length;
+
+let position = index - active;
+
+if (position < -total / 2) position += total;
+if (position > total / 2) position -= total;
             const isActive = position === 0;
 
             let x = 0;
@@ -101,117 +130,116 @@ export default function Testimonial() {
             }
 
             return (
-            <motion.div
+         <motion.div
   key={item.id}
-  className="absolute"
+  className="absolute will-change-transform"
+  initial={{
+    x: direction > 0 ? "40%" : "-40%", // 🔥 reduced distance
+    opacity: 0,
+    scale: 0.92,
+  }}
   animate={{
     x,
     scale,
     opacity,
     zIndex,
-    rotateY: position === 0 ? 0 : position > 0 ? -8 : 8,
+    rotateY: isActive ? 0 : position < 0 ? 8 : -8, // 🔥 reduced tilt
   }}
   transition={{
-    type: "spring",
-    stiffness: 220,
-    damping: 20,
-    mass: 0.6,
+    x: { type: "spring", stiffness: 180, damping: 20 },
+    scale: { type: "spring", stiffness: 180, damping: 20 },
+
+    // ⚡ instant feel properties
+    opacity: { duration: 0.25, ease: "easeOut" },
+    rotateY: { duration: 0.3, ease: "easeOut" },
   }}
   style={{
-    transformPerspective: 1000,
+    transformStyle: "preserve-3d",
+    perspective: 1000,
   }}
 >
-  <div
-  className={`
-    relative
-    w-full
-    max-w-[clamp(280px,50vw,700px)]
-    h-[clamp(200px,22vw,260px)]
-    rounded-2xl
-    border border-white/10
-    flex items-center justify-between
-    p-5 sm:p-6
-    overflow-hidden
 
-    transition-all duration-200 ease-out
 
-    ${isActive 
-      ? "bg-white/10 backdrop-blur-xl shadow-[0_10px_40px_rgba(112,169,255,0.25)]" 
-      : "bg-white/5 backdrop-blur-sm opacity-60"
-    }
-  `}
->
+ <div className="
+  relative
+  w-full
+  max-w-[clamp(280px,50vw,700px)]
+  h-[clamp(200px,22vw,260px)]
+  rounded-2xl
+  border border-white/10
+  overflow-hidden
+  flex items-center justify-between
+  p-5 sm:p-6
 
-                  {/* ✨ LIGHT SWEEP EFFECT
-                  {isActive && (
-                    <motion.div
-                      className="absolute inset-0 pointer-events-none"
-                      initial={{ x: "-100%" }}
-                      animate={{ x: "100%" }}
-                      transition={{
-                        duration: 1.2,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                        repeatDelay: 2,
-                      }}
-                      style={{
-                        background:
-                          "linear-gradient(120deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%)",
-                      }}
-                    />
-                  )} */}
+  bg-gradient-to-br from-white/10 via-white/5 to-transparent
+  backdrop-blur-lg
 
-                  {/* LABEL */}
-                  <div className="absolute top-3 left-5 text-[10px] sm:text-xs text-blue-300 uppercase tracking-wider">
-                    Life of Slams
-                  </div>
+  shadow-[0_10px_40px_rgba(0,0,0,0.6)]
+">
 
-                  
+  {/* ✨ subtle top light */}
+  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-white/20 pointer-events-none" />
 
-                  {/* TEXT */}
-                  <div className="flex-1 pr-4 mt-6">
-                    <p className="text-[18px] sm:text-md font-outfit text-gray-300 leading-relaxed">
-                      {item.text}
-                    </p>
+  {/* ✨ active glow */}
+  {isActive && (
+    <div className="absolute inset-0 rounded-2xl border border-[#70A9FF]/40 shadow-[0_0_40px_rgba(112,169,255,0.25)] pointer-events-none" />
+  )}
 
-                    <div className="mt-5">
-                      <p className="text-white text-md font-outfit  font-bold">
-                        {item.name}
-                      </p>
-                      <p className="text-gray-500 text-xs">
-                        {item.role}
-                      </p>
-                    </div>
-                  </div>
+  {/* LABEL */}
+  <div className="absolute flex items-center gap-2 top-3 left-5 text-[10px] md:text-[11px] xl:text-[12px] 2xl:text-[14px] text-white uppercase tracking-wider">
+    <img src={staricon} alt="" />
+    Life of Slams
+  </div>
 
-                  {/* IMAGE */}
-                  <div className="w-[120px] sm:w-[180px] lg:w-[220px] h-full rounded-xl overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+  {/* TEXT */}
+  <div className="flex-1 pr-4 mt-20 z-10">
+    <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+      {item.text}
+    </p>
 
-                </div>
+    <div className="mt-5">
+      <p className="text-white text-sm sm:text-base font-semibold">
+        {item.name}
+      </p>
+      <p className="text-gray-500 text-xs mt-1">
+        {item.role}
+      </p>
+    </div>
+  </div>
+
+  {/* IMAGE */}
+  <div className="relative w-[120px] sm:w-[180px] lg:w-[220px] h-full rounded-xl overflow-hidden">
+    
+    {/* image */}
+    <img
+      src={item.image}
+      alt={item.name}
+      className="w-full h-full object-cover"
+    />
+
+    {/* ✨ image fade overlay */}
+    <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-transparent to-transparent" />
+  </div>
+
+</div>
               </motion.div>
             );
           })}
         </div>
 
         {/* CONTROLS */}
-        <div className="flex justify-center gap-4 mt-2">
+        <div className="flex justify-center gap-4 mt-2 relative z-50">
           <button
             onClick={prev}
             className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition"
           >
-            ←
+            <ChevronLeft/>
           </button>
           <button
             onClick={next}
             className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition"
           >
-            →
+            <ChevronRight />
           </button>
         </div>
 
