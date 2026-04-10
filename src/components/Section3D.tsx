@@ -53,7 +53,7 @@ const centerY = viewport.height / 5;  // move up slightly
   envMapIntensity={3}
   clearcoat={1}
   clearcoatRoughness={0}
-  emissive="#3B42F6 "
+  emissive="#0F48A0 "
   emissiveIntensity={0.5}
 />
 
