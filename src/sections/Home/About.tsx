@@ -32,13 +32,13 @@ const About = () => {
 
       {/* MAIN GRID */}
 <motion.div
- className="relative z-10 grid  md:grid-cols-[1fr_1.4fr] gap-16  items-center pl-10"
+ className="relative z-10 grid  md:grid-cols-[1fr_1.4fr] gap-16  items-center px-6"
    initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
  viewport={{ once: true, amount: 0.2 }}>
   
-        <div className="pb-12">
+        <div className="pb-2">
           <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400">
             / About Slams
           </p>
@@ -51,30 +51,45 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
               </span>
             </p>
 
-            <p className="pt-8 text-[#f1eded] leading-10   text-[14px] sm:text-[15px] lg:text-[22px]  font-[150] tracking-wide font-outfit max-w-[700px]">
-              SLAMS EDUTECH is an IT and EduTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.
-              We are committed to delivering excellence through cutting-edge technology, creative design, and industry-aligned training programs that empower our clients and learners to succeed in the digital age.
+            <p className="pt-8 text-[#f1eded] leading-5 lg:leading-10   text-[14px] sm:text-[15px] lg:text-[22px]  font-[150] tracking-wide font-outfit max-w-[700px]">
+             SLAMS EDUTECH is an IT and EduTech company offering digital solutions in software development, UI/UX design, digital marketing, web and mobile apps, plus AI & ML, cybersecurity, and IT training. Our mission is to connect education and industry through practical, skill-based learning and technology services that help individuals and businesses grow digitally.
             </p>
           </div>
         </div>
 
-       <div className=" gap-3 pt-10 pr-4">
-        <div className="flex gap-6 ">
+     <div className="gap-3 pt-2 pr-4">
 
-  <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
-  <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers, designers, and strategists delivering excellence." />
+  {/* Row 1 */}
+  <div className="flex flex-col md:flex-row gap-6">
+    <AboutCard
+      icon={<Gem className="w-6 h-6 text-[#70A9FF]" />}
+      title="Custom Solutions"
+      text="Tailored software and digital solutions built for your unique business need."
+    />
+
+    <AboutCard
+      icon={<Users className="w-6 h-6 text-[#70A9FF]" />}
+      title="Expert Team"
+      text="Skilled developers, designers, and strategists delivering excellence."
+    />
+  </div>
+
+  {/* Row 2 */}
+  <div className="flex flex-col md:flex-row gap-6 pt-6">
+    <AboutCard
+      icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />}
+      title="Proven Results"
+      text="Track record of successful projects and satisfied clients worldwide."
+    />
+
+    <AboutCard
+      icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />}
+      title="Innovation-Driven"
+      text="Leveraging cutting-edge technologies to keep you ahead of competition."
+    />
+  </div>
 
 </div>
-        <div className="flex gap-6 pt-6">
-
-  <AboutCard icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />} title="Proven Results" text="Track record of successful projects and satisfied clients worldwide." />
-
-  <AboutCard icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />} title="Innovation-Driven" text="Leveraging cutting-edge technologies to keep you ahead of competition." />
-
-</div> 
-
-</div>
-
       </motion.div>
 
 {/* big card */}
