@@ -51,8 +51,9 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
               </span>
             </p>
 
-            <p className="pt-8 text-[#f1eded] leading-5 lg:leading-10   text-[14px] sm:text-[15px] lg:text-[22px]  font-[150] tracking-wide font-outfit max-w-[700px]">
-             SLAMS EDUTECH is an IT and EduTech company offering digital solutions in software development, UI/UX design, digital marketing, web and mobile apps, plus AI & ML, cybersecurity, and IT training. Our mission is to connect education and industry through practical, skill-based learning and technology services that help individuals and businesses grow digitally.
+            <p className="pt-8 text-[#f1eded] leading-10   text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px]  font-[150] tracking-wide font-outfit max-w-[700px]">
+              SLAMS EDUTECH is an IT and EduTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.
+              We are committed to delivering excellence through cutting-edge technology, creative design, and industry-aligned training programs that empower our clients and learners to succeed in the digital age.
             </p>
           </div>
         </div>
