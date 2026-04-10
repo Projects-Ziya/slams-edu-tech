@@ -3,8 +3,21 @@ import { internship } from "@/data/internship";
 import { useNavigate } from "react-router-dom";
 import { Clock, CircleCheck, Users, ChevronLeft } from "lucide-react";
 import ScrollToTop from "./ScrollToTop";
+import { useState } from "react";
 
 export default function InternshipDetails() {
+
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    message: "",
+    file: null as File | null
+  });
+
+  const [loading, setLoading] = useState(false);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -17,7 +30,53 @@ export default function InternshipDetails() {
       return;
     }
 
-    console.log("Valid file:", file);
+    setForm({ ...form, file });
+  };
+
+  const handleChange = (e: any) => {
+    const { placeholder, value } = e.target;
+
+    if (placeholder.includes("First")) setForm({ ...form, firstName: value });
+    else if (placeholder.includes("Last")) setForm({ ...form, lastName: value });
+    else if (placeholder.includes("Phone")) setForm({ ...form, phone: value });
+    else if (placeholder.includes("Email")) setForm({ ...form, email: value });
+    else setForm({ ...form, message: value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new URLSearchParams();
+    formData.append("firstName", form.firstName);
+    formData.append("lastName", form.lastName);
+    formData.append("phone", form.phone);
+    formData.append("email", form.email);
+    formData.append("message", form.message);
+    formData.append("fileName", form.file?.name || "");
+
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbxHG-O5YXecj5BsF8W6OiFW8oWdNC50lBS4lFq7_sVhwmVWCI6slGyLyq3p34gHdaCz/exec", {
+        method: "POST",
+        body: formData,
+      });
+
+      alert("Application submitted ✅");
+
+      setForm({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        message: "",
+        file: null
+      });
+
+    } catch (err) {
+      alert("Submission failed ❌");
+    }
+
+    setLoading(false);
   };
 
   const { id } = useParams();
@@ -27,7 +86,8 @@ export default function InternshipDetails() {
   if (!data) return <div className="text-white p-6">Internship not found</div>;
 
   return (
-    <div className="w-full mx-auto text-white  px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px]">
+    <div className="w-full mx-auto text-white px-4 sm:px-6 md:px-12">
+
       <ScrollToTop />
 
       {/* HERO */}
@@ -188,31 +248,70 @@ export default function InternshipDetails() {
         </div>
       </div>
 
-      {/* FORM */}
-      <div className="max-w-[1900px] mx-auto border border-[#7C7C7C] rounded-xl p-5 sm:p-8 space-y-5 sm:space-y-6">
+       {/* FORM */}
+      <div className="max-w-[1900px] mx-auto border border-[#7C7C7C] rounded-xl p-5 sm:p-8 space-y-5 mt-6">
+
         <p className="text-xl sm:text-2xl font-medium">
           Apply for this Internship
         </p>
 
-        <p className="text-sm sm:text-base text-gray-400">
-          All fields marked with * are required
-        </p>
+        <form className="space-y-5" onSubmit={handleSubmit}>
 
-        <form className="space-y-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            <input className="bg-black border p-3 rounded-xl text-sm sm:text-base" placeholder="First Name*" />
-            <input className="bg-black border p-3 rounded-xl text-sm sm:text-base" placeholder="Last Name*" />
-            <input className="bg-black border p-3 rounded-xl text-sm sm:text-base" placeholder="Phone*" />
-            <input className="bg-black border p-3 rounded-xl text-sm sm:text-base" placeholder="Email*" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              value={form.firstName}
+              onChange={handleChange}
+              placeholder="First Name*"
+              required
+              className="bg-black border p-3 rounded-xl"
+            />
+
+            <input
+              value={form.lastName}
+              onChange={handleChange}
+              placeholder="Last Name*"
+              required
+              className="bg-black border p-3 rounded-xl"
+            />
+
+            <input
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="Phone*"
+              required
+              className="bg-black border p-3 rounded-xl"
+            />
+
+            <input
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Email*"
+              required
+              className="bg-black border p-3 rounded-xl"
+            />
           </div>
 
-          <textarea className="w-full bg-black border p-3 rounded-xl text-sm sm:text-base" placeholder="Message" />
+          <textarea
+            value={form.message}
+            onChange={handleChange}
+            placeholder="Message"
+            className="w-full bg-black border p-3 rounded-xl"
+          />
 
-          <input title="internship" type="file" onChange={handleFileChange} className="text-sm" />
+          <input
+            type="file"
+            onChange={handleFileChange}
+            className="text-sm"
+          />
 
-          <button className="w-full bg-white text-black py-3 rounded hover:bg-gray-200 text-sm sm:text-base">
-            SUBMIT
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-white text-black py-3 rounded hover:bg-gray-200 disabled:opacity-50"
+          >
+            {loading ? "Submitting..." : "SUBMIT"}
           </button>
+
         </form>
       </div>
     </div>

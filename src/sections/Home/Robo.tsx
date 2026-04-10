@@ -16,8 +16,7 @@ const Robo = () => {
   }, []);
 
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10 mt-5">
-
+<div className="px-0 py-4 sm:p-6 md:p-8 lg:p-10 mt-5 ">
       {/* SVG */}
       <svg width="0" height="0" className="absolute">
         <defs>
@@ -111,89 +110,18 @@ const Robo = () => {
       </div>
 
  {/* ================= TABLET + MOBILE (MINIMAL) ================= */}
-<div className="lg:hidden w-full flex items-center justify-center py-10">
 
-  <div className="w-full max-w-[340px] flex flex-col gap-6 relative">
-
-    {/* ================= OUTSIDE SPARKS ================= */}
-    <span className="absolute top-2 left-4 w-[3px] h-[3px] bg-blue-400 rounded-full blur-[1px] animate-sparkle"></span>
-    <span className="absolute top-10 right-6 w-[2px] h-[2px] bg-blue-300 rounded-full blur-[1px] animate-sparkle delay-200"></span>
-    <span className="absolute bottom-6 left-10 w-[3px] h-[3px] bg-blue-500 rounded-full blur-[1px] animate-sparkle delay-500"></span>
-    <span className="absolute bottom-2 right-8 w-[2px] h-[2px] bg-blue-400 rounded-full blur-[1px] animate-sparkle delay-700"></span>
-
-    {/* CARD 1 */}
-    <div className="relative group rounded-2xl p-[1px] bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600">
-
-      {/* Glow Border */}
-      <div className="absolute inset-0 rounded-2xl blur-md opacity-30 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 group-hover:opacity-50 transition duration-500"></div>
-
-      {/* Card Content */}
-      <div className="relative rounded-2xl bg-black p-6 flex flex-col items-center justify-center overflow-hidden">
-
-        {/* ================= INSIDE SPARKS ================= */}
-        <span className="absolute top-4 left-6 w-[2px] h-[2px] bg-blue-400 rounded-full blur-[1px] animate-sparkle"></span>
-        <span className="absolute bottom-6 right-8 w-[3px] h-[3px] bg-blue-500 rounded-full blur-[1px] animate-sparkle delay-300"></span>
-        <span className="absolute top-1/2 left-10 w-[2px] h-[2px] bg-blue-300 rounded-full blur-[1px] animate-sparkle delay-700"></span>
-
-        {/* Icon */}
-        <div className="mb-3 text-blue-400">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 17l6-6 4 4 8-8" />
-          </svg>
-        </div>
-
-        {/* Number */}
-        <p className="text-[28px] font-bold text-white">
-          <CountUp from={0} to={50} duration={0.5} />+
-        </p>
-
-        {/* Label */}
-        <p className="text-sm text-[#A0AEC0]">
-          Live Projects
-        </p>
-
-      </div>
-    </div>
-
-    {/* CARD 2 */}
-    <div className="relative group rounded-2xl p-[1px] bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600">
-
-      {/* Glow Border */}
-      <div className="absolute inset-0 rounded-2xl blur-md opacity-30 bg-gradient-to-r from-blue-500 via-blue-400 to-blue-600 group-hover:opacity-50 transition duration-500"></div>
-
-      {/* Card Content */}
-      <div className="relative rounded-2xl bg-black p-6 flex flex-col items-center justify-center overflow-hidden">
-
-        {/* ================= INSIDE SPARKS ================= */}
-        <span className="absolute top-5 right-6 w-[2px] h-[2px] bg-blue-400 rounded-full blur-[1px] animate-sparkle"></span>
-        <span className="absolute bottom-5 left-8 w-[3px] h-[3px] bg-blue-500 rounded-full blur-[1px] animate-sparkle delay-500"></span>
-        <span className="absolute top-1/2 right-10 w-[2px] h-[2px] bg-blue-300 rounded-full blur-[1px] animate-sparkle delay-700"></span>
-
-        {/* Icon */}
-        <div className="mb-3 text-blue-400">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-
-        {/* Number */}
-        <p className="text-[28px] font-bold text-white">
-          <CountUp from={0} to={100} duration={1} />%
-        </p>
-
-        {/* Label */}
-        <p className="text-sm text-[#A0AEC0]">
-          Client Satisfaction
-        </p>
-
-      </div>
-    </div>
-
-  </div>
-</div>
 
     </div>
   );
 };
 
 export default Robo;
+
+
+
+
+
+
+
+

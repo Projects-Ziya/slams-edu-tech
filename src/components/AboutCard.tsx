@@ -1,4 +1,5 @@
-import { ArrowUpRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react"; 
 
 export default function AboutCard({
   title,
@@ -6,10 +7,38 @@ export default function AboutCard({
   icon,
   buttonLink = "#",
 }) {
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1280);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  // ✅ MOBILE VIEW (NO CLIP PATH)
+  if (isMobile) {
+    return (
+      <div className="w-full rounded-xl border border-[#70A9FF] p-5 bg-white/5 backdrop-blur-sm">
+        <div className="text-[#70A9FF]">{icon}</div>
+
+        <div className="text-lg font-outfit pt-3 pb-1 text-white">
+          {title}
+        </div>
+
+        <div className="text-sm text-[#CFCFCF]">
+          {text}
+        </div>
+      </div>
+    );
+  }
+
+  // ✅ DESKTOP VIEW (UNCHANGED CLIP PATH)
   return (
     <div className="w-full max-w-[580px] aspect-[380/240] relative group">
 
-      {/* ✅ RESPONSIVE CLIP PATH */}
+      {/* CLIP PATH */}
       <svg width="0" height="0">
         <defs>
           <clipPath id="cardClip" clipPathUnits="objectBoundingBox">
@@ -35,7 +64,7 @@ export default function AboutCard({
         </defs>
       </svg>
 
-      {/* ✅ REAL BLUR (WORKING PERFECTLY) */}
+      {/* BLUR BG */}
       <div
         className="absolute inset-0 backdrop-blur-[3px] bg-white/5 z-0"
         style={{
@@ -43,13 +72,12 @@ export default function AboutCard({
         }}
       />
 
-      {/* MAIN SVG */}
+      {/* SVG */}
       <svg
         viewBox="0 0 380 240"
         className="w-full h-full relative z-10"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* CONTENT CLIP */}
         <defs>
           <clipPath id="contentClip" clipPathUnits="userSpaceOnUse">
             <path
