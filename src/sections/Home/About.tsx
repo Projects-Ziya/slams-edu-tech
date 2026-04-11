@@ -52,21 +52,20 @@ const About = () => {
       </p>
 
       <p className="pt-8 text-[#f1eded] leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wide font-outfit max-w-[700px]">
-        SLAMS EDUTECH is an IT and EduTech company providing innovative digital solutions...
-      </p>
+SLAMS EDUTECH is an IT and EdTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.       </p>
     </div>
   </div>
 
   <div className="gap-3 pt-2 pr-4">
 
     <div className="flex flex-col md:flex-row gap-6">
-      <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software..." />
-      <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers..." />
+      <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
+      <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers, designers, and strategists delivering excellence." />
     </div>
 
     <div className="flex flex-col md:flex-row gap-6 pt-6">
-      <AboutCard icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />} title="Proven Results" text="Track record..." />
-      <AboutCard icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />} title="Innovation-Driven" text="Cutting-edge..." />
+      <AboutCard icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />} title="Proven Results" text="Track record of successful projects and satisfied clients worldwide." />
+      <AboutCard icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />} title="Innovation-Driven" text="Leveraging cutting-edge technologies to keep you ahead of competition." />
     </div>
 
   </div>
@@ -131,7 +130,7 @@ fill="none" stroke="#ffffff" strokeWidth="1"/>
 </div>
 
 {/* RIGHT CARD */}
-<div className="w-full pt-32">
+<div className="w-full lg:pt-32 sm:pt-2">
 <div className="relative w-full max-w-[850px] aspect-[850/700] mx-auto 
   rounded-2xl overflow-hidden border border-gray-700 md:border-0">
 

@@ -128,8 +128,15 @@ className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10 "
     },
   }}>
 {services
-  .slice(0, window.innerWidth < 768 ? 2 : 4)
-  .map((service) => (               <motion.div
+  .slice(
+    0,
+    window.innerWidth < 768
+      ? 2
+      : window.innerWidth < 1024
+      ? 3
+      : 4
+  )
+  .map((service) => (              <motion.div
     key={service.id}
     variants={{
       hidden: { opacity: 0, y: 40, scale: 0.95 },

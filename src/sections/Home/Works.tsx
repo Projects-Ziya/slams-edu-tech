@@ -105,8 +105,16 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
     },
   }}>
     
-        {projects.slice(0, window.innerWidth < 768 ? 2 : 4).map((project) => (
-          <motion.div
+{projects
+  .slice(
+    0,
+    window.innerWidth < 768
+      ? 2
+      : window.innerWidth < 1024
+      ? 3
+      : 4
+  )
+  .map((project) => (          <motion.div
           key={project.id}
     variants={{
       hidden: { opacity: 0, y: 40, scale: 0.95 },
