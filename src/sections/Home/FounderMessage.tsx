@@ -5,7 +5,7 @@ import ConnectorShape from "../../components/ConnectorShape";
 
 const FoundersMessage: React.FC = () => {
   return (
-    <motion.section className="relative bg-black text-white py-14 sm:py-16 lg:py-20 px-4 sm:px-8 lg:px-20 mb-20 overflow-hidden"
+    <motion.section className="relative bg-black text-white py-4 sm:py-16 lg:py-16 px-4 sm:px-8 lg:px-20 mb-20 overflow-hidden"
     initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 

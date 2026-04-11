@@ -3,8 +3,7 @@ import globe from "../../assets/globe.mp4"
 
 const WhyChooseSection = () => {
   return (
-    <section className="w-full bg-black text-white py-20 md:py-32 px-4 md:px-6">
-
+<section className="w-full bg-black text-white py-2 md:py-20 px-4 md:px-6">
       <div className="max-w-full">
 
         {/* Heading */}

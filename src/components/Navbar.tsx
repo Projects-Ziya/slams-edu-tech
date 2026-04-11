@@ -2,7 +2,7 @@ import GooeyNav from "./GooeyNav ";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.webp";
+import logo from "../assets/logoNav.png";
 import { HashLink } from "react-router-hash-link";
 
 const Navbar: React.FC = () => {
@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
       <div className="w-full mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="h-16 max-w-[140px] object-contain scale-105" />
+          <img src={logo} alt="Logo" className="h-12 max-w-[140px] object-contain scale-105" />
         </div>
 
         {/* Desktop Navigation */}

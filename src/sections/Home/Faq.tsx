@@ -12,7 +12,7 @@ const Faq: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-black text-white py-16 px-6 flex flex-col items-center">
+    <div className="w-full bg-black text-white md:py-16 px-6 flex flex-col items-center">
       {/* Title */}
       <h2 className="text-3xl md:text-4xl font-semibold text-blue-400 mb-10">
         FAQ’s
@@ -31,13 +31,13 @@ const Faq: React.FC = () => {
               {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left"
+                className="w-full flex items-center justify-between px-6 py-5 text-left "
               >
-                <span className="text-base md:text-lg font-medium">
+                <span className="text-base md:text-lg font-medium pr-2 ">
                   {faq.question}
                 </span>
 
-                <div className="w-8 h-8 flex items-center justify-center rounded-full bg-white text-black">
+                <div className=" w-8 md:w-8 h-8 flex items-center justify-center rounded-full bg-white text-black">
                   {isActive ? <Minus size={18} /> : <Plus size={18} />}
                 </div>
               </button>

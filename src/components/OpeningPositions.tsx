@@ -5,7 +5,7 @@ import { openings } from "@/data/openings";
 
 export default function OpeningPositions() {
   return (
-    <div>
+    <div id="positions">
       <div className="space-y-8 ">
         <h2 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] mt-2 sm:mt-14 md:mt-6 mb-12 sm:mb-14 md:mb-16 font-medium leading-snug">
           Join a team that values innovation,
