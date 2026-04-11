@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 const ContactSection: React.FC = () => {
 
@@ -38,7 +39,7 @@ const ContactSection: React.FC = () => {
         body: formData,
       });
 
-      alert("Submitted successfully ✅");
+      toast.success("Submitted successfully ✅");
 
       // reset form
       setForm({
@@ -50,7 +51,7 @@ const ContactSection: React.FC = () => {
 
     } catch (error) {
       console.error(error);
-      alert("Something went wrong ❌");
+      toast.error("Something went wrong ❌");
     }
 
     setLoading(false);
@@ -66,10 +67,10 @@ const ContactSection: React.FC = () => {
             / Get In Touch
           </p>
 
-          <h2 className="text-[40px] font-bold">
+          <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
             Start Your Journey <br />
             With <span className="text-blue-500">Slams Today</span>
-          </h2>
+          </p>
 
           <p className="text-gray-400 mt-6 max-w-md text-lg">
             Ready to transform your career or grow your business? Reach out to us!
@@ -89,7 +90,7 @@ const ContactSection: React.FC = () => {
         </div>
 
         {/* RIGHT FORM */}
-        <div className="w-full pt-[70px] lg:ml-auto lg:max-w-[650px]">
+        <div className="w-full md:pt-[70px] lg:ml-auto lg:max-w-[650px]">
           <form className="space-y-10" onSubmit={handleSubmit}>
 
             <input

@@ -12,7 +12,7 @@ const Faq: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-black text-white py-16 px-6 flex flex-col items-center">
+    <div className="w-full bg-black text-white md:py-16 px-6 flex flex-col items-center">
       {/* Title */}
       <h2 className="text-3xl md:text-4xl font-semibold text-blue-400 mb-10">
         FAQ’s

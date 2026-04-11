@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Clock, CircleCheck, Users, ChevronLeft } from "lucide-react";
 import ScrollToTop from "./ScrollToTop";
 import { useState } from "react";
+import { toast } from "sonner";
+
 
 export default function InternshipDetails() {
 
@@ -25,7 +27,7 @@ export default function InternshipDetails() {
     const maxSize = 10 * 1024 * 1024;
 
     if (file.size > maxSize) {
-      alert("File size must be less than 10MB");
+      toast.error("File size must be less than 10MB");
       e.target.value = "";
       return;
     }
@@ -61,7 +63,7 @@ export default function InternshipDetails() {
         body: formData,
       });
 
-      alert("Application submitted ✅");
+      toast.success("Application submitted ✅");
 
       setForm({
         firstName: "",
@@ -73,7 +75,7 @@ export default function InternshipDetails() {
       });
 
     } catch (err) {
-      alert("Submission failed ❌");
+      toast.error("Submission failed ❌");
     }
 
     setLoading(false);
@@ -87,6 +89,7 @@ export default function InternshipDetails() {
 
   return (
     <div className="w-full mx-auto text-white px-4 sm:px-6 md:px-12">
+
 
       <ScrollToTop />
 
@@ -168,14 +171,14 @@ export default function InternshipDetails() {
               d="M 0.14 0 L 0.69 0 Q 0.7 0 0.705 0.01 L 0.78 0.11 Q 0.785 0.11 0.79 0.11 L 1 0.11 L 1 0.83 Q 1 0.835 0.995 0.84 L 0.88 1 L 0 1 L 0 0.18 Q 0 0.175 0.01 0.17 L 0.14 0 Z"
               fill="none"
               stroke="white"
-              strokeWidth="0.008"
+              strokeWidth="0.0018"
             />
           </svg>
         </div>
       </div>
 
       {/* DURATION */}
-      <div className="mx-auto space-y-6 sm:space-y-8">
+      <div className="mx-auto space-y-6 sm:space-y-8 pt-3">
 
         <div>
           <p className="text-xl sm:text-2xl md:text-[30px] font-medium">
@@ -212,7 +215,7 @@ export default function InternshipDetails() {
 
       {/* LEARN */}
       <div className="mx-auto space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold text-center">
+        <h2 className="text-xl sm:text-2xl font-semibold pt-3">
           What You'll Learn
         </h2>
 
@@ -228,7 +231,7 @@ export default function InternshipDetails() {
 
       {/* BENEFITS */}
       <div className="mx-auto space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold">
+        <h2 className="text-xl sm:text-2xl font-semibold pt-3">
           What You'll Get
         </h2>
 
@@ -237,7 +240,7 @@ export default function InternshipDetails() {
             const Icon = item.img;
             return (
               <div key={i} className="border border-gray-700 p-5 sm:p-6 rounded-xl space-y-3 sm:space-y-4">
-                <div className="bg-[#4E4E4E] w-10 h-10 flex items-center justify-center rounded-md">
+                <div className="bg-gray-900 w-10 h-10 flex items-center justify-center rounded-md">
                   <Icon className="w-5 h-5 text-blue-500" />
                 </div>
                 <h3 className="text-base sm:text-lg">{item.title}</h3>
@@ -263,7 +266,7 @@ export default function InternshipDetails() {
               onChange={handleChange}
               placeholder="First Name*"
               required
-              className="bg-black border p-3 rounded-xl"
+              className="bg-black border border-gray-500 p-3 rounded-xl"
             />
 
             <input
@@ -271,7 +274,7 @@ export default function InternshipDetails() {
               onChange={handleChange}
               placeholder="Last Name*"
               required
-              className="bg-black border p-3 rounded-xl"
+              className="bg-black border border-gray-500 p-3 rounded-xl"
             />
 
             <input
@@ -279,7 +282,7 @@ export default function InternshipDetails() {
               onChange={handleChange}
               placeholder="Phone*"
               required
-              className="bg-black border p-3 rounded-xl"
+              className="bg-black border border-gray-500 p-3 rounded-xl"
             />
 
             <input
@@ -287,7 +290,7 @@ export default function InternshipDetails() {
               onChange={handleChange}
               placeholder="Email*"
               required
-              className="bg-black border p-3 rounded-xl"
+              className="bg-black border border-gray-500 p-3 rounded-xl"
             />
           </div>
 
@@ -295,7 +298,7 @@ export default function InternshipDetails() {
             value={form.message}
             onChange={handleChange}
             placeholder="Message"
-            className="w-full bg-black border p-3 rounded-xl"
+            className="w-full bg-black border border-gray-500 p-3 rounded-xl"
           />
 
           <input
@@ -307,7 +310,7 @@ export default function InternshipDetails() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-white text-black py-3 rounded hover:bg-gray-200 disabled:opacity-50"
+            className="w-full bg-white text-black text-[24px] py-3 rounded hover:bg-gray-200 disabled:opacity-50"
           >
             {loading ? "Submitting..." : "SUBMIT"}
           </button>

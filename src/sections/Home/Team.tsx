@@ -87,7 +87,7 @@ const Team = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="relative py-32 px-10 font-outfit overflow-hidden bg-black"
+      className="relative py-2 md:py-32 px-10 font-outfit overflow-hidden bg-black"
       initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.26, 0.1, 0.26, 1] }} 

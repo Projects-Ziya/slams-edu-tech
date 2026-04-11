@@ -75,29 +75,47 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Contact */}
-        <div className="text-center md:text-left pt-10">
-          <h3 className="text-lg font-medium mb-4">Contact Us</h3>
+      <div className="text-center md:text-left pt-10">
+  <h3 className="text-lg font-medium mb-4">Contact Us</h3>
 
-          <div className="space-y-4 text-gray-400 text-sm sm:text-base">
-            <div className="flex items-start gap-3 justify-center md:justify-start">
-              <FiMapPin className="mt-1 flex-shrink-0" />
-              <p>
-                Slam edu tech, Muppathadam junction, opposite surya
-                opticals Edayar, Aluva, Kochi, Kerala 683110
-              </p>
-            </div>
+  <div className="space-y-4 text-gray-400 text-sm sm:text-base">
+    
+    {/* 📍 Map */}
+    <a
+      href="https://www.google.com/maps/search/?api=1&query=Slams+edu+tech+Muppathadam+junction+Edayar+Aluva+Kochi+Kerala+683110"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-start gap-3 justify-center md:justify-start hover:text-white transition"
+    >
+      <FiMapPin className="mt-1 flex-shrink-0" />
+      <p>
+        Slams edu tech, Muppathadam junction, opposite surya
+        opticals Edayar, Aluva, Kochi, Kerala 683110
+      </p>
+    </a>
 
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <FiPhone />
-              <p>+91 98765 43210</p>
-            </div>
+    {/* 📞 Phone */}
+    <a
+      href="tel:+919876543210"
+      className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
+    >
+      <FiPhone />
+      <p>+91 98765 43210</p>
+    </a>
 
-            <div className="flex items-center gap-3 justify-center md:justify-start">
-              <FiMail />
-              <p>slamedutech@gmail.com</p>
-            </div>
-          </div>
-        </div>
+    {/* 📧 Email */}
+   <a
+  href="https://mail.google.com/mail/?view=cm&to=slamsedutech@gmail.com&su=Enquiry%20from%20Website"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
+>
+  <FiMail />
+  <p>slamsedutech@gmail.com</p>
+</a>
+
+  </div>
+</div>
       </div>
 
       {/* Big SLAMS Text */}
@@ -109,7 +127,7 @@ const Footer: React.FC = () => {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-800 pt-4 flex flex-col md:flex-row items-center justify-between text-xs sm:text-sm text-gray-500 gap-3">
-        <p>© 2026 slam. All rights reserved</p>
+        <p>© 2026 slams. All rights reserved</p>
 
         <div className="flex gap-6">
           <span className="hover:text-white transition cursor-pointer">

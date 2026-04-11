@@ -21,8 +21,10 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="relative px-0 md:px-6 pt-[100px] pb-10 min-h-[500px]">
-
+<section
+  id="about"
+  className="relative px-0 md:px-6 pt-[60px] md:pt-[100px] pb-10 min-h-[500px]"
+>
     {isLargeScreen && (
       <Suspense fallback={<div className="text-white">Loading 3D...</div>}>
         <Section3D />
