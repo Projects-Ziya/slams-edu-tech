@@ -1,106 +1,105 @@
-
-
-import TeamCircle from "../../components/TeamCircle";
+import TeamGrid from "../../components/TeamGrid";
 import flowerBg from "../../assets/meetourteambg.svg";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
+import member1 from "../../assets/member1.webp";
+import member2 from "../../assets/member2.webp";
+import member3 from "../../assets/member3.webp";
+import member4 from "../../assets/member4.webp";
+import member5 from "../../assets/member5.webp";
+import member6 from "../../assets/member6.webp";
+
+import sreekutty from "../../assets/sreekutty.webp";
+import alfread from "../../assets/alfred.webp";
+import hr from "../../assets/HR.webp";
+import anoop from "../../assets/anoop.webp";
+import noufal from "../../assets/noufal.webp";
+import akshay from "../../assets/Akshay-ui.webp";
+
 interface TeamMember {
   name: string;
   role: string;
+  id: number;
+  image: string;
 }
 
-const TOTAL_GROUPS = 3;
+const teamGroups: TeamMember[][] = [
+  [
+    { id: 1, name: "Anugrah Sivadasan", role: "Frontend Developer", image: member1 },
+    { id: 2, name: "Jesna", role: "Finance Head", image: member2 },
+    { id: 3, name: "Ashvin Kunnirikkal", role: "AI/ML Developer", image: member3 },
+    { id: 4, name: "Akshay", role: "Frontend Developer", image: member4 },
+    { id: 5, name: "Athulya Jinu", role: "UI/UX Developer", image: member5 },
+    { id: 6, name: "Cinda Sibichan", role: "Python Developer", image: member6 },
+  ],
+  [
+    { id: 7, name: "Sreekutty", role: "Operation Head", image: sreekutty },
+    { id: 8, name: "Fayas", role: "HR", image: hr },
+    { id: 9, name: "Alfread", role: "Digital Market", image: alfread },
+    { id: 10, name: "Anoop", role: "Python", image: anoop },
+    { id: 11, name: "Noufal", role: "UI/UX", image: noufal },
+    { id: 12, name: "Akshay", role: "UI/UX", image: akshay },
+  ],
+];
 
 const Team = () => {
   const [activeMember, setActiveMember] = useState<TeamMember | null>(null);
   const [groupIndex, setGroupIndex] = useState(0);
-  const [rotate, setRotate] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
+  const TOTAL_GROUPS = teamGroups.length;
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // ✅ CORRECT: hook at top level
   const isInView = useInView(sectionRef, {
-    amount: 0.7, // 70% visible
+    amount: 0.5,
   });
 
-  // ✅ MAIN SCROLL LOGIC
-  useEffect(() => {
-  const el = sectionRef.current;
-  if (!el) return;
+ useEffect(() => {
+  if (!isInView || isPaused) return;
 
-  // ✅ Disable on mobile
-  if (window.innerWidth < 768) return;
+  const interval = setInterval(() => {
+    setGroupIndex((prev) => (prev + 1) % TOTAL_GROUPS);
+  }, 3000);
 
-  let isThrottled = false;
+  return () => clearInterval(interval);
+}, [isInView, isPaused, TOTAL_GROUPS]);
 
-  const handleWheel = (e: WheelEvent) => {
-    if (!isInView) return;
+  
 
-    const isAtTop = groupIndex === 0;
-    const isAtBottom = groupIndex === TOTAL_GROUPS - 1;
+  const [hasStarted, setHasStarted] = useState(false);
 
-    if ((isAtTop && e.deltaY < 0) || (isAtBottom && e.deltaY > 0)) {
-      document.body.style.overflow = "auto";
-      return;
-    }
+useEffect(() => {
+  if (isInView) {
+    setHasStarted(true);
+  }
+}, [isInView]);
 
-    document.body.style.overflow = "hidden";
 
-    if (isThrottled) return;
 
-    e.preventDefault();
-    isThrottled = true;
-
-    setRotate(e.deltaY > 0 ? 30 : -30);
-
-    setTimeout(() => setRotate(0), 400);
-
-    setTimeout(() => {
-      setGroupIndex(prev =>
-        e.deltaY > 0 ? prev + 1 : prev - 1
-      );
-    }, 500);
-
-    setTimeout(() => {
-      isThrottled = false;
-    }, 900);
-  };
-
-  el.addEventListener("wheel", handleWheel, { passive: false });
-
-  return () => {
-    el.removeEventListener("wheel", handleWheel);
-    document.body.style.overflow = "auto";
-  };
-}, [groupIndex, isInView]);
-  // ✅ AUTO CENTER SECTION (smooth UX)
-  useEffect(() => {
-    if (isInView) {
-      sectionRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, [isInView]);
 
   return (
     <motion.section
       ref={sectionRef}
       className="relative py-2 md:py-32 px-10 font-outfit overflow-hidden bg-black"
       initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.7, ease: [0.26, 0.1, 0.26, 1] }} 
- viewport={{ once: true, amount: 0.2 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: [0.26, 0.1, 0.26, 1] }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-evenly gap-20">
 
-        {/* LEFT - CIRCLE */}
-        <div className="relative flex-shrink-0 z-20 -translate-x-14">
-          <TeamCircle
+        {/* LEFT - GRID */}
+        <div
+          className="relative flex-shrink-0 z-20 -translate-x-14"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() =>{
+             setIsPaused(false)
+            setActiveMember(null); }}
+        >
+          <TeamGrid
+            members={teamGroups[groupIndex]}
             setActiveMember={setActiveMember}
-            groupIndex={groupIndex}
-            rotate={rotate}
           />
         </div>
 
@@ -118,27 +117,26 @@ transition={{ duration: 0.7, ease: [0.26, 0.1, 0.26, 1] }}
           <div className="relative z-10">
             <AnimatePresence mode="wait">
               <motion.h2
-                key={activeMember ? activeMember.name : "default"}
+                key={activeMember?.name || "Meet Our Team"}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 className="text-5xl text-white"
               >
-                {activeMember ? activeMember.name : "Meet Our Team"}
+                {activeMember?.name || "Meet Our Team"}
               </motion.h2>
             </AnimatePresence>
 
             <AnimatePresence mode="wait">
               <motion.p
-                key={activeMember ? activeMember.role : "default-role"}
+                key={activeMember?.role || "default-role"}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 className="mt-6 text-gray-400"
               >
-                {activeMember
-                  ? activeMember.role
-                  : "A team of experienced professionals delivering reliable and scalable digital solutions."}
+                {activeMember?.role ||
+                  "A team of experienced professionals delivering reliable and scalable digital solutions."}
               </motion.p>
             </AnimatePresence>
           </div>
@@ -150,4 +148,3 @@ transition={{ duration: 0.7, ease: [0.26, 0.1, 0.26, 1] }}
 };
 
 export default Team;
-
