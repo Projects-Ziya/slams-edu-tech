@@ -63,7 +63,7 @@ const TeamGrid = ({ members, setActiveMember }: Props) => {
   }}
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
-  whileHover={{ scale: 1.04, zIndex: 20 }}
+  whileHover={{ scale: 1, zIndex: 20 }}
   transition={{ duration: 0.4 }}
 >
   <div className="relative w-full h-full overflow-hidden">
