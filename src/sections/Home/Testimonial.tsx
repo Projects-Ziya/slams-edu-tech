@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Sreekutty from "../../assets/Sreekutti.webp";
+import Sreekutty from "../../assets/Sreekutty.webp";
 import Anoop from "../../assets/Akshay-ui.webp"
-import Hr from "../../assets/HR.webp";
-import Cinda from "../../assets/cinda.webp"
+import Hr from "../../assets/anoop.webp";
+import Cinda from "../../assets/member6.webp"
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import staricon from "../../assets/carbon_star-review.svg"
 
@@ -31,6 +31,10 @@ const testimonials = [
     role: "HR Manager",
     text: "Amazing culture and strong mentorship. I’ve learned more here than anywhere else.",
     image: Hr,
+     imgStyle: {
+    scale: 1,
+    objectPosition: "top", // 🔥 useful for faces
+  }
   },
   {
     id: 4,
@@ -215,6 +219,9 @@ if (position > total / 2) position -= total;
       src={item.image}
       alt={item.name}
       className="w-full h-full object-cover"
+    style={{
+    transform: `scale(${item.imgStyle?.scale || 1})`,
+    objectPosition: item.imgStyle?.objectPosition || "center",}}
     />
 
     {/* ✨ image fade overlay */}
