@@ -9,119 +9,98 @@ import { motion } from "framer-motion";
 const Section3D = lazy(() => import("../../components/Section3D"));
 
 const About = () => {
-   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1280);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1280);
+      setIsLargeScreen(window.innerWidth >= 768);
     };
 
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <section id="about" className="relative px-0 md:px-6 pt-[100px] pb-10 min-h-[500px]">
+
     {isLargeScreen && (
-  <Suspense fallback={<div className="text-white">Loading 3D...</div>}>
-    <Section3D />
-  </Suspense>
-)}
+      <Suspense fallback={<div className="text-white">Loading 3D...</div>}>
+        <Section3D />
+      </Suspense>
+    )}
 
-
-      {/* MAIN GRID */}
+{/* ================= MAIN GRID ================= */}
 <motion.div
- className="relative z-10 grid  md:grid-cols-[1fr_1.4fr] gap-16  items-center pl-10"
-   initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
- viewport={{ once: true, amount: 0.2 }}>
+ className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-6"
+ initial={{ opacity: 0, y: 60 }}
+ whileInView={{ opacity: 1, y: 0 }}
+ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
+ viewport={{ once: true, amount: 0.2 }}
+>
   
-        <div className="pb-12">
-          <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400">
-            / About Slams
-          </p>
+  <div className="pb-2">
+    <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400">
+      / About Slams
+    </p>
 
-          <div className="flex flex-col justify-between pr-3">
-            <p className="pt-5 font-extrabold  font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
-              Your Partner in <br />
-              <span className="text-blue-400 pt-2">
-                Digital Transformation
-              </span>
-            </p>
+    <div className="flex flex-col justify-between pr-3">
+      <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+        Your Partner in <br />
+        <span className="text-blue-400 pt-2">
+          Digital Transformation
+        </span>
+      </p>
 
-            <p className="pt-8 text-[#f1eded] leading-10   text-[14px] sm:text-[15px] lg:text-[22px]  font-[150] tracking-wide font-outfit max-w-[700px]">
-              SLAMS EDUTECH is an IT and EduTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.
-              We are committed to delivering excellence through cutting-edge technology, creative design, and industry-aligned training programs that empower our clients and learners to succeed in the digital age.
-            </p>
-          </div>
-        </div>
+      <p className="pt-8 text-[#f1eded] leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wide font-outfit max-w-[700px]">
+SLAMS EDUTECH is an IT and EdTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.       </p>
+    </div>
+  </div>
 
-       <div className=" gap-3 pt-10 pr-4">
-        <div className="flex gap-6 ">
+  <div className="gap-3 pt-2 pr-4">
 
-  <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
-  <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers, designers, and strategists delivering excellence." />
+    <div className="flex flex-col md:flex-row gap-6">
+      <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
+      <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers, designers, and strategists delivering excellence." />
+    </div>
 
-</div>
-        <div className="flex gap-6 pt-6">
+    <div className="flex flex-col md:flex-row gap-6 pt-6">
+      <AboutCard icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />} title="Proven Results" text="Track record of successful projects and satisfied clients worldwide." />
+      <AboutCard icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />} title="Innovation-Driven" text="Leveraging cutting-edge technologies to keep you ahead of competition." />
+    </div>
 
-  <AboutCard icon={<CircleCheck className="w-6 h-6 text-[#70A9FF]" />} title="Proven Results" text="Track record of successful projects and satisfied clients worldwide." />
+  </div>
+</motion.div>
 
-  <AboutCard icon={<Lightbulb className="w-6 h-6 text-[#70A9FF]" />} title="Innovation-Driven" text="Leveraging cutting-edge technologies to keep you ahead of competition." />
-
-</div> 
-
-</div>
-
-      </motion.div>
-
-{/* big card */}
+{/* ================= BIG CARDS ================= */}
 <motion.section 
 className="flex flex-col xl:flex-row pt-20 gap-12 justify-between px-4 md:px-6 xl:px-10 pb-6"
 initial={{ opacity: 0, y: 60 }}
 whileInView={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
+transition={{ duration: 0.7 }}
 viewport={{ once: true, amount: 0.2 }}
 >
 
 {/* LEFT CARD */}
-<div className="pt-0 w-full">
+<div className="w-full pt-4">
+<div className="relative w-full max-w-[850px] aspect-[850/700] mx-auto 
+  rounded-2xl overflow-hidden border border-gray-700 md:border-0">
 
-<div className="relative w-full max-w-[850px] aspect-[850/700] mx-auto">
-
+{/* clip only desktop */}
+{isLargeScreen && (
 <svg width="0" height="0">
 <defs>
 <clipPath id="missionClipLarge" clipPathUnits="objectBoundingBox">
-<path
-transform="scale(0.00117647,0.00142857)"
-d="
-M 45 0
-H 408
-Q 430 0 448 18
-L 544 105
-Q 561 122 589 122
-H 805
-Q 850 122 850 169
-V 653
-Q 850 700 805 700
-H 45
-Q 0 700 0 653
-V 47
-Q 0 0 45 0
-Z
-"
-/>
+<path transform="scale(0.00117647,0.00142857)"
+d="M 45 0 H 408 Q 430 0 448 18 L 544 105 Q 561 122 589 122 H 805 Q 850 122 850 169 V 653 Q 850 700 805 700 H 45 Q 0 700 0 653 V 47 Q 0 0 45 0 Z"/>
 </clipPath>
 </defs>
 </svg>
+)}
 
 <img
-alt="img"
 src={ab2}
 className="absolute inset-0 w-full h-full object-cover"
-style={{ clipPath: "url(#missionClipLarge)" }}
+style={{ clipPath: isLargeScreen ? "url(#missionClipLarge)" : "none" }}
 />
 
 <div className="absolute inset-0 bg-black/30"></div>
@@ -129,111 +108,79 @@ style={{ clipPath: "url(#missionClipLarge)" }}
 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10 text-white">
 <div className="max-w-[90%] md:max-w-[500px] pt-4">
 
-<h2 className=" text-xl sm:text-2xl md:text-3xl xl:text-4xl font-heading font-bold">
+<h2 className="text-xl sm:text-2xl md:text-3xl xl:text-3xl font-heading font-bold">
 Our Mission
 </h2>
 
 <p className="mt-2 md:mt-4 text-xs sm:text-sm md:text-base xl:text-lg leading-relaxed">
-We strive to deliver innovative digital solutions that empower
-businesses and create meaningful user experiences through
-technology and design.
-</p>
+We provide excellent IT services and internships, helping startups with scalable solutions while fostering talent through mentorship and hands-on experience.</p>
 
 </div>
 </div>
 
-<svg
-viewBox="0 0 850 700"
-className="absolute inset-0 w-full h-full pointer-events-none"
-preserveAspectRatio="none"
->
+{/* desktop border */}
+{isLargeScreen && (
+<svg viewBox="0 0 850 700" className="absolute inset-0 w-full h-full pointer-events-none">
 <path d="M 45 0 H 408 Q 430 0 448 18 L 544 105 Q 561 122 589 122 H 805 Q 850 122 850 169 V 653 Q 850 700 805 700 H 45 Q 0 700 0 653 V 47 Q 0 0 45 0 Z"
-fill="none"
-stroke="#ffffff"
-strokeWidth="1"
-/>
+fill="none" stroke="#ffffff" strokeWidth="1"/>
 </svg>
+)}
 
 </div>
 </div>
 
-<div className="pt-0 xl:pt-[115px] w-full">
+{/* RIGHT CARD */}
+<div className="w-full lg:pt-32 sm:pt-2">
+<div className="relative w-full max-w-[850px] aspect-[850/700] mx-auto 
+  rounded-2xl overflow-hidden border border-gray-700 md:border-0">
 
-  <div className="relative w-full max-w-[850px] aspect-[850/700] mx-auto">
+{isLargeScreen && (
+<svg width="0" height="0">
+<defs>
+<clipPath id="missionClipMirrorUpsideLarge" clipPathUnits="objectBoundingBox">
+<path transform="translate(1,1) scale(-1,-1) scale(0.00117647,0.00142857)"
+d="M 45 0 H 408 Q 430 0 448 18 L 544 105 Q 561 122 589 122 H 805 Q 850 122 850 169 V 653 Q 850 700 805 700 H 45 Q 0 700 0 653 V 47 Q 0 0 45 0 Z"/>
+</clipPath>
+</defs>
+</svg>
+)}
 
-    <svg width="0" height="0">
-      <defs>
-        <clipPath id="missionClipMirrorUpsideLarge" clipPathUnits="objectBoundingBox">
-          <path
-            transform="translate(1,1) scale(-1,-1) scale(0.00117647,0.00142857)"
-            d="
-            M 45 0
-            H 408
-            Q 430 0 448 18
-            L 544 105
-            Q 561 122 589 122
-            H 805
-            Q 850 122 850 169
-            V 653
-            Q 850 700 805 700
-            H 45
-            Q 0 700 0 653
-            V 47
-            Q 0 0 45 0
-            Z
-            "
-          />
-        </clipPath>
-      </defs>
-    </svg>
+<img
+src={ab1}
+className="absolute inset-0 w-full h-full object-cover"
+style={{ clipPath: isLargeScreen ? "url(#missionClipMirrorUpsideLarge)" : "none" }}
+/>
 
-    <img
-      alt="img"
-      src={ab1}
-      className="absolute inset-0 w-full h-full object-cover"
-      style={{ clipPath: "url(#missionClipMirrorUpsideLarge)" }}
-    />
-
-    <div
-      className="absolute inset-0 bg-black/30"
-      style={{ clipPath: "url(#missionClipMirrorUpsideLarge)" }}
-    ></div>
+<div className="absolute inset-0 bg-black/30"></div>
 
 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10 text-white pt-12 md:pt-0">
 <div className="max-w-[90%] md:max-w-[500px] pb-6 md:pb-[116px]">
 
-<h2 className="text-2xl md:text-3xl xl:text-4xl font-heading font-bold">
+<h2 className="text-2xl md:text-3xl xl:text-3xl font-heading font-bold">
 Our Vision
 </h2>
 
 <p className="mt-2 md:mt-4 text-sm md:text-base xl:text-lg leading-relaxed">
-We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for meaningful digital experiences .
-</p>
+We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for digital experiences and growth.</p>
 
 </div>
 </div>
 
-<svg
-viewBox="0 0 850 700"
-className="absolute inset-0 w-full h-full pointer-events-none"
-preserveAspectRatio="none"
->
-<path
-transform="translate(850,700) scale(-1,-1)"
+{isLargeScreen && (
+<svg viewBox="0 0 850 700" className="absolute inset-0 w-full h-full pointer-events-none">
+<path transform="translate(850,700) scale(-1,-1)"
 d="M 45 0 H 408 Q 430 0 448 18 L 544 105 Q 561 122 589 122 H 805 Q 850 122 850 169 V 653 Q 850 700 805 700 H 45 Q 0 700 0 653 V 47 Q 0 0 45 0 Z"
-fill="none"
-stroke="white"
-strokeWidth="1"
-/>
+fill="none" stroke="white" strokeWidth="1"/>
 </svg>
+)}
 
-  </div>
+</div>
 </div>
 
 </motion.section>
 
-    </section>
+</section>
   )
 }
 
-export default About
+export default About;

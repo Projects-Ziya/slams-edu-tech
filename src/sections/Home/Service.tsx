@@ -115,8 +115,8 @@ const Service = () => {
 
       {/* cards */}
            <motion.div 
-         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10"
-          initial="hidden"
+className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10 "       
+   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, amount: 0.2 }}
   variants={{
@@ -127,8 +127,16 @@ const Service = () => {
       },
     },
   }}>
-             {services.slice(0, 4).map((service) => (
-               <motion.div
+{services
+  .slice(
+    0,
+    window.innerWidth < 768
+      ? 2
+      : window.innerWidth < 1024
+      ? 3
+      : 4
+  )
+  .map((service) => (              <motion.div
     key={service.id}
     variants={{
       hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -157,7 +165,7 @@ const Service = () => {
            </motion.div> 
 
       {/* Mobile View More Button */}
-      <div className="mt-10 md:hidden w-full">
+      {/* <div className="mt-10 md:hidden w-full">
         <StarBorder
           as={Link}
           to="/service"
@@ -170,6 +178,11 @@ const Service = () => {
         >
           View more
         </StarBorder>
+      </div> */}
+      <div className="mt-10 md:hidden w-full">
+         <Link to="/service">
+          <button className="w-full flex justify-center py-3 text-lg border rounded-[10px]">View More</button>
+  </Link>
       </div>
     </section>
   );

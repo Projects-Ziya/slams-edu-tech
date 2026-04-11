@@ -17,7 +17,7 @@ export default function CustomShapeCard({
   const clipId = `cardClip-${title.replace(/\s+/g, "")}`;
 
   return (
-    <Link to={buttonLink} className="block w-full max-w-[390px]">
+    <Link to={buttonLink} className="block w-full max-w-[390px] mx-auto relative group">
       <div className="w-full aspect-[390/396] relative group">
 
         <svg

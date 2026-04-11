@@ -3,10 +3,6 @@ import { TorusKnot, Environment } from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const centerX = 3.3;
-const centerY = 4;
-const radiusX = 2.5;
-const radiusY = 5;
 
 const angle = Math.PI / 2;
 
@@ -17,7 +13,7 @@ function Knot(): JSX.Element {
 
   // ✅ Responsive center & radius
   const centerX = viewport.width / 5;   // move right
-const centerY = viewport.height / 4;  // move up slightly
+const centerY = viewport.height / 5;  // move up slightly
 
   const radiusX = viewport.width / 6;
   const radiusY = viewport.height / 4;
@@ -57,7 +53,7 @@ const centerY = viewport.height / 4;  // move up slightly
   envMapIntensity={3}
   clearcoat={1}
   clearcoatRoughness={0}
-  emissive="#3B42F6 "
+  emissive="#0F48A0 "
   emissiveIntensity={0.5}
 />
 
@@ -71,7 +67,7 @@ function Ring(): JSX.Element {
 
   // ✅ Responsive center & radius
   const centerX = viewport.width / 5;   // move right
-const centerY = viewport.height / 4;  // move up slightly
+const centerY = viewport.height / 5;  // move up slightly
 
   const radiusX = viewport.width / 6;
   const radiusY = viewport.height / 4;
@@ -113,7 +109,7 @@ const centerY = viewport.height / 4;  // move up slightly
   envMapIntensity={3}
   clearcoat={1}
   clearcoatRoughness={0}
-  emissive="#0F48A0 ,#3B42F6 "
+  emissive="#0F48A0  "
   emissiveIntensity={0.5}
 />
     </mesh>
