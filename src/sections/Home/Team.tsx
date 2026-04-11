@@ -210,14 +210,13 @@ const Team = () => {
                 </svg>
               </div>
 
-              <p className="mt-3 text-white text-sm opacity-60">{member.name}</p>
-              <p className="text-gray-400 text-sm opacity-60">{member.role}</p>
+              
             </div>
           ))}
         </div>
 
         {/* ✅ RIGHT SECTION → moves BELOW on <1264px */}
-        <div className="w-full max-w-[520px] text-left xl:mt-0 mt-10">
+        <div className="w-full max-w-[520px] text-left xl:mt-0 md:mt-10">
           <motion.img
             initial={{ y: "-50%" }}
             animate={{ y: ["-50%", "-56%", "-50%"] }}
