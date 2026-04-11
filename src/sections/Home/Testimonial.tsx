@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Sreekutty from "../../assets/sreekutty.webp";
-import Anoop from "../../assets/Akshay-ui.webp"
+import Akshay from "../../assets/Akshay-ui.webp"
 import Hr from "../../assets/anoop.webp";
-import Cinda from "../../assets/member6.webp"
+import Cinda from "../../assets/cinda.webp"
+import Anurag from "../../assets/member1.webp"
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import staricon from "../../assets/carbon_star-review.svg"
 
@@ -17,19 +18,27 @@ const testimonials = [
     role: "Operation Head",
     text: "Working here has been an incredible journey. The team is supportive, and every day brings new learning opportunities.",
     image: Sreekutty,
+    imgStyle: {
+    scale: 1.2,
+    objectPosition: "top", // 🔥 useful for faces
+  }
   },
   {
     id: 2,
-    name: "Anoop",
-    role: "Backend Developer",
-    text: "Every project challenges me and improves my skills. It's the perfect place for growth.",
-    image: Anoop,
+    name: "Akshay Aravind",
+    role: "UI/UX Designer",
+    text: "Designing here has been inspiring. The team values creativity and innovation at every step.Working here has been an incredible journey",
+    image: Akshay ,
+    imgStyle: {
+    scale: 1.2,
+    objectPosition: "top", // 🔥 useful for faces
+  }
   },
   {
     id: 3,
-    name: "Fayaz",
-    role: "HR Manager",
-    text: "Amazing culture and strong mentorship. I’ve learned more here than anywhere else.",
+    name: "Anoop ",
+    role: "Python Developer",
+    text: "Building reliable backend systems here has been a rewarding experience.The team focuses on scalability, performance, and clean architecture.. I’ve learned more here than anywhere else.",
     image: Hr,
      imgStyle: {
     scale: 1,
@@ -38,10 +47,17 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "Cinda",
-    role: "UI/UX Designer",
-    text: "Designing here has been inspiring. The team values creativity and innovation at every step.",
+    name: "Cinda Sibichan",
+    role: "Python Developer",
+    text: "Every project challenges me and improves my skills.Developing secure and scalable backend services has been a great journey here.The collaborative environment helps me grow and improve every day.",
     image: Cinda,
+  },
+  {
+    id: 5,
+    name: "Anurag Sivadasan",
+    role: "React Developer",
+    text: "Building scalable interfaces here has been a great experience.The focus on performance and clean architecture pushes me to grow every day.",
+    image: Anurag,
   },
 ];
 

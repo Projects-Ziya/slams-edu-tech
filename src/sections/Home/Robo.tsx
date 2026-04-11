@@ -24,7 +24,7 @@ const Robo = () => {
       </svg>
 
       {/* ================= DESKTOP (UNCHANGED) ================= */}
-      <div className="hidden lg:block relative w-full aspect-[1920/700] overflow-hidden">
+      <div className="hidden lg:block relative w-full aspect-[1920/700] ">
 
         {/* PARTICLES */}
         {showParticles && (
@@ -60,6 +60,30 @@ const Robo = () => {
           "
         />
 
+        {/* SVG LINE */}
+<svg
+  viewBox="0 0 1200 720"
+  preserveAspectRatio="none"
+  className="absolute bottom-0 left-0 translate-x-5 translate-y-[110px] w-[700px] h-[30%] z-0 pointer-events-none"
+>
+  <path
+    d="
+      M 0 80
+      H 790 
+      V 500
+      L 600 500
+      V 300
+      H 700
+      V 700
+      H 900
+    "
+    stroke="#ffffff"
+    strokeWidth="1.9"
+    strokeDasharray="3 6"
+    fill="none"
+  />
+</svg>
+
         {/* CARD */}
         <div
           className="
@@ -79,7 +103,7 @@ const Robo = () => {
           "
           style={{
             left: "50%",
-            top: "32%",
+            top: "25%",
             transform: "translate(-50%, -50%)",
           }}
         >
