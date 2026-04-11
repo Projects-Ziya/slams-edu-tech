@@ -20,6 +20,7 @@ const testimonials = [
   },
   {
     id: 2,
+
     name: "Anoop",
     role: "Backend Developer",
     text: "Every project challenges me and improves my skills. It's the perfect place for growth.",
