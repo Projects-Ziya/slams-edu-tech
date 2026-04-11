@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Sreekutty from "../../assets/Sreekutty.webp";
+import Sreekutty from "../../assets/sreekutty.webp";
 import Anoop from "../../assets/Akshay-ui.webp"
 import Hr from "../../assets/anoop.webp";
 import Cinda from "../../assets/member6.webp"

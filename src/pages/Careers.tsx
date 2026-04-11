@@ -9,7 +9,7 @@ export default function Careers() {
   );
 
   return (
-    <div className="bg-black text-white flex justify-center">
+    <div id="careers" className="bg-black text-white flex justify-center">
       <ScrollToTop />
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 pt-10 sm:py-9 md:py-10">
