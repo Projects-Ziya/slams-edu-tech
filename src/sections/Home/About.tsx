@@ -53,7 +53,7 @@ const About = () => {
         </span>
       </p>
 
-      <p className="pt-8 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider font-outfit max-w-[700px]">
+      <p className="pt-8 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
 SLAMS EDUTECH is an IT and EdTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.       </p>
     </div>
   </div>

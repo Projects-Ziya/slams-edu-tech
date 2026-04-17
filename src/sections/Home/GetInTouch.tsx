@@ -96,15 +96,56 @@ const ContactSection: React.FC = () => {
 
       {/* Decorative Lines */}
       <div className="absolute left-[40px] top-[310px] hidden lg:block w-full max-w-[950px] pointer-events-none">
-        <svg viewBox="0 0 950 320" className="w-full h-auto">
-          <line x1="10" y1="0" x2="10" y2="80" stroke="#4B5563" strokeWidth="1" />
-          <line x1="10" y1="80" x2="490" y2="80" stroke="#4B5563" strokeWidth="1" />
-          <line x1="490" y1="80" x2="490" y2="180" stroke="#4B5563" strokeWidth="1" />
-          <line x1="10" y1="180" x2="490" y2="180" stroke="#4B5563" strokeWidth="1" />
-          <line x1="10" y1="180" x2="10" y2="270" stroke="#4B5563" strokeWidth="1" />
-          <line x1="10" y1="270" x2="940" y2="270" stroke="#4B5563" strokeWidth="1" />
-        </svg>
-      </div>
+  <svg viewBox="0 0 950 320" className="w-full h-auto">
+
+    {/* ✅ Arrow Definition */}
+    <defs>
+      <marker
+        id="arrow"
+        markerWidth="8"
+        markerHeight="8"
+        refX="4"
+        refY="4"
+        orient="auto"
+      >
+        <path d="M0,0 L8,4 L0,8 Z" fill="white" />
+      </marker>
+    </defs>
+
+    {/* ✅ Lines with arrows */}
+    <line x1="10" y1="0" x2="10" y2="80"
+      stroke="white" strokeWidth="1.5"
+      markerEnd="url(#arrow)"
+    />
+
+    <line x1="10" y1="80" x2="490" y2="80"
+      stroke="white" strokeWidth="1.5"
+      markerEnd="url(#arrow)"
+    />
+
+    <line x1="490" y1="80" x2="490" y2="180"
+      stroke="white" strokeWidth="1.5"
+      markerEnd="url(#arrow)"
+    />
+
+    <line x1="10" y1="180" x2="490" y2="180"
+      stroke="white" strokeWidth="1.5"
+      markerEnd="url(#arrow)"
+    />
+
+    <line x1="10" y1="180" x2="10" y2="270"
+      stroke="white" strokeWidth="1.5"
+      markerEnd="url(#arrow)"
+    />
+
+    <line x1="10" y1="270" x2="940" y2="270"
+      stroke="white" strokeWidth="1.5"
+      markerEnd="url(#arrow)"
+      markerStart="url(#arrow)"  // 👈 both sides arrow
+    />
+
+  </svg>
+</div>
     </div>
 
     {/* RIGHT FORM */}
