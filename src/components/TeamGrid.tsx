@@ -26,7 +26,7 @@ const TeamGrid = ({ members, setActiveMember }: Props) => {
 
     
   return (
-    <div className="relative w-[800px] h-[650px]">
+    <div className="relative w-[800px] h-[650px] px-4">
 
       {/* ✅ SVG LINES (STATIC STRUCTURE) */}
       <svg
