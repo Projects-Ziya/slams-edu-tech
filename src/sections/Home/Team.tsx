@@ -153,6 +153,7 @@ const Team = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
     >
+      
       {/* ✅ CHANGED: stack below xl */}
       <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 md:gap-20">
 
