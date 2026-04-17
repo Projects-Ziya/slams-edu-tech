@@ -100,6 +100,7 @@ const Robo = () => {
             shadow-lg
             w-[90%] sm:w-auto
             max-w-[320px] sm:max-w-none
+            pointer-events-none
           "
           style={{
             left: "50%",
@@ -107,7 +108,7 @@ const Robo = () => {
             transform: "translate(-50%, -50%)",
           }}
         >
-          <div className="text-center flex-1">
+          <div className="text-center flex-1 ">
             <p className="text-[40px] text-white font-medium">
               <CountUp from={0} to={50} duration={0.5} />+
             </p>
