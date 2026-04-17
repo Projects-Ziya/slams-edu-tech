@@ -59,8 +59,31 @@ import WorksCard from '../../components/WorksCard';
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
 import ViewMoreButton from "../../components/Button";
+import { useEffect, useState } from "react";
+
+
 
 const Works = () => {
+
+const [visibleCount, setVisibleCount] = useState(4);
+
+useEffect(() => {
+  const handleResize = () => {
+    const width = window.innerWidth;
+
+    if (width < 768) setVisibleCount(2);
+    else if (width < 1280) setVisibleCount(3); // md → xl
+    else if (width < 1536) setVisibleCount(3); // xl → still 3
+    else setVisibleCount(4); // 2xl → 4 cards
+  };
+
+  handleResize(); // run once
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+
   return (
     <motion.section id="works" 
     className='bg-black px-5 md:px-10 md:pt-[112px]'
@@ -90,7 +113,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         that help your business grow and stay ahead.
       </p>
 
-      <motion.div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10"
+      <motion.div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-10"
                // className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10 "       
 
           initial="hidden"
@@ -105,16 +128,9 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
     },
   }}>
     
-{projects
-  .slice(
-    0,
-    window.innerWidth < 768
-      ? 2
-      : window.innerWidth < 1024
-      ? 3
-      : 4
-  )
-  .map((project) => (          <motion.div
+  {projects.slice(0, visibleCount).map((project) => (      
+    
+    <motion.div
           key={project.id}
     variants={{
       hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -128,7 +144,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         },
       },
     }}>
-          <Link key={project.id} to={`/project/${project.id}`}>
+          <Link  to={`/project/${project.id}`}>
             
             <WorksCard
               image={project.coverImage}
