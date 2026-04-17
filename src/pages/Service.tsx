@@ -25,7 +25,7 @@ const Service = () => {
       <p className="pt-4 text-[#ADADAD] text-sm sm:text-base md:text-lg font-outfit max-w-[1400px]">We build simple, smart tech solutions that help businesses grow and keep things moving. From idea to launch, we turn concepts into easy-to-use digital products using modern tech, creative thinking, and a practical, hands-on approach that just works. </p>
     {/* cards */}
 
-      <div className="justify-between gap-6 items-end pt-10 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] lg:grid-cols-4">
+      <div className="justify-between gap-6 items-end pt-10 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] xl:grid-cols-3">
           <Suspense fallback={<div className="text-white"><Loader/></div>}>
 
       {services.map((service) => (
