@@ -58,93 +58,111 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="w-full bg-black text-white py-4 px-4 md:px-10">
-      <div className="w-full grid lg:grid-cols-2 gap-16 items-start">
+    <section
+  id="contact"
+  className="relative overflow-hidden w-full min-h-[700px] bg-[#05050b] text-white py-10 px-4 md:px-10"
+>
 
-        {/* LEFT CONTENT */}
-        <div className="relative ">
-          <p className="text-[#BFBFBF] text-[24px] font-medium pb-6">
-            / Get In Touch
-          </p>
+  {/* 🔵 BLUE RING BACKGROUND */}
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
 
-          <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
-            Start Your Journey <br />
-            With <span className="text-blue-500">Slams Today</span>
-          </p>
+    {/* MAIN RING */}
+    <div className="w-full h-[900px] opacity-50 
+      bg-[radial-gradient(circle,_transparent_45%,_rgba(59,130,246,0.25)_55%,_transparent_80%)]" />
 
-          <p className="text-gray-400 mt-6 max-w-md text-lg">
-            Ready to transform your career or grow your business? Reach out to us!
-          </p>
+    {/* SOFT INNER GLOW */}
+    <div className="absolute w-[700px] h-[700px] opacity-40 
+      bg-[radial-gradient(circle,_rgba(59,130,246,0.15)_0%,_transparent_90%)]" />
 
-          {/* Decorative Lines (unchanged) */}
-          <div className="absolute left-[40px] top-[270px] hidden lg:block w-full max-w-[950px] pointer-events-none">
-            <svg viewBox="0 0 950 320" className="w-full h-auto" preserveAspectRatio="xMinYMin meet">
-              <line x1="10" y1="0" x2="10" y2="80" stroke="#4B5563" strokeWidth="1" />
-              <line x1="10" y1="80" x2="490" y2="80" stroke="#4B5563" strokeWidth="1" />
-              <line x1="490" y1="80" x2="490" y2="180" stroke="#4B5563" strokeWidth="1" />
-              <line x1="10" y1="180" x2="490" y2="180" stroke="#4B5563" strokeWidth="1" />
-              <line x1="10" y1="180" x2="10" y2="270" stroke="#4B5563" strokeWidth="1" />
-              <line x1="10" y1="270" x2="940" y2="270" stroke="#4B5563" strokeWidth="1" />
-            </svg>
-          </div>
-        </div>
+  </div>
 
-        {/* RIGHT FORM */}
-        <div className="w-full md:pt-[70px] lg:ml-auto lg:max-w-[650px]">
-          <form className="space-y-10" onSubmit={handleSubmit}>
+  {/* CONTENT */}
+  <div className="relative z-10 w-full grid lg:grid-cols-2 gap-16 items-start">
 
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={form.fullName}
-              onChange={handleChange}
-              required
-              className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
-            />
+    {/* LEFT CONTENT */}
+    <div className="relative lg:pl-4 pt-10">
+      <p className="text-[#BFBFBF] text-[24px] font-medium pb-6">
+        / Get In Touch
+      </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input
-                type="tel"
-                placeholder="Mobile Number"
-                value={form.mobile}
-                onChange={handleChange}
-                required
-                className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
-              />
+      <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+        Start Your Journey <br />
+        With <span className="text-blue-500">Slams Today</span>
+      </p>
 
-              <input
-                type="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
-              />
-            </div>
+      <p className="text-gray-400 mt-6 max-w-md text-lg">
+        Ready to transform your career or grow your business? Reach out to us!
+      </p>
 
-            <textarea
-              rows={5}
-              placeholder="Tell us about your project"
-              value={form.project}
-              onChange={handleChange}
-              required
-              className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition resize-none"
-            ></textarea>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-gray-300 text-black font-medium py-4 rounded-lg transition-all duration-300 
-              hover:-translate-y-1 hover:bg-gray-200 disabled:opacity-50"
-            >
-              {loading ? "Submitting..." : "Submit"}
-            </button>
-
-          </form>
-        </div>
-
+      {/* Decorative Lines */}
+      <div className="absolute left-[40px] top-[310px] hidden lg:block w-full max-w-[950px] pointer-events-none">
+        <svg viewBox="0 0 950 320" className="w-full h-auto">
+          <line x1="10" y1="0" x2="10" y2="80" stroke="#4B5563" strokeWidth="1" />
+          <line x1="10" y1="80" x2="490" y2="80" stroke="#4B5563" strokeWidth="1" />
+          <line x1="490" y1="80" x2="490" y2="180" stroke="#4B5563" strokeWidth="1" />
+          <line x1="10" y1="180" x2="490" y2="180" stroke="#4B5563" strokeWidth="1" />
+          <line x1="10" y1="180" x2="10" y2="270" stroke="#4B5563" strokeWidth="1" />
+          <line x1="10" y1="270" x2="940" y2="270" stroke="#4B5563" strokeWidth="1" />
+        </svg>
       </div>
-    </section>
+    </div>
+
+    {/* RIGHT FORM */}
+    <div className="w-full md:pt-[70px] lg:ml-auto lg:max-w-[650px]">
+      <form className="space-y-10" onSubmit={handleSubmit}>
+
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={form.fullName}
+          onChange={handleChange}
+          required
+          className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input
+            type="tel"
+            placeholder="Mobile Number"
+            value={form.mobile}
+            onChange={handleChange}
+            required
+            className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+            className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+          />
+        </div>
+
+        <textarea
+          rows={5}
+          placeholder="Tell us about your project"
+          value={form.project}
+          onChange={handleChange}
+          required
+          className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition resize-none"
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-gray-300 text-black font-medium py-4 rounded-lg transition-all duration-300 
+          hover:-translate-y-1 hover:bg-gray-200 disabled:opacity-50"
+        >
+          {loading ? "Submitting..." : "Submit"}
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
   );
 };
 
