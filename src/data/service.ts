@@ -25,7 +25,7 @@ export const services = [
   {
     image: img3,
     title: "Web Development",
-    text: "We build simple, smart tech solutions that help businesses grow and keep things moving.",
+    text: "We build simple, smart tech solutions that help businesses grow and keep things moving. From start to launch, we turn concepts into easy-to-use digital products that just works.",
     id: "web-development",
 
     about:
@@ -68,7 +68,7 @@ export const services = [
   {
     image: img1,
     title: "AI & Machine Learning",
-    text: "Intelligent solutions powered by machine learning and data analytics.",
+    text:"We develop intelligent, data-driven solutions that automate processes, uncover insights, and enhance decision-making using advanced AI and machine learning technologies.",
     id: "ai-ml",
 
     about:
@@ -111,7 +111,7 @@ export const services = [
   {
     image: img2,
     title: "App Development",
-    text: "Cross-platform mobile apps for Android & iOS with seamless UX.",
+    text: "We create high-performance mobile applications for Android and iOS, delivering seamless user experiences with modern design, speed, and reliability.",
     id: "app",
 
     about:
@@ -154,7 +154,7 @@ export const services = [
   {
     image: img4,
     title: "Cyber Security",
-    text: "Protect your digital assets with advanced security solutions.",
+    text:"We protect your digital infrastructure with advanced security solutions, ensuring your data, systems, and networks stay safe from evolving cyber threats.",
     id: "cyber",
 
     about:
@@ -197,7 +197,7 @@ export const services = [
   {
     image: img5,
     title: "Digital Marketing",
-    text: "Data-driven marketing strategies to grow your online presence.",
+    text: "We drive business growth through data-driven digital marketing strategies, helping you reach the right audience and maximize your online presence.",
     id: "digital",
 
     about:
@@ -240,7 +240,7 @@ export const services = [
   {
     image: img6,
     title: "UI/UX Design",
-    text: "Creating intuitive and visually appealing user experiences.",
+    text:"We design intuitive, user-centered interfaces that enhance usability and create engaging digital experiences that users love.",
     id: "ui-ux",
 
     about:
@@ -283,7 +283,7 @@ export const services = [
   {
     image: img7,
     title: "Graphic Designing",
-    text: "Creative designs that build strong brand identity.",
+    text:"We craft visually compelling designs that strengthen your brand identity and communicate your message effectively across all platforms.",
     id: "graphic",
 
     about:
@@ -326,7 +326,7 @@ export const services = [
   {
     image: img8,
     title: "Networking & CCTV",
-    text: "Reliable networking and surveillance solutions.",
+    text: "We provide reliable networking and surveillance solutions to ensure secure connectivity and continuous monitoring for homes and businesses.",
     id: "networking",
 
     about:

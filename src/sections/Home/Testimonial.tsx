@@ -66,6 +66,10 @@ const testimonials = [
     role: "UI/UX Designer",
     text: "Working here has strengthened my design thinking and creativity. Every project is an opportunity to craft meaningful and user-friendly experiences.",
     image: Athulya,
+     imgStyle: {
+    scale: 1.2,
+    objectPosition: "top", // 🔥 useful for faces
+  }
   },
 ];
 
