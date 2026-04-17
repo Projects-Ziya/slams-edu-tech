@@ -5,8 +5,9 @@ import { motion } from "framer-motion";
 import Sreekutty from "../../assets/sreekutty.webp";
 import Akshay from "../../assets/Akshay-ui.webp"
 import Hr from "../../assets/anoop.webp";
-import Cinda from "../../assets/cinda.webp"
-import Anurag from "../../assets/member1.webp"
+import Cinda from "../../assets/member6.webp"
+import Anugrah from "../../assets/member1.webp"
+import Athulya from "../../assets/member5.webp"
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import staricon from "../../assets/carbon_star-review.svg"
 
@@ -54,10 +55,17 @@ const testimonials = [
   },
   {
     id: 5,
-    name: "Anurag Sivadasan",
+    name: "Anugrah Sivadasan",
     role: "React Developer",
     text: "Building scalable interfaces here has been a great experience.The focus on performance and clean architecture pushes me to grow every day.",
-    image: Anurag,
+    image: Anugrah,
+  },
+  {
+    id: 5,
+    name: "Athulya",
+    role: "UI/UX Designer",
+    text: "Working here has strengthened my design thinking and creativity. Every project is an opportunity to craft meaningful and user-friendly experiences.",
+    image: Athulya,
   },
 ];
 
