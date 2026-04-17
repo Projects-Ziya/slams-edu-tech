@@ -23,7 +23,7 @@ const About = () => {
   return (
 <section
   id="about"
-  className="relative px-0 md:px-6 pt-[60px] md:pt-[100px] pb-10 min-h-[500px]"
+  className="relative px-4 md:px-4 pt-[60px] md:pt-[100px] pb-10 min-h-[500px]"
 >
     {isLargeScreen && (
       <Suspense fallback={<div className="text-white">Loading 3D...</div>}>
@@ -40,7 +40,7 @@ const About = () => {
  viewport={{ once: true, amount: 0.2 }}
 >
   
-  <div className="pb-2">
+  <div className="lg:pb-[160px]">
     <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400">
       / About Slams
     </p>
@@ -53,12 +53,12 @@ const About = () => {
         </span>
       </p>
 
-      <p className="pt-8 text-[#f1eded] leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wide font-outfit max-w-[700px]">
+      <p className="pt-8 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider font-outfit max-w-[700px]">
 SLAMS EDUTECH is an IT and EdTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world.       </p>
     </div>
   </div>
 
-  <div className="gap-3 pt-2 pr-4">
+  <div className="gap-3 pt-2 pr-4 lg:pb-32 xl:pb-8">
 
     <div className="flex flex-col md:flex-row gap-6">
       <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />

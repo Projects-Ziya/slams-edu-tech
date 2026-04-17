@@ -58,11 +58,11 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="w-full bg-black text-white py-4 px-6 lg:px-20">
+    <section id="contact" className="w-full bg-black text-white py-4 px-4 md:px-10">
       <div className="w-full grid lg:grid-cols-2 gap-16 items-start">
 
         {/* LEFT CONTENT */}
-        <div className="relative lg:pl-4">
+        <div className="relative ">
           <p className="text-[#BFBFBF] text-[24px] font-medium pb-6">
             / Get In Touch
           </p>
