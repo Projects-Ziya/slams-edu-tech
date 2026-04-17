@@ -100,7 +100,7 @@ useEffect(() => {
       
       {/* HEADER */}
       <div className="text-center max-w-2xl mx-auto mb-8">
-        <h2 className="text-xl sm:text-xl md:text-[26px] xl:text-[34px] 2xl:text-[40px] font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent mb-4">
+        <h2 className="text-xl sm:text-xl md:text-[26px] xl:text-[34px] 2xl:text-[40px] font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent mb-4 pb-3">
           Our Team Speaks
         </h2>
         <p className="text-white mt-4 text-[14px] font-outfit sm:text-[14px] md:text-[16px] xl:text-[20px]  2xl:text-[22px] leading-8 font-[200]">
