@@ -60,7 +60,7 @@ const ContactSection: React.FC = () => {
   return (
     <section
   id="contact"
-  className="relative overflow-hidden w-full min-h-[700px] bg-[#05050b] text-white py-12 px-6 lg:px-20"
+  className="relative overflow-hidden w-full min-h-[700px] bg-[#05050b] text-white py-10 px-4 md:px-10"
 >
 
   {/* 🔵 BLUE RING BACKGROUND */}
