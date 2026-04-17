@@ -60,7 +60,7 @@ const ContactSection: React.FC = () => {
   return (
     <section
   id="contact"
-  className="relative overflow-hidden w-full min-h-[700px] bg-[#05050b] text-white py-4 px-6 lg:px-20"
+  className="relative overflow-hidden w-full min-h-[700px] bg-[#05050b] text-white py-12 px-6 lg:px-20"
 >
 
   {/* 🔵 BLUE RING BACKGROUND */}
@@ -71,8 +71,8 @@ const ContactSection: React.FC = () => {
       bg-[radial-gradient(circle,_transparent_45%,_rgba(59,130,246,0.25)_55%,_transparent_80%)]" />
 
     {/* SOFT INNER GLOW */}
-    <div className="absolute w-[700px] h-[700px] opacity-30 
-      bg-[radial-gradient(circle,_rgba(59,130,246,0.15)_0%,_transparent_80%)]" />
+    <div className="absolute w-[700px] h-[700px] opacity-40 
+      bg-[radial-gradient(circle,_rgba(59,130,246,0.15)_0%,_transparent_90%)]" />
 
   </div>
 
@@ -95,7 +95,7 @@ const ContactSection: React.FC = () => {
       </p>
 
       {/* Decorative Lines */}
-      <div className="absolute left-[40px] top-[300px] hidden lg:block w-full max-w-[950px] pointer-events-none">
+      <div className="absolute left-[40px] top-[310px] hidden lg:block w-full max-w-[950px] pointer-events-none">
         <svg viewBox="0 0 950 320" className="w-full h-auto">
           <line x1="10" y1="0" x2="10" y2="80" stroke="#4B5563" strokeWidth="1" />
           <line x1="10" y1="80" x2="490" y2="80" stroke="#4B5563" strokeWidth="1" />
