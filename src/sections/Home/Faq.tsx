@@ -19,7 +19,7 @@ const Faq: React.FC = () => {
       </h2>
 
       {/* FAQ List */}
-      <div className="w-full  flex flex-col gap-8">
+      <div className="max-w-4xl  flex flex-col gap-8">
         {faqs.map((faq, index) => {
           const isActive = activeIndex === index;
 
