@@ -110,6 +110,7 @@ useEffect(() => {
   return (
     <section className="bg-black text-white w-full py-16 px-4 sm:px-8 lg:px-20 overflow-hidden">
       
+      
       {/* HEADER */}
       <div className="text-center max-w-2xl mx-auto mb-8">
         <h2 className="text-xl sm:text-xl md:text-[26px] xl:text-[34px] 2xl:text-[40px] font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent mb-4 pb-3">

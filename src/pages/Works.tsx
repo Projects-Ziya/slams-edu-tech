@@ -26,7 +26,7 @@ const Works = () => {
               <p className="pt-4 text-[#ADADAD] text-[20px] text-sm sm:text-base md:text-lg font-outfit max-w-[1100px]">From ideas to execution, we build digital solutions <br /> that help your business grow and stay ahead. </p>
 
 
-      <div className="flex justify-between gap-6 items-end pt-10 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] lg:grid-cols-4">
+      <div className="justify-between gap-6 items-end pt-10 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] xl:grid-cols-3">
 
   <Suspense fallback={<div className="text-white"><Loader/></div>}>
     {projects.map((project) => (
@@ -42,7 +42,9 @@ const Works = () => {
 
 </div>
 
-    </section>  )
+    </section> 
+    
+  )
 }
 
 export default Works

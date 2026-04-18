@@ -153,6 +153,7 @@ const Team = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
     >
+      
       {/* ✅ CHANGED: stack below xl */}
       <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 md:gap-20">
 
@@ -216,13 +217,13 @@ const Team = () => {
         </div>
 
         {/* ✅ RIGHT SECTION → moves BELOW on <1264px */}
-        <div className="w-full max-w-[520px] text-left xl:mt-0 md:mt-10">
+        <div className="w-full max-w-[520px] text-left md:mt-10">
           <motion.img
             initial={{ y: "-50%" }}
             animate={{ y: ["-50%", "-56%", "-50%"] }}
             transition={{ duration: 10, repeat: Infinity }}
             src={flowerBg}
-className="hidden xl:block absolute xl:right-0 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[520px] pointer-events-none"          />
+className="hidden xl:block absolute xl:right-0 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"          />
 
           <div className="relative z-10 text-center xl:text-left">
             <h2 className="text-4xl lg:text-5xl text-white">
