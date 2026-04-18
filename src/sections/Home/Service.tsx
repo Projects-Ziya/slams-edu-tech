@@ -115,8 +115,8 @@ const [visibleCount, setVisibleCount] = useState(4);
 
       <div className="flex flex-col md:flex-row md:justify-between gap-6">
         <p className="pt-4 font-extrabold font-heading  text-3xl md:text-4xl lg:text-5xl">
-          IT Services in Kochi <br />
-          <span className="text-blue-400 "> For Business Growth </span>
+          Complete IT Solutions for <br />
+          <span className="text-blue-400 "> Your Business Growth </span>
         </p>
 
         {/* Desktop button */}
