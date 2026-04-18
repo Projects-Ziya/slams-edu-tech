@@ -80,7 +80,7 @@ const ConnectorShape = () => {
             V 700
             H 1200
           "
-          stroke="#3B82F6"
+          stroke="#000000"
           strokeWidth="1.8"
           strokeDasharray="5 6"
           style={{ pathLength }}

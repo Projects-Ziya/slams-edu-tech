@@ -5,7 +5,7 @@ import ConnectorShape from "../../components/ConnectorShape";
 
 const FoundersMessage: React.FC = () => {
   return (
-    <motion.section className="relative bg-black text-white py-4 sm:py-16 lg:py-16 px-4 sm:px-8 lg:px-20 mb-20 overflow-hidden"
+    <motion.section className="relative bg-white text-black py-4 sm:py-16 lg:py-16 px-4 sm:px-8 lg:px-20 mb-20 overflow-hidden"
     initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
@@ -76,7 +76,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             space-y-4
             sm:space-y-5
             lg:space-y-6
-            text-[#f1eded]
+            text-black
             text-[14px]
             sm:text-[15px]
             lg:text-[18px]
@@ -109,8 +109,8 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             </p>
 
             <div className="">
-              <p className="text-gray-400">Warm regards,</p>
-              <p className="text-white font-medium">
+              <p className="text-gray-900 ">Warm regards,</p>
+              <p className="text-black font-medium">
                 Aslam K A - Founder
               </p>
             </div>
@@ -176,7 +176,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                   Z
                 "
                 fill="none"
-                stroke="#9CA3AF"
+                stroke="#ffffff"
                 strokeWidth="0.010"
               />
             </svg>

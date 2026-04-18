@@ -22,6 +22,30 @@ const About = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const slideLeft = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+};
+
   return (
 <section
   id="about"
@@ -90,8 +114,13 @@ transition={{ duration: 0.7 }}
 viewport={{ once: true, amount: 0.2 }}
 >
 
-{/* LEFT CARD */}
-<div className="w-full pt-4">
+<motion.div
+  className="w-full pt-4"
+  variants={slideLeft}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+>
 <div className="relative w-full max-w-[850px] aspect-[850/700] mx-auto 
   rounded-2xl overflow-hidden border border-gray-700 md:border-0">
 
@@ -137,10 +166,16 @@ fill="none" stroke="#ffffff" strokeWidth="1"/>
 )}
 
 </div>
-</div>
+</motion.div>
 
 {/* RIGHT CARD */}
-<div className="w-full lg:pt-32 sm:pt-2">
+<motion.div
+  className="w-full lg:pt-32 sm:pt-2"
+  variants={slideRight}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+>
 <div className="relative w-full max-w-[850px] aspect-[850/700] mx-auto 
   rounded-2xl overflow-hidden border border-gray-700 md:border-0">
 
@@ -185,7 +220,7 @@ fill="none" stroke="white" strokeWidth="1"/>
 )}
 
 </div>
-</div>
+</motion.div>
 
 </motion.section>
 

@@ -6,7 +6,7 @@ import * as THREE from "three";
 const angle = Math.PI / 4;
 
 // ✅ Stable orbit configuration (UPDATED)
-const RADIUS_X = 2.0;
+const RADIUS_X = 1.7;
 const RADIUS_Y = 1.3;
 const DEPTH = 0.4;
 const SPEED = 0.6;
@@ -15,7 +15,7 @@ function Knot({ centerRef }: { centerRef: React.MutableRefObject<[number, number
   const ref = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
    
-  const baseScale = THREE.MathUtils.clamp(viewport.width / 10, 0.5, 1.3);
+  const baseScale = THREE.MathUtils.clamp(viewport.width / 12, 0.4, 1.3);
 
   // optional fine-tuning
   const scaleFactor = baseScale * 0.9;
@@ -45,7 +45,7 @@ function Knot({ centerRef }: { centerRef: React.MutableRefObject<[number, number
   });
 
   return (
-    <TorusKnot ref={ref} args={[0.35 * scaleFactor, 0.15 * scaleFactor, 200, 32]}>
+    <TorusKnot ref={ref} args={[0.4 * scaleFactor, 0.15 * scaleFactor, 200, 32]}>
       {/* <meshStandardMaterial
         color="#d9d9d9"
         metalness={1}
@@ -70,7 +70,7 @@ function Ring({ centerRef }: { centerRef: React.MutableRefObject<[number, number
   const ref = useRef<THREE.Mesh>(null!);
   const { viewport } = useThree();
   
-  const baseScale = THREE.MathUtils.clamp(viewport.width / 10, 0.5, 1.3);
+  const baseScale = THREE.MathUtils.clamp(viewport.width / 12, 0.6, 1.3);
 
   // optional fine-tuning
   const scaleFactor = baseScale * 0.9;
@@ -160,9 +160,10 @@ function SceneContent({ targetRef }: { targetRef: React.RefObject<HTMLDivElement
 
     const worldX = (ndcX * viewport.width) / 2;
     const worldY = (ndcY * viewport.height) / 2;
+    const offsetX = -0.1; // 👈 tweak this
 
     // ✅ SMOOTH FOLLOW (important)
-    centerRef.current[0] += (worldX - centerRef.current[0]) * 0.1;
+    centerRef.current[0] += ((worldX + offsetX) - centerRef.current[0]) * 0.1;
     centerRef.current[1] += (worldY - centerRef.current[1]) * 0.1;
     centerRef.current[2] = 0;
   });
