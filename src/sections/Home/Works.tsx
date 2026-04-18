@@ -95,9 +95,9 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
       <p className="font-medium text-[20px] md:text-[24px] text-gray-400">/ Our Works</p>
 
       <div className="flex flex-col md:flex-row md:justify-between gap-6">
-        <p className="pt-4 font-extrabold font-heading tracking-tight text-4xl md:text-[52px]">
-          Smart Solutions for a
-          <span className="text-blue-400"> Digital World </span>
+        <p className="pt-4 font-extrabold font-heading  text-3xl md:text-4xl lg:text-5xl">
+           Digital Solutions That 
+          <span className="text-blue-400"> Deliver Results</span>
         </p>
 
         {/* Desktop button */}
@@ -109,8 +109,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
       </div>
 
       <p className="pt-4 text-[#ADADAD] tracking-wider text-[16px] md:text-[20px] font-outfit max-w-[1100px]">
-        From ideas to execution, we build digital solutions <br />
-        that help your business grow and stay ahead.
+        We design and develop real-world digital solutions that help businesses grow and stay ahead in a competitive market.
       </p>
 
       <motion.div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-10"

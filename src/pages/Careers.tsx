@@ -2,6 +2,7 @@ import { useState } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import OpeningPositions from "../components/OpeningPositions";
 import Internships from "../components/Internships";
+import SEO from "../components/SEO";
 
 export default function Careers() {
   const [activeTab, setActiveTab] = useState<"openings" | "internships">(() =>
@@ -10,6 +11,12 @@ export default function Careers() {
 
   return (
     <div id="careers" className="bg-black text-white flex justify-center">
+     <SEO
+  title="Best IT Internship and Job Career | Start Your Future"
+  description="Explore IT Jobs & Internships in Kochi with the Best IT Internship and Job Training in Software, Web & app Development, UI/UX, AI & ML, and Cybersecurity."
+  keywords="Best IT Internship and Job Career"
+/>
+     
       <ScrollToTop />
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 pt-10 sm:py-9 md:py-10">
