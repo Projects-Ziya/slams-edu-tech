@@ -52,10 +52,10 @@ const About = () => {
 
     <div className="flex flex-col justify-between pr-3">
       <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
-        Leading IT Company in Kochi <br />
+        Your Partner in
+<br />
         <span className="text-blue-400 pt-2">
-          – Slams EduTech
-        </span>
+Digital Transformation        </span>
       </p>
 
       <p className="pt-8 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
@@ -171,8 +171,8 @@ Our Vision
 </h2>
 
 <p className="mt-2 md:mt-4 text-sm md:text-base xl:text-lg leading-relaxed">
-To become a trusted IT company in Kochi by empowering businesses with technology and students with practical knowledge.</p>
-
+We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for meaningful digital experiences and growth. 
+</p>
 </div>
 </div>
 
