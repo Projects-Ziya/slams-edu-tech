@@ -45,7 +45,7 @@ function Knot({ centerRef }: { centerRef: React.MutableRefObject<[number, number
   });
 
   return (
-    <TorusKnot ref={ref} args={[0.4 * scaleFactor, 0.25 * scaleFactor, 200, 32]}>
+    <TorusKnot ref={ref} args={[0.35 * scaleFactor, 0.15 * scaleFactor, 200, 32]}>
       {/* <meshStandardMaterial
         color="#d9d9d9"
         metalness={1}
@@ -101,7 +101,7 @@ function Ring({ centerRef }: { centerRef: React.MutableRefObject<[number, number
 
   return (
     <mesh ref={ref} rotation={[Math.PI / 2, 0, 0]}>
-      <torusGeometry args={[0.4 * scaleFactor, 0.25 * scaleFactor, 200, 32]} />
+      <torusGeometry args={[0.4 * scaleFactor, 0.15 * scaleFactor, 200, 32]} />
       {/* <meshStandardMaterial
         color="#D9D9D9"
         metalness={1}
