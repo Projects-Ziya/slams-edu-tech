@@ -25,7 +25,7 @@ export const services = [
   {
     image: img3,
     title: "Web Development",
-    text: "We build simple, smart tech solutions that help businesses grow and keep things moving. From start to launch, we turn concepts into easy-to-use digital products that just works.",
+    text: "We offer professional web development in Kochi, creating fast, responsive, and SEO-friendly websites that improve your online presence.",
     id: "web-development",
 
     about:
@@ -68,7 +68,7 @@ export const services = [
   {
     image: img1,
     title: "AI & Machine Learning",
-    text:"We develop intelligent, data-driven solutions that automate processes, uncover insights, and enhance decision-making using advanced AI and machine learning technologies.",
+    text:"Leverage intelligent automation and data-driven insights with our AI and machine learning solutio",
     id: "ai-ml",
 
     about:
@@ -110,8 +110,8 @@ export const services = [
 
   {
     image: img2,
-    title: "App Development",
-    text: "We create high-performance mobile applications for Android and iOS, delivering seamless user experiences with modern design, speed, and reliability.",
+    title: "Mobile App Development",
+    text: "Build powerful Android and iOS apps with seamless performance and user-focused design tailored to your business needs.",
     id: "app",
 
     about:
@@ -154,7 +154,7 @@ export const services = [
   {
     image: img4,
     title: "Cyber Security",
-    text:"We protect your digital infrastructure with advanced security solutions, ensuring your data, systems, and networks stay safe from evolving cyber threats.",
+    text:"Protect your digital assets with advanced cybersecurity solutions designed for modern businesses.",
     id: "cyber",
 
     about:
