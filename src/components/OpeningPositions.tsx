@@ -21,9 +21,8 @@ export default function OpeningPositions() {
             className="w-full h-[220px] sm:h-[280px] md:h-[320px] lg:h-[375px] object-cover"
           />
 
-          <p className="absolute bottom-4 sm:bottom-5 left-4 sm:left-6 text-[10px] sm:text-xs text-gray-200 max-w-[250px] sm:max-w-md">
-            Be part of a workplace where ideas turn into action and skills turn
-            into careers.
+          <p className="absolute bottom-4 sm:bottom-5 left-4 sm:left-6 text-[10px] sm:text-xs text-gray-200 max-w-[250px] sm:max-w-md ">
+            Join Slams EduTech and explore the best IT internship and job career opportunities designed for real-world learning, innovation, and long-term growth. Build your skills, gain practical experience, and move confidently toward your future in tech.
           </p>
         </div>
 
@@ -62,8 +61,7 @@ export default function OpeningPositions() {
       <div className="mt-16 bg-gradient-to-r from-[#1a1a1a] to-[#2a2a2a] rounded-xl p-6 sm:p-7 md:p-8">
         <div className="flex justify-between items-center pb-6 sm:pb-7 md:pb-8">
           <h3 className="text-[14px] sm:text-base md:text-lg font-medium">
-            Ready to start your next project?
-          </h3>
+            Ready to Start Your IT Career?          </h3>
 
           <Link to="/#contact">
             <button className="bg-white text-black text-[12px] sm:text-sm px-4 sm:px-5 py-2 rounded transition-all duration-300 
@@ -76,9 +74,8 @@ export default function OpeningPositions() {
         <hr className="py-3" />
 
         <p className="text-gray-200 text-[12px] sm:text-[13px] md:text-sm max-w-xl">
-          We're a team of passionate creators who turn ideas into powerful
-          digital experiences, helping tech-driven brands grow with smart
-          design and innovation.
+         Looking for the best IT internship and job career opportunities? Get in touch with us and take your first step toward a successful future in technology.
+
         </p>
       </div>
     </div>

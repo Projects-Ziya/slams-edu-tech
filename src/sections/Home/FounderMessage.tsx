@@ -61,7 +61,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
               whitespace-nowrap
               font-heading
             ">
-              Founders Message
+              Founder's Message
             </h2>
 
             {/* connector line (hide on mobile/tablet small) */}

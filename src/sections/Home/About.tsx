@@ -48,15 +48,16 @@ const About = () => {
 
     <div className="flex flex-col justify-between pr-3">
       <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
-        Your Partner in <br />
+        Leading IT Company in Kochi <br />
         <span className="text-blue-400 pt-2">
-          Digital Transformation
+          – Slams EduTech
         </span>
       </p>
 
       <p className="pt-8 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
-SLAMS EDUTECH is an IT and EdTech company providing innovative digital solutions in software development, UI/UX design, digital marketing, and web and mobile apps, along with AI & ML, cybersecurity, and IT training. 
-Our mission is to bridge education and industry through practical, skill-based learning and value-driven technology services that help individuals and businesses grow in a digital world. 
+Slams EduTech is a growing IT and EdTech company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />
+As one of the emerging IT companies in Kochi, we focus on building scalable, cost-effective solutions for startups and businesses. We also provide internship programs that bridge the gap between education and real-world industry experience.
+
       </p>
     </div>
   </div>
@@ -118,7 +119,7 @@ Our Mission
 </h2>
 
 <p className="mt-2 md:mt-4 text-xs sm:text-sm md:text-base xl:text-lg leading-relaxed">
-We provide excellent IT services and internships, helping startups with scalable solutions while fostering talent through mentorship and hands-on experience.</p>
+To deliver high-quality IT services and internship opportunities that help businesses scale and individuals build industry-ready skills.</p>
 
 </div>
 </div>
@@ -166,7 +167,7 @@ Our Vision
 </h2>
 
 <p className="mt-2 md:mt-4 text-sm md:text-base xl:text-lg leading-relaxed">
-We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for digital experiences and growth.</p>
+To become a trusted IT company in Kochi by empowering businesses with technology and students with practical knowledge.</p>
 
 </div>
 </div>

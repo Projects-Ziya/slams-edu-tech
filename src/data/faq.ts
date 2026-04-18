@@ -7,38 +7,44 @@ export interface FAQItem {
 
 export const faqs: FAQItem[] = [
   {
-    question: "What services does SLAMS EDUTECH provide?",
+    question: "What services does SLAMS EDUTECH offer?",
     answer:
-      "We offer IT services including web and mobile app development, UI/UX design, digital marketing, AI & ML solutions, cyber security, game development, graphic design, CCTV solutions, and mobile repair services, along with industry-oriented IT training programs.",
+      "We provide a wide range of IT services including web development, mobile app development, digital marketing, UI/UX design, AI solutions, and cybersecurity. As a growing best IT company in Kochi, we focus on delivering practical and scalable solutions for businesses.",
   },
   {
-    question: "Do you provide internships and training programs?",
-     answer:
-      "Yes, we provide practical, project-based training and internships designed to help students and professionals gain real-world experience and industry-relevant skills.",
-  },
-  {
-    question: "Are your services suitable for startups and small businesses?",
+    question: " How is an IT company different from a software development company?",
     answer:
-      "Absolutely. Our services are customized to suit startups, small businesses, and enterprises, focusing on scalability, affordability, and business growth.",
+      "An IT company offers a broad range of technology services such as networking, support, cybersecurity, and cloud solutions. A software development company mainly focuses on building applications and systems. Slams EduTech combines both, offering complete IT and software solutions under one roof.",
   },
   {
-    question: "Do you offer customized software solutions?",
+    question: " Why should I choose Slams EduTech for my business?",
     answer:
-      "Yes, we provide customized software, websites, and applications tailored to your business needs. We design scalable, user-friendly solutions aligned with your goals, ensuring seamless integration, performance, and long-term growth support.",
+      "We focus on building solutions that are simple, scalable, and aligned with your business goals. As an emerging best IT company in Kochi, we provide end-to-end support, from idea to execution, along with ongoing maintenance.",
   },
   {
-    question: "How do you ensure quality and security in your projects?",
-   answer:
-      "We follow structured development processes, quality testing, and security best practices to ensure reliable, secure, and high-performing solutions.",
-  },
-  {
-    question: "Do you provide post-project support and maintenance?",
-   answer:
-      "Yes, we offer ongoing support, maintenance, regular updates, and performance optimization after project delivery, ensuring your system remains secure, up-to-date, efficient, and aligned with evolving business needs and growth objectives.",
-  },
-  {
-    question: "Can I get both services and training from SLAMS EDUTECH?",
+    question: "Do you provide internship and training programs?",
     answer:
-      "Yes, we uniquely combine IT services and education, allowing clients and learners to benefit from both professional solutions and skill development.",
+      "Yes, we offer industry-focused internships with real-time project experience. Our programs are designed to help students and freshers build practical skills and become job-ready.",
   },
+  {
+    question: "What industries do you work with?",
+    answer:
+      "We work with startups, small businesses, and growing companies across different industries including education, e-commerce, and service-based businesses.",
+  },
+  {
+    question: "How much does it cost to develop a website or mobile app?",
+    answer:
+      "The cost depends on the features, complexity, and project requirements. Basic websites are more affordable, while advanced applications may require higher investment. We provide customized solutions based on your needs and budget.",
+  },
+  {
+    question: "Do you offer support after project completion?",
+    answer:
+      "Yes, we provide ongoing support and maintenance to ensure your website or application runs smoothly and stays updated.",
+  },
+  {
+    question: "How long does it take to complete a project?",
+    answer:
+      "Project timelines vary depending on the scope and complexity. A basic website may take a few weeks, while larger applications may take longer. A structured timeline is planned and shared at the start of every project to ensure clarity and smooth execution",
+  },
+  
 ];

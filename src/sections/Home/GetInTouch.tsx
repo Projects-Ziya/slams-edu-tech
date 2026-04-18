@@ -87,15 +87,14 @@ const ContactSection: React.FC = () => {
 
       <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
         Start Your Journey <br />
-        With <span className="text-blue-500">Slams Today</span>
+        With <span className="text-blue-500">Slams EduTech</span>
       </p>
 
       <p className="text-gray-400 mt-6 max-w-md text-lg">
-        Ready to transform your career or grow your business? Reach out to us!
-      </p>
+Looking for the best IT company in Kochi? Get in touch with us to grow your business or start your career in technology.      </p>
 
       {/* Decorative Lines */}
-      <div className="absolute left-[40px] top-[310px] hidden lg:block w-full max-w-[950px] pointer-events-none">
+      <div className="absolute left-[40px] top-[320px] hidden lg:block w-full max-w-[950px] pointer-events-none">
   <svg viewBox="0 0 950 320" className="w-full h-auto">
 
     {/* ✅ Arrow Definition */}

@@ -115,8 +115,8 @@ const [visibleCount, setVisibleCount] = useState(4);
 
       <div className="flex flex-col md:flex-row md:justify-between gap-6">
         <p className="pt-4 font-extrabold font-heading  text-3xl md:text-4xl lg:text-5xl">
-          Complete IT Solutions for <br />
-          <span className="text-blue-400 "> Your Business Growth </span>
+          IT Services in Kochi <br />
+          <span className="text-blue-400 "> For Business Growth </span>
         </p>
 
         {/* Desktop button */}
@@ -128,10 +128,7 @@ const [visibleCount, setVisibleCount] = useState(4);
       </div>
 
       <p className="pt-4 text-[#ADADAD] text-[16px] md:text-[20px] font-outfit max-w-[1100px]">
-        We build simple, smart tech solutions that help businesses grow and
-        keep things moving. From idea to launch, we turn concepts into
-        easy-to-use digital products using modern tech, creative thinking, and
-        a practical, hands-on approach that just works.
+       As a trusted IT company in Kochi, we provide complete software and digital solutions tailored for startups, businesses, and enterprises. Our goal is to deliver simple, scalable, and result-driven technology.
       </p>
 
       {/* cards */}

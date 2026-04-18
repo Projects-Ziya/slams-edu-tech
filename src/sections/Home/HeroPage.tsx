@@ -150,12 +150,11 @@ export default function HeroPage() {
       <div className="absolute z-10 bottom-28 md:bottom-48 left-6 md:left-12 text-white max-w-[925px]">
 
         <p className="text-3xl md:text-[66px] font-[500] tracking-tight font-heading uppercase leading-tight md:leading-[60px] md:px-12">
-          Innovative <span>IT </span> Solutions <br /> for a Digital World
+Best IT Company in Kochi for Smart Digital Solutions & Internships
         </p>
 
         <p className="text-[18px] font-outfit font-[300]  md:text-[22px] tracking-wide sm:leading-4 md:leading-7 md:pl-12 pt-4 max-w-[840px]">
-          Slams Edu Tech delivers smart, scalable technology solutions that help businesses
-          grow faster, operate more efficiently, and stay ahead through continuous innovation.
+         Slams EduTech is a leading IT company in Kochi offering web development, mobile app development, AI solutions, and industry-focused internships. We help businesses grow faster with scalable technology and practical digital solutions.
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 pt-6 md:pl-10 pr-6">
