@@ -5,11 +5,13 @@ import ab1 from "../../assets/about/about1.webp"
 import ab2 from "../../assets/about/about2.jpg"
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const Section3D = lazy(() => import("../../components/Section3D"));
 
 const About = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,9 +28,11 @@ const About = () => {
   className="relative px-4 md:px-4 pt-[60px] md:pt-[100px] pb-10 min-h-[500px]"
 >
     {isLargeScreen && (
+       <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
       <Suspense fallback={<div className="text-white">Loading 3D...</div>}>
-        <Section3D />
+        <Section3D  targetRef={cardsRef} />
       </Suspense>
+      </div>
     )}
 
 {/* ================= MAIN GRID ================= */}
@@ -61,7 +65,7 @@ Our mission is to bridge education and industry through practical, skill-based l
     </div>
   </div>
 
-  <div className="gap-3 pt-2 pr-4 lg:pb-32 xl:pb-8">
+  <div ref={cardsRef} className="gap-3 pt-2 pr-4 lg:pb-32 xl:pb-8">
 
     <div className="flex flex-col md:flex-row gap-6">
       <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
