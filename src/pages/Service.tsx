@@ -21,7 +21,7 @@ const Service = () => {
    <ScrollToTop/>
       <p className="font-medium text-[24px] text-[#70A9FF]">services</p>
       <div className="flex justify-between">
-      <p className="pt-4 font-medium text-xl sm:text-2xl md:text-3xl lg:text-5xl">Best Software Development Company for <br /> your 
+      <p className="pt-4 font-medium text-xl sm:text-2xl md:text-3xl lg:text-5xl">Best Software Development Company  <br /> for your 
       <span className="text-blue-400">  Business Growth </span></p>
       <div className="pt-4">
     
@@ -34,7 +34,7 @@ const Service = () => {
       <p className="pt-4 text-[#ADADAD] text-sm sm:text-base md:text-lg font-outfit max-w-[1400px]">Slams EduTech delivers custom web, mobile, and business software designed to scale. As a trusted software development company, we work with startups and growing businesses to turn ideas into reliable, high-performance digital products. </p>
     {/* cards */}
 
-      <div className="justify-between gap-6 items-end pt-10 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] xl:grid-cols-3">
+      <div className="justify-between gap-6 items-end pt-10 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] xl:grid-cols-3 2xl:grid-cols-4">
           <Suspense fallback={<div className="text-white"><Loader/></div>}>
 
       {services.map((service) => (
