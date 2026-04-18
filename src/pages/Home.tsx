@@ -59,9 +59,11 @@ const Home = () => {
         <Works />
       </Suspense>
 
+<LazySection>
       <Suspense fallback={SectionLoader}>
         <About />
       </Suspense>
+      </LazySection>
 
       <Suspense fallback={SectionLoader}>
         <FoundersMessage />
