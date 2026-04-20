@@ -13,7 +13,7 @@ import { Loader } from 'lucide-react';
 const WorksCard = lazy(() => import('../components/WorksCard'));
 const Works = () => {
   return (
-<section className=' px-6 pt-[112px]'>
+<section className=' px-4 sm:px-6 md:px-8 lg:px-10 pt-[112px]'>
   <SEO
   title="Web & App Development Company in Kochi | Expert Solutions"
   description="Choose a Leading Web & App Development Company in Kochi Offering Custom Websites, Mobile Apps, and Scalable Digital Solutions. Contact us Today Slams Edutech"
@@ -32,7 +32,7 @@ const Works = () => {
               <p className="pt-4 text-[#ADADAD] text-[20px] text-sm sm:text-base md:text-lg font-outfit max-w-[1100px]">As a leading web development company in Kochi, Slams EduTech delivers high-quality websites and mobile applications for startups and businesses. Explore our work and see how we turn ideas into real digital solutions. </p>
 
 
-      <div className="justify-between gap-6 items-end pt-10 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="justify-between gap-6 items-end pt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
 
   <Suspense fallback={<div className="text-white"><Loader/></div>}>
     {projects.map((project) => (

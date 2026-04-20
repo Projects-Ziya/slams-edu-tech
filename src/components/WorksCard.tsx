@@ -93,7 +93,7 @@ export default function WorksCard({
       {/* TEXT SECTION (unchanged ✅) */}
       <div className="pt-4 sm:pt-6 md:pt-8">
 
-        <p className="font-bold text-[18px] font-outfit sm:text-[20px] md:text-[22px] lg:text-[24px] leading-tight group-hover:text-blue-400 transition">
+        <p className="font-bold text-[18px] whitespace-nowrap font-outfit sm:text-[20px] md:text-[22px] lg:text-[24px] leading-tight group-hover:text-blue-400 transition">
           {name}
         </p>
 
