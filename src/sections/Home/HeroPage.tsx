@@ -82,9 +82,10 @@ export default function HeroPage() {
           IT Solutions for a Smarter Digital World
         </p>
 
-        <p className="text-[15px] sm:text-[16px] md:text-[20px] lg:text-[22px] font-outfit font-[300] tracking-wide leading-6 md:leading-7 md:pl-8 lg:pl-12 pt-4 max-w-[100%] sm:max-w-[95%] md:max-w-[840px]">
-          Slams EduTech is a best IT company in Kochi offering web development, mobile app development, AI solutions, and industry-focused internships. We help businesses grow faster with scalable technology and practical digital solutions.
-        </p>
+       
+        <h1 className="text-[15px] sm:text-[16px] md:text-[20px] lg:text-[22px] font-outfit font-[300] tracking-wide leading-6 md:leading-7 md:pl-8 lg:pl-12 pt-4 max-w-[100%] sm:max-w-[95%] md:max-w-[840px]">
+          Slams EduTech is a  best IT company in Kochi  offering web development, mobile app development, AI solutions, and industry-focused internships. We help businesses grow faster with scalable technology and practical digital solutions.
+        </h1>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6 md:pl-6 lg:pl-10 pr-4 sm:pr-6">
 
