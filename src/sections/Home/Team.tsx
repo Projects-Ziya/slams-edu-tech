@@ -223,9 +223,8 @@ const Team = () => {
             animate={{ y: ["-50%", "-56%", "-50%"] }}
             transition={{ duration: 10, repeat: Infinity }}
             src={flowerBg}
-className="hidden xl:block absolute xl:right-0 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"          />
-
-          <div className="relative z-10 text-center xl:text-left">
+className="hidden xl:block absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"/>
+          <div className="relative z-10 text-center xl:text-center">
             <h2 className="text-4xl lg:text-5xl text-white">
               {activeMember?.name || "Meet Our Team"}
             </h2>
