@@ -110,7 +110,7 @@ export const services = [
 
   {
     image: img2,
-    title: "Mobile App Development",
+    title: "App Development",
     text: "We are a mobile app development company in Kochi offering custom Android and iOS app solutions tailored to your business needs. Our apps are designed to deliver smooth performance, intuitive user experience, and scalable functionality.",
     id: "app",
 
