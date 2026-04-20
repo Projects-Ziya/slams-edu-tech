@@ -25,7 +25,7 @@ export const services = [
   {
     image: img3,
     title: "Web Development",
-    text: "We offer professional web development in Kochi, creating fast, responsive, and SEO-friendly websites that improve your online presence.",
+    text: "We are a website development company in Kochi offering custom web solutions designed to help businesses build a strong online presence. Our approach focuses on creating fast, responsive, and SEO-friendly websites that are tailored to your business goals.",
     id: "web-development",
 
     about:
@@ -68,7 +68,7 @@ export const services = [
   {
     image: img1,
     title: "AI & Machine Learning",
-    text:"Leverage intelligent automation and data-driven insights with our AI and machine learning solutio",
+    text:"As an AI/ML development company, we help businesses leverage intelligent automation and data-driven insights to improve efficiency and decision-making. Our solutions are designed to simplify complex processes and unlock the true value of your data.",
     id: "ai-ml",
 
     about:
@@ -111,7 +111,7 @@ export const services = [
   {
     image: img2,
     title: "Mobile App Development",
-    text: "Build powerful Android and iOS apps with seamless performance and user-focused design tailored to your business needs.",
+    text: "We are a mobile app development company in Kochi offering custom Android and iOS app solutions tailored to your business needs. Our apps are designed to deliver smooth performance, intuitive user experience, and scalable functionality.",
     id: "app",
 
     about:
@@ -154,7 +154,7 @@ export const services = [
   {
     image: img4,
     title: "Cyber Security",
-    text:"Protect your digital assets with advanced cybersecurity solutions designed for modern businesses.",
+    text:"We are a cyber security company focused on protecting businesses from evolving digital threats. Our solutions include advanced threat detection, data protection, and secure system management to ensure your operations remain safe and uninterrupted.",
     id: "cyber",
 
     about:
@@ -197,7 +197,7 @@ export const services = [
   {
     image: img5,
     title: "Digital Marketing",
-    text: "We drive business growth through data-driven digital marketing strategies, helping you reach the right audience and maximize your online presence.",
+    text: "We offer digital marketing services in Kochi designed to help businesses grow through data-driven strategies. Our approach focuses on reaching the right audience, improving online visibility, and driving measurable results.",
     id: "digital",
 
     about:
