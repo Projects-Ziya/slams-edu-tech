@@ -64,7 +64,7 @@ export default function CustomShapeCard({
 
         {/* TEXT */}
         <div className="absolute bottom-[18%] left-[5%] right-[5%] text-white z-10">
-          <h3 className="font-bold leading-tight text-[clamp(14px,2.5vw,22px)] mb-1">
+          <h3 className="font-bold whitespace-nowrap leading-tight text-[clamp(14px,2.5vw,22px)] mb-1">
             {title}
           </h3>
 

@@ -87,7 +87,7 @@ const slideRight = {
 Digital Transformation        </span>
       </p>
 
-      <p className="pt-8 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
+      <p className="pt-8 sm:pt-4 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
 Slams EduTech is a growing IT and EdTech company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />
 As one of the emerging IT companies in Kochi, we focus on building scalable, cost-effective solutions for startups and businesses. We also provide internship programs that bridge the gap between education and real-world industry experience.
 
