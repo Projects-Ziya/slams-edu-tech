@@ -57,7 +57,7 @@ export default function CustomShapeCard({
           <path
             d="M30 0 H360 Q390 0 390 30 V366 Q390 396 360 396 H207 Q195 396 185 385 L160 350 Q150 340 135 340 H30 Q0 340 0 310 V30 Q0 0 30 0 Z"
             fill="none"
-            stroke="rgba(255,255,255,0.3)"
+            stroke="#ffffff"
             strokeWidth="2"
           />
         </svg>

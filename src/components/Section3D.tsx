@@ -45,7 +45,7 @@ function Knot({ centerRef }: { centerRef: React.MutableRefObject<[number, number
   });
 
   return (
-    <TorusKnot ref={ref} args={[0.4 * scaleFactor, 0.15 * scaleFactor, 200, 32]}>
+    <TorusKnot ref={ref} args={[0.4 * scaleFactor, 0.15 * scaleFactor, 150, 32]}>
       {/* <meshStandardMaterial
         color="#d9d9d9"
         metalness={1}
@@ -101,7 +101,7 @@ function Ring({ centerRef }: { centerRef: React.MutableRefObject<[number, number
 
   return (
     <mesh ref={ref} rotation={[Math.PI / 2, 0, 0]}>
-      <torusGeometry args={[0.4 * scaleFactor, 0.15 * scaleFactor, 200, 32]} />
+      <torusGeometry args={[0.4 * scaleFactor, 0.15 * scaleFactor, 150, 32]} />
       {/* <meshStandardMaterial
         color="#D9D9D9"
         metalness={1}
@@ -128,6 +128,7 @@ export default function Section3D({ targetRef }: { targetRef: React.RefObject<HT
   return (
     <div className="absolute inset-0 pointer-events-none">     
       <Canvas
+      dpr={[1, 1.5]}
         camera={{
           position: [0, 0, 8], // ✅ fixed camera for consistency
           fov: 50,
@@ -146,6 +147,7 @@ function SceneContent({ targetRef }: { targetRef: React.RefObject<HTMLDivElement
 
   const { size, viewport } = useThree();
   const centerRef = useRef<[number, number, number]>([0, 0, 0]);
+  const { invalidate } = useThree();
   
   useFrame(() => {
     if (!targetRef.current) return;
@@ -167,6 +169,19 @@ function SceneContent({ targetRef }: { targetRef: React.RefObject<HTMLDivElement
     centerRef.current[1] += (worldY - centerRef.current[1]) * 0.1;
     centerRef.current[2] = 0;
   });
+
+  useFrame(({ clock }) => {
+  if (!targetRef.current) return;
+
+  const rect = targetRef.current.getBoundingClientRect();
+
+  const isVisible =
+    rect.top < window.innerHeight && rect.bottom > 0;
+
+  if (!isVisible) return; // ❌ STOP rendering when not visible
+
+  invalidate(); // ✅ render only when needed
+});
 
   return (
     <>

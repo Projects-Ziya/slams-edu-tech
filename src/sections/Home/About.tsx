@@ -13,14 +13,19 @@ const About = () => {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 768);
-    };
+useEffect(() => {
+  let timeout: any;
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const handleResize = () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      setIsLargeScreen(window.innerWidth >= 768);
+    }, 200);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []); 
 
   const slideLeft = {
   hidden: { opacity: 0, x: -100 },

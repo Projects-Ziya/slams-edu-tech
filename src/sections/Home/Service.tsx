@@ -108,7 +108,7 @@ const [visibleCount, setVisibleCount] = useState(4);
   }, []);
 
   return (
-    <section id="service" className="px-5 md:px-10 font-outfit pb-16 pt-10">
+    <section id="service" className="px-5 md:px-10 font-outfit pb-32 pt-10">
       <p className="font-medium text-[20px] md:text-[24px] text-gray-400">
         /service we offer
       </p>
@@ -133,7 +133,7 @@ const [visibleCount, setVisibleCount] = useState(4);
 
       {/* cards */}
           <motion.div
-        className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-10"
+        className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
