@@ -4,6 +4,8 @@ import { lazy, Suspense } from "react";
 import MainLayout from './layout/MainLayout';
 import { Toaster } from "sonner";
 import Loader from './components/Loader';
+import ScrollToHashElement from "./components/ScrollToHashElement";
+
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'));
@@ -20,6 +22,8 @@ const JobDetails = lazy(() => import('./components/JobDetails'));
 function App() {
   return (
     <BrowserRouter>
+          <ScrollToHashElement />
+
       <Toaster position="top-right" richColors />
 
       {/* Suspense wraps all lazy routes */}

@@ -95,20 +95,37 @@ const Navbar: React.FC = () => {
         <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium ">
           {items.map((item, index) => {
             // ✅ ONLY About Us → HashLink
-            if (item.label === "About Us") {
-              return (
-                <HashLink
-                  key={index}
-                  smooth
-                  to={`/${item.href}`} // goes to homepage + #about
-                  onClick={() => setMenuOpen(false)}
-                  className="hover:text-gray-300 transition"
-                >
-                  {item.label}
-                </HashLink>
-              );
-            }
+        if (item.label === "About Us") {
+  return (
+    <button
+      key={index}
+      onClick={() => {
+        setMenuOpen(false);
 
+        if (location.pathname === "/") {
+          // already on home → just scroll
+          const el = document.getElementById("about");
+          if (el) {
+            const yOffset = -90;
+            const y =
+              el.getBoundingClientRect().top +
+              window.pageYOffset +
+              yOffset;
+
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        } else {
+          // go to home and trigger scroll
+          window.sessionStorage.setItem("scrollTo", "about");
+          window.location.href = "/";
+        }
+      }}
+      className="hover:text-gray-300 transition"
+    >
+      {item.label}
+    </button>
+  );
+}
             // ✅ All others → normal Link
             return (
               <Link
