@@ -86,7 +86,7 @@ useEffect(() => {
 
   return (
     <motion.section id="works" 
-    className='bg-black px-5 md:px-10 md:pt-[112px]'
+    className='bg-[#1d1b1b] px-5 md:px-10 pt-[60px] pb-[20px]'
      initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 

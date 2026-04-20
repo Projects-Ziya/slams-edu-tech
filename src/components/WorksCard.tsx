@@ -82,7 +82,7 @@ export default function WorksCard({
             H319.8
             Z"
             fill="none"
-            stroke="rgba(255,255,255,0.3)"
+            stroke="#ffffff"
             strokeWidth="2"
           />
 
