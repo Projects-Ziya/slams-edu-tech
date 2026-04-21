@@ -15,7 +15,7 @@ const testimonials = [
     id: 1,
     name: "Sreekutty PJ",
     role: "Operation Head",
-    text: "Working here has been an incredible journey. The team is supportive and full of learning opportunities.",
+    text: "Working here is a great journey with a supportive team and constant learning.",
     image: Sreekutty,
     imgStyle: { scale: 1.2, objectPosition: "top" }
   },
@@ -23,7 +23,7 @@ const testimonials = [
     id: 7,
     name: "Ashvin",
     role: "AI/ML Developer",
-    text: "Working on AI solutions here is exciting. I get to build smart, real-world applications while constantly learning and improving.",
+    text: "Building AI solutions here is exciting with real-world impact and continuous growth.",
     image: Ashvin,
     imgStyle: { scale: 1.2, objectPosition: "top" }
   },
@@ -39,7 +39,7 @@ const testimonials = [
     id: 3,
     name: "Anoop ",
     role: "Python Developer",
-    text: "Building backend systems here is rewarding. The focus is on performance, scalability, and clean architecture.",
+    text: "Building backend systems here is rewarding with a focus on performance and scalability.",
     image: Hr,
     imgStyle: { scale: 1, objectPosition: "top" }
   },
@@ -47,26 +47,25 @@ const testimonials = [
     id: 4,
     name: "Cinda Sibichan",
     role: "Python Developer",
-    text: "Every project improves my skills. The collaborative environment helps me grow every day.",
+    text: "Every project improves my skills in a collaborative and growth-focused environment.",
     image: Cinda,
   },
   {
     id: 5,
     name: "Anugrah Sivadasan",
     role: "React Developer",
-    text: "Building scalable interfaces here is a great experience with strong focus on performance and clean code.",
+    text: "Building scalable interfaces here is a great experience with focus on performance.",
     image: Anugrah,
   },
   {
     id: 6,
     name: "Athulya",
     role: "UI/UX Designer",
-    text: "Working here strengthens my design thinking and creativity through meaningful user experiences.",
+    text: "Working here enhances my creativity and design thinking through meaningful projects.",
     image: Athulya,
     imgStyle: { scale: 1.2, objectPosition: "top" }
   },
 ];
-
 export default function Testimonial() {
   const [active, setActive] = useState(1);
   const [direction, setDirection] = useState(0);
@@ -161,12 +160,12 @@ export default function Testimonial() {
                 style={{ transform: "translateZ(0)" }}
               >
 
-            <div className="
+           <div className="
   relative w-full
   max-w-[clamp(280px,50vw,700px)]
-  h-auto sm:h-[clamp(200px,22vw,260px)]
+  h-[220px] sm:h-[clamp(200px,22vw,260px)]   /* ✅ FIXED HEIGHT ON MOBILE */
   rounded-2xl border border-white/10 overflow-hidden
-  flex flex-col sm:flex-row items-center sm:items-center justify-between
+  flex flex-col sm:flex-row items-center justify-between
   p-3 sm:p-5 md:p-6
 ">
 
@@ -178,15 +177,13 @@ export default function Testimonial() {
   {/* CONTENT */}
   <div className="relative z-10 flex flex-col sm:flex-row items-center w-full h-full">
 
-    {/* LABEL */}
-    
-    {/* IMAGE (TOP ON MOBILE) */}
+    {/* IMAGE */}
     <div className="
-  relative
-  w-[clamp(70px,20vw,220px)]
-  h-full
-  rounded-xl overflow-hidden
-">
+      relative
+      w-[clamp(70px,20vw,220px)]
+      h-[80px] sm:h-full        /* ✅ FIX IMAGE HEIGHT ON MOBILE */
+      rounded-xl overflow-hidden flex-shrink-0
+    ">
       <img
         src={item.image}
         alt={item.name}
@@ -200,7 +197,7 @@ export default function Testimonial() {
     </div>
 
     {/* TEXT */}
-    <div className="">
+     <div className="">
      <div className="
       absolute flex items-center top-0 pl-4 gap-1 sm:gap-2 
       text-[7px] sm:text-[9px] md:text-[11px]
