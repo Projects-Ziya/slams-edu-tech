@@ -66,7 +66,7 @@ const slideRight = {
 
 {/* ================= MAIN GRID ================= */}
 <motion.div
- className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-6"
+ className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-1 md:px-6"
  initial={{ opacity: 0, y: 60 }}
  whileInView={{ opacity: 1, y: 0 }}
  transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
@@ -95,9 +95,9 @@ As one of the emerging IT companies in Kochi, we focus on building scalable, cos
     </div>
   </div>
 
-  <div ref={cardsRef} className="gap-3 pt-2 pr-4 lg:pb-32 xl:pb-8">
+  <div ref={cardsRef} className="gap-3 pt-2 pr- lg:pb-32 xl:pb-8">
 
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col md:flex-row gap-6 ">
       <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
       <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers, designers, and strategists delivering excellence." />
     </div>
@@ -112,7 +112,7 @@ As one of the emerging IT companies in Kochi, we focus on building scalable, cos
 
 {/* ================= BIG CARDS ================= */}
 <motion.section 
-className="flex flex-col xl:flex-row pt-20 gap-12 justify-between px-4 md:px-6 xl:px-10 pb-6"
+className="flex flex-col xl:flex-row pt-20 gap-12 justify-between px-1 sm:px-4 md:px-6 xl:px-10 pb-6"
 initial={{ opacity: 0, y: 60 }}
 whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7 }}

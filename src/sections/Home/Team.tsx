@@ -1,6 +1,6 @@
 import TeamGrid from "../../components/TeamGrid";
 import flowerBg from "../../assets/meetourteambg.svg";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
 import member1 from "../../assets/member1.webp";
@@ -69,7 +69,7 @@ const Team = () => {
     return () => clearInterval(interval);
   }, [isInView, isPaused]);
 
-  // START CENTER
+  // ✅ START FROM MIDDLE
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
@@ -83,7 +83,7 @@ const Team = () => {
     slider.scrollLeft = cardWidth * flatMembers.length;
   }, []);
 
-  // AUTO SLIDE
+  // ✅ TRUE INFINITE RIGHT LOOP (NO REVERSE EFFECT)
   useEffect(() => {
     if (!isInView) return;
 
@@ -97,17 +97,21 @@ const Team = () => {
       const gap = 16;
       const cardWidth = firstCard.offsetWidth + gap;
 
+      // move right
       slider.scrollBy({
         left: cardWidth,
         behavior: "smooth",
       });
 
-      const maxScroll = cardWidth * (flatMembers.length * 2 - 2);
+      const halfWidth = slider.scrollWidth / 2;
 
-      if (slider.scrollLeft >= maxScroll) {
+      // 🔥 seamless reset (no visible jump)
+      if (slider.scrollLeft >= halfWidth) {
         setTimeout(() => {
-          slider.scrollLeft = cardWidth * flatMembers.length;
-        }, 400);
+          slider.style.scrollBehavior = "auto";
+          slider.scrollLeft = slider.scrollLeft - halfWidth;
+          slider.style.scrollBehavior = "smooth";
+        }, 300);
       }
     }, 3000);
 
@@ -153,8 +157,6 @@ const Team = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
     >
-      
-      {/* ✅ CHANGED: stack below xl */}
       <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 md:gap-20">
 
         {/* LEFT GRID */}
@@ -185,7 +187,7 @@ const Team = () => {
           {loopMembers.map((member, index) => (
             <div
               key={index}
-              className="min-w-[80%] snap-center flex flex-col items-center transition-all duration-500"
+              className="min-w-[80%] snap-center flex flex-col items-center"
             >
               <div className="relative w-44 h-44">
                 <svg viewBox="0 0 1 1" className="absolute inset-0 w-full h-full z-0">
@@ -210,20 +212,20 @@ const Team = () => {
                   />
                 </svg>
               </div>
-
-              
             </div>
           ))}
         </div>
 
-        {/* ✅ RIGHT SECTION → moves BELOW on <1264px */}
+        {/* RIGHT */}
         <div className="w-full max-w-[520px] text-left md:mt-10">
           <motion.img
             initial={{ y: "-50%" }}
             animate={{ y: ["-50%", "-56%", "-50%"] }}
             transition={{ duration: 10, repeat: Infinity }}
             src={flowerBg}
-className="hidden xl:block absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"/>
+            className="hidden xl:block absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"
+          />
+
           <div className="relative z-10 text-center xl:text-center">
             <h2 className="text-4xl lg:text-5xl text-white">
               {activeMember?.name || "Meet Our Team"}
