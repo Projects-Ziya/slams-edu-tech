@@ -114,10 +114,10 @@ const [visibleCount, setVisibleCount] = useState(4);
       </p>
 
       <div className="flex flex-col md:flex-row md:justify-between gap-6">
-        <p className="pt-4 font-extrabold font-heading  text-3xl md:text-4xl lg:text-5xl">
+        <h1 className="pt-4 font-extrabold font-heading  text-3xl md:text-4xl lg:text-5xl">
           Complete IT Solutions for <br />
           <span className="text-blue-400 "> Your Business Growth </span>
-        </p>
+        </h1>
 
         {/* Desktop button */}
          <div className="pt-4 hidden md:block">

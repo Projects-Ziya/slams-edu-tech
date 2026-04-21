@@ -12,10 +12,10 @@ const WhyChooseSection = () => {
             / Why Choose Us
           </p>
 
-          <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+          <h1 className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
             More than services —
             <span className="text-blue-500"> we create success stories.</span>
-          </p>
+          </h1>
 
           <p className="text-gray-400 mt-6 max-w-xl text-sm md:text-base leading-relaxed">
             We deliver digital solutions and practical training that drive real

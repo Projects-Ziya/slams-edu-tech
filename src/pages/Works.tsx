@@ -23,8 +23,8 @@ const Works = () => {
 
  <p className="font-medium text-[24px] text-[#70A9FF]">Works</p>
       <div className="flex justify-between">
-      <p className="pt-4 font-medium text-xl sm:text-2xl md:text-3xl lg:text-5xl">Smart Solutions for a
-      <span className="text-blue-400"> Digital World </span></p>
+      <h1 className="pt-4 font-medium text-xl sm:text-2xl md:text-3xl lg:text-5xl">Smart Solutions for a
+      <span className="text-blue-400"> Digital World </span></h1>
       <div className="pt-4">
       
           </div>
