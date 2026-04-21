@@ -80,12 +80,12 @@ const slideRight = {
     </p>
 
     <div className="flex flex-col justify-between pr-3">
-      <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+      <h1 className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
         Your Partner in
 <br />
         <span className="text-blue-400 pt-2">
 Digital Transformation        </span>
-      </p>
+      </h1>
 
       <p className="pt-8 sm:pt-4 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
 Slams EduTech is a growing IT and EdTech company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />

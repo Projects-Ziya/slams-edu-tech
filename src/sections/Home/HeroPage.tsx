@@ -78,9 +78,9 @@ export default function HeroPage() {
       {/* Text Content */}
       <div className="absolute z-10 bottom-20 sm:bottom-24 md:bottom-48 left-4 sm:left-6 md:left-12 text-white w-full max-w-[95%] sm:max-w-[90%] md:max-w-[925px]">
 
-        <p className="text-[28px] sm:text-[34px] md:text-[52px] lg:text-[66px] font-[500] tracking-tight font-heading uppercase leading-tight md:leading-[60px] md:px-8 lg:px-12">
+        <h1 className="text-[28px] sm:text-[34px] md:text-[52px] lg:text-[66px] font-[500] tracking-tight font-heading uppercase leading-tight md:leading-[60px] md:px-8 lg:px-12">
           IT Solutions for a Smarter Digital World
-        </p>
+        </h1>
 
        
         <h1 className="text-[15px] sm:text-[16px] md:text-[20px] lg:text-[22px] font-outfit font-[300] tracking-wide leading-6 md:leading-7 md:pl-8 lg:pl-12 pt-4 max-w-[100%] sm:max-w-[95%] md:max-w-[840px]">
@@ -100,8 +100,7 @@ export default function HeroPage() {
         </div>
 
       </div>
-        <p className="text-black">Best IT Company in Kochi for Smart Digital Solutions & Internships
-</p>
+  
 
     </section>
   )
