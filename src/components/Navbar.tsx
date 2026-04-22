@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
           <button
           title="back"
             onClick={() => setMenuOpen(false)}
-            className="text-white border rounded-full p-2 hover:text-gray-300 transition"
+            className="text-white  p-2 hover:text-gray-300 transition"
           >
             <X />
           </button>
