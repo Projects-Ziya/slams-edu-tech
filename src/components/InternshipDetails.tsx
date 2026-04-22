@@ -88,7 +88,7 @@ export default function InternshipDetails() {
   if (!data) return <div className="text-white p-6">Internship not found</div>;
 
   return (
-    <div className="w-full mx-auto text-white px-4 sm:px-6 md:px-12">
+    <div className="w-full mx-auto text-white pt-10 mt-10 px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px]">
 
 
       <ScrollToTop />
@@ -151,30 +151,37 @@ export default function InternshipDetails() {
         </div>
 
         {/* IMAGE */}
-        <div className="w-full max-w-[700px] h-[250px] sm:h-[320px] md:h-[550px] md:pt-24 mx-auto">
-          <svg viewBox="0 0 1 1" preserveAspectRatio="none" className="w-full h-full">
-            <defs>
-              <clipPath id="customClip2" clipPathUnits="objectBoundingBox">
-                <path d="M 0.14 0 L 0.69 0 Q 0.7 0 0.705 0.01 L 0.78 0.11 Q 0.785 0.11 0.79 0.11 L 1 0.11 L 1 0.83 Q 1 0.835 0.995 0.84 L 0.88 1 L 0 1 L 0 0.18 Q 0 0.175 0.01 0.17 L 0.14 0 Z" />
-              </clipPath>
-            </defs>
+       {/* IMAGE */}
+<div className="w-full max-w-[600px] mx-auto">
+  <div className="relative w-full" style={{ paddingBottom: "100%" }}>
+    <svg
+      viewBox="0 0 1 1"
+      preserveAspectRatio="xMidYMid slice"
+      className="absolute inset-0 w-full h-full"
+    >
+      <defs>
+        <clipPath id="customClip2" clipPathUnits="objectBoundingBox">
+          <path d="M 0.14 0 L 0.69 0 Q 0.7 0 0.705 0.01 L 0.78 0.11 Q 0.785 0.11 0.79 0.11 L 1 0.11 L 1 0.83 Q 1 0.835 0.995 0.84 L 0.88 1 L 0 1 L 0 0.18 Q 0 0.175 0.01 0.17 L 0.14 0 Z" />
+        </clipPath>
+      </defs>
 
-            <image
-              href={data.image}
-              width="1"
-              height="1"
-              preserveAspectRatio="xMidYMid slice"
-              clipPath="url(#customClip2)"
-            />
+      <image
+        href={data.image}
+        width="1"
+        height="1"
+        preserveAspectRatio="xMidYMid slice"
+        clipPath="url(#customClip2)"
+      />
 
-            <path
-              d="M 0.14 0 L 0.69 0 Q 0.7 0 0.705 0.01 L 0.78 0.11 Q 0.785 0.11 0.79 0.11 L 1 0.11 L 1 0.83 Q 1 0.835 0.995 0.84 L 0.88 1 L 0 1 L 0 0.18 Q 0 0.175 0.01 0.17 L 0.14 0 Z"
-              fill="none"
-              stroke="white"
-              strokeWidth="0.0018"
-            />
-          </svg>
-        </div>
+      <path
+        d="M 0.14 0 L 0.69 0 Q 0.7 0 0.705 0.01 L 0.78 0.11 Q 0.785 0.11 0.79 0.11 L 1 0.11 L 1 0.83 Q 1 0.835 0.995 0.84 L 0.88 1 L 0 1 L 0 0.18 Q 0 0.175 0.01 0.17 L 0.14 0 Z"
+        fill="none"
+        stroke="white"
+        strokeWidth="0.0018"
+      />
+    </svg>
+  </div>
+</div>
       </div>
 
       {/* DURATION */}

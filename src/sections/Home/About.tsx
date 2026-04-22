@@ -204,14 +204,14 @@ style={{ clipPath: isLargeScreen ? "url(#missionClipMirrorUpsideLarge)" : "none"
 <div className="absolute inset-0 bg-black/30"></div>
 
 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10 text-white pt-12 md:pt-0">
-<div className="max-w-[90%] md:max-w-[500px] pb-6 md:pb-[116px]">
+<div className="max-w-[90%] md:max-w-[500px] pb- md:pb-[116px]">
 
 <h2 className="text-2xl md:text-3xl xl:text-3xl font-heading font-bold">
 Our Vision
 </h2>
 
-<p className="mt-2 md:mt-4 text-sm md:text-base xl:text-lg leading-relaxed">
-We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for meaningful digital experiences and growth. 
+<p className="mt-2 md:mt-4 text-xs sm:text-sm md:text-base xl:text-lg leading-relaxed">
+We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for digital experiences and growth. 
 </p>
 </div>
 </div>

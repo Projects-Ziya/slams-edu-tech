@@ -182,7 +182,7 @@ const Team = () => {
         {/* MOBILE SLIDER */}
         <div
           ref={sliderRef}
-          className="md:hidden w-full overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-[10%] scroll-smooth"
+          className="hide-scrollbar  md:hidden w-full overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-[10%] scroll-smooth"
         >
           {loopMembers.map((member, index) => (
             <div
