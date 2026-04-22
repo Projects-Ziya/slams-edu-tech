@@ -103,7 +103,7 @@ export default function Testimonial() {
     <section className="bg-black text-white w-full py-16 px-4 sm:px-8 lg:px-20 overflow-hidden">
 
       <div className="text-center max-w-2xl mx-auto mb-8">
-        <h1 className="text-xl sm:text-xl md:text-[26px] xl:text-[34px] 2xl:text-[40px] font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent mb-4 pb-3">
+        <h1 className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent">
           Our Team Speaks
         </h1>
         <p className="text-white mt-4 text-[14px] sm:text-[14px] md:text-[16px] xl:text-[20px] 2xl:text-[22px] leading-8 font-[200]">
@@ -245,15 +245,14 @@ export default function Testimonial() {
           })}
         </div>
 
-        <div className="flex justify-center gap-4 mt-2">
-          <button onClick={prev} className="w-10 h-10 rounded-full bg-white/10">
-            <ChevronLeft />
-          </button>
-          <button onClick={next} className="w-10 h-10 rounded-full bg-white/10">
-            <ChevronRight />
-          </button>
-        </div>
-
+       <div className="hidden md:flex justify-center gap-4 mt-2">
+  <button onClick={prev} className="w-10 h-10 rounded-full bg-white/10">
+    <ChevronLeft />
+  </button>
+  <button onClick={next} className="w-10 h-10 rounded-full bg-white/10">
+    <ChevronRight />
+  </button>
+</div>
       </div>
     </section>
   );
