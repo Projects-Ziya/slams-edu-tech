@@ -128,7 +128,7 @@ const Footer: React.FC = () => {
               className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
             >
               <FiPhone />
-              <p>+91 98765 43210</p>
+              <p>+91 7356601666</p>
             </a>
 
             {/* 📧 Email */}
