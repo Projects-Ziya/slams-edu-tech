@@ -34,7 +34,7 @@ const Service = () => {
       <p className="pt-4 text-[#ADADAD] text-sm sm:text-base md:text-lg font-outfit max-w-[1400px]">Slams EduTech delivers custom web, mobile, and business software designed to scale. As a trusted software development company, we work with startups and growing businesses to turn ideas into reliable, high-performance digital products. </p>
     {/* cards */}
 
-      <div className="justify-between  items-end pt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="justify-between  items-end pt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-6 md:gap-8">
           <Suspense fallback={<div className="text-white"><Loader/></div>}>
 
       {services.map((service) => (
