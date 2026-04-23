@@ -227,7 +227,7 @@ const Team = () => {
           />
 
           <div className="relative z-10 text-center xl:text-center">
-            <h2 className="text-4xl lg:text-5xl text-white">
+            <h2 className="text-4xl lg:text-5xl text-white whitespace-nowrap">
               {activeMember?.name || "Meet Our Team"}
             </h2>
 
