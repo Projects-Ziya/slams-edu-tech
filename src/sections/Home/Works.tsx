@@ -65,7 +65,23 @@ import { useEffect, useState } from "react";
 
 const Works = () => {
 
+const [visibleCount, setVisibleCount] = useState(4);
 
+useEffect(() => {
+  const handleResize = () => {
+    const width = window.innerWidth;
+
+    if (width < 768) setVisibleCount(2);
+    else if (width < 1280) setVisibleCount(3); // md → xl
+    else if (width < 1536) setVisibleCount(3); // xl → still 3
+    else setVisibleCount(4); // 2xl → 4 cards
+  };
+
+  handleResize(); // run once
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
 
   return (
@@ -99,7 +115,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         We design and develop real-world digital solutions that help businesses grow and stay ahead in a competitive market.
       </p>
 
-      <motion.div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-6 pt-12 pb-16"
+      <motion.div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-12 pb-16"
                // className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10 "       
 
           initial="hidden"
@@ -114,7 +130,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
     },
   }}>
     
-  {projects.slice(0,4).map((project) => (      
+  {projects.slice(0, visibleCount).map((project) => (      
     
     <motion.div
           key={project.id}
