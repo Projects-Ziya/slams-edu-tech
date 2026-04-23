@@ -89,23 +89,7 @@ import { useEffect, useState } from "react";
 
 const Service = () => {
 
-const [visibleCount, setVisibleCount] = useState(4);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-
-      if (width < 768) setVisibleCount(2);
-      else if (width < 1280) setVisibleCount(3); // md → xl
-      else if (width < 1536) setVisibleCount(3); // xl
-      else setVisibleCount(4); // 2xl
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <section id="service" className="px-5 md:px-12 2xl:px-16 font-outfit pb-32 pt-10">
@@ -140,47 +124,47 @@ transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       </motion.p>
 
       {/* cards */}
-          <motion.div
-        className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-16"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.15,
-            },
+         <motion.div
+  className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-16"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  }}
+>
+  {services.slice(0, 4).map((service) => (
+    <motion.div
+      key={service.id}
+      variants={{
+        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: {
+            duration: 0.5,
+            ease: [0.25, 0.1, 0.25, 1],
           },
-        }}
-      >
-        {services.slice(0, visibleCount).map((service) => (
-          <motion.div
-            key={service.id}
-            variants={{
-              hidden: { opacity: 0, y: 40, scale: 0.95 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                transition: {
-                  duration: 0.5,
-                  ease: [0.25, 0.1, 0.25, 1],
-                },
-              },
-            }}
-          >
-            <Link to={`/service/${service.id}`}>
-              <CustomShapeCard
-                image={service.image}
-                title={service.title}
-                text={service.text}
-                buttonLink={`/service/${service.id}`}
-              />
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
+        },
+      }}
+    >
+      <Link to={`/service/${service.id}`}>
+        <CustomShapeCard
+          image={service.image}
+          title={service.title}
+          text={service.text}
+          buttonLink={`/service/${service.id}`}
+        />
+      </Link>
+    </motion.div>
+  ))}
+</motion.div>
 
       {/* Mobile View More Button */}
       {/* <div className="mt-10 md:hidden w-full">
