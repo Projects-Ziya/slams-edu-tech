@@ -80,10 +80,10 @@ const slideRight = {
     </p>
 
     <div className="flex flex-col justify-between pr-3">
-      <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+      <p className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
         Your Partner in
 <br />
-        <span className="text-blue-400 pt-2">
+        <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
 Digital Transformation        </span>
       </p>
 
@@ -111,12 +111,9 @@ As one of the emerging IT companies in Kochi, we focus on building scalable, cos
 </motion.div>
 
 {/* ================= BIG CARDS ================= */}
-<motion.section 
-className="flex flex-col xl:flex-row pt-20 gap-12 justify-between px-4 md:px-6 xl:px-10 pb-6"
-initial={{ opacity: 0, y: 60 }}
-whileInView={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.7 }}
-viewport={{ once: true, amount: 0.2 }}
+<section 
+className="flex flex-col xl:flex-row pt-10 gap-12 justify-between px-4 md:px-6 xl:px-10 pb-6"
+
 >
 
 <motion.div
@@ -227,7 +224,7 @@ fill="none" stroke="white" strokeWidth="1"/>
 </div>
 </motion.div>
 
-</motion.section>
+</section>
 
 </section>
   )
