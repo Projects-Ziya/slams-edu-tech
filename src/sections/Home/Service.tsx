@@ -76,20 +76,35 @@
 
 
 
-
 import { services } from "@/data/service";
 import CustomShapeCard from "@/components/CustomShapedCard";
-import StarBorder from "../../components/StarBorder";
 import { Link } from "react-router-dom";
 import ViewMoreButton from "../../components/Button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-
+// Derive visibleCount and grid cols from a single source of truth
+function getLayout(width: number): { count: number; cols: string } {
+  if (width < 768)  return { count: 2, cols: "grid-cols-1" };
+  if (width < 1536) return { count: 3, cols: "grid-cols-3" }; // md, lg, xl — laptop
+  return              { count: 4, cols: "grid-cols-4" };       // 2xl — monitor
+}
 
 const Service = () => {
+  // Start with null so we never flash the wrong count on first render
+  const [layout, setLayout] = useState<{ count: number; cols: string } | null>(null);
 
+  useEffect(() => {
+    const update = () => setLayout(getLayout(window.innerWidth));
+    update(); // run immediately on mount
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
+  // Don't render cards until we know the real viewport width
+  if (!layout) return null;
+
+  const { count: visibleCount, cols } = layout;
 
   return (
     <section id="service" className="px-5 md:px-12 2xl:px-16 font-outfit pb-32 pt-10">
@@ -97,94 +112,83 @@ const Service = () => {
         /service we offer
       </p>
 
-      <motion.div className="flex flex-col md:flex-row md:justify-between gap-6"
-       initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
- viewport={{ once: true, amount: 0.2 }}>
+      <motion.div
+        className="flex flex-col md:flex-row md:justify-between gap-6"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
           Complete IT Solutions for <br />
-          <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent"> Your Business Growth </span>
+          <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
+            Your Business Growth
+          </span>
         </h1>
 
         {/* Desktop button */}
-         <div className="pt-4 hidden md:block">
-  <Link to="/service">
-    <ViewMoreButton text=" View More" />
-  </Link>
-</div>
+        <div className="pt-4 hidden md:block">
+          <Link to="/service">
+            <ViewMoreButton text="View More" />
+          </Link>
+        </div>
       </motion.div>
 
-      <motion.p className="pt-4 text-[#ADADAD] text-[16px] md:text-[20px] font-outfit max-w-[1100px]"
+      <motion.p
+        className="pt-4 text-[#ADADAD] text-[16px] md:text-[20px] font-outfit max-w-[1100px]"
         initial={{ opacity: 0, y: 60 }}
-  whileInView={{ opacity: 1, y: 0 }}
-transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }} 
- viewport={{ once: true, amount: 0.2 }}>
-       As a trusted IT company in Kochi, we provide complete software and digital solutions tailored for startups, businesses, and enterprises. Our goal is to deliver simple, scalable, and result-driven technology.
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        As a trusted IT company in Kochi, we provide complete software and digital solutions
+        tailored for startups, businesses, and enterprises. Our goal is to deliver simple,
+        scalable, and result-driven technology.
       </motion.p>
 
-      {/* cards */}
-         <motion.div
-  className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-16"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
-  variants={{
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  }}
->
-  {services.slice(0, 4).map((service) => (
-    <motion.div
-      key={service.id}
-      variants={{
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: {
-            duration: 0.5,
-            ease: [0.25, 0.1, 0.25, 1],
-          },
-        },
-      }}
-    >
-      <Link to={`/service/${service.id}`}>
-        <CustomShapeCard
-          image={service.image}
-          title={service.title}
-          text={service.text}
-          buttonLink={`/service/${service.id}`}
-        />
-      </Link>
-    </motion.div>
-  ))}
-</motion.div>
+      {/* Cards — grid cols driven by the same breakpoint logic, not separate Tailwind classes */}
+      <motion.div
+        className={`grid gap-6 pt-16 ${cols}`}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.15 } },
+        }}
+      >
+        {services.slice(0, visibleCount).map((service) => (
+          <motion.div
+            key={service.id}
+            variants={{
+              hidden: { opacity: 0, y: 40, scale: 0.95 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+              },
+            }}
+          >
+            <Link to={`/service/${service.id}`}>
+              <CustomShapeCard
+                image={service.image}
+                title={service.title}
+                text={service.text}
+                buttonLink={`/service/${service.id}`}
+              />
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
 
       {/* Mobile View More Button */}
-      {/* <div className="mt-10 md:hidden w-full">
-        <StarBorder
-          as={Link}
-          to="/service"
-          className="w-full flex justify-center py-3 text-lg"
-          color="cyan"
-          speed="2s"
-          c1="from-black"
-          c2="via-black"
-          c3="to-gray-800"
-        >
-          View more
-        </StarBorder>
-      </div> */}
       <div className="mt-10 md:hidden w-full">
-         <Link to="/service">
-          <button className="w-full flex justify-center py-3 text-lg border rounded-[10px]">View More</button>
-  </Link>
+        <Link to="/service">
+          <button className="w-full flex justify-center py-3 text-lg border rounded-[10px]">
+            View More
+          </button>
+        </Link>
       </div>
     </section>
   );
