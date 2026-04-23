@@ -108,15 +108,19 @@ const [visibleCount, setVisibleCount] = useState(4);
   }, []);
 
   return (
-    <section id="service" className="px-5 md:px-10 font-outfit pb-32 pt-10">
+    <section id="service" className="px-5 md:px-12 2xl:px-16 font-outfit pb-32 pt-10">
       <p className="font-medium text-[20px] md:text-[24px] text-gray-400">
         /service we offer
       </p>
 
-      <div className="flex flex-col md:flex-row md:justify-between gap-6">
-        <h1 className="pt-4 font-extrabold font-heading  text-3xl md:text-4xl lg:text-5xl">
+      <motion.div className="flex flex-col md:flex-row md:justify-between gap-6"
+       initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
+ viewport={{ once: true, amount: 0.2 }}>
+        <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
           Complete IT Solutions for <br />
-          <span className="text-blue-400 "> Your Business Growth </span>
+          <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent"> Your Business Growth </span>
         </h1>
 
         {/* Desktop button */}
@@ -125,11 +129,15 @@ const [visibleCount, setVisibleCount] = useState(4);
     <ViewMoreButton text=" View More" />
   </Link>
 </div>
-      </div>
+      </motion.div>
 
-      <p className="pt-4 text-[#ADADAD] text-[16px] md:text-[20px] font-outfit max-w-[1100px]">
+      <motion.p className="pt-4 text-[#ADADAD] text-[16px] md:text-[20px] font-outfit max-w-[1100px]"
+        initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }} 
+ viewport={{ once: true, amount: 0.2 }}>
        As a trusted IT company in Kochi, we provide complete software and digital solutions tailored for startups, businesses, and enterprises. Our goal is to deliver simple, scalable, and result-driven technology.
-      </p>
+      </motion.p>
 
       {/* cards */}
           <motion.div

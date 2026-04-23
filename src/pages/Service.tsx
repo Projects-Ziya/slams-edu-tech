@@ -10,7 +10,7 @@ import SEO from "../components/SEO";
 const CustomShapeCard = lazy(() => import('../components/CustomShapedCard'));
 const Service = () => {
   return (
- <section className="px-4 sm:px-6 md:px-8 lg:px-10 font-outfit pb-16 pt-[116px]">
+ <section className="px-5 sm:px-6 md:px-12 2xl:px-16 font-outfit pb-16 pt-[116px]">
 
 <SEO
   title="Best Software Development Company | Custom services"

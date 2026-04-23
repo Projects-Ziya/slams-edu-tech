@@ -54,12 +54,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8 lg:mb-10">
 
             <h2 className="
-              text-2xl
-              sm:text-3xl
-              lg:text-4xl
-              font-semibold
-              whitespace-nowrap
-              font-heading
+              pt-4 font-bold font-heading text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight whitespace-nowrap
             ">
               Founder's Message
             </h2>
