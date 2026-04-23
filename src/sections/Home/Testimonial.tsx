@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Sreekutty from "../../assets/sreekutty.webp";
-import Ashvin from "../../assets/member3.webp";
 import Akshay from "../../assets/Akshay-ui.webp";
 import Hr from "../../assets/anoop.webp";
 import Cinda from "../../assets/member6.webp";
@@ -15,17 +14,9 @@ const testimonials = [
     id: 1,
     name: "Sreekutty PJ",
     role: "Operation Head",
-    text: "Working here is a great journey with a supportive team and constant learning.",
+    text: "Working here has been an incredible journey. The team is supportive, and every day brings new learning opportunities.",
     image: Sreekutty,
-    imgStyle: { scale: 1.2, objectPosition: "top" }
-  },
-  {
-    id: 7,
-    name: "Ashvin",
-    role: "AI/ML Developer",
-    text: "Building AI solutions here is exciting with real-world impact and continuous growth.",
-    image: Ashvin,
-    imgStyle: { scale: 1.2, objectPosition: "top" }
+    imgStyle: { scale: 1.2, objectPosition: "top" },
   },
   {
     id: 2,
@@ -66,6 +57,7 @@ const testimonials = [
     imgStyle: { scale: 1.2, objectPosition: "top" },
   },
 ];
+
 export default function Testimonial() {
   const [active, setActive] = useState(1);
   const [direction, setDirection] = useState(0);
@@ -117,9 +109,9 @@ export default function Testimonial() {
 
       {/* HEADER */}
       <div className="text-center max-w-2xl mx-auto mb-8">
-        <h1 className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent">
+        <h2 className="text-xl sm:text-xl md:text-[26px] xl:text-[34px] 2xl:text-[40px] font-bold bg-gradient-to-r from-[#70A9FF] to-[#345D99] bg-clip-text text-transparent mb-4 pb-3">
           Our Team Speaks
-        </h1>
+        </h2>
         <p className="text-white mt-4 text-[14px] sm:text-[14px] md:text-[16px] xl:text-[20px] 2xl:text-[22px] leading-8 font-[200]">
           We build simple, smart tech solutions that help businesses grow and keep things moving. From idea to launch, we turn concepts into easy-to-use digital products using modern tech, creative thinking, and a practical, hands-on approach that just works.
         </p>
