@@ -39,11 +39,12 @@ export default function Careers() {
         {/* Tabs */}
         <div className="flex justify-center items-center gap-3 sm:gap-4 pb-2 pt-6 sm:pt-8 md:pt-14">
           <button
-            onClick={() => setActiveTab("openings")}
-            className={tabClass("openings")}
-          >
-            Currently Opening Positions
-          </button>
+  onClick={() => setActiveTab("openings")}
+  className={tabClass("openings")}
+>
+  <span className="sm:hidden">Positions</span>
+  <span className="hidden sm:inline">Currently Opening Positions</span>
+</button>
 
           <button
             onClick={() => setActiveTab("internships")}
