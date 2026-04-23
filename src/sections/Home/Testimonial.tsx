@@ -107,8 +107,7 @@ export default function Testimonial() {
           Our Team Speaks
         </h1>
         <p className="text-white mt-4 text-[14px] sm:text-[14px] md:text-[16px] xl:text-[20px] 2xl:text-[22px] leading-8 font-[200]">
-          We build simple, smart tech solutions that help businesses grow and keep things moving.
-        </p>
+We build simple, smart tech solutions that help businesses grow and keep things moving. From idea to launch, we turn concepts into easy-to-use digital products using modern tech, creative thinking, and a practical, hands-on approach that just works.         </p>
       </div>
 
       <div className="relative w-full max-w-[1400px] mx-auto">
@@ -249,7 +248,7 @@ export default function Testimonial() {
   <button onClick={prev} className="w-10 h-10 rounded-full bg-white/10">
     <ChevronLeft />
   </button>
-  <button onClick={next} className="w-10 h-10 rounded-full bg-white/10">
+  <button  onClick={next} className="w-10 h-10 rounded-full bg-white/10">
     <ChevronRight />
   </button>
 </div>
