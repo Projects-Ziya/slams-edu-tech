@@ -19,7 +19,7 @@ const Service = () => {
 />
 
    <ScrollToTop/>
-      <p className="font-medium text-[24px] text-[#70A9FF]">services</p>
+      <p className="font-medium text-[24px] text-[#70A9FF]">Services</p>
       <div className="flex justify-between">
       <p className="pt-4 font-medium text-xl sm:text-2xl md:text-3xl lg:text-5xl">Best Software Development Company  <br /> for your 
       <span className="text-blue-400">  Business Growth </span></p>

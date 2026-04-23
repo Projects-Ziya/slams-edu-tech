@@ -9,34 +9,46 @@ export default function Careers() {
     window.location.hash === "#internships" ? "internships" : "openings"
   );
 
+  const tabClass = (tab: "openings" | "internships") => `
+    w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] xl:max-w-[600px]
+    py-4 px-4
+    rounded-full
+    text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px]
+    font-medium
+    transition-all duration-300
+    border
+    ${
+      activeTab === tab
+        ? "border-blue-400 text-blue-400 shadow-[0_0_16px_2px_rgba(59,110,232,0.35)]"
+        : "border-white/25 text-white hover:border-white/50"
+    }
+  `;
+
   return (
     <div id="careers" className="bg-black text-white flex justify-center">
-     <SEO
-  title="Best IT Internship and Job Career | Start Your Future"
-  description="Explore IT Jobs & Internships in Kochi with the Best IT Internship and Job Training in Software, Web & app Development, UI/UX, AI & ML, and Cybersecurity."
-  keywords="Best IT Internship and Job Career"
-/>
-     
+      <SEO
+        title="Best IT Internship and Job Career | Start Your Future"
+        description="Explore IT Jobs & Internships in Kochi with the Best IT Internship and Job Training in Software, Web & app Development, UI/UX, AI & ML, and Cybersecurity."
+        keywords="Best IT Internship and Job Career"
+      />
+
       <ScrollToTop />
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 pt-10 sm:py-9 md:py-10">
 
         {/* Tabs */}
-        <div className="grid grid-cols-2 text-[18px] sm:text-[22px] md:text-[26px] lg:text-[32px] pb-2 pt-6 sm:pt-8 md:pt-10">
+        <div className="flex justify-center items-center gap-3 sm:gap-4 pb-2 pt-6 sm:pt-8 md:pt-14">
           <button
-            onClick={() => setActiveTab("openings")}
-            className={`py-4 sm:py-5 md:py-6 text-left ${
-              activeTab === "openings" ? "border-b border-white" : ""
-            }`}
-          >
-            Currently Opening Positions
-          </button>
+  onClick={() => setActiveTab("openings")}
+  className={tabClass("openings")}
+>
+  <span className="sm:hidden">Positions</span>
+  <span className="hidden sm:inline">Currently Opening Positions</span>
+</button>
 
           <button
             onClick={() => setActiveTab("internships")}
-            className={`py-4 sm:py-5 md:py-6 text-left ${
-              activeTab === "internships" ? "border-b border-white" : ""
-            }`}
+            className={tabClass("internships")}
           >
             Internships
           </button>
@@ -50,8 +62,6 @@ export default function Careers() {
     </div>
   );
 }
-
-
 
 // import { useState } from "react";
 // import { motion, AnimatePresence } from "framer-motion";

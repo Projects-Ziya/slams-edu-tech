@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Company (Hidden on small screens) */}
-        <div className="hidden md:grid grid-cols-2 gap-8 sm:gap-10 text-center md:text-left pt-10">
+        <div className="hidden lg:grid grid-cols-2 gap-8 sm:gap-10 text-center md:text-left pt-10">
           <div>
             <h3 className="text-lg font-medium mb-4">Company</h3>
             <ul className="space-y-3 text-gray-400 text-sm sm:text-base">
@@ -128,11 +128,11 @@ const Footer: React.FC = () => {
               className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
             >
               <FiPhone />
-              <p>+91 98765 43210</p>
+              <p>+91 7356601666</p>
             </a>
 
             {/* 📧 Email */}
-            <a
+            {/* <a
               href="https://mail.google.com/mail/?view=cm&to=slamsedutech@gmail.com&su=Enquiry%20from%20Website"
               target="_blank"
               rel="noopener noreferrer"
@@ -140,7 +140,14 @@ const Footer: React.FC = () => {
             >
               <FiMail />
               <p>slamsedutech@gmail.com</p>
-            </a>
+            </a> */}
+            <a
+             href="mailto:slamsedutech@gmail.com?subject=Enquiry%20from%20Website"
+  className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
+>
+  <FiMail />
+  <p>slamsedutech@gmail.com</p>
+</a>
           </div>
         </div>
       </div>

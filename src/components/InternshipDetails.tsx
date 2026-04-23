@@ -93,14 +93,18 @@ export default function InternshipDetails() {
 
       <ScrollToTop />
 
+      <div className="">
+        
+      </div>
+
       {/* HERO */}
-      <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div className="mt-20 md:mt-0 lg:mt-0 xl:mt-0 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
         <div className="space-y-5 sm:space-y-6">
 
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] mb-6 pt-4"
+            className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] mb-6 "
           >
             <ChevronLeft />
             Back to all Programs

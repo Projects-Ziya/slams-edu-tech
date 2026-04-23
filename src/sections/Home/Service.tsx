@@ -118,10 +118,10 @@ const [visibleCount, setVisibleCount] = useState(4);
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
  viewport={{ once: true, amount: 0.2 }}>
-        <p className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
+        <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
           Complete IT Solutions for <br />
           <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent"> Your Business Growth </span>
-        </p>
+        </h1>
 
         {/* Desktop button */}
          <div className="pt-4 hidden md:block">

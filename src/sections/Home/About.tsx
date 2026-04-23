@@ -66,7 +66,7 @@ const slideRight = {
 
 {/* ================= MAIN GRID ================= */}
 <motion.div
- className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-6"
+ className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-1 md:px-6"
  initial={{ opacity: 0, y: 60 }}
  whileInView={{ opacity: 1, y: 0 }}
  transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
@@ -80,12 +80,12 @@ const slideRight = {
     </p>
 
     <div className="flex flex-col justify-between pr-3">
-      <p className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
+      <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
         Your Partner in
 <br />
         <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
 Digital Transformation        </span>
-      </p>
+      </h1>
 
       <p className="pt-8 sm:pt-4 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
 Slams EduTech is a growing IT and EdTech company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />
@@ -95,9 +95,9 @@ As one of the emerging IT companies in Kochi, we focus on building scalable, cos
     </div>
   </div>
 
-  <div ref={cardsRef} className="gap-3 pt-2 pr-4 lg:pb-32 xl:pb-8">
+  <div ref={cardsRef} className="gap-3 pt-2 pr- lg:pb-32 xl:pb-8">
 
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col md:flex-row gap-6 ">
       <AboutCard icon={<Gem className="w-6 h-6 text-[#70A9FF]" />} title="Custom Solutions" text="Tailored software and digital solutions built for your unique business need." />
       <AboutCard icon={<Users className="w-6 h-6 text-[#70A9FF]" />} title="Expert Team" text="Skilled developers, designers, and strategists delivering excellence." />
     </div>
@@ -201,14 +201,14 @@ style={{ clipPath: isLargeScreen ? "url(#missionClipMirrorUpsideLarge)" : "none"
 <div className="absolute inset-0 bg-black/30"></div>
 
 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10 text-white pt-12 md:pt-0">
-<div className="max-w-[90%] md:max-w-[500px] pb-6 md:pb-[116px]">
+<div className="max-w-[90%] md:max-w-[500px] pb- md:pb-[116px]">
 
 <h2 className="text-2xl md:text-3xl xl:text-3xl font-heading font-bold">
 Our Vision
 </h2>
 
-<p className="mt-2 md:mt-4 text-sm md:text-base xl:text-lg leading-relaxed">
-We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for meaningful digital experiences and growth. 
+<p className="mt-2 md:mt-4 text-xs sm:text-sm md:text-base xl:text-lg leading-relaxed">
+We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for digital experiences and growth. 
 </p>
 </div>
 </div>
