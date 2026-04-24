@@ -2,7 +2,8 @@ import { useState } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import OpeningPositions from "../components/OpeningPositions";
 import Internships from "../components/Internships";
-import SEO from "../components/SEO";
+import SEO from "../components/SEO"; 
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Careers() {
   const [activeTab, setActiveTab] = useState<"openings" | "internships">(() =>
@@ -25,44 +26,110 @@ export default function Careers() {
   `;
 
   return (
-    <div id="careers" className="bg-black text-white flex justify-center">
-      <SEO
-        title="Best IT Internship and Job Career | Start Your Future"
-        description="Explore IT Jobs & Internships in Kochi with the Best IT Internship and Job Training in Software, Web & app Development, UI/UX, AI & ML, and Cybersecurity."
-        keywords="Best IT Internship and Job Career"
-      />
+    <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
+      {/* Ambient background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[var(--gradient-hero)]" />
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+          className="absolute left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-[var(--brand-blue)]/20 blur-[120px]"
+        />
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+            maskImage: "radial-gradient(ellipse at center, black, transparent 70%)",
+          }}
+        />
+      </div>
 
-      <ScrollToTop />
-
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-10 pt-10 sm:py-9 md:py-10">
-
-        {/* Tabs */}
-        <div className="flex justify-center items-center gap-3 sm:gap-4 pb-2 pt-6 sm:pt-8 md:pt-14">
-          <button
-  onClick={() => setActiveTab("openings")}
-  className={tabClass("openings")}
->
-  <span className="sm:hidden">Positions</span>
-  <span className="hidden sm:inline">Currently Opening Positions</span>
-</button>
-
-          <button
-            onClick={() => setActiveTab("internships")}
-            className={tabClass("internships")}
+      {/* ── HERO — keeps max-w-6xl as before ── */}
+      <section className="relative mx-auto max-w-6xl pt-24 pb-10 sm:pt-32 sm:pb-16">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
+          className="text-center"
+        >
+          <motion.span
+            variants={{
+              hidden: { opacity: 0, y: 12 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/70 backdrop-blur-sm"
           >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-blue-glow)] shadow-[0_0_8px_var(--brand-blue-glow)]" />
+            We're hiring
+          </motion.span>
+
+          <motion.h1
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+            }}
+            className="mt-6 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-white"
+          >
+            Build what's{" "}
+            <span className="bg-gradient-to-r from-white via-[var(--brand-blue-glow)] to-white bg-clip-text text-transparent">
+              next
+            </span>
+            <br className="hidden sm:block" /> with us.
+          </motion.h1>
+
+          <motion.p
+            variants={{
+              hidden: { opacity: 0, y: 16 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+            className="mx-auto mt-6 max-w-xl text-base sm:text-lg text-white/60"
+          >
+            Join a team obsessed with craft, velocity, and ideas that matter.
+            Browse our open roles or apply for an internship.
+          </motion.p>
+        </motion.div>
+      </section>
+
+      {/* ── TABS + CONTENT — full width, own horizontal padding ── */}
+      <section className="relative w-full px-4 sm:px-8 lg:px-16 pb-16 sm:pb-24">
+
+        {/* Tab buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+        >
+          <button onClick={() => setActiveTab("openings")} className={tabClass("openings")}>
+            Currently Opening Positions
+          </button>
+          <button onClick={() => setActiveTab("internships")} className={tabClass("internships")}>
             Internships
           </button>
+        </motion.div>
+
+        {/* Animated content */}
+        <div className="mt-12 sm:mt-16">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {activeTab === "openings" ? <OpeningPositions /> : <Internships />}
+            </motion.div>
+          </AnimatePresence>
         </div>
-
-        {/* Dynamic Component */}
-        {activeTab === "openings" && <OpeningPositions />}
-        {activeTab === "internships" && <Internships />}
-
-      </div>
-    </div>
+      </section>
+    </main> 
   );
 }
-
 // import { useState } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
 
