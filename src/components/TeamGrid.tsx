@@ -43,6 +43,7 @@ const TeamGrid = ({ members, setActiveMember }: Props) => {
         <path d="M328.023 84.8774V576.275" stroke="white" strokeWidth="1" />
         <path d="M214.43 179.323V489.489" stroke="white" strokeWidth="1" />
         <path d="M77.8594 380.993V583.934" stroke="white" strokeWidth="1" />
+        <path d="M590 295 L750 295" stroke="white" strokeWidth="1" />
       </svg>
 
       {/* ✅ CARDS */}
