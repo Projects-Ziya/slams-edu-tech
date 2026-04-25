@@ -9,7 +9,7 @@ import App from './App.tsx'
 
 // Lenis smooth scroll
 const lenis = new Lenis({
-  duration: 1.2,
+  duration: 1.7,  //RECOMENTED 1.2
   smoothWheel: true,
 })
 

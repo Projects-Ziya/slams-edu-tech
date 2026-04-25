@@ -281,14 +281,20 @@ export default function InternshipDetails() {
               className="bg-black border border-gray-500 p-3 rounded-xl"
             />
 
-            <input
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="Phone*"
-              required
-              className="bg-black border border-gray-500 p-3 rounded-xl"
-            />
-
+          <input
+  type="tel"
+  value={form.phone}
+  onChange={(e) => {
+    const value = e.target.value.replace(/\D/g, ""); // remove non-numbers
+    if (value.length <= 12) {
+      setForm({ ...form, phone: value });
+    }
+  }}
+  placeholder="Phone*"
+  required
+  maxLength={10}
+  className="bg-black border border-gray-500 p-3 rounded-xl"
+/>
             <input
               value={form.email}
               onChange={handleChange}

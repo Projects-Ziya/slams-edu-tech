@@ -13,15 +13,31 @@ const ContactSection: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   // handle input change
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({
-      ...form,
-      [e.target.placeholder.includes("Full Name") ? "fullName" :
-       e.target.placeholder.includes("Mobile") ? "mobile" :
-       e.target.placeholder.includes("Email") ? "email" : "project"]: e.target.value
-    });
-  };
+ const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  const key =
+    e.target.placeholder.includes("Full Name")
+      ? "fullName"
+      : e.target.placeholder.includes("Mobile")
+      ? "mobile"
+      : e.target.placeholder.includes("Email")
+      ? "email"
+      : "project";
 
+  let value = e.target.value;
+
+  // ✅ Special handling for mobile
+  if (key === "mobile") {
+    value = value.replace(/\D/g, ""); // remove non-numbers
+    if (value.length > 10) return; // limit to 10 digits
+  }
+
+  setForm({
+    ...form,
+    [key]: value,
+  });
+};
   // submit form
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -161,14 +177,18 @@ Looking for the best IT company in Kochi? Get in touch with us to grow your busi
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="tel"
-            placeholder="Mobile Number"
-            value={form.mobile}
-            onChange={handleChange}
-            required
-            className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
-          />
+       <input
+  type="tel"
+  name="mobile"
+  placeholder="Mobile Number"
+  value={form.mobile}
+  onChange={handleChange}
+  required
+  maxLength={10}
+  inputMode="numeric"
+              className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+
+/>
 
           <input
             type="email"
