@@ -77,7 +77,7 @@ const ProjectScene = ({
         style={{ background: gradientMap[gradientColor] }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-20 lg:items-center">
+      <div className="relative z-10 mx-auto max-w-7xl 2xl:max-w-[1536px] w-full px-4 sm:px-6 lg:px-8 2xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-20 2xl:gap-40 lg:items-center">
         
         {/* TEXT CONTENT 1: Title (Always rendered, only shows title on mobile, both on desktop) */}
         <div className={`flex flex-col justify-center order-1 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
