@@ -20,10 +20,27 @@ export default function JobDetails() {
   if (!job) {
     return <div className="text-white p-6">Job not found</div>;
   }
+const handleChange = (e: any) => {
+  const { name, value } = e.target;
 
-  const handleChange = (e: any) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  if (name === "phone") {
+    // remove all non-numeric characters
+    const numericValue = value.replace(/\D/g, "");
+
+    // limit to 10 digits
+    if (numericValue.length <= 12) {
+      setForm((prev) => ({
+        ...prev,
+        phone: numericValue,
+      }));
+    }
+  } else {
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+};
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -182,14 +199,18 @@ export default function JobDetails() {
 
             <div>
               <label className="text-sm sm:text-base">Phone Number *</label>
-              <input
-              title="phone"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                className="w-full mt-1 bg-black border border-gray-700 rounded-md p-3 text-sm sm:text-base"
-                required
-              />
+            <input
+  type="tel"
+  title="phone"
+  name="phone"
+  value={form.phone}
+  onChange={handleChange}
+  maxLength={10}
+  inputMode="numeric"
+  pattern="[0-9]{10}"
+  className="w-full mt-1 bg-black border border-gray-700 rounded-md p-3 text-sm sm:text-base"
+  required
+/>
             </div>
                 
             <div>
