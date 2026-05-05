@@ -112,7 +112,7 @@ sub:[
 ],
 
     description:
-      "Juggle Laundry is your everyday laundry partner, making clothes cleaning simple, fast, and stress-free. We take care of washing, drying, and folding your clothes so you can focus on what matters most. With doorstep pickup and delivery, transparent pricing, and careful handling of  garments, Juggle Laundry ensures freshness and hygiene in every load. From daily wear to delicate fabrics, we treat every piece with attention and professional care.",
+      "Juggle Laundry is your everyday laundry partner, making clothes cleaning simple, fast, and stress-free. We take care of washing, drying, and folding your clothes so you can focus on what matters most. With doorstep pickup and delivery, transparent pricing, and careful handling of garments, Juggle Laundry ensures freshness and hygiene in every load.",
 
     challenge: [
       "User trust & transparency: Making pricing, cloth handling, and status updates clear to avoid customer confusion.",
@@ -150,7 +150,7 @@ sub:[
 
 
  description:
-      "This application is designed to simplify certificate management and career growth in one secure platform. Users can apply for course completion certificates, track their application status, and securely store their credentials digitally. The app also enables users to apply for relevant job opportunities directly based on their qualifications and skills. It provides curated industry news and updates to keep users informed about career trends and opportunities. Additionally, users can explore and purchase new courses to upgrade their skills and enhance their professional profile.",
+      "This application simplifies certificate management and career growth in one secure platform. Users can apply for course certificates, track their status, and securely store credentials digitally. The app also enables users to apply for relevant job opportunities based on their skills, while keeping them informed with curated industry news.",
 
 head:"How We Built a Smarter Career & Certification Platform ",
 
@@ -261,7 +261,7 @@ sub:[
 
 
  description:
-      "This investment app is a secure and modern platform designed to help you grow your wealth with confidence and clarity. It offers flexible short-term and long-term investment plans with transparent returns, clear timelines, and real-time profit tracking. With seamless KYC verification, strong security features like MPIN and biometric access, and instant notifications for every transaction, managing your investments becomes simple and stress-free. From investing and tracking earnings to downloading receipts and handling withdrawals, everything is streamlined into one intuitive dashboard. Built on trust, transparency, and structured financial planning, the app empowers you to invest smarter, safer, and more efficiently — all in one place.",
+      "This investment app is a secure platform designed to help you grow your wealth with confidence. It offers flexible short-term and long-term investment plans with transparent returns and real-time profit tracking. With seamless KYC verification, strong security features, and instant notifications, managing your investments becomes simple and stress-free.",
 
 head:"How We Built a Smarter Investment & Wealth Platform",
 
@@ -316,7 +316,7 @@ sub:[
 
 
  description:
-"Slams Ride is a modern and reliable bike rental service built to give riders freedom on the road for daily commutes, city exploration, and weekend trips. It provides safe, affordable, and well maintained bikes suited to different travel needs and riding styles. Users can choose flexible plans such as hourly, daily, or long term rentals to match their schedule and budget. With simple booking, transparent pricing, and quick pickup support, the service removes common rental hassles. Every trip is designed to be smooth and convenient so customers can focus on enjoying the ride. Slams Ride promotes smart mobility and cost effective, eco friendly travel. It benefits commuters and tourists alike.",
+"Slams Ride is a modern and reliable bike rental service built to give riders freedom on the road for daily commutes, city exploration, and weekend trips. Users can choose flexible plans such as hourly, daily, or long-term rentals to match their schedule and budget. With simple booking, transparent pricing, and quick pickup support, the service removes common rental hassles.",
 head:"How We Built a Better Bike Rental Experience",
 
 head2:[
@@ -370,7 +370,7 @@ sub:[
 
 
  description:
-"Ziya Learn Mate is an all-in-one learning platform by ZIYA ACADEMY that supports students through every stage of their academic and career journey. The app combines school programs, university and IGNOU guidance, skill development courses, competitive exam preparation, and language training in one place. With a single account, learners access structured study plans, live and recorded classes, digital materials, mock tests, and regular practice sessions. Built-in performance tracking helps users monitor progress, stay organized, and focus on clear goals while moving step by step toward success. It empowers learners with confidence and practical knowledge for future challenges globally.",
+"Ziya Learn Mate is an all-in-one learning platform that supports students through every stage of their academic and career journey. The app combines school programs, university guidance, skill development courses, and exam preparation in one place. With a single account, learners access structured study plans, live classes, and performance tracking to reach their goals.",
 head:"How We Built a Better Learning Experience",
 
 head2:[
@@ -424,7 +424,7 @@ sub:[
 
 
  description:
-"Pro Hire is a professional HR and recruitment solutions company dedicated to connecting the right talent with the right opportunities by helping businesses build strong teams through reliable, efficient, and strategic hiring services across industries, simplifying recruitment with structured screening, talent sourcing, and workforce management while serving employers seeking skilled professionals and job seekers pursuing the right career path, delivering transparent experiences, permanent and contract staffing, executive search, HR consulting, workforce planning, candidate screening, shortlisting, and end-to-end recruitment support, guided by quality hiring, professional integrity, long-term partnerships, and the promise, Pro Hire – Connecting Talent with Opportunity for sustainable growth and business results.",
+"Pro Hire is a professional HR and recruitment company dedicated to connecting the right talent with the right opportunities. We help businesses build strong teams through reliable, efficient, and strategic hiring services across industries. From permanent and contract staffing to executive search and end-to-end recruitment support, we simplify the hiring process for sustainable growth.",
 head:"How We Build Better Hiring Solutions",
 
 head2:[
@@ -478,7 +478,7 @@ sub:[
 
 
  description:
-"Direct Share is a fast and secure offline file transfer solution that lets users share photos, videos, music, documents, APK files, and folders with nearby devices without using mobile data or the internet by creating a direct connection through local Wi-Fi or hotspot, supporting large transfers with no size limits so HD videos and archives move smoothly, enabling APK selection from storage for easy offline app sharing, preserving full folder structures without zipping, keeping every transfer private because files travel directly between devices with no external servers involved, and using a simple flow where the sender selects items, the receiver connects, and content is delivered instantly.",
+"Direct Share is a fast and secure offline file transfer solution that lets users share photos, videos, documents, and folders with nearby devices without mobile data. By creating a direct connection through local Wi-Fi, it supports large transfers with no size limits. Every transfer remains private, preserving full folder structures with a simple, instant delivery flow.",
 head:"How We Built a Better File Sharing Experience",
 
 head2:[
@@ -532,7 +532,7 @@ sub:[
 
 
  description:
-"This app connects local businesses with real users to boost[] visibility and brand awareness in target areas. Businesses create promotional campaigns and assign simple engagement tasks such as store visits, content sharing, reviews, or offer promotion. Users complete tasks through the mobile app and earn rewards for verified actions. The system provides transparent tracking, secure submissions, and performance based payouts. Companies gain authentic local exposure, wider reach, and stronger community trust, while users enjoy flexible earning opportunities and help nearby brands grow through genuine participation. Results are measurable and campaigns remain easy to manage daily.",
+"This app connects local businesses with real users to boost visibility and brand awareness in target areas. Businesses assign simple engagement tasks such as store visits or reviews, and users earn rewards for verified actions. With transparent tracking and secure payouts, companies gain authentic local exposure while users enjoy flexible earning opportunities.",
 head:"How We Built a Smarter Local Promotion Platform",
 
 head2:[
