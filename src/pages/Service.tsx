@@ -102,6 +102,17 @@ const Service = () => {
           ))}
         </Suspense>
       </motion.div>
+
+      {/* ── Keyframes ── */}
+      <style>{`
+        @keyframes svcColorPulse {
+          0%   { color: #ffffff; }
+          28%  { color: #ffffff; }
+          52%  { color: #70A9FF; }
+          76%  { color: #70A9FF; }
+          100% { color: #ffffff; }
+        }
+      `}</style>
     </section>
   );
 };

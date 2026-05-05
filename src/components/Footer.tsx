@@ -11,7 +11,7 @@ import { HashLink } from "react-router-hash-link";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-black text-white px-6 sm:px-10 lg:px-20 pt-6 pb-6 relative overflow-hidden text-center md:text-left">
+    <footer className="w-full bg-black text-white px-6 sm:px-10 lg:px-20 pt-6 pb-6 relative overflow-hidden text-left">
       <hr className="border-gray-700 pb-6" />
 
       {/* Top Section */}
@@ -22,14 +22,14 @@ const Footer: React.FC = () => {
           <img
             src={logo}
             alt="Logo"
-            className="h-24 w-auto object-contain mx-auto md:mx-0"
+            className="h-24 w-auto object-contain"
           />
 
-          <h2 className="text-[18px] max-w-[400px] leading-snug text-[#A1A1A1] mx-auto md:mx-0">
+          <h2 className="text-[18px] max-w-[400px] leading-snug text-[#A1A1A1]">
             Empowering future tech leaders through industry-ready training and comprehensive IT solutions. Start your journey today.
           </h2>
 
-          <div className="flex gap-4 mt-6 justify-center md:justify-start flex-wrap">
+          <div className="flex gap-4 mt-6 flex-wrap">
             <a
               title="btn"
               href="https://www.instagram.com/slams.tech?igsh=MWJnOTVrYXBtbm9tcA=="
@@ -39,10 +39,10 @@ const Footer: React.FC = () => {
                 className="text-white hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-500 rounded-md w-8 h-8 p-1 flex items-center justify-center transition-colors duration-300"
               />
             </a>
-
+                
             <a
               title="btn"
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61586783287019"
               className="hover:bg-blue-400 rounded-md w-8 h-8 flex items-center justify-center transition-colors duration-300"
             >
               <FaFacebookF size={18} />
@@ -58,16 +58,21 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Company (Hidden on small screens) */}
-        <div className="hidden lg:grid grid-cols-2 gap-8 sm:gap-10 text-center md:text-left pt-10">
+        {/* Company */}
+        <div className="hidden lg:grid grid-cols-2 gap-8 sm:gap-10 text-left pt-10">
           <div>
-            <h3 className="text-lg font-medium mb-4">Company</h3>
+            <h3 className="text-lg font-medium mb-4 ">Company</h3>
             <ul className="space-y-3 text-gray-400 text-sm sm:text-base">
-              <li>
-                <HashLink smooth to="/#hero" className="hover:text-white transition">
-                  Home
-                </HashLink>
-              </li>
+             <li>
+  <HashLink
+    smooth
+    to="/#hero"
+    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    className="hover:text-white transition"
+  >
+    Home
+  </HashLink>
+</li>
               <li>
                 <HashLink smooth to="/#service" className="hover:text-white transition">
                   Services
@@ -83,11 +88,11 @@ const Footer: React.FC = () => {
 
           <div className="mt-0 md:mt-8 lg:mt-10">
             <ul className="space-y-3 text-gray-400 text-sm sm:text-base">
-              <li>
-                <HashLink smooth to="/#positions" className="hover:text-white transition">
-                  Careers
-                </HashLink>
-              </li>
+            <li>
+  <HashLink smooth to="/careers#positions" className="hover:text-white transition">
+    Careers
+  </HashLink>
+</li>
               <li>
                 <HashLink smooth to="/#about" className="hover:text-white transition">
                   About us
@@ -103,17 +108,16 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Contact */}
-        <div className="pt-10">
+        <div className="md:pt-10">
           <h3 className="text-lg font-medium mb-4">Contact Us</h3>
 
           <div className="space-y-4 text-gray-400 text-sm sm:text-base">
             
-            {/* 📍 Map */}
             <a
               href="https://www.google.com/maps/search/?api=1&query=Slams+edu+tech+Muppathadam+junction+Edayar+Aluva+Kochi+Kerala+683110"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-start gap-3 justify-center md:justify-start hover:text-white transition"
+              className="flex items-start gap-3 hover:text-white transition"
             >
               <FiMapPin className="mt-1 flex-shrink-0" />
               <p>
@@ -122,32 +126,21 @@ const Footer: React.FC = () => {
               </p>
             </a>
 
-            {/* 📞 Phone */}
             <a
               href="tel:+919876543210"
-              className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
+              className="flex items-center gap-3 hover:text-white transition"
             >
               <FiPhone />
               <p>+91 7356601666</p>
             </a>
 
-            {/* 📧 Email */}
-            {/* <a
-              href="https://mail.google.com/mail/?view=cm&to=slamsedutech@gmail.com&su=Enquiry%20from%20Website"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
+            <a
+              href="mailto:slamsedutech@gmail.com?subject=Enquiry%20from%20Website"
+              className="flex items-center gap-3 hover:text-white transition"
             >
               <FiMail />
               <p>slamsedutech@gmail.com</p>
-            </a> */}
-            <a
-             href="mailto:slamsedutech@gmail.com?subject=Enquiry%20from%20Website"
-  className="flex items-center gap-3 justify-center md:justify-start hover:text-white transition"
->
-  <FiMail />
-  <p>slamsedutech@gmail.com</p>
-</a>
+            </a>
           </div>
         </div>
       </div>
@@ -160,7 +153,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800 pt-4 flex flex-col md:flex-row items-center justify-between text-xs sm:text-sm text-gray-500 gap-3">
+      <div className="border-t border-gray-800 pt-4 flex flex-col md:flex-row items-start justify-between text-xs sm:text-sm text-gray-500 gap-3">
         <p>© 2026 slams. All rights reserved</p>
 
         <div className="flex gap-6">

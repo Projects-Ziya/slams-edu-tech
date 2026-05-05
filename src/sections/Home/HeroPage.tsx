@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import robot     from "../../assets/robot.png";
 import spaceship from "../../assets/spaceship.png";
 import globe     from "../../assets/globe.png";
-import bgFar     from "../../assets/techspacebg.png";
+import bgFar     from "../../assets/bggg.jpg";
 import bgMid     from "../../assets/techspacebg2.png";
 
 import img1 from "../../assets/works/works2.webp";

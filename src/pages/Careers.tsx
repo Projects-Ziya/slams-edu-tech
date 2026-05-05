@@ -1,135 +1,374 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import OpeningPositions from "../components/OpeningPositions";
 import Internships from "../components/Internships";
-import SEO from "../components/SEO"; 
-import { AnimatePresence, motion } from "framer-motion";
+import SEO from "../components/SEO";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
 
 export default function Careers() {
   const [activeTab, setActiveTab] = useState<"openings" | "internships">(() =>
     window.location.hash === "#internships" ? "internships" : "openings"
   );
 
+  // ── Scroll tracking ────────────────────────────────────────────────────────
+  // We track scroll inside the outer container so we can derive per-element
+  // transforms without any layout thrash.
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollY } = useScroll();
+
+  // Hero fades out over the first 60vh of scroll
+  const heroOpacity   = useTransform(scrollY, [0, window.innerHeight * 0.55], [1, 0]);
+  const heroScale     = useTransform(scrollY, [0, window.innerHeight * 0.55], [1, 0.92]);
+  const heroY         = useTransform(scrollY, [0, window.innerHeight * 0.55], [0, -60]);
+  const heroBlur      = useTransform(scrollY, [0, window.innerHeight * 0.45], [0, 8]);
+
+  // Background parallax — moves slower than text
+  const bgY           = useTransform(scrollY, [0, window.innerHeight], [0, 120]);
+
+  // Blue → black transition: bg opacity fades over first 80vh
+  const bgOpacity     = useTransform(scrollY, [0, window.innerHeight * 0.80], [1, 0]);
+
+  // Tabs appear after hero has mostly faded (after 50vh of scroll)
+  const tabsOpacity   = useTransform(scrollY, [window.innerHeight * 0.45, window.innerHeight * 0.70], [0, 1]);
+  const tabsY         = useTransform(scrollY, [window.innerHeight * 0.45, window.innerHeight * 0.70], [40, 0]);
+
+  // Track whether tabs are "visible" to control pointer-events
+  const [tabsVisible, setTabsVisible] = useState(false);
+  useMotionValueEvent(tabsOpacity, "change", (v) => setTabsVisible(v > 0.05));
+
   const tabClass = (tab: "openings" | "internships") => `
     w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] xl:max-w-[600px]
-    py-4 px-4
-    rounded-full
+    py-4 px-4 rounded-full
     text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px]
-    font-medium
-    transition-all duration-300
-    border
-    ${
-      activeTab === tab
-        ? "border-blue-400 text-blue-400 shadow-[0_0_16px_2px_rgba(59,110,232,0.35)]"
-        : "border-white/25 text-white hover:border-white/50"
+    font-medium transition-all duration-300 border
+    ${activeTab === tab
+      ? "border-blue-400 text-blue-400 shadow-[0_0_16px_2px_rgba(59,130,246,0.4)]"
+      : "border-white/20 text-white hover:border-white/50"
     }
   `;
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-background text-foreground">
-      {/* Ambient background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[var(--gradient-hero)]" />
-        <motion.div
-          aria-hidden
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="absolute left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-[var(--brand-blue)]/20 blur-[120px]"
-        />
+    <main
+      ref={containerRef}
+      className="relative text-white"
+      // Extra scroll height so the hero → content transition has room
+      style={{ background: "#080d1a" }}
+    >
+      <SEO title="Careers" description="Join our team" />
+      <ScrollToTop />
+
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          STICKY HERO — stays fixed while user scrolls through the "scroll space"
+          The outer div is 200vh tall (100vh hero + 100vh transition runway).
+          The inner sticky panel pins to viewport, so the hero text sits still
+          while scroll progress drives all transforms.
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <div style={{ height: "100vh" }}>
         <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-            maskImage: "radial-gradient(ellipse at center, black, transparent 70%)",
-          }}
-        />
+          className="sticky top-0 overflow-hidden"
+          style={{ height: "100vh" }}
+        > 
+
+          {/* ── BACKGROUND LAYERS (parallax + fade) ── */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            style={{ y: bgY }}
+          >
+            {/* Dark navy base — scales with bgY so it moves slower than text */}
+            <motion.div
+              className="absolute inset-0"
+              style={{
+                opacity: bgOpacity,
+                background: "linear-gradient(160deg, #0a0f1e 0%, #0d1527 50%, #080d1a 100%)",
+              }}
+            />
+
+            {/* Centered blue radial orb */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.4 }}
+              style={{
+                position: "absolute",
+                top: "-80px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "min(900px, 100vw)",
+                height: "600px",
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(ellipse at center, rgba(56,108,220,0.24) 0%, rgba(30,64,175,0.10) 50%, transparent 72%)",
+                filter: "blur(40px)",
+              }}
+            />
+
+            {/* Subtle grid */}
+            <div
+              className="absolute inset-0"
+              style={{
+                opacity: 0.04,
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.9) 1px, transparent 1px)",
+                backgroundSize: "60px 60px",
+                maskImage:
+                  "radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%)",
+              }}
+            />
+          </motion.div>
+
+          {/* ── HERO CONTENT (fades / scales / blurs on scroll) ── */}
+          <motion.div
+            className="absolute inset-0 flex flex-col items-center justify-center px-4"
+            style={{
+              opacity: heroOpacity,
+              scale: heroScale,
+              y: heroY,
+              // Framer Motion doesn't natively support filter transforms,
+              // so we use a style tag approach with a CSS variable
+              filter: useTransform(heroBlur, (v) => `blur(${v}px)`),
+            }}
+          >
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+              }}
+              className="text-center w-full max-w-[1400px] mx-auto"
+            >
+
+              {/* ── We're Hiring badge ── */}
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0, y: 14 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                }}
+                className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8
+                  text-xs font-medium uppercase tracking-[0.18em] backdrop-blur-sm"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  background: "rgba(255,255,255,0.03)",
+                  color: "rgba(255,255,255,0.65)",
+                }}
+              >
+                <span className="relative flex h-1.5 w-1.5">
+                  <span
+                    className="absolute inline-flex h-full w-full rounded-full animate-ping"
+                    style={{ background: "#60a5fa", opacity: 0.6 }}
+                  />
+                  <span
+                    className="relative inline-flex h-1.5 w-1.5 rounded-full"
+                    style={{ background: "#60a5fa", boxShadow: "0 0 8px #60a5fa" }}
+                  />
+                </span>
+                We're hiring
+              </motion.span>
+
+              {/* ── Main heading ── */}
+              {/*
+                Font scales with clamp():
+                  min  = 2.8rem  (mobile ~375px)
+                  mid  = 8.5vw   (fluid scaling)
+                  max  = 7.5rem  (cap — prevents overflow on 4K but still large)
+                On 4K (3840px wide) 8.5vw ≈ 326px which hits the 7.5rem = 120px cap.
+                Adjust max upward (e.g. 10rem) if you want even bigger on 4K.
+              */}
+              <motion.h1
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1, ease: [0.44, 1, 0.56, 1] },
+                  },
+                }}
+                className="font-semibold tracking-tighter text-white leading-[0.95]"
+                style={{
+                  fontSize: "clamp(2.8rem, 8.5vw, 8.5rem)",
+                  textShadow: "0 2px 40px rgba(0,0,0,0.4)",
+                }}
+              >
+                Build what's{" "}
+
+                {/* ── "next" — color pulse + sweep shine + glowing underline ── */}
+                <span className="relative inline-block">
+
+                  {/*
+                    Two layered effects on "next":
+                    1. colorPulse   — whole word breathes white ↔ sky-blue
+                    2. shineSweep   — a bright highlight scans left→right over it
+                                      (positioned absolutely, pointer-events:none)
+                  */}
+                  <span
+                    className="relative z-10"
+                    style={{ animation: "colorPulse 3s ease-in-out infinite" }}
+                  >
+                    next
+
+                    {/* Shine sweep overlay — spans the word, clips to text shape
+                        via a semi-transparent white gradient moving L→R */}
+                    
+                  </span>
+
+                  {/* Glowing underline — draws in from left once, stays */}
+                  <motion.span
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ duration: 1.1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    aria-hidden
+                    style={{
+                      position: "absolute",
+                      bottom: "-6px",
+                      left: 0,
+                      width: "100%",
+                      height: "3px",
+                      transformOrigin: "left center",
+                      background:
+                        "linear-gradient(to right, transparent 0%, #60a5fa 30%, #93c5fd 70%, transparent 100%)",
+                      borderRadius: "2px",
+                      filter:
+                        "drop-shadow(0 0 6px #60a5fa) drop-shadow(0 0 18px rgba(96,165,250,0.6))",
+                    }}
+                  />
+                </span>
+
+                <br />with us.
+              </motion.h1>
+
+              {/* ── Subheading ── */}
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.1 } },
+                }}
+                className="mx-auto mt-7 max-w-xl leading-relaxed"
+                style={{
+                  fontSize: "clamp(0.95rem, 1.6vw, 1.2rem)",
+                  color: "rgba(255,255,255,0.52)",
+                }}
+              >
+                Join a team obsessed with craft, velocity, and ideas that matter.
+                Browse our open roles or apply for an internship.
+              </motion.p>
+
+              {/* Scroll hint — fades out quickly on scroll */}
+              <motion.div
+                style={{ opacity: heroOpacity }}
+                className="mt-12 flex flex-col items-center gap-2"
+              >
+                <span
+                  className="text-[11px] uppercase tracking-[0.2em]"
+                  style={{ color: "rgba(255,255,255,0.25)" }}
+                >
+                  Scroll to explore
+                </span>
+                <motion.div
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                  style={{
+                    width: "1px",
+                    height: "32px",
+                    background:
+                      "linear-gradient(to bottom, rgba(96,165,250,0.6), transparent)",
+                  }}
+                />
+              </motion.div>
+
+            </motion.div>
+          </motion.div>
+
+          {/* ── Bottom gradient fade: blue bg → pure black ── */}
+          {/* This gradient sits at the very bottom of the sticky hero and
+              creates the seamless blue→black bleed into the content section */}
+          <div
+            className="absolute bottom-0 left-0 right-0 pointer-events-none"
+            style={{
+              height: "35%",
+              background:
+                "linear-gradient(to bottom, transparent 0%, rgba(8,13,26,0.6) 50%, #000000 100%)",
+              zIndex: 10,
+            }}
+          />
+        </div>
       </div>
 
-      {/* ── HERO — keeps max-w-6xl as before ── */}
-      <section className="relative mx-auto max-w-6xl pt-24 pb-10 sm:pt-32 sm:pb-16">
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
-          className="text-center"
+      {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          TABS + CONTENT — pure black background, fades in as hero fades out
+      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+      <div style={{ background: "#000000", position: "relative", zIndex: 20 }}>
+        <motion.section
+          className="w-full px-4 sm:px-8 lg:px-16 pt-16 pb-16 sm:pb-24"
+          style={{
+            opacity: tabsOpacity,
+            y: tabsY,
+            pointerEvents: tabsVisible ? "auto" : "none",
+          }}
         >
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, y: 12 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/70 backdrop-blur-sm"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-blue-glow)] shadow-[0_0_8px_var(--brand-blue-glow)]" />
-            We're hiring
-          </motion.span>
+          {/* Tabs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <button onClick={() => setActiveTab("openings")} className={tabClass("openings")}>
+              Currently Opening Positions
+            </button>
+            <button onClick={() => setActiveTab("internships")} className={tabClass("internships")}>
+              Internships
+            </button>
+          </div>
 
-          <motion.h1
-            variants={{
-              hidden: { opacity: 0, y: 24 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-            }}
-            className="mt-6 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-white"
-          >
-            Build what's{" "}
-            <span className="bg-gradient-to-r from-white via-[var(--brand-blue-glow)] to-white bg-clip-text text-transparent">
-              next
-            </span>
-            <br className="hidden sm:block" /> with us.
-          </motion.h1>
+          {/* Content */}
+          <div className="mt-12 sm:mt-16">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {activeTab === "openings" ? <OpeningPositions /> : <Internships />}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.section>
+      </div>
 
-          <motion.p
-            variants={{
-              hidden: { opacity: 0, y: 16 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-            className="mx-auto mt-6 max-w-xl text-base sm:text-lg text-white/60"
-          >
-            Join a team obsessed with craft, velocity, and ideas that matter.
-            Browse our open roles or apply for an internship.
-          </motion.p>
-        </motion.div>
-      </section>
+      {/* ── KEYFRAMES ── */}
+      <style>{`
 
-      {/* ── TABS + CONTENT — full width, own horizontal padding ── */}
-      <section className="relative w-full px-4 sm:px-8 lg:px-16 pb-16 sm:pb-24">
+        /* "next" — whole word breathes white ↔ sky-blue */
+        @keyframes colorPulse {
+          0%   { color: #ffffff; }
+          28%  { color: #ffffff; }
+          52%  { color: #7ec8ff; }
+          76%  { color: #7ec8ff; }
+          100% { color: #ffffff; }
+        }
 
-        {/* Tab buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-        >
-          <button onClick={() => setActiveTab("openings")} className={tabClass("openings")}>
-            Currently Opening Positions
-          </button>
-          <button onClick={() => setActiveTab("internships")} className={tabClass("internships")}>
-            Internships
-          </button>
-        </motion.div>
+        /* Shine sweep — a highlight scans left→right across "next"
+           synced to the same 3s cycle as colorPulse */
+        @keyframes shineSweep {
+          0%   { background-position: -100% 0; }
+          40%  { background-position: -100% 0; }   /* hold off-left while at white */
+          75%  { background-position:  200% 0; }   /* sweep through while blue */
+          100% { background-position:  200% 0; }
+        }
 
-        {/* Animated content */}
-        <div className="mt-12 sm:mt-16">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {activeTab === "openings" ? <OpeningPositions /> : <Internships />}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-    </main> 
+      `}</style>
+    </main>
   );
-}
+} 
+
+
+
 // import { useState } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
 

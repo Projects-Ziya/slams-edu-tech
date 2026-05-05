@@ -72,6 +72,7 @@ const ContactSection: React.FC = () => {
 
     setLoading(false);
   };
+  
 
   return (
     <section
@@ -101,10 +102,12 @@ const ContactSection: React.FC = () => {
         / Get In Touch
       </p>
 
-      <p className="pt-5 font-extrabold font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+        <p className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
         Start Your Journey <br />
-        With <span className="text-blue-500">Slams EduTech</span>
-      </p>
+        With  <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
+           Slams EduTech
+          </span>
+        </p>
 
       <p className="text-gray-400 mt-6 max-w-md text-lg">
 Looking for the best IT company in Kochi? Get in touch with us to grow your business or start your career in technology.      </p>
@@ -164,62 +167,72 @@ Looking for the best IT company in Kochi? Get in touch with us to grow your busi
     </div>
 
     {/* RIGHT FORM */}
-    <div className="w-full md:pt-[70px] lg:ml-auto lg:max-w-[650px]">
-      <form className="space-y-10" onSubmit={handleSubmit}>
+   <div className="w-full md:pt-[70px] lg:ml-auto lg:max-w-[650px]">
+  <form className="space-y-10" onSubmit={handleSubmit}>
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={form.fullName}
-          onChange={handleChange}
-          required
-          className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
-        />
+    <input
+      type="text"
+      name="fullName"
+      placeholder="Full Name"
+      value={form.fullName}
+      onChange={handleChange}
+      required
+      maxLength={100}
+      pattern="^[A-Za-z\s]+$"
+      title="Name should contain only letters and spaces"
+      className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+    />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-       <input
-  type="tel"
-  name="mobile"
-  placeholder="Mobile Number"
-  value={form.mobile}
-  onChange={handleChange}
-  required
-  maxLength={10}
-  inputMode="numeric"
-              className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <input
+        type="tel"
+        name="mobile"
+        placeholder="Mobile Number"
+        value={form.mobile}
+        onChange={handleChange}
+        required
+        maxLength={10}
+        pattern="[0-9]{10}"
+        inputMode="numeric"
+        title="Enter a valid 10-digit mobile number"
+        className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+      />
 
-/>
-
-          <input
-            type="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
-          />
-        </div>
-
-        <textarea
-          rows={5}
-          placeholder="Tell us about your project"
-          value={form.project}
-          onChange={handleChange}
-          required
-          className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition resize-none"
-        />
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-gray-300 text-black font-medium py-4 rounded-lg transition-all duration-300 
-          hover:-translate-y-1 hover:bg-gray-200 disabled:opacity-50"
-        >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
-
-      </form>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={form.email}
+        onChange={handleChange}
+        required
+        pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
+        title="Enter a valid email (e.g., example@gmail.com)"
+        className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition"
+      />
     </div>
+
+    <textarea
+      name="project"
+      rows={5}
+      placeholder="Tell us about your project"
+      value={form.project}
+      onChange={handleChange}
+      required
+      maxLength={1000}
+      className="w-full bg-[#1a1a1a] border border-gray-700 rounded-lg px-5 py-4 outline-none focus:border-gray-500 transition resize-none"
+    />
+
+    <button
+      type="submit"
+      disabled={loading}
+      className="w-full bg-gray-300 text-black font-medium py-4 rounded-lg transition-all duration-300 
+      hover:-translate-y-1 hover:bg-gray-200 disabled:opacity-50"
+    >
+      {loading ? "Submitting..." : "Submit"}
+    </button>
+
+  </form>
+</div>
 
   </div>
 </section>
