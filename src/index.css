@@ -5,7 +5,7 @@
 @layer base {
   html {
     @apply bg-black;
-      overflow-x: hidden;
+      overflow-x: clip;
 
 
 
@@ -13,14 +13,14 @@
 
   body {
     @apply bg-black text-white min-h-screen;
-      overflow-x: hidden;
+      overflow-x: clip;
 
     
   }
 }
 
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 
@@ -86,6 +86,11 @@ html {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
