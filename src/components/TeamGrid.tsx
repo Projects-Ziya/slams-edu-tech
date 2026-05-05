@@ -90,7 +90,7 @@ const TeamGrid = ({ members, setActiveMember }: Props) => {
         duration: 0.7,
         ease: [0.4, 0, 0.2, 1], // 👈 smooth standard easing
       }}
-    />
+    /> 
 
   </div>
 </motion.div>

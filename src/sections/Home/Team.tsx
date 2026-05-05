@@ -44,7 +44,6 @@ const teamGroups: TeamMember[][] = [
     { id: 14, name: "Akshay", role: "UI/UX", image: akshay },
   ],
 ];
-
 const Team = () => {
   const flatMembers = teamGroups.flat();
 
@@ -60,7 +59,6 @@ const Team = () => {
 
   const loopMembers = [...flatMembers, ...flatMembers];
 
-  // DESKTOP AUTO
   useEffect(() => {
     if (!isInView || isPaused) return;
 
@@ -71,7 +69,6 @@ const Team = () => {
     return () => clearInterval(interval);
   }, [isInView, isPaused]);
 
-  // ✅ START FROM MIDDLE
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
@@ -85,7 +82,6 @@ const Team = () => {
     slider.scrollLeft = cardWidth * flatMembers.length;
   }, []);
 
-  // ✅ TRUE INFINITE RIGHT LOOP (NO REVERSE EFFECT)
   useEffect(() => {
     if (!isInView) return;
 
@@ -99,7 +95,6 @@ const Team = () => {
       const gap = 16;
       const cardWidth = firstCard.offsetWidth + gap;
 
-      // move right
       slider.scrollBy({
         left: cardWidth,
         behavior: "smooth",
@@ -107,7 +102,6 @@ const Team = () => {
 
       const halfWidth = slider.scrollWidth / 2;
 
-      // 🔥 seamless reset (no visible jump)
       if (slider.scrollLeft >= halfWidth) {
         setTimeout(() => {
           slider.style.scrollBehavior = "auto";
@@ -120,7 +114,6 @@ const Team = () => {
     return () => clearInterval(interval);
   }, [isInView]);
 
-  // ACTIVE MEMBER
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
@@ -161,6 +154,18 @@ const Team = () => {
     >
       <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 md:gap-20">
 
+        {/* ✅ TOP TITLE (VISIBLE ON MOBILE + TABLET) */}
+        <div className="w-full text-center xl:hidden">
+          <h2 className="text-3xl md:text-4xl text-white">
+            {activeMember?.name || "Meet Our Team"}
+          </h2>
+
+          <p className="mt-4 text-gray-400 max-w-md mx-auto">
+            {activeMember?.role ||
+              "A team of experienced professionals delivering reliable and scalable digital solutions."}
+          </p>
+        </div>
+
         {/* LEFT GRID */}
         <div
           className="hidden md:block relative flex-shrink-0 z-20 xl:-translate-x-14"
@@ -176,15 +181,10 @@ const Team = () => {
           />
         </div>
 
-        {/* MOBILE TITLE */}
-        <div className="md:hidden text-center w-full">
-          <h2 className="text-3xl text-white">Meet Our Team</h2>
-        </div>
-
         {/* MOBILE SLIDER */}
         <div
           ref={sliderRef}
-          className="hide-scrollbar  md:hidden w-full overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-[10%] scroll-smooth"
+          className="hide-scrollbar md:hidden w-full overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-[10%] scroll-smooth"
         >
           {loopMembers.map((member, index) => (
             <div
@@ -218,17 +218,17 @@ const Team = () => {
           ))}
         </div>
 
-        {/* RIGHT */}
-        <div className="w-full max-w-[520px] text-left md:mt-10">
+        {/* RIGHT (ONLY DESKTOP) */}
+        <div className="hidden xl:block w-full max-w-[520px] text-left md:mt-10">
           <motion.img
             initial={{ y: "-50%" }}
             animate={{ y: ["-50%", "-56%", "-50%"] }}
             transition={{ duration: 10, repeat: Infinity }}
             src={flowerBg}
-            className="hidden xl:block absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"
+            className="absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"
           />
 
-          <div className="relative z-10 text-center xl:text-center">
+          <div className="relative z-10 text-center">
             <h2 className="text-4xl lg:text-5xl text-white whitespace-nowrap">
               {activeMember?.name || "Meet Our Team"}
             </h2>
@@ -244,5 +244,3 @@ const Team = () => {
     </motion.section>
   );
 };
-
-export default Team;

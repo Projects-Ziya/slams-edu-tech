@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import Loader from "@/components/Loader";
 import { useInView } from "react-intersection-observer";
 import SEO from "../components/SEO";
+import ScrollToTop from "@/components/ScrollToTop";
 
 /* ✅ Reusable LazySection */
 const LazySection = ({ children }) => {
@@ -46,6 +47,7 @@ const Home = () => {
   description="Looking for the Best IT Company in Kochi? Slam Edutech Offers Expert IT Consulting, Software Development, and Digital Solutions to Help Businesses Grow"
   keywords="Best IT Company in Kochi"
 />
+<ScrollToTop/>
       {/* 🚀 Above the fold (NO LazySection) */}
       <Suspense fallback={SectionLoader}>
         <HeroPage />
