@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import { services } from "../data/service";
 import { HashLink } from "react-router-hash-link";
 import ScrollToTop from "./ScrollToTop";
+import { useState } from "react";
 
 const ServiceDetails = () => {
   const { id } = useParams();
-
+  const [menuOpen, setMenuOpen] = useState(false);
   const service = services.find((item) => item.id === id);
 
   if (!service) {
@@ -20,7 +21,7 @@ const ServiceDetails = () => {
       <section className="mx-auto mt-10 py-10 sm:py-12 md:py-16 lg:py-20 flex flex-col lg:flex-row items-center gap-8 md:gap-10 lg:gap-16">
 
         <div className="flex-1">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-medium mb-4 leading-tight">
+          <p className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl tracking-tight">
             {service.title} <br />
             <span className="text-blue-400">Solutions</span> for Your <br />
             Business
@@ -29,10 +30,18 @@ const ServiceDetails = () => {
           <p className="text-sm sm:text-base md:text-lg max-w-[650px] mb-6 text-gray-300">
             {service.text}
           </p>
-
+  <HashLink
+            smooth
+            to="/#contact"
+            scroll={(el) =>
+              el.scrollIntoView({ behavior: "smooth", block: "start" })
+            }
+            onClick={() => setMenuOpen(false)}
+          >
           <button className="bg-white text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base">
             Start Your Project
           </button>
+          </HashLink>
         </div>
 
         <div className="flex-1 w-full flex justify-center lg:justify-end">
@@ -176,7 +185,14 @@ const ServiceDetails = () => {
             Let’s discuss how we can help bring your vision to life
           </p>
 
-          <HashLink smooth to="/#contact">
+          <HashLink
+            smooth
+            to="/#contact"
+            scroll={(el) =>
+              el.scrollIntoView({ behavior: "smooth", block: "start" })
+            }
+            onClick={() => setMenuOpen(false)}
+          >
             <button className="bg-white text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base">
               Get a Quote
             </button>
