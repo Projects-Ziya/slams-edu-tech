@@ -80,7 +80,7 @@ const ProjectScene = ({
       <div className="relative z-10 mx-auto max-w-7xl 2xl:max-w-[1536px] w-full px-4 sm:px-6 lg:px-8 2xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-20 2xl:gap-40 lg:items-center">
         
         {/* TEXT CONTENT 1: Title (Always rendered, only shows title on mobile, both on desktop) */}
-        <div className={`flex flex-col justify-center order-1 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+        <div className={`flex flex-col justify-center items-start text-left order-1 w-full lg:max-w-md 2xl:max-w-lg ${isEven ? "lg:order-1 lg:ml-auto lg:mr-16 2xl:mr-32 lg:text-right lg:items-end" : "lg:order-2 lg:mr-auto lg:ml-16 2xl:ml-32 lg:items-start"}`}>
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ const ProjectScene = ({
             <ScrollTextReveal
               text={description}
               progress={textProgress}
-              className="text-lg text-white font-medium max-w-md leading-relaxed"
+              className="text-lg text-white font-medium leading-relaxed"
             />
           </div>
 

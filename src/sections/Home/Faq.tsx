@@ -40,7 +40,7 @@ const Faq: React.FC = () => {
     <div className="w-full bg-black text-white py-12 md:py-16 px-4 sm:px-6 flex flex-col items-center">
       
       {/* Title */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-blue-400 mb-8 md:mb-10 text-center">
+      <h2 className="font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white mb-8 md:mb-10 text-center">
         FAQ’s
       </h2>
 
@@ -114,7 +114,7 @@ const Faq: React.FC = () => {
                     }}
                     className="px-4 sm:px-6 overflow-hidden"
                   >
-                    <p className="py-3 sm:py-4 text-sm sm:text-base text-gray-300 leading-relaxed">
+                    <p className="py-3 sm:py-4 text-gray-300 text-[15px] md:text-[16px] xl:text-[18px] font-outfit font-light leading-relaxed tracking-wide">
                       {faq.answer}
                     </p>
                   </motion.div>

@@ -108,8 +108,8 @@ const Service = () => {
 
   return (
     <section id="service" className="px-5 md:px-12 2xl:px-16 font-outfit pb-32 pt-10">
-      <p className="font-medium text-[20px] md:text-[24px] text-gray-400">
-        /service we offer
+      <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400 font-outfit tracking-wider uppercase">
+        / service we offer
       </p>
 
       <motion.div
@@ -119,13 +119,12 @@ const Service = () => {
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         viewport={{ once: true, amount: 0.2 }}
       >
-       <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl tracking-tight">
-  <span className="block mb-2">Complete IT Solutions for</span>
-  <span className="block bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
-    Your Business Growth
-  </span>
-</h1>
-
+        <h1 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
+          Complete IT Solutions for <br />
+          <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
+            Your Business Growth
+          </span>
+        </h1>
 
         {/* Desktop button */}
         <div className="pt-4 hidden md:block">
@@ -136,7 +135,7 @@ const Service = () => {
       </motion.div>
 
       <motion.p
-        className="pt-4 text-[#ADADAD] text-[16px] md:text-[20px] font-outfit max-w-[1100px]"
+        className="pt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[900px]"
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}

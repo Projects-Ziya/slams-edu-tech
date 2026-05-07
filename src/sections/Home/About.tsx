@@ -75,19 +75,19 @@ const slideRight = {
   
   
   <div className="lg:pb-[160px]">
-    <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400">
+    <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400 font-outfit tracking-wider uppercase">
       / About Slams
     </p>
 
     <div className="flex flex-col justify-between pr-3">
-      <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
+      <h1 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
         Your Partner in
 <br />
         <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
 Digital Transformation        </span>
       </h1>
 
-      <p className="pt-8 sm:pt-4 font-outfit text-[#f1eded] leading-2 lg:leading-6 xl:leading-10 text-[14px] sm:text-[13px] md:text-[15px] xl:text-[20px] 2xl:text-[22px] font-[150] tracking-wider  max-w-[700px]">
+      <p className="pt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[900px]">
 Slams EduTech is a growing IT and EdTech company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />
 As one of the emerging IT companies in Kochi, we focus on building scalable, cost-effective solutions for startups and businesses. We also provide internship programs that bridge the gap between education and real-world industry experience.
 
@@ -149,11 +149,11 @@ style={{ clipPath: isLargeScreen ? "url(#missionClipLarge)" : "none" }}
 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10 text-white">
 <div className="max-w-[90%] md:max-w-[500px] pt-4">
 
-<h2 className="text-xl sm:text-2xl md:text-3xl xl:text-3xl font-heading font-bold">
+<h2 className="text-2xl md:text-3xl xl:text-4xl font-outfit font-bold text-white tracking-wide">
 Our Mission
 </h2>
 
-<p className="mt-2 md:mt-4 text-xs sm:text-sm md:text-base xl:text-lg leading-relaxed">
+<p className="mt-4 text-gray-300 text-[15px] md:text-[16px] xl:text-[18px] font-outfit font-light leading-relaxed tracking-wide">
 To deliver high-quality IT services and internship opportunities that help businesses scale and individuals build industry-ready skills.</p>
 
 </div>
@@ -203,11 +203,11 @@ style={{ clipPath: isLargeScreen ? "url(#missionClipMirrorUpsideLarge)" : "none"
 <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10 text-white pt-12 md:pt-0">
 <div className="max-w-[90%] md:max-w-[500px] pb- md:pb-[116px]">
 
-<h2 className="text-2xl md:text-3xl xl:text-3xl font-heading font-bold">
+<h2 className="text-2xl md:text-3xl xl:text-4xl font-outfit font-bold text-white tracking-wide">
 Our Vision
 </h2>
 
-<p className="mt-2 md:mt-4 text-xs sm:text-sm md:text-base xl:text-lg leading-relaxed">
+<p className="mt-4 text-gray-300 text-[15px] md:text-[16px] xl:text-[18px] font-outfit font-light leading-relaxed tracking-wide">
 We aim to be a trusted IT and training partner, empowering businesses and individuals with innovative technology and industry-ready skills for digital experiences and growth. 
 </p>
 </div>
