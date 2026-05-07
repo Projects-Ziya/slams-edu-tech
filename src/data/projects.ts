@@ -56,6 +56,7 @@ import ride2 from "../assets/slams-ride/ride2.webp"
 import ride3 from "../assets/slams-ride/ride3.webp"
 import ride4 from "../assets/slams-ride/ride4.webp"
 import ride5 from "../assets/slams-ride/ride5.webp"
+import ride6 from "../assets/slams-ride/ride6.webp"
 
 //learn-mate
 import learn2 from "../assets/learn-mate/learn2.webp"
@@ -353,7 +354,7 @@ sub:[
   showcase1: ride3,
   showcase2: ride4,
   showcase: ride5,
-    lastimg:ride5,
+    lastimg:ride6,
 
 },
   },

@@ -45,41 +45,91 @@ export default function InternshipDetails() {
     else setForm({ ...form, message: value });
   };
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setLoading(true);
+ const handleSubmit = async (e: any) => {
 
-    const formData = new URLSearchParams();
-    formData.append("firstName", form.firstName);
-    formData.append("lastName", form.lastName);
-    formData.append("phone", form.phone);
-    formData.append("email", form.email);
-    formData.append("message", form.message);
-    formData.append("fileName", form.file?.name || "");
+  e.preventDefault();
 
-    try {
-      await fetch("https://script.google.com/macros/s/AKfycbxHG-O5YXecj5BsF8W6OiFW8oWdNC50lBS4lFq7_sVhwmVWCI6slGyLyq3p34gHdaCz/exec", {
-        method: "POST",
-        body: formData,
-      });
+  if (!form.file) {
+    toast.error("Please upload resume");
+    return;
+  }
 
-      toast.success("Application submitted ✅");
+  setLoading(true);
 
-      setForm({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        message: "",
-        file: null
-      });
+  try {
 
-    } catch (err) {
-      toast.error("Submission failed ❌");
-    }
+    const reader = new FileReader();
 
+    reader.readAsDataURL(form.file);
+
+    reader.onload = async () => {
+
+      try {
+
+        const payload = {
+          firstName: form.firstName,
+          lastName: form.lastName,
+          phone: form.phone,
+          email: form.email,
+          message: form.message,
+
+          fileName: form.file?.name,
+          mimeType: form.file?.type,
+
+          file: reader.result
+        };
+
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbwqoX_sD6uzaf3nFNXTzzYzfdWG7dqlANgBn20Ww69Y92RQWRk0c2btnViifJtWtAGx/exec",
+          {
+            method: "POST",
+            body: JSON.stringify(payload),
+          }
+        );
+
+        const result = await response.json();
+
+        console.log(result);
+
+        if (result.success) {
+
+          toast.success("Application submitted ✅");
+
+          setForm({
+            firstName: "",
+            lastName: "",
+            phone: "",
+            email: "",
+            message: "",
+            file: null
+          });
+
+        } else {
+
+          toast.error(result.error || "Upload failed");
+
+        }
+
+      } catch (err) {
+
+        console.log(err);
+        toast.error("Submission failed ❌");
+
+      } finally {
+
+        setLoading(false);
+
+      }
+    };
+
+  } catch (err) {
+
+    console.log(err);
+    toast.error("Something went wrong ❌");
     setLoading(false);
-  };
+
+  }
+};
 
   const { id } = useParams();
   const data = internship.find((item) => item.id === id);
@@ -262,70 +312,259 @@ export default function InternshipDetails() {
           Apply for this Internship
         </p>
 
-        <form className="space-y-5" onSubmit={handleSubmit}>
+       <form className="space-y-5" onSubmit={handleSubmit}>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              value={form.firstName}
-              onChange={handleChange}
-              placeholder="First Name*"
-              required
-              className="bg-black border border-gray-500 p-3 rounded-xl"
-            />
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-            <input
-              value={form.lastName}
-              onChange={handleChange}
-              placeholder="Last Name*"
-              required
-              className="bg-black border border-gray-500 p-3 rounded-xl"
-            />
+    {/* FIRST NAME */}
+    <div>
+      <input
+        type="text"
+        name="firstName"
+        value={form.firstName}
+        placeholder="First Name*"
+        required
+        minLength={2}
+        maxLength={30}
+        autoComplete="given-name"
+        onChange={(e) => {
 
-          <input
-  type="tel"
-  value={form.phone}
-  onChange={(e) => {
-    const value = e.target.value.replace(/\D/g, ""); // remove non-numbers
-    if (value.length <= 12) {
-      setForm({ ...form, phone: value });
-    }
-  }}
-  placeholder="Phone*"
-  required
-  maxLength={10}
-  className="bg-black border border-gray-500 p-3 rounded-xl"
-/>
-            <input
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Email*"
-              required
-              className="bg-black border border-gray-500 p-3 rounded-xl"
-            />
-          </div>
+          const value = e.target.value
+            .replace(/[^A-Za-z\s]/g, "")
+            .replace(/\s{2,}/g, " ")
+            .slice(0, 30);
 
-          <textarea
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Message"
-            className="w-full bg-black border border-gray-500 p-3 rounded-xl"
-          />
+          setForm({
+            ...form,
+            firstName: value
+          });
+        }}
+        className="w-full bg-black border border-gray-500 p-3 rounded-xl outline-none focus:border-white"
+      />
 
-          <input
-            type="file"
-            onChange={handleFileChange}
-            className="text-sm"
-          />
+      <p className="text-xs text-gray-500 mt-1">
+        Alphabets only • Max 30 characters
+      </p>
+    </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-white text-black text-[24px] py-3 rounded hover:bg-gray-200 disabled:opacity-50"
-          >
-            {loading ? "Submitting..." : "SUBMIT"}
-          </button>
+    {/* LAST NAME */}
+    <div>
+      <input
+        type="text"
+        name="lastName"
+        value={form.lastName}
+        placeholder="Last Name*"
+        required
+        minLength={1}
+        maxLength={30}
+        autoComplete="family-name"
+        onChange={(e) => {
 
-        </form>
+          const value = e.target.value
+            .replace(/[^A-Za-z\s]/g, "")
+            .replace(/\s{2,}/g, " ")
+            .slice(0, 30);
+
+          setForm({
+            ...form,
+            lastName: value
+          });
+        }}
+        className="w-full bg-black border border-gray-500 p-3 rounded-xl outline-none focus:border-white"
+      />
+
+      <p className="text-xs text-gray-500 mt-1">
+        Alphabets only • Max 30 characters
+      </p>
+    </div>
+
+    {/* PHONE */}
+    <div>
+      <input
+        type="tel"
+        name="phone"
+        value={form.phone}
+        placeholder="Phone*"
+        required
+        inputMode="numeric"
+        pattern="[0-9]{10}"
+        minLength={10}
+        maxLength={10}
+        autoComplete="tel"
+        onChange={(e) => {
+
+          const value = e.target.value
+            .replace(/\D/g, "")
+            .slice(0, 10);
+
+          setForm({
+            ...form,
+            phone: value
+          });
+        }}
+        onPaste={(e) => {
+
+          const pasted = e.clipboardData
+            .getData("text")
+            .replace(/\D/g, "");
+
+          if (pasted.length > 10) {
+
+            e.preventDefault();
+
+            toast.error("Phone number must be 10 digits");
+          }
+        }}
+        className="w-full bg-black border border-gray-500 p-3 rounded-xl outline-none focus:border-white"
+      />
+
+      <p className="text-xs text-gray-500 mt-1">
+        Enter valid 10 digit number
+      </p>
+    </div>
+
+    {/* EMAIL */}
+    <div>
+      <input
+        type="email"
+        name="email"
+        value={form.email}
+        placeholder="Email*"
+        required
+        maxLength={100}
+        autoComplete="email"
+        onChange={(e) => {
+
+          const value = e.target.value
+            .trim()
+            .slice(0, 100);
+
+          setForm({
+            ...form,
+            email: value
+          });
+        }}
+        className="w-full bg-black border border-gray-500 p-3 rounded-xl outline-none focus:border-white"
+      />
+
+      <p className="text-xs text-gray-500 mt-1">
+        Enter valid email address
+      </p>
+    </div>
+
+  </div>
+
+  {/* MESSAGE */}
+  <div>
+
+    <textarea
+      value={form.message}
+      name="message"
+      rows={5}
+      maxLength={500}
+      placeholder="Message"
+      onChange={(e) => {
+
+        const value = e.target.value
+          .replace(/\s{3,}/g, " ")
+          .slice(0, 500);
+
+        setForm({
+          ...form,
+          message: value
+        });
+      }}
+      className="w-full bg-black border border-gray-500 p-3 rounded-xl outline-none focus:border-white resize-none"
+    />
+
+    <div className="flex justify-between mt-1">
+
+      <p className="text-xs text-gray-500">
+        Maximum 500 characters
+      </p>
+
+      <p className="text-xs text-gray-500">
+        {form.message.length}/500
+      </p>
+
+    </div>
+
+  </div>
+
+  {/* FILE */}
+  <div>
+
+    <input
+      type="file"
+      accept=".pdf,.doc,.docx"
+      required
+      onChange={(e) => {
+
+        const file = e.target.files?.[0];
+
+        if (!file) return;
+
+        const allowedTypes = [
+          "application/pdf",
+          "application/msword",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        ];
+
+        if (!allowedTypes.includes(file.type)) {
+
+          toast.error("Only PDF, DOC, DOCX files allowed");
+
+          e.target.value = "";
+
+          return;
+        }
+
+        const maxSize = 5 * 1024 * 1024;
+
+        if (file.size > maxSize) {
+
+          toast.error("File size must be less than 5MB");
+
+          e.target.value = "";
+
+          return;
+        }
+
+        setForm({
+          ...form,
+          file
+        });
+      }}
+      className="w-full bg-black border border-gray-500 p-3 rounded-xl text-sm
+      file:mr-4
+      file:py-2
+      file:px-4
+      file:border-0
+      file:bg-white
+      file:text-black
+      hover:file:bg-gray-200"
+    />
+
+    <p className="text-xs text-gray-500 mt-1">
+      Accepted: PDF, DOC, DOCX • Max 5MB
+    </p>
+
+  </div>
+
+  {/* BUTTON */}
+  <button
+    type="submit"
+    disabled={loading}
+    className="w-full bg-white text-black text-[24px] py-3 rounded
+    hover:bg-gray-200
+    disabled:opacity-50
+    disabled:cursor-not-allowed
+    transition-all duration-300"
+  >
+    {loading ? "Submitting..." : "SUBMIT"}
+  </button>
+
+</form>
       </div>
     </div>
   );

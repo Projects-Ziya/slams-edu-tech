@@ -60,7 +60,6 @@ const Team = () => {
 
   const loopMembers = [...flatMembers, ...flatMembers];
 
-  // DESKTOP AUTO
   useEffect(() => {
     if (!isInView || isPaused) return;
 
@@ -71,7 +70,6 @@ const Team = () => {
     return () => clearInterval(interval);
   }, [isInView, isPaused]);
 
-  // ✅ START FROM MIDDLE
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
@@ -85,7 +83,6 @@ const Team = () => {
     slider.scrollLeft = cardWidth * flatMembers.length;
   }, []);
 
-  // ✅ TRUE INFINITE RIGHT LOOP (NO REVERSE EFFECT)
   useEffect(() => {
     if (!isInView) return;
 
@@ -99,7 +96,6 @@ const Team = () => {
       const gap = 16;
       const cardWidth = firstCard.offsetWidth + gap;
 
-      // move right
       slider.scrollBy({
         left: cardWidth,
         behavior: "smooth",
@@ -107,7 +103,6 @@ const Team = () => {
 
       const halfWidth = slider.scrollWidth / 2;
 
-      // 🔥 seamless reset (no visible jump)
       if (slider.scrollLeft >= halfWidth) {
         setTimeout(() => {
           slider.style.scrollBehavior = "auto";
@@ -120,7 +115,6 @@ const Team = () => {
     return () => clearInterval(interval);
   }, [isInView]);
 
-  // ACTIVE MEMBER
   useEffect(() => {
     const slider = sliderRef.current;
     if (!slider) return;
@@ -152,96 +146,108 @@ const Team = () => {
   }, []);
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       className="relative py-10 md:py-32 px-4 md:px-10 font-outfit overflow-hidden bg-black"
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
     >
-      <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 md:gap-20">
+      {/* ✅ Animate INNER only */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 md:gap-20">
 
-        {/* LEFT GRID */}
-        <div
-          className="hidden md:block relative flex-shrink-0 z-20 xl:-translate-x-14"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => {
-            setIsPaused(false);
-            setActiveMember(null);
-          }}
-        >
-          <TeamGrid
-            members={teamGroups[groupIndex]}
-            setActiveMember={setActiveMember}
-          />
-        </div>
-
-        {/* MOBILE TITLE */}
-        <div className="md:hidden text-center w-full">
-          <h2 className="font-bold font-outfit text-4xl leading-tight tracking-tight text-white">Meet Our Team</h2>
-        </div>
-
-        {/* MOBILE SLIDER */}
-        <div
-          ref={sliderRef}
-          className="hide-scrollbar  md:hidden w-full overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-[10%] scroll-smooth"
-        >
-          {loopMembers.map((member, index) => (
-            <div
-              key={index}
-              className="min-w-[80%] snap-center flex flex-col items-center"
-            >
-              <div className="relative w-44 h-44">
-                <svg viewBox="0 0 1 1" className="absolute inset-0 w-full h-full z-0">
-                  <path d="M 0.12 0 H 0.82 L 1 0.18 V 0.96 Q 1 1 0.96 1 H 0.30 L 0.08 0.82 V 0.04 Q 0.08 0 0.12 0 Z" fill="#1F2937" />
-                </svg>
-
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-cover relative z-10"
-                  style={{
-                    clipPath: `polygon(12% 0%,82% 0%,100% 18%,100% 96%,96% 100%,30% 100%,8% 82%,8% 4%)`,
-                  }}
-                />
-
-                <svg viewBox="0 0 1 1" className="absolute inset-0 w-full h-full z-20">
-                  <path
-                    d="M 0.12 0 H 0.82 L 1 0.18 V 0.96 Q 1 1 0.96 1 H 0.30 L 0.08 0.82 V 0.04 Q 0.08 0 0.12 0 Z"
-                    fill="none"
-                    stroke="#9CA3AF"
-                    strokeWidth="0.010"
-                  />
-                </svg>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* RIGHT */}
-        <div className="w-full max-w-[520px] text-left md:mt-10">
-          <motion.img
-            initial={{ y: "-50%" }}
-            animate={{ y: ["-50%", "-56%", "-50%"] }}
-            transition={{ duration: 10, repeat: Infinity }}
-            src={flowerBg}
-            className="hidden xl:block absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"
-          />
-
-          <div className="relative z-10 text-center xl:text-center">
-            <h2 className="font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white whitespace-nowrap">
+          {/* TOP TITLE */}
+          <div className="w-full text-center xl:hidden">
+            <h2 className="text-3xl md:text-4xl text-white">
               {activeMember?.name || "Meet Our Team"}
             </h2>
 
-            <p className="mt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide">
+            <p className="mt-4 text-gray-400 max-w-md mx-auto">
               {activeMember?.role ||
                 "A team of experienced professionals delivering reliable and scalable digital solutions."}
             </p>
           </div>
-        </div>
 
-      </div>
-    </motion.section>
+          {/* LEFT GRID */}
+          <div
+            className="hidden md:block relative flex-shrink-0 z-20 xl:-translate-x-14"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => {
+              setIsPaused(false);
+              setActiveMember(null);
+            }}
+          >
+            <TeamGrid
+              members={teamGroups[groupIndex]}
+              setActiveMember={setActiveMember}
+            />
+          </div>
+
+          {/* MOBILE SLIDER */}
+          <div
+            ref={sliderRef}
+            className="hide-scrollbar md:hidden w-full overflow-x-auto flex gap-4 snap-x snap-mandatory pb-4 px-[10%] scroll-smooth"
+          >
+            {loopMembers.map((member, index) => (
+              <div
+                key={index}
+                className="min-w-[80%] snap-center flex flex-col items-center"
+              >
+                <div className="relative w-44 h-44">
+                  <svg viewBox="0 0 1 1" className="absolute inset-0 w-full h-full z-0">
+                    <path d="M 0.12 0 H 0.82 L 1 0.18 V 0.96 Q 1 1 0.96 1 H 0.30 L 0.08 0.82 V 0.04 Q 0.08 0 0.12 0 Z" fill="#1F2937" />
+                  </svg>
+
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover relative z-10"
+                    style={{
+                      clipPath: `polygon(12% 0%,82% 0%,100% 18%,100% 96%,96% 100%,30% 100%,8% 82%,8% 4%)`,
+                    }}
+                  />
+
+                  <svg viewBox="0 0 1 1" className="absolute inset-0 w-full h-full z-20">
+                    <path
+                      d="M 0.12 0 H 0.82 L 1 0.18 V 0.96 Q 1 1 0.96 1 H 0.30 L 0.08 0.82 V 0.04 Q 0.08 0 0.12 0 Z"
+                      fill="none"
+                      stroke="#9CA3AF"
+                      strokeWidth="0.010"
+                    />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT DESKTOP */}
+          <div className="hidden xl:block w-full max-w-[520px] text-left md:mt-10">
+            <motion.img
+              initial={{ y: "-50%" }}
+              animate={{ y: ["-50%", "-56%", "-50%"] }}
+              transition={{ duration: 10, repeat: Infinity }}
+              src={flowerBg}
+              className="absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"
+            />
+
+            <div className="relative z-10 text-center">
+              <h2 className="text-4xl lg:text-5xl text-white whitespace-nowrap">
+                {activeMember?.name || "Meet Our Team"}
+              </h2>
+
+              <p className="mt-6 text-gray-400">
+                {activeMember?.role ||
+                  "A team of experienced professionals delivering reliable and scalable digital solutions."}
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </motion.div>
+    </section>
   );
 };
 

@@ -5,7 +5,12 @@ export default function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // 🔥 delay until layout is fully painted
+    const timeout = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }, 50); // small delay fixes layout shift issues
+
+    return () => clearTimeout(timeout);
   }, [pathname]);
 
   return null;

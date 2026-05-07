@@ -1,7 +1,9 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Loader from "@/components/Loader";
 import { useInView } from "react-intersection-observer";
 import SEO from "../components/SEO";
+import ScrollToTop from "@/components/ScrollToTop";
+import { useLocation } from "react-router-dom";
 
 /* ✅ Reusable LazySection */
 const LazySection = ({ children }) => {
@@ -39,14 +41,43 @@ const SectionLoader = (
 );
 
 const Home = () => {
+  const location = useLocation();
+
+  /* 🔥 HASH SCROLL FIX (FINAL) */
+  useEffect(() => {
+    if (location.hash === "#contact") {
+      const scrollToContact = () => {
+        const el = document.getElementById("contact");
+
+        if (el) {
+          const yOffset = -90; // adjust based on navbar height
+          const y =
+            el.getBoundingClientRect().top +
+            window.pageYOffset +
+            yOffset;
+
+          window.scrollTo({ top: y, behavior: "smooth" });
+        } else {
+          // retry until element is mounted (because of lazy loading)
+          setTimeout(scrollToContact, 100);
+        }
+      };
+
+      scrollToContact();
+    }
+  }, [location]);
+
   return (
     <div className="">
       <SEO
-  title="Best IT Company in Kochi | Slam Edutech"
-  description="Looking for the Best IT Company in Kochi? Slam Edutech Offers Expert IT Consulting, Software Development, and Digital Solutions to Help Businesses Grow"
-  keywords="Best IT Company in Kochi"
-/>
-      {/* 🚀 Above the fold (NO LazySection) */}
+        title="Best IT Company in Kochi | Slam Edutech"
+        description="Looking for the Best IT Company in Kochi? Slam Edutech Offers Expert IT Consulting, Software Development, and Digital Solutions to Help Businesses Grow"
+        keywords="Best IT Company in Kochi"
+      />
+
+      <ScrollToTop />
+
+      {/* 🚀 Above the fold */}
       <Suspense fallback={SectionLoader}>
         <HeroPage />
       </Suspense>
@@ -59,15 +90,15 @@ const Home = () => {
         <Works />
       </Suspense>
 
-<Suspense fallback={SectionLoader}>
-  <About />
-</Suspense>
+      <Suspense fallback={SectionLoader}>
+        <About />
+      </Suspense>
 
       <Suspense fallback={SectionLoader}>
         <FoundersMessage />
       </Suspense>
 
-      {/* ⚡ Heavy Sections (LazySection + Suspense) */}
+      {/* ⚡ Heavy Sections */}
       <LazySection>
         <Suspense fallback={SectionLoader}>
           <Team />
@@ -90,10 +121,10 @@ const Home = () => {
         </Suspense>
       </LazySection>
 
-<LazySection>
-      <Suspense fallback={SectionLoader}>
-        <Testimonial />
-      </Suspense>
+      <LazySection>
+        <Suspense fallback={SectionLoader}>
+          <Testimonial />
+        </Suspense>
       </LazySection>
 
       {/* 📄 Light Sections */}
