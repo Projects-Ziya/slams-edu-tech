@@ -62,7 +62,6 @@ export default function Careers() {
       style={{ background: "#080d1a" }}
     >
       <SEO title="Careers" description="Join our team" />
-      <ScrollToTop />
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           STICKY HERO — stays fixed while user scrolls through the "scroll space"
