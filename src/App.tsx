@@ -4,7 +4,9 @@ import { lazy, Suspense } from "react";
 import MainLayout from './layout/MainLayout';
 import { Toaster } from "sonner";
 import Loader from './components/Loader';
-import ScrollToHashElement from "./components/ScrollToHashElement";
+
+import ScrollRestorationFix from './components/ScrollRestorationFix';
+import ScrollManager from './components/ScrollManager';
 
 
 // Lazy load pages
@@ -12,6 +14,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Service = lazy(() => import('./pages/Service'));
 const Works = lazy(() => import('./pages/Works'));
 const Careers = lazy(() => import('./pages/Careers'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Lazy load components (detail pages)
 const ProjectDetail = lazy(() => import('./components/ProjectDetail'));
@@ -19,10 +22,14 @@ const ServiceDetails = lazy(() => import('./components/ServiceDetails'));
 const InternshipDetails = lazy(() => import('./components/InternshipDetails'));
 const JobDetails = lazy(() => import('./components/JobDetails'));
 
+
+
+
 function App() {
   return (
     <BrowserRouter>
-          <ScrollToHashElement />
+   {/* <ScrollRestorationFix /> */}
+   <ScrollManager />
 
       <Toaster position="top-right" richColors />
 
@@ -38,6 +45,10 @@ function App() {
             <Route path="/careers" element={<Careers />} />
             <Route path="/internship/:id" element={<InternshipDetails />} />
             <Route path="/careers/:id" element={<JobDetails />} />
+
+
+    {/* ✅ 404 Route MUST BE LAST */}
+    <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Suspense>

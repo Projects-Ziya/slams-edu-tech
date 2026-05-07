@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logoNav.png";
 import { HashLink } from "react-router-hash-link";
+import {lenis} from "../main"
 
 const Navbar: React.FC = () => {
   const items = [
@@ -97,33 +98,34 @@ const Navbar: React.FC = () => {
             // ✅ ONLY About Us → HashLink
         if (item.label === "About Us") {
   return (
-    <button
-      key={index}
-      onClick={() => {
-        setMenuOpen(false);
+    
+<button
+  key={index}
+  onClick={() => {
+    setMenuOpen(false);
 
-        if (location.pathname === "/") {
-          // already on home → just scroll
-          const el = document.getElementById("about");
-          if (el) {
-            const yOffset = -90;
-            const y =
-              el.getBoundingClientRect().top +
-              window.pageYOffset +
-              yOffset;
+    if (location.pathname === "/") {
+      const el = document.getElementById("about");
 
-            window.scrollTo({ top: y, behavior: "smooth" });
-          }
-        } else {
-          // go to home and trigger scroll
-          window.sessionStorage.setItem("scrollTo", "about");
-          window.location.href = "/";
-        }
-      }}
-      className="hover:text-gray-300 transition"
-    >
-      {item.label}
-    </button>
+      if (el) {
+        const yOffset = -90;
+        const y =
+          el.getBoundingClientRect().top +
+          window.scrollY +
+          yOffset;
+
+        lenis.scrollTo(y); // ✅ FIXED
+      }
+    } else {
+      // go to home and trigger scroll
+      sessionStorage.setItem("scrollTo", "about");
+      window.location.href = "/";
+    }
+  }}
+  className="hover:text-gray-300 transition"
+>
+  {item.label}
+</button>
   );
 }
             // ✅ All others → normal Link
