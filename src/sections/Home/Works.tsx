@@ -89,14 +89,14 @@ useEffect(() => {
     className='bg-[#1d1b1b] px-5 md:px-12 2xl:px-16 font-outfit pt-[60px] pb-[20px]'
     >
 
-      <p className="font-medium text-[20px] md:text-[24px] text-gray-400">/ Our Works</p>
+      <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400 font-outfit tracking-wider uppercase">/ Our Works</p>
 
       <motion.div className="flex flex-col md:flex-row md:justify-between gap-6"
        initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
  viewport={{ once: true, amount: 0.2 }}>
-       <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
+       <h1 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
   Digital Solutions That{" "}
   <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
   Deliver Results
@@ -111,7 +111,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 </div>
       </motion.div>
 
-      <p className="pt-4 text-[#ADADAD] tracking-wider text-[16px] md:text-[20px] font-outfit max-w-[1100px]">
+      <p className="pt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[900px]">
         We design and develop real-world digital solutions that help businesses grow and stay ahead in a competitive market.
       </p>
 

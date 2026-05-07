@@ -178,7 +178,7 @@ const Team = () => {
 
         {/* MOBILE TITLE */}
         <div className="md:hidden text-center w-full">
-          <h2 className="text-3xl text-white">Meet Our Team</h2>
+          <h2 className="font-bold font-outfit text-4xl leading-tight tracking-tight text-white">Meet Our Team</h2>
         </div>
 
         {/* MOBILE SLIDER */}
@@ -229,11 +229,11 @@ const Team = () => {
           />
 
           <div className="relative z-10 text-center xl:text-center">
-            <h2 className="text-4xl lg:text-5xl text-white whitespace-nowrap">
+            <h2 className="font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white whitespace-nowrap">
               {activeMember?.name || "Meet Our Team"}
             </h2>
 
-            <p className="mt-6 text-gray-400">
+            <p className="mt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide">
               {activeMember?.role ||
                 "A team of experienced professionals delivering reliable and scalable digital solutions."}
             </p>
