@@ -248,7 +248,7 @@ const handleChange = (e: any) => {
         type="text"
         name="firstName"
         title="First Name"
-        placeholder="Enter first name"
+        placeholder=""
         value={form.firstName}
         onChange={(e) => {
 
@@ -269,9 +269,9 @@ const handleChange = (e: any) => {
         className="w-full mt-1 bg-black border border-gray-700 rounded-md p-3 text-sm sm:text-base outline-none focus:border-white"
       />
 
-      <p className="text-xs text-gray-500 mt-1">
+      {/* <p className="text-xs text-gray-500 mt-1">
         Alphabets only • Max 30 characters
-      </p>
+      </p> */}
     </div>
 
     {/* LAST NAME */}
@@ -283,7 +283,7 @@ const handleChange = (e: any) => {
       <input
         type="text"
         name="lastName"
-        placeholder="Enter last name"
+        // placeholder="Enter last name"
         value={form.lastName}
         onChange={(e) => {
 
@@ -304,9 +304,9 @@ const handleChange = (e: any) => {
         className="w-full mt-1 bg-black border border-gray-700 rounded-md p-3 text-sm sm:text-base outline-none focus:border-white"
       />
 
-      <p className="text-xs text-gray-500 mt-1">
+      {/* <p className="text-xs text-gray-500 mt-1">
         Alphabets only • Max 30 characters
-      </p>
+      </p> */}
     </div>
 
     {/* PHONE */}
@@ -318,7 +318,7 @@ const handleChange = (e: any) => {
       <input
         type="tel"
         name="phone"
-        placeholder="Enter phone number"
+        // placeholder="Enter phone number"
         value={form.phone}
         onChange={(e) => {
 
@@ -365,7 +365,7 @@ const handleChange = (e: any) => {
       <input
         type="email"
         name="email"
-        placeholder="Enter email address"
+        // placeholder="Enter email address"
         value={form.email}
         onChange={(e) => {
 
@@ -419,9 +419,9 @@ const handleChange = (e: any) => {
     />
 
     <div className="flex justify-between mt-1">
-      <p className="text-xs text-gray-500">
+      {/* <p className="text-xs text-gray-500">
         Maximum 500 characters
-      </p>
+      </p> */}
 
       <p className="text-xs text-gray-500">
         {form.motivation.length}/500
