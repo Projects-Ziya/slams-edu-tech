@@ -54,34 +54,14 @@
 
 
 import { motion } from "framer-motion";
-import StarBorder from "../../components/StarBorder";
 import WorksCard from '../../components/WorksCard';
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
 import ViewMoreButton from "../../components/Button";
-import { useEffect, useState } from "react";
 
 
 
 const Works = () => {
-
-const [visibleCount, setVisibleCount] = useState(4);
-
-useEffect(() => {
-  const handleResize = () => {
-    const width = window.innerWidth;
-
-    if (width < 768) setVisibleCount(2);
-    else if (width < 1280) setVisibleCount(3); // md → xl
-    else if (width < 1536) setVisibleCount(3); // xl → still 3
-    else setVisibleCount(4); // 2xl → 4 cards
-  };
-
-  handleResize(); // run once
-  window.addEventListener("resize", handleResize);
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
 
 
   return (
@@ -115,9 +95,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         We design and develop real-world digital solutions that help businesses grow and stay ahead in a competitive market.
       </p>
 
-      <motion.div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-12 pb-16"
-               // className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10 "       
-
+      <motion.div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-6 pt-12 pb-16"
           initial="hidden"
   whileInView="visible"
   viewport={{ once: true, amount: 0.2 }}
@@ -125,15 +103,16 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15, // 🔥 THIS MAKES IT PREMIUM
+        staggerChildren: 0.15,
       },
     },
   }}>
     
-  {projects.slice(0, visibleCount).map((project) => (      
+  {projects.slice(0, 4).map((project, index) => (      
     
     <motion.div
           key={project.id}
+          className={index === 3 ? "hidden 2xl:block" : "block"}
     variants={{
       hidden: { opacity: 0, y: 40, scale: 0.95 },
       visible: {
