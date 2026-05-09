@@ -107,34 +107,53 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
       },
     },
   }}>
-    
-  {projects.slice(0, 4).map((project, index) => (      
-    
+
+    {/* First 3 cards — always visible on md+ */}
+    {projects.slice(0, 3).map((project) => (
+      <motion.div
+        key={project.id}
+        variants={{
+          hidden: { opacity: 0, y: 40, scale: 0.95 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+          },
+        }}
+      >
+        <Link to={`/project/${project.id}`}>
+          <WorksCard
+            image={project.coverImage}
+            name={project.title}
+            stack={project.subtitle}
+          />
+        </Link>
+      </motion.div>
+    ))}
+
+    {/* 4th card — only visible on 2xl (monitor) screens */}
     <motion.div
-          key={project.id}
-          className={index === 3 ? "hidden 2xl:block" : "block"}
-    variants={{
-      hidden: { opacity: 0, y: 40, scale: 0.95 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          duration: 0.5,
-          ease: [0.25, 0.1, 0.25, 1],
+      className="hidden 2xl:block"
+      variants={{
+        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
         },
-      },
-    }}>
-          <Link  to={`/project/${project.id}`}>
-            
-            <WorksCard
-              image={project.coverImage}
-              name={project.title}
-              stack={project.subtitle}
-            />
-          </Link>
-          </motion.div>
-        ))}
+      }}
+    >
+      <Link to={`/project/${projects[3].id}`}>
+        <WorksCard
+          image={projects[3].coverImage}
+          name={projects[3].title}
+          stack={projects[3].subtitle}
+        />
+      </Link>
+    </motion.div>
+
       </motion.div>
 
       {/* Mobile View More Button */}
