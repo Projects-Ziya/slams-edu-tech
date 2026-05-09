@@ -35,19 +35,20 @@ export default function ProjectDetail() {
     },
   }
 
-  // ── Separate variant for images — GPU-composited, no y movement ──────────
-  // Images are heavy paint targets. Moving them on y causes the browser to
-  // repaint the layer on every frame → roughness/jank.
-  // Solution: animate ONLY opacity (compositor-only, zero repaints) and
-  // add willChange + translateZ(0) to promote to its own GPU layer before
-  // the animation even starts, so the compositor handles it entirely.
+  // Smooth fade-up for large project imagery. Keep motion on opacity/transform
+  // so the browser can composite the reveal without layout work.
   const fadeImage = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 36, scale: 0.985 },
     visible: {
       opacity: 1,
-      transition: { duration: 1.2, ease: [0.16, 1, 0.30, 1] },
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.95, ease: [0.22, 1, 0.36, 1] },
     },
   }
+
+  const imageViewport = { once: true, amount: 0.16 }
+  const imageMotionStyle = { willChange: "opacity, transform", backfaceVisibility: "hidden" } as const
 
   // ── NEW: slide-from-right variants for the head2 list ────────────────────
   // Parent container — triggers whileInView once, then staggers children
@@ -374,6 +375,7 @@ export default function ProjectDetail() {
         />
       </motion.div>
 
-    </section>
+    </section>  
   )
 }
+ 
