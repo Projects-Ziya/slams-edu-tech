@@ -193,7 +193,7 @@ const ContactSection: React.FC = () => {
           {/* Decorative Lines */}
           <div className="absolute left-[40px] top-[320px] hidden lg:block w-full max-w-[950px] pointer-events-none">
 
-            <svg viewBox="0 0 950 320" className="w-full h-auto">
+            <svg viewBox="0 0 950 320" className="w-full h-auto mt-6">
 
               <defs>
                 <marker
