@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+  safelist: [
+    "hidden",
+    "block",
+    "2xl:block",
+    "2xl:grid-cols-4",
+  ],
   theme: {
     extend: {
        sparkle: {

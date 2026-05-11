@@ -54,34 +54,14 @@
 
 
 import { motion } from "framer-motion";
-import StarBorder from "../../components/StarBorder";
 import WorksCard from '../../components/WorksCard';
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
 import ViewMoreButton from "../../components/Button";
-import { useEffect, useState } from "react";
 
 
 
 const Works = () => {
-
-const [visibleCount, setVisibleCount] = useState(4);
-
-useEffect(() => {
-  const handleResize = () => {
-    const width = window.innerWidth;
-
-    if (width < 768) setVisibleCount(2);
-    else if (width < 1280) setVisibleCount(3); // md → xl
-    else if (width < 1536) setVisibleCount(3); // xl → still 3
-    else setVisibleCount(4); // 2xl → 4 cards
-  };
-
-  handleResize(); // run once
-  window.addEventListener("resize", handleResize);
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
 
 
   return (
@@ -89,14 +69,14 @@ useEffect(() => {
     className='bg-[#1d1b1b] px-5 md:px-12 2xl:px-16 font-outfit pt-[60px] pb-[20px]'
     >
 
-      <p className="font-medium text-[20px] md:text-[24px] text-gray-400">/ Our Works</p>
+      <p className="font-medium text-[18px] sm:text-[20px] md:text-[24px] text-gray-400 font-outfit tracking-wider uppercase">/ Our Works</p>
 
       <motion.div className="flex flex-col md:flex-row md:justify-between gap-6"
        initial={{ opacity: 0, y: 60 }}
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
  viewport={{ once: true, amount: 0.2 }}>
-       <h1 className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
+       <h1 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
   Digital Solutions That{" "}
   <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
   Deliver Results
@@ -111,13 +91,11 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 </div>
       </motion.div>
 
-      <p className="pt-4 text-[#ADADAD] tracking-wider text-[16px] md:text-[20px] font-outfit max-w-[1100px]">
+      <p className="pt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[900px]">
         We design and develop real-world digital solutions that help businesses grow and stay ahead in a competitive market.
       </p>
 
-      <motion.div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 pt-12 pb-16"
-               // className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-10 "       
-
+      <motion.div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-6 pt-12 pb-16"
           initial="hidden"
   whileInView="visible"
   viewport={{ once: true, amount: 0.2 }}
@@ -125,37 +103,57 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.15, // 🔥 THIS MAKES IT PREMIUM
+        staggerChildren: 0.15,
       },
     },
   }}>
-    
-  {projects.slice(0, visibleCount).map((project) => (      
-    
+
+    {/* First 3 cards — always visible on md+ */}
+    {projects.slice(0, 3).map((project) => (
+      <motion.div
+        key={project.id}
+        variants={{
+          hidden: { opacity: 0, y: 40, scale: 0.95 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+          },
+        }}
+      >
+        <Link to={`/project/${project.id}`}>
+          <WorksCard
+            image={project.coverImage}
+            name={project.title}
+            stack={project.subtitle}
+          />
+        </Link>
+      </motion.div>
+    ))}
+
+    {/* 4th card — only visible on 2xl (monitor) screens */}
     <motion.div
-          key={project.id}
-    variants={{
-      hidden: { opacity: 0, y: 40, scale: 0.95 },
-      visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          duration: 0.5,
-          ease: [0.25, 0.1, 0.25, 1],
+      className="hidden 2xl:block"
+      variants={{
+        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
         },
-      },
-    }}>
-          <Link  to={`/project/${project.id}`}>
-            
-            <WorksCard
-              image={project.coverImage}
-              name={project.title}
-              stack={project.subtitle}
-            />
-          </Link>
-          </motion.div>
-        ))}
+      }}
+    >
+      <Link to={`/project/${projects[3].id}`}>
+        <WorksCard
+          image={projects[3].coverImage}
+          name={projects[3].title}
+          stack={projects[3].subtitle}
+        />
+      </Link>
+    </motion.div>
+
       </motion.div>
 
       {/* Mobile View More Button */}

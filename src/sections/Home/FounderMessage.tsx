@@ -65,7 +65,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             </h2>
 
             {/* connector line (hide on mobile/tablet small) */}
-            <div className="relative hidden  xl:block ">
+            <div className="relative hidden  xl:block ms-5 mt-2 ">
               <ConnectorShape />
             </div>
 
@@ -73,18 +73,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
           {/* Paragraphs */}
           <div className="
-            space-y-4
-            sm:space-y-5
-            lg:space-y-6
-            text-[#f1eded]
-            text-[14px]
-            sm:text-[15px]
-            lg:text-[18px]
-            font-[150]
-            tracking-wide
-            leading-7
-            font-outfit
-            max-w-[550px]
+            space-y-6 pt-4 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[550px]
           ">
 
             <p>
@@ -144,8 +133,8 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             md:w-[260px]
             md:h-[320px]
 
-            lg:w-[310px]
-            lg:h-[380px]
+            lg:w-[320px]
+            lg:h-[430px]
           ">
 
             {/* Image */}
