@@ -376,7 +376,7 @@ export default function HeroPage() {
       />
 
       {/* ── TECH GRID LINES ── */}
-      <div
+      {/* <div
         className="hidden md:block absolute inset-0 pointer-events-none"
         style={{
           zIndex: 1,
@@ -386,7 +386,7 @@ export default function HeroPage() {
           `,
           backgroundSize: "60px 60px",
         }}
-      />
+      /> */}
 
       {/* ── STARFIELD ── */}
       <canvas
@@ -509,7 +509,7 @@ export default function HeroPage() {
       />
 
       {/* ── HORIZONTAL ACCENT LINE ── */}
-      <div
+      {/* <div
         ref={lineRef}
         className="hidden md:block absolute pointer-events-none"
         style={{
@@ -520,7 +520,7 @@ export default function HeroPage() {
           transformOrigin: "left center",
           background:      "linear-gradient(90deg,rgba(56,189,248,0.55) 0%,rgba(147,197,253,0.18) 55%,transparent 100%)",
         }}
-      />
+      /> */}
 
       {/* ── TEXT BLOCK ── */}
       <div
