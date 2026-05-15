@@ -14,11 +14,11 @@ interface ProjectSceneProps {
 }
 
 const gradientMap: Record<ProjectSceneProps["gradientColor"], string> = {
-  orange: "linear-gradient(135deg, rgba(249,115,22,0.3) 0%, transparent 80%)",
-  violet: "linear-gradient(135deg, rgba(139,92,246,0.3) 0%, transparent 80%)",
-  cyan: "linear-gradient(135deg, rgba(6,182,212,0.3) 0%, transparent 80%)",
-  emerald: "linear-gradient(135deg, rgba(16,185,129,0.3) 0%, transparent 80%)",
-  default: "linear-gradient(135deg, rgba(59,130,246,0.2) 0%, transparent 80%)",
+  orange: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%)",
+  violet: "radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)",
+  cyan: "radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)",
+  emerald: "radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%)",
+  default: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
 };
 
 const ProjectScene = ({
@@ -68,19 +68,19 @@ const ProjectScene = ({
   return (
     <motion.section
       ref={ref}
-      className="relative w-full h-[200vh]"
+      className="relative z-10 w-full h-[200vh] bg-black"
     >
-      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
-      {/* Background Gradient */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: gradientMap[gradientColor] }}
-      />
+      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden bg-black">
 
       <div className="relative z-10 mx-auto max-w-7xl 2xl:max-w-[1536px] w-full px-4 sm:px-6 lg:px-8 2xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 lg:gap-20 2xl:gap-40 lg:items-center">
         
         {/* TEXT CONTENT 1: Title (Always rendered, only shows title on mobile, both on desktop) */}
-        <div className={`flex flex-col justify-center items-start text-left order-1 w-full lg:max-w-md 2xl:max-w-lg ${isEven ? "lg:order-1 lg:ml-auto lg:mr-16 2xl:mr-32 lg:text-right lg:items-end" : "lg:order-2 lg:mr-auto lg:ml-16 2xl:ml-32 lg:items-start"}`}>
+        <div className={`relative flex flex-col justify-center items-start text-left order-1 w-full lg:max-w-md 2xl:max-w-lg ${isEven ? "lg:order-1 lg:ml-auto lg:mr-16 2xl:mr-32 lg:text-right lg:items-end" : "lg:order-2 lg:mr-auto lg:ml-16 2xl:ml-32 lg:items-start"}`}>
+          {/* Subtle Background Gradient behind text */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] sm:w-[200%] lg:w-[150%] aspect-square pointer-events-none z-[-1]"
+            style={{ background: gradientMap[gradientColor] }}
+          />
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +181,12 @@ const ProjectScene = ({
         </div>
 
         {/* MOBILE ONLY: Description Content */}
-        <div className={`flex flex-col justify-center order-3 lg:hidden`}>
+        <div className={`relative flex flex-col justify-center order-3 lg:hidden`}>
+          {/* Subtle Background Gradient behind text (Mobile) */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250%] aspect-square pointer-events-none z-[-1]"
+            style={{ background: gradientMap[gradientColor] }}
+          />
           <div className="mt-2">
             <ScrollTextReveal
               text={description}

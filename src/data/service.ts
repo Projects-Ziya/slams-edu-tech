@@ -29,7 +29,7 @@ export const services = [
     id: "web-development",
 
     about:
-      "Our web development services combine cutting-edge technology with creative design to deliver exceptional digital experiences.",
+      "Our web development services combine cutting-edge technology with creative design to deliver exceptional digital experiences. Whether you need a simple landing page or a complex web application, our team has the expertise to bring your vision to life. We focus on performance, scalability, and user experience to ensure your website not only looks great but performs flawlessly.",
 
     offers: [
       {
@@ -72,7 +72,7 @@ export const services = [
     id: "ai-ml",
 
     about:
-      "We develop AI-powered systems that automate processes and generate insights from data.",
+      "Our AI and Machine Learning services are designed to transform your data into actionable intelligence. We build intelligent systems that automate complex workflows, predict future trends, and enhance decision-making capabilities. Whether you are looking to integrate intelligent chatbots or deploy advanced predictive models, our custom solutions are engineered to drive operational efficiency and measurable business growth.",
 
     offers: [
       {
@@ -100,11 +100,11 @@ export const services = [
     technologies: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn"],
 
     steps: [
-      { number: "01", title: "Data Collection", text: "Gathering relevant datasets", position: "left" },
-      { number: "02", title: "Model Design", text: "Choosing algorithms and structure", position: "center" },
-      { number: "03", title: "Training", text: "Training AI models", position: "right" },
-      { number: "04", title: "Evaluation", text: "Testing accuracy", position: "left" },
-      { number: "05", title: "Deployment", text: "Integrating into applications", position: "center" },
+      { number: "01", title: "Data Collection", text: "Gathering relevant datasets and cleaning data for model accuracy", position: "left" },
+      { number: "02", title: "Model Design", text: "Choosing the optimal algorithms and defining the model structure", position: "center" },
+      { number: "03", title: "Training", text: "Training AI models using comprehensive data to ensure high accuracy", position: "right" },
+      { number: "04", title: "Evaluation", text: "Testing accuracy and validating the model against real-world scenarios", position: "left" },
+      { number: "05", title: "Deployment", text: "Integrating the trained models seamlessly into your business applications", position: "center" },
     ],
   },
 
@@ -115,7 +115,7 @@ export const services = [
     id: "app",
 
     about:
-      "We create high-performance mobile apps with intuitive design and smooth functionality.",
+      "We craft high-performance, user-centric mobile applications tailored to your unique business needs across both Android and iOS platforms. Our app development process blends intuitive UI/UX design with robust backend integration to ensure a seamless and engaging user experience. From initial concept to final deployment, we focus on scalability and performance to help your mobile presence stand out in a competitive digital landscape.",
 
     offers: [
       {
@@ -143,11 +143,11 @@ export const services = [
     technologies: ["Flutter", "React Native", "Firebase", "Swift", "Kotlin"],
 
     steps: [
-      { number: "01", title: "Requirement Analysis", text: "Understanding app goals", position: "left" },
-      { number: "02", title: "UI/UX Design", text: "Designing user interfaces", position: "center" },
-      { number: "03", title: "Development", text: "Building app features", position: "right" },
-      { number: "04", title: "Testing", text: "Ensuring performance", position: "left" },
-      { number: "05", title: "Deployment", text: "Publishing to stores", position: "center" },
+      { number: "01", title: "Requirement Analysis", text: "Understanding your app goals and identifying the target audience", position: "left" },
+      { number: "02", title: "UI/UX Design", text: "Designing intuitive user interfaces and seamless user experiences", position: "center" },
+      { number: "03", title: "Development", text: "Building core app features with scalable and robust architecture", position: "right" },
+      { number: "04", title: "Testing", text: "Ensuring high performance and security through rigorous testing", position: "left" },
+      { number: "05", title: "Deployment", text: "Publishing to app stores and providing continuous maintenance", position: "center" },
     ],
   },
 
@@ -158,7 +158,7 @@ export const services = [
     id: "cyber",
 
     about:
-      "We secure systems against cyber threats through audits and testing.",
+      "Our comprehensive cyber security services are engineered to protect your digital assets from continuously evolving threats. We provide rigorous vulnerability assessments, proactive penetration testing, and robust network security configurations to ensure your operations remain uncompromised. By fortifying your infrastructure and securing sensitive data, we empower your business to operate safely and confidently in today's complex digital environment.",
 
     offers: [
       {
@@ -186,11 +186,11 @@ export const services = [
     technologies: ["Kali Linux", "Wireshark", "Metasploit", "Nmap", "Burp Suite"],
 
     steps: [
-      { number: "01", title: "Assessment", text: "Finding vulnerabilities", position: "left" },
-      { number: "02", title: "Analysis", text: "Evaluating risks", position: "center" },
-      { number: "03", title: "Testing", text: "Penetration testing", position: "right" },
-      { number: "04", title: "Fixing", text: "Applying fixes", position: "left" },
-      { number: "05", title: "Monitoring", text: "Continuous security checks", position: "center" },
+      { number: "01", title: "Assessment", text: "Conducting comprehensive scans to find system vulnerabilities", position: "left" },
+      { number: "02", title: "Analysis", text: "Evaluating potential security risks and business impact", position: "center" },
+      { number: "03", title: "Testing", text: "Performing deep penetration testing to simulate real-world attacks", position: "right" },
+      { number: "04", title: "Fixing", text: "Applying critical security patches and strengthening system defenses", position: "left" },
+      { number: "05", title: "Monitoring", text: "Providing continuous security checks and 24/7 monitoring", position: "center" },
     ],
   },
 
@@ -201,7 +201,7 @@ export const services = [
     id: "digital",
 
     about:
-      "We help businesses grow using SEO, ads, and social media strategies.",
+      "Our digital marketing services are driven by data and focused on maximizing your online reach and ROI. We deploy comprehensive strategies encompassing targeted SEO, dynamic social media campaigns, and precision-driven paid advertising to engage your ideal audience. By continuously analyzing performance metrics and optimizing our approach, we help elevate your brand visibility and turn digital interactions into long-term customer relationships.",
 
     offers: [
       {
@@ -229,11 +229,11 @@ export const services = [
     technologies: ["Google Ads", "Meta Ads", "SEO Tools", "Analytics", "Content Marketing"],
 
     steps: [
-      { number: "01", title: "Research", text: "Market analysis", position: "left" },
-      { number: "02", title: "Strategy", text: "Campaign planning", position: "center" },
-      { number: "03", title: "Execution", text: "Running campaigns", position: "right" },
-      { number: "04", title: "Optimization", text: "Improving results", position: "left" },
-      { number: "05", title: "Reporting", text: "Performance tracking", position: "center" },
+      { number: "01", title: "Research", text: "Conducting in-depth market analysis and competitor research", position: "left" },
+      { number: "02", title: "Strategy", text: "Planning targeted campaigns to maximize audience reach", position: "center" },
+      { number: "03", title: "Execution", text: "Running optimized ad campaigns across multiple digital platforms", position: "right" },
+      { number: "04", title: "Optimization", text: "Analyzing campaign data and adjusting strategies for better ROI", position: "left" },
+      { number: "05", title: "Reporting", text: "Providing detailed performance tracking and comprehensive reporting", position: "center" },
     ],
   },
 
@@ -244,7 +244,7 @@ export const services = [
     id: "ui-ux",
 
     about:
-      "We design user-friendly interfaces that enhance engagement and usability.",
+      "Our UI/UX design philosophy centers on creating intuitive, visually stunning interfaces that captivate users from the first interaction. We dive deep into user research and behavior analysis to craft wireframes and interactive prototypes that perfectly align with your brand's vision. By prioritizing flawless usability and aesthetic excellence, we ensure your digital products deliver memorable and frictionless experiences.",
 
     offers: [
       {
@@ -272,11 +272,11 @@ export const services = [
     technologies: ["Figma", "Adobe XD", "Sketch", "Photoshop", "Illustrator"],
 
     steps: [
-      { number: "01", title: "Research", text: "User analysis", position: "left" },
-      { number: "02", title: "Wireframing", text: "Layout creation", position: "center" },
-      { number: "03", title: "Design", text: "UI creation", position: "right" },
-      { number: "04", title: "Testing", text: "User feedback", position: "left" },
-      { number: "05", title: "Delivery", text: "Final handoff", position: "center" },
+      { number: "01", title: "Research", text: "Conducting thorough user research and behavior analysis", position: "left" },
+      { number: "02", title: "Wireframing", text: "Creating structural wireframes and planning the user journey", position: "center" },
+      { number: "03", title: "Design", text: "Designing visually stunning interfaces that reflect your brand identity", position: "right" },
+      { number: "04", title: "Testing", text: "Testing prototypes with real users and gathering actionable feedback", position: "left" },
+      { number: "05", title: "Delivery", text: "Delivering final design assets and comprehensive style guides", position: "center" },
     ],
   },
 
@@ -287,7 +287,7 @@ export const services = [
     id: "graphic",
 
     about:
-      "We create compelling visual content for branding and marketing.",
+      "Our graphic design services focus on crafting compelling visual narratives that instantly communicate your brand's core values. From establishing a unique brand identity and logo design to creating engaging marketing materials and social media creatives, we bring your vision to life. We combine creative artistry with strategic thinking to ensure every visual element we produce resonates strongly with your target demographic.",
 
     offers: [
       {
@@ -315,11 +315,11 @@ export const services = [
     technologies: ["Photoshop", "Illustrator", "Canva", "InDesign", "CorelDRAW"],
 
     steps: [
-      { number: "01", title: "Concept", text: "Understanding brand", position: "left" },
-      { number: "02", title: "Design", text: "Creating visuals", position: "center" },
-      { number: "03", title: "Feedback", text: "Revisions", position: "right" },
-      { number: "04", title: "Finalization", text: "Final output", position: "left" },
-      { number: "05", title: "Delivery", text: "Assets delivery", position: "center" },
+      { number: "01", title: "Concept", text: "Understanding your core brand values and target demographics", position: "left" },
+      { number: "02", title: "Design", text: "Creating compelling visuals tailored to your specific marketing needs", position: "center" },
+      { number: "03", title: "Feedback", text: "Incorporating your feedback to refine and perfect the design concepts", position: "right" },
+      { number: "04", title: "Finalization", text: "Finalizing high-resolution graphics optimized for print and web", position: "left" },
+      { number: "05", title: "Delivery", text: "Delivering organized project assets in all required file formats", position: "center" },
     ],
   },
 
@@ -330,7 +330,7 @@ export const services = [
     id: "networking",
 
     about:
-      "We provide secure networking and surveillance systems for homes and businesses.",
+      "We deliver reliable and advanced networking and surveillance solutions designed to keep your premises secure and fully connected. Our services cover everything from complex LAN/WiFi configurations to the professional installation of high-definition CCTV systems with 24/7 monitoring capabilities. We emphasize proactive maintenance and robust infrastructure planning to provide you with seamless connectivity and absolute peace of mind.",
 
     offers: [
       {
@@ -358,11 +358,11 @@ export const services = [
     technologies: ["Cisco", "MikroTik", "Hikvision", "Dahua", "IP Networking"],
 
     steps: [
-      { number: "01", title: "Site Survey", text: "Analyzing location", position: "left" },
-      { number: "02", title: "Planning", text: "Designing layout", position: "center" },
-      { number: "03", title: "Installation", text: "Setting up systems", position: "right" },
-      { number: "04", title: "Configuration", text: "System setup", position: "left" },
-      { number: "05", title: "Support", text: "Maintenance", position: "center" },
+      { number: "01", title: "Site Survey", text: "Conducting comprehensive site surveys to analyze coverage requirements", position: "left" },
+      { number: "02", title: "Planning", text: "Designing an optimal network and strategic camera placement layout", position: "center" },
+      { number: "03", title: "Installation", text: "Professionally installing networking hardware and surveillance cameras", position: "right" },
+      { number: "04", title: "Configuration", text: "Configuring network settings and securing the surveillance feeds", position: "left" },
+      { number: "05", title: "Support", text: "Providing ongoing technical support and proactive system maintenance", position: "center" },
     ],
   },
 ];

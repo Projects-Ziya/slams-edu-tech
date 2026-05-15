@@ -182,7 +182,7 @@ const ContactSection: React.FC = () => {
             Start Your Journey <br />
             With{" "}
             <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
-              Slams EduTech
+              Slams Tech
             </span>
           </p>
 
@@ -193,7 +193,7 @@ const ContactSection: React.FC = () => {
           {/* Decorative Lines */}
           <div className="absolute left-[40px] top-[320px] hidden lg:block w-full max-w-[950px] pointer-events-none">
 
-            <svg viewBox="0 0 950 320" className="w-full h-auto">
+            <svg viewBox="0 0 950 320" className="w-full h-auto mt-6">
 
               <defs>
                 <marker

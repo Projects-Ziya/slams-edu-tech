@@ -20,10 +20,10 @@ const getGradientColor = (title: string) =>
 
 const Works = () => {
   return (
-    <div className="bg-black min-h-screen">
+    <div className="relative bg-black min-h-screen">
       <SEO
         title="Web & App Development Company in Kochi | Expert Solutions"
-        description="Choose a Leading Web & App Development Company in Kochi Offering Custom Websites, Mobile Apps, and Scalable Digital Solutions. Contact us Today Slams Edutech"
+        description="Choose a Leading Web & App Development Company in Kochi Offering Custom Websites, Mobile Apps, and Scalable Digital Solutions. Contact us Today Slams Tech"
         keywords="Web Development Company in Kochi"
       />
       <ScrollToTop />

@@ -30,8 +30,8 @@ const Navbar: React.FC = () => {
 
   return (
    <header
-  className={`fixed top-0 left-0 w-full z-50  transition-all duration-300 ${
-    scrolled ? "bg-black/80 backdrop-blur-md shadow-lg" : "bg-transparent"
+  className={`fixed top-0 left-0 w-full z-50 border-b transition-all duration-300 ${
+    scrolled ? "bg-black/80 backdrop-blur-md shadow-lg border-blue-400/50" : "bg-transparent border-transparent"
   }`}
 >
       <div className="w-full mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">

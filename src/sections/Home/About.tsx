@@ -88,7 +88,7 @@ Digital Transformation        </span>
       </h1>
 
       <p className="pt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[900px]">
-Slams EduTech is a growing IT and EdTech company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />
+Slams Tech is a growing IT  company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />
 As one of the emerging IT companies in Kochi, we focus on building scalable, cost-effective solutions for startups and businesses. We also provide internship programs that bridge the gap between education and real-world industry experience.
 
       </p>

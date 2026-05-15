@@ -13,7 +13,7 @@ const Loader = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* SLAMS EDUTECH */}
+          {/* SLAMS TECH */}
           <img src={logo} alt="" />
         </motion.h1>
 
