@@ -5,21 +5,24 @@ const WorksHero = () => {
 
   // Hero fades out over the first 55% of viewport scroll
   const heroOpacity = useTransform(scrollY, [0, window.innerHeight * 0.55], [1, 0]);
-  const heroScale = useTransform(scrollY, [0, window.innerHeight * 0.55], [1, 0.92]);
-  const heroY = useTransform(scrollY, [0, window.innerHeight * 0.55], [0, -60]);
-  const heroBlur = useTransform(scrollY, [0, window.innerHeight * 0.45], [0, 8]);
+  const heroScale   = useTransform(scrollY, [0, window.innerHeight * 0.55], [1, 0.92]);
+  const heroY       = useTransform(scrollY, [0, window.innerHeight * 0.55], [0, -60]);
+  const heroBlur    = useTransform(scrollY, [0, window.innerHeight * 0.45], [0, 8]);
+
+  // ✅ FIX 1 — moved out of JSX to satisfy Rules of Hooks
+  const heroFilter  = useTransform(heroBlur, (v) => `blur(${v}px)`);
 
   // Background parallax — moves slower than text
-  const bgY = useTransform(scrollY, [0, window.innerHeight], [0, 120]);
+  const bgY       = useTransform(scrollY, [0, window.innerHeight], [0, 120]);
 
   // Blue → black transition: bg opacity fades over first 80%
   const bgOpacity = useTransform(scrollY, [0, window.innerHeight * 0.80], [1, 0]);
 
   return (
-    <div style={{ height: "100vh", background: "#000000" }}>
+    <>
       <div
-        className="sticky top-0 overflow-hidden"
-        style={{ height: "100vh" }}
+        className="sticky top-0 w-full overflow-hidden z-0" 
+        style={{ height: "100vh", background: "#000000" }}
       >
         {/* ── BACKGROUND LAYERS (parallax + fade) ── */}
         <motion.div
@@ -30,41 +33,8 @@ const WorksHero = () => {
           <motion.div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(160deg, #0a0f1e 0%, #0d1527 50%, #080d1a 100%)",
-            }}
-          />
-
-          {/* Centered blue radial orb */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.4 }}
-            style={{
-              position: "absolute",
-              top: "-80px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "min(900px, 100vw)",
-              height: "600px",
-              borderRadius: "50%",
               background:
-                "radial-gradient(ellipse at center, rgba(56,108,220,0.24) 0%, rgba(30,64,175,0.10) 50%, transparent 72%)",
-              filter: "blur(40px)",
-            }}
-          />
-
-          {/* Subtle grid */}
-          <div
-            className="absolute inset-0"
-            style={{
-              opacity: 0.04,
-              backgroundImage:
-                "linear-gradient(to right, rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.9) 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-              maskImage:
-                "radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%)",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%)",
+                "linear-gradient(160deg, #0a0f1e 0%, #0d1527 50%, #080d1a 100%)",
             }}
           />
         </motion.div>
@@ -74,17 +44,36 @@ const WorksHero = () => {
           className="absolute inset-0 flex flex-col items-center justify-center px-4"
           style={{
             opacity: heroOpacity,
-            scale: heroScale,
-            y: heroY,
-            filter: useTransform(heroBlur, (v) => `blur(${v}px)`),
+            scale:   heroScale,
+            y:       heroY,
+            filter:  heroFilter,
           }}
         >
+          {/* Blue radial orb — sits behind the heading text */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -60%)",
+              width: "min(700px, 90vw)",
+              height: "500px",
+              borderRadius: "50%",
+              background:
+                "radial-gradient(ellipse at center, rgba(56,108,220,0.10) 0%, rgba(30,64,175,0.04) 50%, transparent 70%)",
+              filter: "blur(50px)",
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
           <motion.div
             initial="hidden"
             animate="show"
             variants={{
               hidden: {},
-              show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+              show: {
+                transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+              },
             }}
             className="text-center w-full max-w-[1400px] mx-auto z-10"
           >
@@ -103,7 +92,7 @@ const WorksHero = () => {
                 textShadow: "0 2px 40px rgba(0,0,0,0.4)",
               }}
             >
-              Where craftsmanship meets {" "}
+              Where craftsmanship meets{" "}
               <span className="relative inline-block">
                 <span
                   className="relative z-10"
@@ -114,7 +103,11 @@ const WorksHero = () => {
                 <motion.span
                   initial={{ scaleX: 0, opacity: 0 }}
                   animate={{ scaleX: 1, opacity: 1 }}
-                  transition={{ duration: 1.1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{
+                    duration: 1.1,
+                    delay: 0.8,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                   aria-hidden
                   style={{
                     position: "absolute",
@@ -136,7 +129,11 @@ const WorksHero = () => {
             <motion.p
               variants={{
                 hidden: { opacity: 0, y: 18 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.1 } },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, delay: 0.1 },
+                },
               }}
               className="mt-8 mx-auto max-w-xl leading-relaxed"
               style={{
@@ -161,7 +158,11 @@ const WorksHero = () => {
               </span>
               <motion.div
                 animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 1.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 style={{
                   width: "1px",
                   height: "32px",
@@ -194,8 +195,8 @@ const WorksHero = () => {
           100% { color: #ffffff; }
         }
       `}</style>
-    </div>
+    </>
   );
-};
+}; // ✅ FIX 2 — component function properly closed
 
 export default WorksHero;

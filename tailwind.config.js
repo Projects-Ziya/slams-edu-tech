@@ -21,7 +21,7 @@ export default {
       },
       animation: {
             sparkle: 'sparkle 4s ease-in-out infinite',
-
+        "spin-slow": "spin 20s linear infinite",
         "star-movement-bottom": "star-movement-bottom linear infinite",
         "star-movement-top": "star-movement-top linear infinite",
       },

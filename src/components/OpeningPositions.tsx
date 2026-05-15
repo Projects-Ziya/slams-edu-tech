@@ -22,7 +22,7 @@ export default function OpeningPositions() {
           />
 
           <h1 className="absolute bottom-4 sm:bottom-5 left-4 sm:left-6 text-[10px] sm:text-xs text-gray-200 max-w-[250px] sm:max-w-md ">
-            Join Slams EduTech and explore the best IT internship and job career opportunities designed for real-world learning, innovation, and long-term growth. Build your skills, gain practical experience, and move confidently toward your future in tech.
+            Join Slams Tech and explore the best IT internship and job career opportunities designed for real-world learning, innovation, and long-term growth. Build your skills, gain practical experience, and move confidently toward your future in tech.
           </h1>
         </div>
 

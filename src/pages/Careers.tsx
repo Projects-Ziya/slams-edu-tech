@@ -58,8 +58,7 @@ export default function Careers() {
     <main
       ref={containerRef}
       className="relative text-white"
-      // Extra scroll height so the hero → content transition has room
-      style={{ background: "#080d1a" }}
+      style={{ background: "#000000" }}
     >
       <SEO title="Careers" description="Join our team" />
 
@@ -88,40 +87,6 @@ export default function Careers() {
                 background: "linear-gradient(160deg, #0a0f1e 0%, #0d1527 50%, #080d1a 100%)",
               }}
             />
-
-            {/* Centered blue radial orb */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.4 }}
-              style={{
-                position: "absolute",
-                top: "-80px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "min(900px, 100vw)",
-                height: "600px",
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(ellipse at center, rgba(56,108,220,0.24) 0%, rgba(30,64,175,0.10) 50%, transparent 72%)",
-                filter: "blur(40px)",
-              }}
-            />
-
-            {/* Subtle grid */}
-            <div
-              className="absolute inset-0"
-              style={{
-                opacity: 0.04,
-                backgroundImage:
-                  "linear-gradient(to right, rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.9) 1px, transparent 1px)",
-                backgroundSize: "60px 60px",
-                maskImage:
-                  "radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 100%)",
-              }}
-            />
           </motion.div>
 
           {/* ── HERO CONTENT (fades / scales / blurs on scroll) ── */}
@@ -131,11 +96,26 @@ export default function Careers() {
               opacity: heroOpacity,
               scale: heroScale,
               y: heroY,
-              // Framer Motion doesn't natively support filter transforms,
-              // so we use a style tag approach with a CSS variable
               filter: useTransform(heroBlur, (v) => `blur(${v}px)`),
             }}
           >
+            {/* Blue radial orb — sits behind the heading text */}
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -60%)",
+                width: "min(700px, 90vw)",
+                height: "500px",
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(ellipse at center, rgba(56,108,220,0.10) 0%, rgba(30,64,175,0.04) 50%, transparent 70%)",
+                filter: "blur(50px)",
+                pointerEvents: "none",
+                zIndex: 0,
+              }}
+            />
             <motion.div
               initial="hidden"
               animate="show"
