@@ -28,6 +28,7 @@ const Team = lazy(() => import("../sections/Home/Team"));
 const FoundersMessage = lazy(() => import("../sections/Home/FounderMessage"));
 const Robo = lazy(() => import("../sections/Home/Robo"));
 const Build = lazy(() => import("../sections/Home/Build"));
+const SmartSolutions = lazy(() => import("../sections/Home/SmartSolutions"));
 const WhyChooseUs = lazy(() => import("../sections/Home/WhyChooseUs"));
 const Testimonial = lazy(() => import("../sections/Home/Testimonial"));
 const Faq = lazy(() => import("../sections/Home/Faq"));
@@ -70,8 +71,8 @@ const Home = () => {
   return (
     <div className="">
       <SEO
-        title="Best IT Company in Kochi | Slam Edutech"
-        description="Looking for the Best IT Company in Kochi? Slam Edutech Offers Expert IT Consulting, Software Development, and Digital Solutions to Help Businesses Grow"
+        title="Best IT Company in Kochi | Slam Tech"
+        description="Looking for the Best IT Company in Kochi? Slam Tech Offers Expert IT Consulting, Software Development, and Digital Solutions to Help Businesses Grow"
         keywords="Best IT Company in Kochi"
       />
 
@@ -107,6 +108,10 @@ const Home = () => {
 
       <Suspense fallback={SectionLoader}>
         <Build />
+      </Suspense>
+
+      <Suspense fallback={SectionLoader}>
+        <SmartSolutions />
       </Suspense>
 
       <LazySection>

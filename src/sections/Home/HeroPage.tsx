@@ -580,17 +580,11 @@ export default function HeroPage() {
             marginTop: "clamp(14px,1.2vw,20px)",
             fontSize:  "clamp(14px,1.3vw,20px)",
             lineHeight: 1.65,
-            color:     "rgba(186,213,255,0.80)",
+            color:     "#ffffff",
             maxWidth:  "clamp(300px,44vw,640px)",
-            background: "rgba(2,8,22,0.5)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
-            border:    "1px solid rgba(56,189,248,0.13)",
-            borderRadius: "16px",
-            padding:   "clamp(12px,1.1vw,18px) clamp(16px,1.4vw,22px)",
           }}
         >
-          Slams EduTech is a leading IT company in Kochi offering web development,
+          Slams Tech is a leading IT company in Kochi offering web development,
           mobile app development, AI solutions, and industry-focused internships.
           We help businesses grow faster with scalable technology.
         </p>

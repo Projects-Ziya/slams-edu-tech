@@ -182,7 +182,7 @@ const ContactSection: React.FC = () => {
             Start Your Journey <br />
             With{" "}
             <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
-              Slams EduTech
+              Slams Tech
             </span>
           </p>
 

@@ -7,17 +7,17 @@ export interface FAQItem {
 
 export const faqs: FAQItem[] = [
   {
-    question: "What services does SLAMS EDUTECH offer?",
+    question: "What services does SLAMS TECH offer?",
     answer:
       "We provide a wide range of IT services including web development, mobile app development, digital marketing, UI/UX design, AI solutions, and cybersecurity. As a growing best IT company in Kochi, we focus on delivering practical and scalable solutions for businesses.",
   },
   {
     question: " How is an IT company different from a software development company?",
     answer:
-      "An IT company offers a broad range of technology services such as networking, support, cybersecurity, and cloud solutions. A software development company mainly focuses on building applications and systems. Slams EduTech combines both, offering complete IT and software solutions under one roof.",
+      "An IT company offers a broad range of technology services such as networking, support, cybersecurity, and cloud solutions. A software development company mainly focuses on building applications and systems. Slams Tech combines both, offering complete IT and software solutions under one roof.",
   },
   {
-    question: " Why should I choose Slams EduTech for my business?",
+    question: " Why should I choose Slams Tech for my business?",
     answer:
       "We focus on building solutions that are simple, scalable, and aligned with your business goals. As an emerging best IT company in Kochi, we provide end-to-end support, from idea to execution, along with ongoing maintenance.",
   },

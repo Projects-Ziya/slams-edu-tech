@@ -71,7 +71,7 @@ const Service = () => {
           variants={itemVariants}
           className="pt-4 text-[#ADADAD] text-sm sm:text-base md:text-lg font-outfit max-w-[1400px]"
         >
-          Slams EduTech delivers custom web, mobile, and business software designed to scale.
+          Slams Tech delivers custom web, mobile, and business software designed to scale.
           As a trusted software development company, we work with startups and growing businesses
           to turn ideas into reliable, high-performance digital products.
         </motion.p>
