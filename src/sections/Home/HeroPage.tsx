@@ -497,7 +497,7 @@ export default function HeroPage() {
         style={{
           zIndex: 7,
           background: `
-            radial-gradient(ellipse 130% 90% at 50% 50%, transparent 25%, rgba(2,8,22,0.52) 100%),
+            radial-gradient(ellipse 130% 90% at 50% 50%, transparent 25%, rgba(19, 73, 197, 0.52) 100%),
             linear-gradient(to bottom,
               rgba(2,8,22,0.18) 0%,
               transparent 28%,
@@ -510,7 +510,7 @@ export default function HeroPage() {
 
       {/* ── HORIZONTAL ACCENT LINE ── */}
       {/* <div
-        ref={lineRef}
+        ref={lineRef} 
         className="hidden md:block absolute pointer-events-none"
         style={{
           zIndex:          8,
