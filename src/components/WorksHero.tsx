@@ -21,7 +21,7 @@ const WorksHero = () => {
   return (
     <>
       <div
-        className="sticky top-0 w-full overflow-hidden z-0" 
+        className="sticky top-0 w-full overflow-hidden z-0 select-none" 
         style={{ height: "100vh", background: "#000000" }}
       >
         {/* ── BACKGROUND LAYERS (parallax + fade) ── */}
