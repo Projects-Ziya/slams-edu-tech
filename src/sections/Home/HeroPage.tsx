@@ -345,7 +345,7 @@ export default function HeroPage() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full h-screen overflow-hidden select-none"
       style={{ background: "#020816" }}
     >
 
@@ -535,7 +535,7 @@ export default function HeroPage() {
       >
 
         {/* ── eyebrow ── */}
-        <div ref={eyebrowRef} className="hidden md:flex items-center gap-3 mb-5">
+        {/* <div ref={eyebrowRef} className="hidden md:flex items-center gap-3 mb-5">
           <span style={{
             display: "inline-flex", alignItems: "center", gap: "7px",
             fontSize: "11px", fontWeight: 700, letterSpacing: "0.18em",
@@ -553,7 +553,7 @@ export default function HeroPage() {
             }} />
             Kochi&apos;s Leading IT Company
           </span>
-        </div>
+        </div> */}
 
         {/* ── heading ── */}
         <h1
@@ -568,8 +568,8 @@ export default function HeroPage() {
           }}
         >
           <HeadingWords
-            text="IT Solutions for a Smarter Digital World"
-            accent="Smarter Digital World"
+            text="Best IT Company in Kochi for Smart Digital Solutions & Internships"
+            accent=" Digital Solutions & Internships"
           />
         </h1>
 
@@ -586,7 +586,7 @@ export default function HeroPage() {
         >
           Slams Tech is a leading IT company in Kochi offering web development,
           mobile app development, AI solutions, and industry-focused internships.
-          We help businesses grow faster with scalable technology.
+          We help businesses grow faster with scalable technology and practical digital solutions..
         </p>
 
         {/* ── CTAs ── */}
@@ -600,7 +600,7 @@ export default function HeroPage() {
         </div>
 
         {/* ── stat badges ── */}
-        <div
+        {/* <div
           ref={badgesRef}
           className="hidden md:flex flex-wrap gap-4 mt-8"
         >
@@ -639,7 +639,7 @@ export default function HeroPage() {
               </span>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* ── STYLES ── */}
