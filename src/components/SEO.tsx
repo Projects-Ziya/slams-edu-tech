@@ -14,6 +14,8 @@ const SEO = ({ title, description, keywords }: SEOProps) => {
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
 
+      <link rel="canonical" href={window.location.href} />
+
       {/* Open Graph (for social sharing) */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

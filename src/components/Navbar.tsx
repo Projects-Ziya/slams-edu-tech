@@ -43,7 +43,6 @@ const Navbar: React.FC = () => {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center">
           <GooeyNav
-            key={location.pathname}
             items={items}
             particleCount={5}
             particleDistances={[90, 10]}

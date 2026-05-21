@@ -100,14 +100,17 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     Object.assign(textRef.current.style, styles);
     textRef.current.innerText = element.innerText;
   };
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
-    const liEl = e.currentTarget;
+  const handleClickElement = (liEl: HTMLElement, index: number) => {
     if (activeIndex === index) return;
     setActiveIndex(index);
     updateEffectPosition(liEl);
     if (filterRef.current) {
       const particles = filterRef.current.querySelectorAll('.particle');
-      particles.forEach(p => filterRef.current!.removeChild(p));
+      particles.forEach(p => {
+        try {
+          filterRef.current!.removeChild(p);
+        } catch {}
+      });
     }
     if (textRef.current) {
       textRef.current.classList.remove('active');
@@ -118,20 +121,29 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
       makeParticles(filterRef.current);
     }
   };
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
+    const liEl = e.currentTarget.parentElement;
+    if (liEl) {
+      handleClickElement(liEl, index);
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>, index: number) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       const liEl = e.currentTarget.parentElement;
       if (liEl) {
-        handleClick(
-          {
-            currentTarget: liEl
-          } as React.MouseEvent<HTMLAnchorElement>,
-          index
-        );
+        handleClickElement(liEl, index);
       }
     }
   };
+
+  // Synchronize active index when routing updates the prop
+  useEffect(() => {
+    setActiveIndex(initialActiveIndex);
+  }, [initialActiveIndex]);
+
   useEffect(() => {
     if (!navRef.current || !containerRef.current) return;
     const activeLi = navRef.current.querySelectorAll('li')[activeIndex] as HTMLElement;
@@ -151,15 +163,15 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
 
   return (
     <>
-    
+     
  <style>
         {`
-         :root {
-  --color-1: #ffffff;
---color-2: #398EFE;
---color-3: #111111;
---color-4:  #398EFE;
-}
+          :root {
+            --color-1: #ffffff;
+            --color-2: #3B82F6;
+            --color-3: #ffffff;
+            --color-4: #3B82F6;
+          }
           .effect {
             position: absolute;
             opacity: 1;
@@ -167,16 +179,20 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
             display: grid;
             place-items: center;
             z-index: 1;
+            transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                        top 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                        width 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                        height 0.35s cubic-bezier(0.25, 1, 0.5, 1);
           }
           .effect.text {
             color: white;
             transition: color 0.3s ease;
           }
           .effect.text.active {
-            color: #398EFE;
+            color: #3B82F6;
           }
           .effect.filter {
-            filter: blur(1px) contrast(100) blur(0);
+            filter: url(#goo-nav);
             mix-blend-mode: lighten;
           }
           .effect.filter::before {
@@ -329,6 +345,16 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
         <span className="effect filter" ref={filterRef} />
         <span className="effect text" ref={textRef} />
       </div>
+      {/* Hidden SVG Gooey Filter */}
+      <svg style={{ position: 'absolute', width: 0, height: 0, pointerEvents: 'none' }} xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <filter id="goo-nav">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+          </filter>
+        </defs>
+      </svg>
     </>
   );
 };
