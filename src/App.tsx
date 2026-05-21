@@ -7,6 +7,7 @@ import Loader from './components/Loader';
 
 import ScrollRestorationFix from './components/ScrollRestorationFix';
 import ScrollManager from './components/ScrollManager';
+import CustomCursor from './components/CustomCursor';
 
 
 // Lazy load pages
@@ -30,8 +31,10 @@ function App() {
     <BrowserRouter>
    {/* <ScrollRestorationFix /> */}
    <ScrollManager />
+   <CustomCursor />
 
       <Toaster position="top-right" richColors />
+
 
       {/* Suspense wraps all lazy routes */}
       <Suspense fallback={<Loader/>}>

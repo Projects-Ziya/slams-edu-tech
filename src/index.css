@@ -93,6 +93,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Premium Custom Cursor Utilities */
+@media (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+
 
 
 
