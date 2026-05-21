@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slams-edu-tech.vercel.app/sitemap.xml
+Sitemap: https://slamstech.com/sitemap.xml

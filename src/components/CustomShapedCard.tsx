@@ -152,7 +152,7 @@ export default function CustomShapeCard({
                 width="100%"
                 height="100%"
                 preserveAspectRatio="xMidYMid slice"
-                className="transition duration-700 group-hover:scale-110"
+                className="transition duration-700 scale-105 group-hover:scale-100"
               />
               <rect width="100%" height="100%" fill={`url(#overlay-${clipId})`} />
             </motion.g>
@@ -175,7 +175,7 @@ export default function CustomShapeCard({
         {/* Button */}
         <motion.button
           className="absolute bottom-[5%] right-[5%] z-20 rounded-full bg-white text-blue-600 p-3 group-hover:bg-blue-400"
-          whileHover={{ scale: 1.15 }}
+          // whileHover={{ scale: 1.15 }}
         >
           <ArrowUpRight className="group-hover:rotate-45 group-hover:text-white transition" />
         </motion.button>

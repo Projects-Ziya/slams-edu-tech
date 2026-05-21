@@ -395,7 +395,7 @@ const handleChange = (e: any) => {
   <div>
 
     <label className="text-sm sm:text-base">
-      Why join Slams Edu Tech?
+      Why join Slams Tech?
     </label>
 
     <textarea
