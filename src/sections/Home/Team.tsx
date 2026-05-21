@@ -31,7 +31,7 @@ const teamGroups: TeamMember[][] = [
     { id: 3, name: "Ashvin Kunnirikkal", role: "AI/ML Developer", image: member3 },
     { id: 4, name: "Akshay", role: "Frontend Developer", image: member4 },
     { id: 5, name: "Jesna", role: "Finance Head", image: member2 },
-    { id: 6, name: "Cinda Sibichan", role: "Python Developer", image: member6 },
+    // { id: 6, name: "Cinda Sibichan", role: "Python Developer", image: member6 },
     { id: 13, name: "Fuhad", role: "Cyber", image: member6 },
   ],
   [
@@ -41,7 +41,7 @@ const teamGroups: TeamMember[][] = [
     { id: 10, name: "Anoop", role: "Python", image: anoop },
     { id: 11, name: "Noufal", role: "UI/UX", image: noufal },
     { id: 12, name: "Akshay", role: "UI/UX", image: akshay },
-    { id: 14, name: "Akshay", role: "UI/UX", image: akshay },
+    // { id: 14, name: "Akshay", role: "UI/UX", image: akshay },
   ],
 ];
 
