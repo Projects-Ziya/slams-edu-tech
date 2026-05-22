@@ -66,8 +66,7 @@ const slideRight = {
 
 {/* ================= MAIN GRID ================= */}
 <div
- className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-1 md:px-6"
-
+ className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-4 md:px-6 xl:px-10"
 >
   
   

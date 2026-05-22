@@ -29,4 +29,4 @@ const SEO = ({ title, description, keywords }: SEOProps) => {
   );
 };
 
-export default SEO;
+export default SEO; 
