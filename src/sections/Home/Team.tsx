@@ -32,7 +32,7 @@ const teamGroups: TeamMember[][] = [
     { id: 4, name: "Akshay", role: "Frontend Developer", image: member4 },
     { id: 5, name: "Jesna", role: "Finance Head", image: member2 },
     // { id: 6, name: "Cinda Sibichan", role: "Python Developer", image: member6 },
-    { id: 13, name: "Fuhad", role: "Cyber", image: member6 },
+    { id: 13, name: "Cinda", role: "Python developer", image: member6 },
   ],
   [
     { id: 7, name: "Fayas", role: "HR", image: hr },
