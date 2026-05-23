@@ -572,11 +572,14 @@ export default function HeroPage() {
             letterSpacing: "-0.01em",
             fontWeight: 400,
           }}
-        >
-          <HeadingWords
-            text="Best IT Company in Kochi for Smart Digital Solutions & Internships"
+        > Best IT Company in Kochi for Smart  
+        
+        <span className="sm:pl-2 pl-3" style={{ background: "linear-gradient(90deg,#93c5fd,#67e8f9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+        Digital Solutions & Internships  </span>
+          {/* <HeadingWords
+            text=" Digital Solutions & Internships"
             accent=" Digital Solutions & Internships"
-          />
+          /> */}
         </h1>
 
         {/* ── paragraph ── */}
@@ -590,7 +593,7 @@ export default function HeroPage() {
             maxWidth:  "clamp(300px,44vw,640px)",
           }}
         >
-          Slams Tech is a leading IT company in Kochi offering web development,
+          Slams Tech is the best IT company in Kochi offering web development,
           mobile app development, AI solutions, and industry-focused internships.
           We help businesses grow faster with scalable technology and practical digital solutions..
         </p>

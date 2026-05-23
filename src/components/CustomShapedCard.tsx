@@ -56,7 +56,7 @@ export default function CustomShapeCard({
     offset: ["start end", "end start"],
   });
 
-  const imageParallaxY = useTransform(scrollYProgress, [0, 1], [-8, 8]);
+  const imageParallaxY = useTransform(scrollYProgress, [0, 1], [-0, 0]);
 
   // Hover animations
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -152,7 +152,7 @@ export default function CustomShapeCard({
                 width="100%"
                 height="100%"
                 preserveAspectRatio="xMidYMid slice"
-                className="transition duration-700 scale-105 group-hover:scale-100"
+                className="transition  scale-105 group-hover:scale-105"
               />
               <rect width="100%" height="100%" fill={`url(#overlay-${clipId})`} />
             </motion.g>

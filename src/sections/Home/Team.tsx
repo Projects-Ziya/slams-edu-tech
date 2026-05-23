@@ -32,7 +32,7 @@ const teamGroups: TeamMember[][] = [
     { id: 4, name: "Akshay", role: "Frontend Developer", image: member4 },
     { id: 5, name: "Jesna", role: "Finance Head", image: member2 },
     // { id: 6, name: "Cinda Sibichan", role: "Python Developer", image: member6 },
-    { id: 13, name: "Fuhad", role: "Cyber", image: member6 },
+    { id: 13, name: "Cinda", role: "Python developer", image: member6 },
   ],
   [
     { id: 7, name: "Fayas", role: "HR", image: hr },
@@ -224,26 +224,40 @@ const Team = () => {
           </div>
 
           {/* RIGHT DESKTOP */}
-          <div className="hidden xl:block w-full max-w-[520px] text-left md:mt-10">
-            <motion.img
-              initial={{ y: "-50%" }}
-              animate={{ y: ["-50%", "-56%", "-50%"] }}
-              transition={{ duration: 10, repeat: Infinity }}
-              src={flowerBg}
-              className="absolute xl:right-10 right-1/2 translate-x-1/2 xl:translate-x-0 top-1/2 w-full max-w-[720px] pointer-events-none"
-            />
+          <div className="hidden xl:flex w-full max-w-[520px] relative items-center justify-center">
 
-            <div className="relative z-10 text-center">
-              <h2 className="text-4xl lg:text-5xl text-white whitespace-nowrap">
-                {activeMember?.name || "Meet Our Team"}
-              </h2>
+  {/* Rotating BG */}
+  <motion.img
+    src={flowerBg}
+    animate={{ rotate: 360 }}
+    transition={{
+      duration: 35,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+    className="
+      absolute
+      w-[520px]
+      min-w-[520px]
+      max-w-none
+      opacity-90
+      pointer-events-none
+    "
+  />
 
-              <p className="mt-6 text-gray-400">
-                {activeMember?.role ||
-                  "A team of experienced professionals delivering reliable and scalable digital solutions."}
-              </p>
-            </div>
-          </div>
+  {/* Content */}
+  <div className="relative z-10 text-center px-6">
+    <h2 className="text-4xl lg:text-5xl text-white whitespace-nowrap">
+      {activeMember?.name || "Meet Our Team"}
+    </h2>
+
+    <p className="mt-6 text-gray-400">
+      {activeMember?.role ||
+        "A team of experienced professionals delivering reliable and scalable digital solutions."}
+    </p>
+  </div>
+
+</div>
 
         </div>
       </motion.div>
