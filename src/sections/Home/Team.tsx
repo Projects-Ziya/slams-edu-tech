@@ -161,7 +161,7 @@ const Team = () => {
 
           {/* TOP TITLE */}
           <div className="w-full text-center xl:hidden">
-            <h2 className="text-3xl md:text-4xl text-white">
+            <h2 className="text-[34px] sm:text-[42px] md:text-[54px] leading-tight text-white">
               {activeMember?.name || "Meet Our Team"}
             </h2>
 
@@ -224,7 +224,7 @@ const Team = () => {
           </div>
 
           {/* RIGHT DESKTOP */}
-          <div className="hidden xl:flex w-full max-w-[520px] relative items-center justify-center">
+          <div className="hidden xl:flex w-full max-w-[560px] 2xl:max-w-[640px] 3xl:max-w-[780px] 4xl:max-w-[940px] min-h-[560px] 2xl:min-h-[640px] 3xl:min-h-[780px] 4xl:min-h-[940px] relative items-center justify-center xl:-translate-x-10 2xl:-translate-x-16 3xl:-translate-x-24">
 
   {/* Rotating BG */}
   <motion.img
@@ -237,8 +237,14 @@ const Team = () => {
     }}
     className="
       absolute
-      w-[520px]
-      min-w-[520px]
+      w-[560px]
+      min-w-[560px]
+      2xl:w-[640px]
+      2xl:min-w-[640px]
+      3xl:w-[780px]
+      3xl:min-w-[780px]
+      4xl:w-[940px]
+      4xl:min-w-[940px]
       max-w-none
       opacity-90
       pointer-events-none
@@ -246,12 +252,12 @@ const Team = () => {
   />
 
   {/* Content */}
-  <div className="relative z-10 text-center px-6">
-    <h2 className="text-4xl lg:text-5xl text-white whitespace-nowrap">
+  <div className="relative z-10 text-center px-6 3xl:px-10">
+    <h2 className={`${activeMember ? "text-4xl 2xl:text-5xl 3xl:text-6xl" : "text-[56px] 2xl:text-[68px] 3xl:text-[86px] 4xl:text-[104px]"} leading-tight text-white whitespace-nowrap`}>
       {activeMember?.name || "Meet Our Team"}
     </h2>
 
-    <p className="mt-6 text-gray-400">
+    <p className="mt-6 3xl:mt-8 text-gray-400 3xl:text-[22px] 4xl:text-[26px]">
       {activeMember?.role ||
         "A team of experienced professionals delivering reliable and scalable digital solutions."}
     </p>

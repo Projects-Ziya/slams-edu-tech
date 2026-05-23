@@ -53,6 +53,17 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
         {/* LEFT SIDE */}
         <div className="relative z-10 order-1 md:order-1">
+          <div
+            className="absolute -inset-x-6 -inset-y-8 sm:-inset-x-10 sm:-inset-y-12 pointer-events-none"
+            style={{
+              zIndex: 0,
+              background:
+                "radial-gradient(ellipse 78% 70% at 42% 44%, rgba(59,130,246,0.16) 0%, rgba(37,99,235,0.12) 36%, rgba(30,64,175,0.08) 58%, transparent 76%)",
+              filter: "blur(18px)",
+            }}
+          />
+
+          <div className="relative z-10">
 
           {/* Heading */}
           <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8 lg:mb-10">
@@ -107,6 +118,8 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                 Aslam K A - Founder
               </p>
             </div>
+
+          </div>
 
           </div>
 
