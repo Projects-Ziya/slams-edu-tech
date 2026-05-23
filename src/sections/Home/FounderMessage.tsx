@@ -33,11 +33,10 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         </defs>
       </svg>
 
+      {/* MAIN GRID */}
       <div className="
         relative
         max-w-[1400px]
-        2xl:max-w-[1536px]
-        3xl:max-w-[1780px]
         mx-auto
         grid
         grid-cols-1
@@ -45,25 +44,11 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         gap-10
         lg:gap-16
         xl:gap-20
-        2xl:gap-32
-        3xl:gap-48
-        4xl:gap-64
         items-center
       ">
 
         {/* LEFT SIDE */}
         <div className="relative z-10 order-1 md:order-1">
-          <div
-            className="absolute left-0 top-1/2 h-[82%] w-full max-w-[620px] 3xl:max-w-[820px] -translate-y-1/2 pointer-events-none"
-            style={{
-              zIndex: 0,
-              background:
-                "radial-gradient(ellipse 62% 58% at 50% 50%, rgba(59,130,246,0.16) 0%, rgba(37,99,235,0.12) 38%, rgba(30,64,175,0.08) 60%, transparent 80%)",
-              filter: "blur(18px)",
-            }}
-          />
-
-          <div className="relative z-10">
 
           {/* Heading */}
           <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8 lg:mb-10">
@@ -88,7 +73,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
           {/* Paragraphs */}
           <div className="
-            space-y-6 3xl:space-y-8 pt-4 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] 3xl:text-[26px] font-outfit font-light leading-relaxed tracking-wide max-w-[550px] 3xl:max-w-[750px]
+            space-y-6 pt-4 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[550px]
           ">
 
             <p>
@@ -118,8 +103,6 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
                 Aslam K A - Founder
               </p>
             </div>
-
-          </div>
 
           </div>
 
@@ -153,7 +136,6 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             lg:w-[320px]
             lg:h-[430px]
           ">
-
 
             {/* Image */}
             <img
