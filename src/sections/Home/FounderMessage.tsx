@@ -33,10 +33,11 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         </defs>
       </svg>
 
-      {/* MAIN GRID */}
       <div className="
         relative
         max-w-[1400px]
+        2xl:max-w-[1536px]
+        3xl:max-w-[1780px]
         mx-auto
         grid
         grid-cols-1
@@ -44,6 +45,9 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         gap-10
         lg:gap-16
         xl:gap-20
+        2xl:gap-32
+        3xl:gap-48
+        4xl:gap-64
         items-center
       ">
 
@@ -73,7 +77,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
 
           {/* Paragraphs */}
           <div className="
-            space-y-6 pt-4 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[550px]
+            space-y-6 3xl:space-y-8 pt-4 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] 3xl:text-[26px] font-outfit font-light leading-relaxed tracking-wide max-w-[550px] 3xl:max-w-[750px]
           ">
 
             <p>
@@ -136,6 +140,7 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             lg:w-[320px]
             lg:h-[430px]
           ">
+
 
             {/* Image */}
             <img

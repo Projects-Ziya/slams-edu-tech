@@ -47,9 +47,26 @@ const Navbar: React.FC = () => {
             particleCount={5}
             particleDistances={[90, 10]}
             particleR={100}
-            initialActiveIndex={
-              items.findIndex((item) => item.to === location.pathname) || 0
-            }
+            initialActiveIndex={(() => {
+              if (location.pathname === "/" && location.hash === "#about") {
+                const aboutIndex = items.findIndex((item) => item.href === "#about");
+                if (aboutIndex !== -1) return aboutIndex;
+              }
+              if (location.pathname.startsWith("/service")) {
+                const idx = items.findIndex((item) => item.to === "/service");
+                if (idx !== -1) return idx;
+              }
+              if (location.pathname.startsWith("/works") || location.pathname.startsWith("/project")) {
+                const idx = items.findIndex((item) => item.to === "/works");
+                if (idx !== -1) return idx;
+              }
+              if (location.pathname.startsWith("/careers") || location.pathname.startsWith("/internship")) {
+                const idx = items.findIndex((item) => item.to === "/careers");
+                if (idx !== -1) return idx;
+              }
+              const index = items.findIndex((item) => item.to === location.pathname);
+              return index !== -1 ? index : 0;
+            })()}
             animationTime={600}
             timeVariance={300}
             colors={[1, 2, 3, 1, 4, 3, 1, 2]}

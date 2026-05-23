@@ -156,55 +156,55 @@ const handleChange = (e: any) => {
 };
 
   return (
-    <div className="w-full mx-auto text-white pt-10 mt-10 px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px]">
+    <div className="w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] mx-auto text-white pt-10 mt-10 px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px] 3xl:text-[24px] pb-16">
       {/* <ScrollToTop /> */}
 
       {/* Back */}
-    <Link to="/careers" className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] mb-6 pt-4">
-      <CircleChevronLeft className="mr-2"/>
+    <Link to="/careers" className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] 3xl:text-[24px] mb-6 pt-4">
+      <CircleChevronLeft className="mr-2 w-5 h-5 md:w-6 md:h-6 3xl:w-8 3xl:h-8"/>
          Back to all positions
       </Link>
 
       {/* Job Info */}
-      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8 mb-6">
-        <h1 className="text-2xl sm:text-3xl md:text-[40px] mb-4">
+      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8 3xl:p-12 mb-6 3xl:mb-10">
+        <h1 className="text-2xl sm:text-3xl md:text-[40px] 3xl:text-[50px] mb-4 3xl:mb-6 leading-tight">
           {job.title}
         </h1>
 
-        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 text-gray-400 mb-6">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 md:gap-6 3xl:gap-8 text-gray-400 mb-6 3xl:mb-8">
 
-          <div className="flex items-center gap-2 text-sm sm:text-base md:text-[20px]">
-            <Briefcase size={18} />
+          <div className="flex items-center gap-2 text-sm sm:text-base md:text-[20px] 3xl:text-[24px]">
+            <Briefcase className="w-[18px] h-[18px] 3xl:w-[24px] 3xl:h-[24px]" />
             {job.type}
           </div>
 
-          <div className="flex items-center gap-2 text-sm sm:text-base md:text-[20px]">
-            <MapPin size={18} />
+          <div className="flex items-center gap-2 text-sm sm:text-base md:text-[20px] 3xl:text-[24px]">
+            <MapPin className="w-[18px] h-[18px] 3xl:w-[24px] 3xl:h-[24px]" />
             {job.location}
           </div>
 
-          <div className="flex items-center gap-2 text-sm sm:text-base md:text-[20px]">
-            <Clock size={18} />
+          <div className="flex items-center gap-2 text-sm sm:text-base md:text-[20px] 3xl:text-[24px]">
+            <Clock className="w-[18px] h-[18px] 3xl:w-[24px] 3xl:h-[24px]" />
             {job.posted}
           </div>
         </div>
 
-        <h3 className="text-lg sm:text-xl md:text-[28px] mb-2">
+        <h3 className="text-lg sm:text-xl md:text-[28px] 3xl:text-[34px] mb-2 3xl:mb-4">
           About the role
         </h3>
 
-        <p className="text-[#B9B9B9] text-sm sm:text-base md:text-[20px]">
+        <p className="text-[#B9B9B9] text-sm sm:text-base md:text-[20px] 3xl:text-[24px] leading-relaxed">
           {job.about}
         </p>
       </div>
 
       {/* Responsibilities */}
-      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8 mb-6">
-        <h3 className="text-lg sm:text-xl md:text-[28px] mb-4">
+      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8 3xl:p-12 mb-6 3xl:mb-10">
+        <h3 className="text-lg sm:text-xl md:text-[28px] 3xl:text-[34px] mb-4 3xl:mb-6">
           Key Responsibilities
         </h3>
 
-        <ul className="list-disc ml-5 text-[#B9B9B9] space-y-2 text-sm sm:text-base md:text-[20px]">
+        <ul className="list-disc ml-5 text-[#B9B9B9] space-y-2 3xl:space-y-4 text-sm sm:text-base md:text-[20px] 3xl:text-[24px] leading-relaxed">
           {job.responsibilities.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
@@ -212,12 +212,12 @@ const handleChange = (e: any) => {
       </div>
 
       {/* Qualifications */}
-      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8 mb-6">
-        <h3 className="text-lg sm:text-xl md:text-[28px] mb-4">
+      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8 3xl:p-12 mb-6 3xl:mb-10">
+        <h3 className="text-lg sm:text-xl md:text-[28px] 3xl:text-[34px] mb-4 3xl:mb-6">
           Qualifications
         </h3>
 
-        <ul className="list-disc ml-5 text-[#B9B9B9] space-y-2 text-sm sm:text-base md:text-[20px]">
+        <ul className="list-disc ml-5 text-[#B9B9B9] space-y-2 3xl:space-y-4 text-sm sm:text-base md:text-[20px] 3xl:text-[24px] leading-relaxed">
           {job.qualifications.map((item, i) => (
             <li key={i}>{item}</li>
           ))}
@@ -225,12 +225,12 @@ const handleChange = (e: any) => {
       </div>
 
       {/* Form */}
-      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8">
-        <h3 className="text-lg sm:text-xl md:text-[28px] mb-4">
+      <div className="bg-[#1b1b1b] rounded-2xl p-4 sm:p-6 md:p-8 3xl:p-12">
+        <h3 className="text-lg sm:text-xl md:text-[28px] 3xl:text-[34px] mb-4 3xl:mb-6">
           Apply for this Position
         </h3>
 
-        <p className="text-gray-400 text-sm sm:text-base mb-6">
+        <p className="text-gray-400 text-sm sm:text-base 3xl:text-xl mb-6 3xl:mb-8">
           All fields marked with * are required
         </p>
 
@@ -491,11 +491,11 @@ const handleChange = (e: any) => {
  <button
   type="submit"
   disabled={loading}
-  className="w-full bg-white text-black py-3 rounded-md font-medium mt-4
+  className="w-full bg-white text-black py-3 3xl:py-4 rounded-md font-medium mt-4 3xl:mt-6
   transition-all duration-300
   hover:-translate-y-1 hover:bg-gray-200
   disabled:opacity-50 disabled:cursor-not-allowed
-  text-sm sm:text-base"
+  text-sm sm:text-base 3xl:text-[24px]"
 >
   {loading ? "Submitting..." : "SUBMIT"}
 </button>

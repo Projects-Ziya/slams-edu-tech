@@ -49,23 +49,10 @@ const SmartSolutions = () => {
         ))}
 
         <div className="relative z-10 flex flex-col items-center gap-6 text-center">
-          <motion.div
-            className="inline-flex items-center gap-3 border border-blue-400/30 bg-blue-500/10 px-3 py-2 text-xs font-medium uppercase tracking-[0.24em] text-blue-100"
-            animate={{
-              borderColor: [
-                "rgba(59,130,246,0.3)",
-                "rgba(96,165,250,0.75)",
-                "rgba(59,130,246,0.3)",
-              ],
-            }}
-            transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Sparkles className="h-4 w-4 text-blue-400" />
-            Building future-ready teams
-          </motion.div>
+          
 
           <h2
-            className="font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white"
+            className="font-bold font-outfit  text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white"
           >
             Building smart digital solutions and skilled professionals.
           </h2>
