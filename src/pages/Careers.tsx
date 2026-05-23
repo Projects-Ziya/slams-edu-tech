@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import ScrollToTop from "@/components/ScrollToTop";
+
 import OpeningPositions from "../components/OpeningPositions";
 import Internships from "../components/Internships";
 import SEO from "../components/SEO";
@@ -11,75 +11,117 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 
+function BackspaceText({
+  text,
+  scrollProgress,
+  startProgress = 0.05,
+  endProgress = 0.3,
+}: {
+  text: string;
+  scrollProgress: number;
+  startProgress?: number;
+  endProgress?: number;
+}) {
+  const chars = text.split("");
+  const total = chars.length;
+
+  return (
+    <>
+      {chars.map((char, i) => {
+        const charEnd   = startProgress + (endProgress - startProgress) * (1 - i / Math.max(1, total - 1));
+        const charStart = charEnd - 0.08;
+
+        let opacity = 1;
+        if (scrollProgress >= charEnd) {
+          opacity = 0;
+        } else if (scrollProgress >= charStart) {
+          opacity = 1 - (scrollProgress - charStart) / (charEnd - charStart);
+        }
+
+        return (
+          <span
+            key={i}
+            style={{
+              opacity,
+              display: "inline-block",
+              whiteSpace: "pre",
+              transition: "opacity 0.05s linear",
+            }}
+          >
+            {char}
+          </span>
+        );
+      })}
+    </>
+  );
+}
+
+const paragraphText = "Join a team obsessed with craft, velocity, and ideas that matter. Browse our open roles or apply for an internship.";
+
+const pVariants = {
+  hidden: { opacity: 1 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.015 },
+  },
+};
+const charVariants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
+
 export default function Careers() {
   const [activeTab, setActiveTab] = useState<"openings" | "internships">(() =>
     window.location.hash === "#internships" ? "internships" : "openings"
   );
 
-  // ── Scroll tracking ────────────────────────────────────────────────────────
-  // We track scroll inside the outer container so we can derive per-element
-  // transforms without any layout thrash.
-  const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  const { scrollY } = useScroll();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end end"],
+  });
 
-  // Hero fades out over the first 60vh of scroll
-  const heroOpacity   = useTransform(scrollY, [0, window.innerHeight * 0.55], [1, 0]);
-  const heroScale     = useTransform(scrollY, [0, window.innerHeight * 0.55], [1, 0.92]);
-  const heroY         = useTransform(scrollY, [0, window.innerHeight * 0.55], [0, -60]);
-  const heroBlur      = useTransform(scrollY, [0, window.innerHeight * 0.45], [0, 8]);
+  const headingVisibility = useTransform(scrollYProgress, (v) =>
+    v > 0.31 ? "hidden" : "visible"
+  );
+  const underlineScaleX = useTransform(scrollYProgress, [0.05, 0.3], [1, 0]);
 
-  // Background parallax — moves slower than text
-  const bgY           = useTransform(scrollY, [0, window.innerHeight], [0, 120]);
+  const [scrollNum, setScrollNum] = useState(0);
+  const [typingStarted, setTypingStarted] = useState(false);
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    setScrollNum(v);
+    const shouldType = v > 0.3;
+    if (shouldType !== typingStarted) setTypingStarted(shouldType);
+  });
 
-  // Blue → black transition: bg opacity fades over first 80vh
-  const bgOpacity     = useTransform(scrollY, [0, window.innerHeight * 0.80], [1, 0]);
-
-  // Tabs appear after hero has mostly faded (after 50vh of scroll)
-  const tabsOpacity   = useTransform(scrollY, [window.innerHeight * 0.45, window.innerHeight * 0.70], [0, 1]);
-  const tabsY         = useTransform(scrollY, [window.innerHeight * 0.45, window.innerHeight * 0.70], [40, 0]);
-
-  // Track whether tabs are "visible" to control pointer-events
-  const [tabsVisible, setTabsVisible] = useState(false);
-  useMotionValueEvent(tabsOpacity, "change", (v) => setTabsVisible(v > 0.05));
+  const bgY      = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const tabClass = (tab: "openings" | "internships") => `
-    w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] xl:max-w-[600px]
-    py-4 px-4 rounded-full
-    text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px]
+    w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] lg:max-w-[500px] xl:max-w-[600px] 3xl:max-w-[700px]
+    py-4 px-4 3xl:py-6 rounded-full
+    text-[13px] sm:text-[15px] md:text-[17px] lg:text-[19px] 3xl:text-[23px]
     font-medium transition-all duration-300 border
-    ${activeTab === tab
-      ? "border-blue-400 text-blue-400 shadow-[0_0_16px_2px_rgba(59,130,246,0.4)]"
-      : "border-white/20 text-white hover:border-white/50"
+    ${
+      activeTab === tab
+        ? "border-blue-400 text-blue-400 shadow-[0_0_16px_2px_rgba(59,130,246,0.4)]"
+        : "border-white/20 text-white hover:border-white/50"
     }
   `;
 
   return (
-    <main
-      ref={containerRef}
-      className="relative text-white"
-      style={{ background: "#000000" }}
-    >
+    <main className="relative text-white" style={{ background: "#000000" }}>
       <SEO title="Careers" description="Join our team" />
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          STICKY HERO — stays fixed while user scrolls through the "scroll space"
-          The outer div is 200vh tall (100vh hero + 100vh transition runway).
-          The inner sticky panel pins to viewport, so the hero text sits still
-          while scroll progress drives all transforms.
+          STICKY HERO
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <div style={{ height: "100vh" }}>
-        <div
-          className="sticky top-0 overflow-hidden"
-          style={{ height: "100vh" }}
-        > 
+      <div ref={heroRef} style={{ height: "300vh" }}>
+        <div className="sticky top-0 overflow-hidden" style={{ height: "100vh" }}>
 
-          {/* ── BACKGROUND LAYERS (parallax + fade) ── */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{ y: bgY }}
-          >
-            {/* Dark navy base — scales with bgY so it moves slower than text */}
+          {/* ── BACKGROUND ── */}
+          <motion.div className="absolute inset-0 pointer-events-none" style={{ y: bgY }}>
             <motion.div
               className="absolute inset-0"
               style={{
@@ -89,17 +131,15 @@ export default function Careers() {
             />
           </motion.div>
 
-          {/* ── HERO CONTENT (fades / scales / blurs on scroll) ── */}
-          <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center px-4"
-            style={{
-              opacity: heroOpacity,
-              scale: heroScale,
-              y: heroY,
-              filter: useTransform(heroBlur, (v) => `blur(${v}px)`),
-            }}
-          >
-            {/* Blue radial orb — sits behind the heading text */}
+          {/* ── HERO CONTENT
+              Both heading and subheading are position:absolute, top:50%, left:50%,
+              transform:translate(-50%,-50%) — independently centered at the exact
+              same viewport midpoint. No stacking = no combined-height offset.
+              zIndex:20 keeps them above the bottom gradient (zIndex:10).
+          ── */}
+          <div className="absolute inset-0 px-4" style={{ zIndex: 20 }}>
+
+            {/* Blue radial orb */}
             <div
               style={{
                 position: "absolute",
@@ -116,6 +156,8 @@ export default function Careers() {
                 zIndex: 0,
               }}
             />
+
+            {/* ── HEADING — absolutely centered at 50% / 50% ── */}
             <motion.div
               initial="hidden"
               animate="show"
@@ -123,45 +165,20 @@ export default function Careers() {
                 hidden: {},
                 show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
               }}
-              className="text-center w-full max-w-[1400px] mx-auto"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "100%",
+                maxWidth: "1400px",
+                textAlign: "center",
+                // visibility driven by scroll (unchanged)
+                visibility: headingVisibility,
+                // once heading is gone, pull out of pointer-event flow
+                pointerEvents: typingStarted ? "none" : "auto",
+              }}
             >
-
-              {/* ── We're Hiring badge ── */}
-              <motion.span
-                variants={{
-                  hidden: { opacity: 0, y: 14 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-                }}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8
-                  text-xs font-medium uppercase tracking-[0.18em] backdrop-blur-sm"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  background: "rgba(255,255,255,0.03)",
-                  color: "rgba(255,255,255,0.65)",
-                }}
-              >
-                <span className="relative flex h-1.5 w-1.5">
-                  <span
-                    className="absolute inline-flex h-full w-full rounded-full animate-ping"
-                    style={{ background: "#60a5fa", opacity: 0.6 }}
-                  />
-                  <span
-                    className="relative inline-flex h-1.5 w-1.5 rounded-full"
-                    style={{ background: "#60a5fa", boxShadow: "0 0 8px #60a5fa" }}
-                  />
-                </span>
-                We're hiring
-              </motion.span>
-
-              {/* ── Main heading ── */}
-              {/*
-                Font scales with clamp():
-                  min  = 2.8rem  (mobile ~375px)
-                  mid  = 8.5vw   (fluid scaling)
-                  max  = 7.5rem  (cap — prevents overflow on 4K but still large)
-                On 4K (3840px wide) 8.5vw ≈ 326px which hits the 7.5rem = 120px cap.
-                Adjust max upward (e.g. 10rem) if you want even bigger on 4K.
-              */}
               <motion.h1
                 variants={{
                   hidden: { opacity: 0, y: 30 },
@@ -177,34 +194,18 @@ export default function Careers() {
                   textShadow: "0 2px 40px rgba(0,0,0,0.4)",
                 }}
               >
-                Build what's{" "}
+                <BackspaceText text="Build what's " scrollProgress={scrollNum} />
 
-                {/* ── "next" — color pulse + sweep shine + glowing underline ── */}
                 <span className="relative inline-block">
-
-                  {/*
-                    Two layered effects on "next":
-                    1. colorPulse   — whole word breathes white ↔ sky-blue
-                    2. shineSweep   — a bright highlight scans left→right over it
-                                      (positioned absolutely, pointer-events:none)
-                  */}
                   <span
                     className="relative z-10"
                     style={{ animation: "colorPulse 3s ease-in-out infinite" }}
                   >
-                    next
-
-                    {/* Shine sweep overlay — spans the word, clips to text shape
-                        via a semi-transparent white gradient moving L→R */}
-                    
+                    <BackspaceText text="next" scrollProgress={scrollNum} />
                   </span>
 
-                  {/* Glowing underline — draws in from left once, stays */}
+                  {/* Glowing underline */}
                   <motion.span
-                    initial={{ scaleX: 0, opacity: 0 }}
-                    animate={{ scaleX: 1, opacity: 1 }}
-                    transition={{ duration: 1.1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    aria-hidden
                     style={{
                       position: "absolute",
                       bottom: "-6px",
@@ -212,63 +213,66 @@ export default function Careers() {
                       width: "100%",
                       height: "3px",
                       transformOrigin: "left center",
-                      background:
-                        "linear-gradient(to right, transparent 0%, #60a5fa 30%, #93c5fd 70%, transparent 100%)",
-                      borderRadius: "2px",
-                      filter:
-                        "drop-shadow(0 0 6px #60a5fa) drop-shadow(0 0 18px rgba(96,165,250,0.6))",
+                      scaleX: underlineScaleX,
                     }}
-                  />
+                  >
+                    <motion.span
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      animate={{ scaleX: 1, opacity: 1 }}
+                      transition={{ duration: 1.1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      aria-hidden
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "100%",
+                        transformOrigin: "left center",
+                        background:
+                          "linear-gradient(to right, transparent 0%, #60a5fa 30%, #93c5fd 70%, transparent 100%)",
+                        borderRadius: "2px",
+                        filter:
+                          "drop-shadow(0 0 6px #60a5fa) drop-shadow(0 0 18px rgba(96,165,250,0.6))",
+                      }}
+                    />
+                  </motion.span>
                 </span>
 
-                <br />with us.
+                <br />
+                <BackspaceText text="with us." scrollProgress={scrollNum} />
               </motion.h1>
-
-              {/* ── Subheading ── */}
-              <motion.p
-                variants={{
-                  hidden: { opacity: 0, y: 18 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.1 } },
-                }}
-                className="mx-auto mt-7 max-w-xl leading-relaxed"
-                style={{
-                  fontSize: "clamp(0.95rem, 1.6vw, 1.2rem)",
-                  color: "rgba(255,255,255,0.52)",
-                }}
-              >
-                Join a team obsessed with craft, velocity, and ideas that matter.
-                Browse our open roles or apply for an internship.
-              </motion.p>
-
-              {/* Scroll hint — fades out quickly on scroll */}
-              <motion.div
-                style={{ opacity: heroOpacity }}
-                className="mt-12 flex flex-col items-center gap-2"
-              >
-                <span
-                  className="text-[11px] uppercase tracking-[0.2em]"
-                  style={{ color: "rgba(255,255,255,0.25)" }}
-                >
-                  Scroll to explore
-                </span>
-                <motion.div
-                  animate={{ y: [0, 6, 0] }}
-                  transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-                  style={{
-                    width: "1px",
-                    height: "32px",
-                    background:
-                      "linear-gradient(to bottom, rgba(96,165,250,0.6), transparent)",
-                  }}
-                />
-              </motion.div>
-
             </motion.div>
-          </motion.div>
+
+            {/* ── SUBHEADING — absolutely centered at the exact same 50% / 50% ──
+                Appears at the same point the heading was → seamless position swap.
+                All animation variants unchanged.
+            ── */}
+            <motion.p
+              variants={pVariants}
+              initial="hidden"
+              animate={typingStarted ? "show" : "hidden"}
+              className="leading-relaxed text-center 3xl:max-w-5xl"
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "100%",
+                maxWidth: "56rem",     /* max-w-4xl equivalent */
+                fontSize: "clamp(1.6rem, 3.2vw, 3.2rem)",
+                color: "#ffffff",
+                margin: 0,
+                padding: "0 1rem",
+              }}
+            >
+              {paragraphText.split("").map((char, i) => (
+                <motion.span key={i} variants={charVariants}>
+                  {char}
+                </motion.span>
+              ))}
+            </motion.p>
+
+          </div>
 
           {/* ── Bottom gradient fade: blue bg → pure black ── */}
-          {/* This gradient sits at the very bottom of the sticky hero and
-              creates the seamless blue→black bleed into the content section */}
           <div
             className="absolute bottom-0 left-0 right-0 pointer-events-none"
             style={{
@@ -282,18 +286,16 @@ export default function Careers() {
       </div>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-          TABS + CONTENT — pure black background, fades in as hero fades out
+          TABS + CONTENT
       ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
       <div style={{ background: "#000000", position: "relative", zIndex: 20 }}>
         <motion.section
-          className="w-full px-4 sm:px-8 lg:px-16 pt-16 pb-16 sm:pb-24"
-          style={{
-            opacity: tabsOpacity,
-            y: tabsY,
-            pointerEvents: tabsVisible ? "auto" : "none",
-          }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] mx-auto px-4 sm:px-8 lg:px-16 pt-16 pb-16 sm:pb-24"
         >
-          {/* Tabs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <button onClick={() => setActiveTab("openings")} className={tabClass("openings")}>
               Currently Opening Positions
@@ -303,7 +305,6 @@ export default function Careers() {
             </button>
           </div>
 
-          {/* Content */}
           <div className="mt-12 sm:mt-16">
             <AnimatePresence mode="wait">
               <motion.div
@@ -322,8 +323,6 @@ export default function Careers() {
 
       {/* ── KEYFRAMES ── */}
       <style>{`
-
-        /* "next" — whole word breathes white ↔ sky-blue */
         @keyframes colorPulse {
           0%   { color: #ffffff; }
           28%  { color: #ffffff; }
@@ -331,20 +330,16 @@ export default function Careers() {
           76%  { color: #7ec8ff; }
           100% { color: #ffffff; }
         }
-
-        /* Shine sweep — a highlight scans left→right across "next"
-           synced to the same 3s cycle as colorPulse */
         @keyframes shineSweep {
           0%   { background-position: -100% 0; }
-          40%  { background-position: -100% 0; }   /* hold off-left while at white */
-          75%  { background-position:  200% 0; }   /* sweep through while blue */
+          40%  { background-position: -100% 0; }
+          75%  { background-position:  200% 0; }
           100% { background-position:  200% 0; }
         }
-
       `}</style>
     </main>
   );
-} 
+}
 
 
 

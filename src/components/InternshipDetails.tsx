@@ -138,7 +138,7 @@ export default function InternshipDetails() {
   if (!data) return <div className="text-white p-6">Internship not found</div>;
 
   return (
-    <div className="w-full mx-auto text-white px-4 sm:px-6 md:px-12">
+    <div className="w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] mx-auto text-white px-4 sm:px-6 md:px-12 pt-10 pb-16">
 
 
       <ScrollToTop />
@@ -154,28 +154,28 @@ export default function InternshipDetails() {
 
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] mb-6 "
+            className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] 3xl:text-[24px] mb-6 "
           >
-            <ChevronLeft />
+            <ChevronLeft className="3xl:w-6 3xl:h-6" />
             Back to all Programs
           </button>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl 3xl:text-5xl font-medium">
             {data.title}
           </h1>
 
-          <p className="text-[#BFBFBF] text-sm sm:text-base md:text-[18px] leading-relaxed">
+          <p className="text-[#BFBFBF] text-sm sm:text-base md:text-[18px] 3xl:text-[22px] leading-relaxed">
             {data.description}
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm px-3 py-2 rounded-lg">
-              <Clock className="text-blue-400" size={18} />
+            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm 3xl:text-base px-3 py-2 3xl:px-4 3xl:py-2.5 rounded-lg">
+              <Clock className="text-blue-400 3xl:w-5 3xl:h-5" size={18} />
               6 Months
             </button>
 
-            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm px-3 py-2 rounded-lg">
-              <Users className="text-blue-400" size={18} />
+            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm 3xl:text-base px-3 py-2 3xl:px-4 3xl:py-2.5 rounded-lg">
+              <Users className="text-blue-400 3xl:w-5 3xl:h-5" size={18} />
               Hybrid/Remote
             </button>
           </div>
@@ -184,28 +184,28 @@ export default function InternshipDetails() {
           <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-gray-400 pt-4">
 
             <div>
-              <p className="text-white text-lg sm:text-xl md:text-[22px] font-medium">500+</p>
-              <span className="text-xs sm:text-sm">Students Trained</span>
+              <p className="text-white text-lg sm:text-xl md:text-[22px] 3xl:text-[28px] font-medium">500+</p>
+              <span className="text-xs sm:text-sm 3xl:text-base">Students Trained</span>
             </div>
 
             <div className="hidden md:block w-[1px] h-10 bg-gray-600"></div>
 
             <div>
-              <p className="text-white text-lg sm:text-xl md:text-[22px] font-medium">95%</p>
-              <span className="text-xs sm:text-sm">Success Rate</span>
+              <p className="text-white text-lg sm:text-xl md:text-[22px] 3xl:text-[28px] font-medium">95%</p>
+              <span className="text-xs sm:text-sm 3xl:text-base">Success Rate</span>
             </div>
 
             <div className="hidden md:block w-[1px] h-10 bg-gray-600"></div>
 
             <div>
-              <p className="text-white text-lg sm:text-xl md:text-[22px] font-medium">4.9/5</p>
-              <span className="text-xs sm:text-sm">Student Rating</span>
+              <p className="text-white text-lg sm:text-xl md:text-[22px] 3xl:text-[28px] font-medium">4.9/5</p>
+              <span className="text-xs sm:text-sm 3xl:text-base">Student Rating</span>
             </div>
           </div>
         </div>
 
         {/* IMAGE */}
-        <div className="w-full max-w-[700px] h-[250px] sm:h-[320px] md:h-[550px] md:pt-24 mx-auto">
+        <div className="w-full max-w-[700px] 3xl:max-w-[850px] h-[250px] sm:h-[320px] md:h-[550px] 3xl:h-[650px] 4xl:h-[750px] md:pt-24 mx-auto">
           <svg viewBox="0 0 1 1" preserveAspectRatio="none" className="w-full h-full">
             <defs>
               <clipPath id="customClip2" clipPathUnits="objectBoundingBox">
@@ -232,31 +232,31 @@ export default function InternshipDetails() {
       </div>
 
       {/* DURATION */}
-      <div className="mx-auto space-y-6 sm:space-y-8 pt-3">
+      <div className="mx-auto space-y-6 sm:space-y-8 pt-3 mt-8 3xl:mt-16">
 
         <div>
-          <p className="text-xl sm:text-2xl md:text-[30px] font-medium">
+          <p className="text-xl sm:text-2xl md:text-[30px] 3xl:text-[38px] font-medium">
             Internship Duration
           </p>
-          <p className="text-[#BFBFBF] text-sm sm:text-base">
+          <p className="text-[#BFBFBF] text-sm sm:text-base 3xl:text-lg">
             Choose a timeline that fits your schedule • Flexible timings
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 3xl:gap-8">
           {data.duration.map((item, i) => (
-            <div key={i} className="border border-gray-700 p-4 sm:p-6 rounded-xl space-y-3 sm:space-y-4">
-              <Clock size={24} className="text-blue-400" />
+            <div key={i} className="border border-gray-700 p-4 sm:p-6 3xl:p-8 rounded-xl space-y-3 sm:space-y-4 3xl:space-y-5">
+              <Clock className="text-blue-400 w-6 h-6 3xl:w-8 3xl:h-8" />
 
-              <p className="text-lg sm:text-xl">{item.title}</p>
+              <p className="text-lg sm:text-xl 3xl:text-2xl">{item.title}</p>
 
-              <p className="text-[#BCBCBC] text-sm">
+              <p className="text-[#BCBCBC] text-sm 3xl:text-base">
                 {data.carddetail[i]}
               </p>
 
-              <ul className="space-y-2">
+              <ul className="space-y-2 3xl:space-y-3">
                 {item.points.map((point: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
+                  <li key={idx} className="flex items-start gap-2 text-sm 3xl:text-base">
                     <CircleCheck className="text-blue-400 mt-1" size={16} />
                     {point}
                   </li>
@@ -268,15 +268,15 @@ export default function InternshipDetails() {
       </div>
 
       {/* LEARN */}
-      <div className="mx-auto space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold pt-3">
+      <div className="mx-auto space-y-6 mt-8 3xl:mt-16">
+        <h2 className="text-xl sm:text-2xl 3xl:text-[32px] font-semibold pt-3">
           What You'll Learn
         </h2>
 
-        <div className="border border-gray-700 rounded-xl p-5 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
+        <div className="border border-gray-700 rounded-xl p-5 sm:p-8 3xl:p-12 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 3xl:gap-10">
           {data.learn.map((item, i) => (
-            <div key={i} className="flex gap-3 text-sm sm:text-base">
-              <CircleCheck className="text-blue-400 mt-1" />
+            <div key={i} className="flex gap-3 text-sm sm:text-base 3xl:text-lg">
+              <CircleCheck className="text-blue-400 mt-1 w-5 h-5 3xl:w-6 3xl:h-6 flex-shrink-0" />
               {item}
             </div>
           ))}
@@ -284,21 +284,21 @@ export default function InternshipDetails() {
       </div>
 
       {/* BENEFITS */}
-      <div className="mx-auto space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold pt-3">
+      <div className="mx-auto space-y-6 mt-8 3xl:mt-16">
+        <h2 className="text-xl sm:text-2xl 3xl:text-[32px] font-semibold pt-3">
           What You'll Get
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 3xl:gap-8">
           {data.benefits.map((item, i) => {
             const Icon = item.img;
             return (
-              <div key={i} className="border border-gray-700 p-5 sm:p-6 rounded-xl space-y-3 sm:space-y-4">
-                <div className="bg-gray-900 w-10 h-10 flex items-center justify-center rounded-md">
-                  <Icon className="w-5 h-5 text-blue-500" />
+              <div key={i} className="border border-gray-700 p-5 sm:p-6 3xl:p-8 rounded-xl space-y-3 sm:space-y-4 3xl:space-y-5">
+                <div className="bg-gray-900 w-10 h-10 3xl:w-14 3xl:h-14 flex items-center justify-center rounded-md">
+                  <Icon className="w-5 h-5 3xl:w-7 3xl:h-7 text-blue-500" />
                 </div>
-                <h3 className="text-base sm:text-lg">{item.title}</h3>
-                <p className="text-gray-400 text-sm">{item.description}</p>
+                <h3 className="text-base sm:text-lg 3xl:text-xl font-medium">{item.title}</h3>
+                <p className="text-gray-400 text-sm 3xl:text-base leading-relaxed">{item.description}</p>
               </div>
             );
           })}
@@ -306,9 +306,9 @@ export default function InternshipDetails() {
       </div>
 
        {/* FORM */}
-      <div className="max-w-[1900px] mx-auto border border-[#7C7C7C] rounded-xl p-5 sm:p-8 space-y-5 mt-6">
+      <div className="max-w-[1900px] mx-auto border border-[#7C7C7C] rounded-xl p-5 sm:p-8 3xl:p-12 space-y-5 mt-12 3xl:mt-20">
 
-        <p className="text-xl sm:text-2xl font-medium">
+        <p className="text-xl sm:text-2xl 3xl:text-[32px] font-medium">
           Apply for this Internship
         </p>
 
@@ -555,7 +555,7 @@ export default function InternshipDetails() {
   <button
     type="submit"
     disabled={loading}
-    className="w-full bg-white text-black text-[24px] py-3 rounded
+    className="w-full bg-white text-black text-[24px] 3xl:text-[30px] py-3 3xl:py-4 rounded
     hover:bg-gray-200
     disabled:opacity-50
     disabled:cursor-not-allowed
