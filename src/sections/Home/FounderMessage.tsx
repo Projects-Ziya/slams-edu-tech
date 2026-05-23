@@ -54,11 +54,11 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         {/* LEFT SIDE */}
         <div className="relative z-10 order-1 md:order-1">
           <div
-            className="absolute -inset-x-6 -inset-y-8 sm:-inset-x-10 sm:-inset-y-12 pointer-events-none"
+            className="absolute left-0 top-1/2 h-[82%] w-full max-w-[620px] 3xl:max-w-[820px] -translate-y-1/2 pointer-events-none"
             style={{
               zIndex: 0,
               background:
-                "radial-gradient(ellipse 78% 70% at 42% 44%, rgba(59,130,246,0.16) 0%, rgba(37,99,235,0.12) 36%, rgba(30,64,175,0.08) 58%, transparent 76%)",
+                "radial-gradient(ellipse 62% 58% at 50% 50%, rgba(59,130,246,0.16) 0%, rgba(37,99,235,0.12) 38%, rgba(30,64,175,0.08) 60%, transparent 80%)",
               filter: "blur(18px)",
             }}
           />

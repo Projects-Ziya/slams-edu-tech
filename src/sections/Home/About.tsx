@@ -54,7 +54,7 @@ const slideRight = {
   return (
 <section
   id="about"
-  className="relative px-4 md:px-4 pt-[60px] md:pt-[100px] pb-10 min-h-[500px]"
+  className="relative px-5 md:px-12 2xl:px-16 pt-[60px] md:pt-[100px] pb-10 min-h-[500px]"
 >
     {isLargeScreen && (
        <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
@@ -66,7 +66,7 @@ const slideRight = {
 
 {/* ================= MAIN GRID ================= */}
 <div
- className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center px-4 md:px-6 xl:px-10"
+ className="relative z-10 grid md:grid-cols-[1fr_1.4fr] gap-16 items-center"
 >
   
   
@@ -108,7 +108,7 @@ As one of the emerging IT companies in Kochi, we focus on building scalable, cos
 
 {/* ================= BIG CARDS ================= */}
 <section 
-className="flex flex-col xl:flex-row pt-10 gap-12 justify-between px-4 md:px-6 xl:px-10 pb-6"
+className="flex flex-col xl:flex-row pt-10 gap-12 justify-between pb-6"
 
 >
 
