@@ -2,7 +2,7 @@ import GooeyNav from "./GooeyNav ";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logoNav.png";
+import logo from "../assets/slamslogo.png";
 import { HashLink } from "react-router-hash-link";
 import {lenis} from "../main"
 
@@ -12,8 +12,7 @@ const Navbar: React.FC = () => {
     { label: "Services", to: "/service" },
     { label: "Works", to: "/works" },
     { label: "Careers", to: "/careers" },
-    { label: "About Us", href: "#about" }, // ✅ only this uses HashLink
-    // { label: "Blog", to: "/blog" }, // ❌ no hash here now
+    { label: "About Us", href: "#about" },
   ];
 
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +36,16 @@ const Navbar: React.FC = () => {
       <div className="w-full mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="h-12 max-w-[140px] object-contain scale-105" />
+          <Link
+            to="/"
+            onClick={() => {
+              if (location.pathname === "/") {
+                window.location.reload();
+              }
+            }}
+          >
+            <img src={logo} alt="Logo" className="h-12 max-w-[140px] object-contain scale-[1.35]" />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -111,40 +119,30 @@ const Navbar: React.FC = () => {
         {/* Mobile Items */}
         <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium ">
           {items.map((item, index) => {
-            // ✅ ONLY About Us → HashLink
-        if (item.label === "About Us") {
-  return (
-    
-<button
-  key={index}
-  onClick={() => {
-    setMenuOpen(false);
-
-    if (location.pathname === "/") {
-      const el = document.getElementById("about");
-
-      if (el) {
-        const yOffset = -90;
-        const y =
-          el.getBoundingClientRect().top +
-          window.scrollY +
-          yOffset;
-
-        lenis.scrollTo(y); // ✅ FIXED
-      }
-    } else {
-      // go to home and trigger scroll
-      sessionStorage.setItem("scrollTo", "about");
-      window.location.href = "/";
-    }
-  }}
-  className="hover:text-gray-300 transition"
->
-  {item.label}
-</button>
-  );
-}
-            // ✅ All others → normal Link
+            if (item.label === "About Us") {
+              return (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (location.pathname === "/") {
+                      const el = document.getElementById("about");
+                      if (el) {
+                        const yOffset = -90;
+                        const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                        lenis.scrollTo(y);
+                      }
+                    } else {
+                      sessionStorage.setItem("scrollTo", "about");
+                      window.location.href = "/";
+                    }
+                  }}
+                  className="hover:text-gray-300 transition"
+                >
+                  {item.label}
+                </button>
+              );
+            }
             return (
               <Link
                 key={index}
