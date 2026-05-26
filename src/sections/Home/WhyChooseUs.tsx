@@ -59,7 +59,7 @@ const WhyChooseSection = () => {
               ))}
             </span>
             <span className="flex flex-wrap justify-center gap-x-[0.25em] mt-2">
-              {["we", "create", "success", "stories."].map((word, i) => (
+              {["we  create success stories."].map((word, i) => (
                 <motion.span key={`l2-${i}`} variants={headingWordVariants} className="inline-block pb-2 bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
                   {word}
                 </motion.span>

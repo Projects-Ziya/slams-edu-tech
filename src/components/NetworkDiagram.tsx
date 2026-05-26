@@ -81,7 +81,7 @@ const NetworkDiagram = () => {
         <defs>
           <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#a855f7" />
+            <stop offset="100%" stopColor="#3b82f6" />
           </linearGradient>
         </defs>
         {/* (ALL YOUR PATHS — unchanged) */}
@@ -404,7 +404,7 @@ const NetworkCard = ({
         {gradient && (
           <linearGradient id={gradientId} x1="0" y1="0" x2="254" y2="198">
             <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#a855f7" />
+            <stop offset="100%" stopColor="#3b82f6" />
           </linearGradient>
         )}
       </defs>
@@ -419,35 +419,36 @@ const NetworkCard = ({
         <div
           className=" relative overflow-hidden w-full h-full bg-black p-5 text-white flex flex-col justify-center"
           style={{
-            color: activeCard === id ? "#e0e7ff" : "#ffffff", // 👈 soft bluish white
-          boxShadow:
-  activeCard === id
-    ? `
+            color: activeCard === id ? "#e0e7ff" : "#ffffff",
+            boxShadow:
+              activeCard === id
+                ? `
       0 0 10px rgba(59,130,246,0.7),
       0 0 40px rgba(59,130,246,0.5),
-      0 0 60px rgba(168,85,247,0.5),
-      0 0 80px rgba(168,85,247,0.4)
+      0 0 60px rgba(59,130,246,0.5),
+      0 0 80px rgba(59,130,246,0.4)
     `
-    : "none",
-            transitionDelay: activeCard === id ? "0.6s" : "0s", // 👈 AFTER border
+                : "none",
+            transitionDelay: activeCard === id ? "0.6s" : "0s",
           }}
         >
           <motion.div
-  className="absolute inset-0 pointer-events-none"
-  style={{
-    background: "radial-gradient(circle at 50% 50%, rgba(59,130,246,0.25), rgba(168,85,247,0.15), transparent 70%)",
-  }}
-  initial={{ opacity: 0, scale: 0.8 }}
-  animate={{
-    opacity: activeCard === id ? 1 : 0,
-    scale: activeCard === id ? 1.2 : 0.8,
-  }}
-  transition={{
-    duration: 0.6,
-    delay: 0.6, // AFTER border animation
-    ease: "easeOut",
-  }}
-/>
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle at 50% 50%, rgba(59,130,246,0.25), rgba(59,130,246,0.15), transparent 70%)",
+            }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{
+              opacity: activeCard === id ? 1 : 0,
+              scale: activeCard === id ? 1.2 : 0.8,
+            }}
+            transition={{
+              duration: 0.6,
+              delay: 0.6,
+              ease: "easeOut",
+            }}
+          />
           <h3
             className="font-semibold text-lg"
             style={{
@@ -496,15 +497,16 @@ const NetworkCard = ({
         fill="none"
         stroke="url(#flowGradient)"
         strokeWidth="3"
-        strokeDasharray="40 200" // 👈 small visible segment
+        strokeDasharray="40 200"
         style={{
-  filter: activeCard === id
-    ? "drop-shadow(0 0 8px #3b82f6) drop-shadow(0 0 16px #3b82f6) drop-shadow(0 0 24px #a855f7)"
-    : "none",
-}}
+          filter:
+            activeCard === id
+              ? "drop-shadow(0 0 8px #3b82f6) drop-shadow(0 0 16px #3b82f6) drop-shadow(0 0 24px #3b82f6)"
+              : "none",
+        }}
         initial={{
           pathLength: 0,
-          pathOffset: offsetMap[id], // 👈 THIS IS THE MAGIC
+          pathOffset: offsetMap[id],
         }}
         animate={
           activeCard === id
@@ -519,7 +521,7 @@ const NetworkCard = ({
         }
         transition={{
           duration: 0.6,
-          delay: 0.7, // AFTER circuit finishes
+          delay: 0.7,
           ease: "easeInOut",
         }}
       />
