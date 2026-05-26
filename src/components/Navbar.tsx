@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
               }
             }}
           >
-            <img src={logo} alt="Logo" className="h-12 max-w-[140px] object-contain scale-[1.35]" />
+            <img src={logo} alt="Logo" className="h-12 max-w-[140px] object-contain scale-[2.0] pl-5" />
           </Link>
         </div>
 
