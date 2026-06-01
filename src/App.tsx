@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import MainLayout from './layout/MainLayout';
 import { Toaster } from "sonner";
 import Loader from './components/Loader';
+import { PageTransitionProvider } from './components/PageTransition';
 
 import ScrollRestorationFix from './components/ScrollRestorationFix';
 import ScrollManager from './components/ScrollManager';
@@ -35,26 +36,27 @@ function App() {
 
       <Toaster position="top-right" richColors />
 
+      {/* PageTransitionProvider must live inside BrowserRouter */}
+      <PageTransitionProvider>
+        {/* Suspense wraps all lazy routes */}
+        <Suspense fallback={<Loader/>}>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/service" element={<Service />} />
+              <Route path="/works" element={<Works />} />
+              <Route path="/project/:id" element={<ProjectDetail />} />
+              <Route path="/service/:id" element={<ServiceDetails />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/internship/:id" element={<InternshipDetails />} />
+              <Route path="/careers/:id" element={<JobDetails />} />
 
-      {/* Suspense wraps all lazy routes */}
-      <Suspense fallback={<Loader/>}>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/service" element={<Service />} />
-            <Route path="/works" element={<Works />} />
-            <Route path="/project/:id" element={<ProjectDetail />} />
-            <Route path="/service/:id" element={<ServiceDetails />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/internship/:id" element={<InternshipDetails />} />
-            <Route path="/careers/:id" element={<JobDetails />} />
-
-
-    {/* ✅ 404 Route MUST BE LAST */}
-    <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      {/* ✅ 404 Route MUST BE LAST */}
+      <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </PageTransitionProvider>
     </BrowserRouter>
   )
 }

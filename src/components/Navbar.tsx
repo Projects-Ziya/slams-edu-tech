@@ -1,10 +1,11 @@
 import GooeyNav from "./GooeyNav ";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import logo from "../assets/slamslogo.png";
 import { HashLink } from "react-router-hash-link";
-import {lenis} from "../main"
+import { lenis } from "../main";
+import { usePageTransition } from "./PageTransition";
 
 const Navbar: React.FC = () => {
   const items = [
@@ -18,6 +19,7 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { navigateTo } = usePageTransition();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,25 +29,33 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /** Handles logo click — same behaviour as before but via transition */
+  const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      window.location.reload();
+    } else {
+      navigateTo("/");
+    }
+  };
+
   return (
-   <header
-  className={`fixed top-0 left-0 w-full z-50 border-b transition-all duration-300 ${
-    scrolled ? "bg-black/80 backdrop-blur-md shadow-lg border-blue-400/50" : "bg-transparent border-transparent"
-  }`}
->
+    <header
+      className={`fixed top-0 left-0 w-full z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "bg-black/80 backdrop-blur-md shadow-lg border-blue-400/50"
+          : "bg-transparent border-transparent"
+      }`}
+    >
       <div className="w-full mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <Link
-            to="/"
-            onClick={() => {
-              if (location.pathname === "/") {
-                window.location.reload();
-              }
-            }}
-          >
-            <img src={logo} alt="Logo" className="h-12 max-w-[140px] object-contain scale-[2.0] pl-5" />
-          </Link>
+          <button onClick={handleLogoClick} className="cursor-pointer">
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-12 max-w-[140px] object-contain scale-[2.0] pl-5"
+            />
+          </button>
         </div>
 
         {/* Desktop Navigation */}
@@ -64,11 +74,17 @@ const Navbar: React.FC = () => {
                 const idx = items.findIndex((item) => item.to === "/service");
                 if (idx !== -1) return idx;
               }
-              if (location.pathname.startsWith("/works") || location.pathname.startsWith("/project")) {
+              if (
+                location.pathname.startsWith("/works") ||
+                location.pathname.startsWith("/project")
+              ) {
                 const idx = items.findIndex((item) => item.to === "/works");
                 if (idx !== -1) return idx;
               }
-              if (location.pathname.startsWith("/careers") || location.pathname.startsWith("/internship")) {
+              if (
+                location.pathname.startsWith("/careers") ||
+                location.pathname.startsWith("/internship")
+              ) {
                 const idx = items.findIndex((item) => item.to === "/careers");
                 if (idx !== -1) return idx;
               }
@@ -108,16 +124,16 @@ const Navbar: React.FC = () => {
         {/* Close Button */}
         <div className="flex items-center px-4 py-4 border-b border-white/10">
           <button
-          title="back"
+            title="back"
             onClick={() => setMenuOpen(false)}
-            className="text-white  p-2 hover:text-gray-300 transition"
+            className="text-white p-2 hover:text-gray-300 transition"
           >
             <X />
           </button>
         </div>
 
         {/* Mobile Items */}
-        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium ">
+        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium">
           {items.map((item, index) => {
             if (item.label === "About Us") {
               return (
@@ -129,12 +145,15 @@ const Navbar: React.FC = () => {
                       const el = document.getElementById("about");
                       if (el) {
                         const yOffset = -90;
-                        const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+                        const y =
+                          el.getBoundingClientRect().top +
+                          window.scrollY +
+                          yOffset;
                         lenis.scrollTo(y);
                       }
                     } else {
                       sessionStorage.setItem("scrollTo", "about");
-                      window.location.href = "/";
+                      navigateTo("/");
                     }
                   }}
                   className="hover:text-gray-300 transition"
@@ -144,14 +163,18 @@ const Navbar: React.FC = () => {
               );
             }
             return (
-              <Link
+              <button
                 key={index}
-                to={item.to}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  if (item.to && item.to !== location.pathname) {
+                    navigateTo(item.to);
+                  }
+                }}
                 className="hover:text-gray-300 transition"
               >
                 {item.label}
-              </Link>
+              </button>
             );
           })}
 
