@@ -35,25 +35,25 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      /* ── Phase 1: slide-in panels ── */
+      /* ── Phase 1: panels sweep in ── */
       overlay.classList.add("pt-enter");
 
-      // After panels fully cover → swap page
+      // Swap page once panels fully cover screen
       setTimeout(() => {
         navigate(to);
         window.scrollTo(0, 0);
-      }, 650);
+      }, 800);
 
-      // Phase 2: slide-out after page mounted
+      // Phase 2: panels sweep out
       setTimeout(() => {
         overlay.classList.add("pt-exit");
-      }, 750);
+      }, 980);
 
       // Cleanup
       setTimeout(() => {
         overlay.classList.remove("pt-enter", "pt-exit");
         isAnimating.current = false;
-      }, 1350);
+      }, 1780);
     },
     [navigate]
   );
@@ -64,28 +64,22 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
 
       {/* ── OVERLAY ── */}
       <div ref={overlayRef} className="page-transition-overlay" aria-hidden="true">
-        {/* Left blue panel */}
+        {/* Left panel — sweeps in from left, covers left half */}
         <div className="pt-panel pt-panel--left" />
 
-        {/* Centre black column */}
-        <div className="pt-panel pt-panel--center">
-          {/* Brand crest */}
-          <div className="pt-crest">
-            <img src={logo} alt="SLAMS" className="pt-logo" />
-            {/* Animated ring */}
-            <div className="pt-ring" />
-            <div className="pt-ring pt-ring--2" />
-          </div>
-        </div>
-
-        {/* Right blue panel */}
+        {/* Right panel — sweeps in from right, covers right half */}
         <div className="pt-panel pt-panel--right" />
 
-        {/* Vignette layer */}
-        <div className="pt-vignette" />
+        {/* Logo — floats above both panels, centred on screen */}
+        <div className="pt-crest">
+          <img src={logo} alt="SLAMS" className="pt-logo" />
+          <div className="pt-ring" />
+          <div className="pt-ring pt-ring--2" />
+          <div className="pt-ring pt-ring--3" />
+        </div>
 
-        {/* Scanline texture */}
-        <div className="pt-scanlines" />
+        {/* Vignette darkens the very edges */}
+        <div className="pt-vignette" />
       </div>
 
       <style>{`
@@ -96,215 +90,186 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
           position: fixed;
           inset: 0;
           z-index: 9999;
-          display: flex;
           pointer-events: none;
           overflow: hidden;
         }
 
         /* ══════════════════════════════════════
-           PANELS
+           PANELS — each 50%, meet at centre seam
         ══════════════════════════════════════ */
         .pt-panel {
           position: absolute;
           top: 0;
           height: 100%;
+          width: 51%;           /* tiny 2% overlap kills any 1px seam gap */
           will-change: transform;
         }
 
-        /* LEFT — premium blue-black, slides in from left */
+        /* LEFT panel — enters from left, exits to left */
         .pt-panel--left {
           left: 0;
-          width: 41%;
-          background: linear-gradient(135deg, #3c81d5 0%, #1a4a8a 45%, #080e1f 100%);
-          transform: translateX(-105%);
-          transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+          background: linear-gradient(
+            160deg,
+            #3c81d5 0%,
+            #2260b0 30%,
+            #0f3370 65%,
+            #060d20 100%
+          );
+          transform: translateX(-102%);
+          transition: transform 0.72s cubic-bezier(0.65, 0, 0.25, 1);
           transition-delay: 0ms;
         }
 
-        /* RIGHT — premium midnight-blue, slides in from right */
+        /* RIGHT panel — enters from right, exits to right */
         .pt-panel--right {
           right: 0;
-          width: 41%;
-          background: linear-gradient(225deg, #2d6bb8 0%, #122d5e 45%, #040810 100%);
-          transform: translateX(105%);
-          transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
-          transition-delay: 80ms;
-        }
-
-        /* CENTER — solid black bar with crest */
-        .pt-panel--center {
-          left: 50%;
-          transform: translateX(-50%) scaleY(0);
-          width: 18%;
-          min-width: 140px;
-          background: #000000;
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          padding-top: 12vh;
-          transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-          transition-delay: 120ms;
-          transform-origin: top center;
-          border-left: 1px solid rgba(60, 129, 213, 0.25);
-          border-right: 1px solid rgba(60, 129, 213, 0.25);
+          background: linear-gradient(
+            200deg,
+            #060d20 0%,
+            #0f3370 35%,
+            #2260b0 70%,
+            #3c81d5 100%
+          );
+          transform: translateX(102%);
+          transition: transform 0.72s cubic-bezier(0.65, 0, 0.25, 1);
+          transition-delay: 55ms;     /* tiny stagger = left leads, right follows */
         }
 
         /* ══════════════════════════════════════
-           VIGNETTE
+           LOGO CREST — floats above panels
+        ══════════════════════════════════════ */
+        .pt-crest {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition:
+            opacity  0.38s ease 0.45s,
+            transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1) 0.45s;
+          z-index: 10;
+        }
+
+        .pt-logo {
+          width: 68px;
+          height: auto;
+          object-fit: contain;
+          position: relative;
+          z-index: 1;
+          filter:
+            brightness(1.1)
+            drop-shadow(0 0 10px rgba(60, 129, 213, 0.8))
+            drop-shadow(0 0 28px rgba(60, 129, 213, 0.35));
+        }
+
+        /* Pulse rings around logo */
+        .pt-ring {
+          position: absolute;
+          border-radius: 50%;
+          border: 1px solid rgba(60, 129, 213, 0.5);
+          opacity: 0;
+          width: 80px;
+          height: 80px;
+          animation: none;
+        }
+        .pt-ring--2 {
+          width: 110px;
+          height: 110px;
+          border-color: rgba(60, 129, 213, 0.28);
+        }
+        .pt-ring--3 {
+          width: 145px;
+          height: 145px;
+          border-color: rgba(60, 129, 213, 0.12);
+        }
+
+        /* ══════════════════════════════════════
+           VIGNETTE — soft dark edges
         ══════════════════════════════════════ */
         .pt-vignette {
           position: absolute;
           inset: 0;
           pointer-events: none;
           opacity: 0;
+          z-index: 5;
           background:
-            radial-gradient(ellipse 80% 60% at 50% 0%,   transparent 40%, rgba(0,0,0,0.85) 100%),
-            radial-gradient(ellipse 80% 60% at 50% 100%, transparent 40%, rgba(0,0,0,0.85) 100%),
-            radial-gradient(ellipse 40% 100% at 0%   50%, transparent 30%, rgba(0,0,0,0.7)  100%),
-            radial-gradient(ellipse 40% 100% at 100% 50%, transparent 30%, rgba(0,0,0,0.7)  100%);
-          transition: opacity 0.4s ease 0.2s;
-          z-index: 2;
+            radial-gradient(ellipse 90% 55% at 50% 0%,   transparent 45%, rgba(0,0,0,0.7) 100%),
+            radial-gradient(ellipse 90% 55% at 50% 100%, transparent 45%, rgba(0,0,0,0.7) 100%),
+            radial-gradient(ellipse 35% 100% at 0%   50%, transparent 35%, rgba(0,0,0,0.55) 100%),
+            radial-gradient(ellipse 35% 100% at 100% 50%, transparent 35%, rgba(0,0,0,0.55) 100%);
+          transition: opacity 0.45s ease 0.2s;
         }
 
         /* ══════════════════════════════════════
-           SCANLINES (subtle texture)
-        ══════════════════════════════════════ */
-        .pt-scanlines {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          opacity: 0;
-          background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(60, 129, 213, 0.03) 2px,
-            rgba(60, 129, 213, 0.03) 4px
-          );
-          z-index: 3;
-          transition: opacity 0.3s ease 0.25s;
-        }
-
-        /* ══════════════════════════════════════
-           CREST / LOGO
-        ══════════════════════════════════════ */
-        .pt-crest {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transform: translateY(-16px) scale(0.85);
-          transition: opacity 0.35s ease 0.3s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.3s;
-        }
-
-        .pt-logo {
-          width: 72px;
-          height: auto;
-          object-fit: contain;
-          filter:
-            brightness(1.05)
-            drop-shadow(0 0 10px rgba(60, 129, 213, 0.75))
-            drop-shadow(0 0 24px rgba(60, 129, 213, 0.35));
-          position: relative;
-          z-index: 1;
-        }
-
-        /* Animated pulse rings */
-        .pt-ring {
-          position: absolute;
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-          border: 1.5px solid rgba(60, 129, 213, 0.55);
-          opacity: 0;
-          animation: none;
-        }
-        .pt-ring--2 {
-          width: 120px;
-          height: 120px;
-          border-color: rgba(60, 129, 213, 0.2);
-        }
-
-        /* ══════════════════════════════════════
-           ENTER STATE — panels fly in
+           ENTER — panels sweep in
         ══════════════════════════════════════ */
         .page-transition-overlay.pt-enter .pt-panel--left  { transform: translateX(0); }
         .page-transition-overlay.pt-enter .pt-panel--right { transform: translateX(0); }
-        .page-transition-overlay.pt-enter .pt-panel--center {
-          transform: translateX(-50%) scaleY(1);
-        }
-        .page-transition-overlay.pt-enter .pt-vignette  { opacity: 1; }
-        .page-transition-overlay.pt-enter .pt-scanlines { opacity: 1; }
+
+        .page-transition-overlay.pt-enter .pt-vignette { opacity: 1; }
+
         .page-transition-overlay.pt-enter .pt-crest {
           opacity: 1;
-          transform: translateY(0) scale(1);
+          transform: translate(-50%, -50%) scale(1);
         }
         .page-transition-overlay.pt-enter .pt-ring {
           opacity: 1;
-          animation: pt-ring-pulse 1.2s ease-out infinite;
+          animation: pt-ring-pulse 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        .page-transition-overlay.pt-enter .pt-ring--2 {
-          animation-delay: 0.2s;
-        }
+        .page-transition-overlay.pt-enter .pt-ring--2 { animation-delay: 0.22s; }
+        .page-transition-overlay.pt-enter .pt-ring--3 { animation-delay: 0.44s; }
 
-        /* ══════════════════════════════════════
-           EXIT STATE — panels fly out (opposite)
-        ══════════════════════════════════════ */
-        .page-transition-overlay.pt-exit .pt-panel--left {
-          transform: translateX(-105%);
-          transition-delay: 80ms;
-        }
-        .page-transition-overlay.pt-exit .pt-panel--right {
-          transform: translateX(105%);
-          transition-delay: 0ms;
-        }
-        .page-transition-overlay.pt-exit .pt-panel--center {
-          transform: translateX(-50%) scaleY(0);
-          transform-origin: bottom center;
-          transition-delay: 0ms;
-        }
-        .page-transition-overlay.pt-exit .pt-vignette  { opacity: 0; transition-delay: 0s; }
-        .page-transition-overlay.pt-exit .pt-scanlines { opacity: 0; transition-delay: 0s; }
-        .page-transition-overlay.pt-exit .pt-crest {
-          opacity: 0;
-          transform: translateY(10px) scale(0.9);
-          transition-delay: 0s;
-        }
-
-        /* ══════════════════════════════════════
-           KEYFRAMES
-        ══════════════════════════════════════ */
-        @keyframes pt-ring-pulse {
-          0%   { transform: scale(0.8);  opacity: 0.8; }
-          100% { transform: scale(1.5);  opacity: 0;   }
-        }
-
-        /* Blue edge glow on the panels */
+        /* Panel inner glow seam at meeting edge */
         .pt-panel--left::after,
         .pt-panel--right::after {
           content: "";
           position: absolute;
           top: 0;
           height: 100%;
-          width: 3px;
-          background: linear-gradient(to bottom,
+          width: 2px;
+          background: linear-gradient(
+            to bottom,
             transparent 0%,
-            rgba(60, 129, 213, 0.7) 30%,
-            rgba(80, 155, 235, 0.9) 50%,
-            rgba(60, 129, 213, 0.7) 70%,
+            rgba(80, 155, 235, 0.6) 25%,
+            rgba(100, 175, 255, 0.85) 50%,
+            rgba(80, 155, 235, 0.6) 75%,
             transparent 100%
           );
-          box-shadow: 0 0 14px 3px rgba(60, 129, 213, 0.4);
+          box-shadow: 0 0 12px 2px rgba(60, 129, 213, 0.35);
           opacity: 0;
-          transition: opacity 0.3s ease 0.3s;
+          transition: opacity 0.3s ease 0.5s;
         }
         .pt-panel--left::after  { right: 0; }
-        .pt-panel--right::after { left:  0; }
+        .pt-panel--right::after { left: 0; }
 
         .page-transition-overlay.pt-enter .pt-panel--left::after,
         .page-transition-overlay.pt-enter .pt-panel--right::after {
           opacity: 1;
+        }
+
+        /* ══════════════════════════════════════
+           EXIT — panels sweep out (reversed)
+        ══════════════════════════════════════ */
+        .page-transition-overlay.pt-exit .pt-panel--left {
+          transform: translateX(-102%);
+          transition-delay: 55ms;   /* right exits first, left follows */
+        }
+        .page-transition-overlay.pt-exit .pt-panel--right {
+          transform: translateX(102%);
+          transition-delay: 0ms;
+        }
+
+        .page-transition-overlay.pt-exit .pt-vignette {
+          opacity: 0;
+          transition-delay: 0s;
+        }
+        .page-transition-overlay.pt-exit .pt-crest {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.85);
+          transition-delay: 0s;
         }
         .page-transition-overlay.pt-exit .pt-panel--left::after,
         .page-transition-overlay.pt-exit .pt-panel--right::after {
@@ -313,7 +278,15 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
         }
 
         /* ══════════════════════════════════════
-           BLOCK CLICK DURING ANIMATION
+           KEYFRAMES
+        ══════════════════════════════════════ */
+        @keyframes pt-ring-pulse {
+          0%   { transform: scale(0.85); opacity: 0.7; }
+          100% { transform: scale(1.6);  opacity: 0;   }
+        }
+
+        /* ══════════════════════════════════════
+           BLOCK CLICKS DURING ANIMATION
         ══════════════════════════════════════ */
         .page-transition-overlay.pt-enter { pointer-events: all; }
         .page-transition-overlay.pt-exit  { pointer-events: none; }
