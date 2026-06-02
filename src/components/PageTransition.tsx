@@ -108,12 +108,14 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
         /* LEFT panel — enters from left, exits to left */
         .pt-panel--left {
           left: 0;
+          /* blue core with black vignette on the outer-left edge */
           background: linear-gradient(
-            160deg,
-            #3c81d5 0%,
-            #2260b0 30%,
-            #0f3370 65%,
-            #060d20 100%
+            to right,
+            #000000 0%,
+            #050d1a 6%,
+            #0d2a5c 16%,
+            #1a4fa8 32%,
+            #1a4fa8 100%
           );
           transform: translateX(-102%);
           transition: transform 0.72s cubic-bezier(0.65, 0, 0.25, 1);
@@ -123,16 +125,37 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
         /* RIGHT panel — enters from right, exits to right */
         .pt-panel--right {
           right: 0;
+          /* blue core with black vignette on the outer-right edge */
           background: linear-gradient(
-            200deg,
-            #060d20 0%,
-            #0f3370 35%,
-            #2260b0 70%,
-            #3c81d5 100%
+            to left,
+            #000000 0%,
+            #050d1a 6%,
+            #0d2a5c 16%,
+            #1a4fa8 32%,
+            #1a4fa8 100%
           );
           transform: translateX(102%);
           transition: transform 0.72s cubic-bezier(0.65, 0, 0.25, 1);
           transition-delay: 55ms;     /* tiny stagger = left leads, right follows */
+        }
+
+        /* Extra vignette layer on each panel's outer edge (top/bottom darkening) */
+        .pt-panel--left::before,
+        .pt-panel--right::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 2;
+          background:
+            linear-gradient(to bottom,
+              rgba(0,0,0,0.55) 0%,
+              transparent        18%,
+              transparent        82%,
+              rgba(0,0,0,0.55) 100%
+            );
+          opacity: 0;
+          transition: opacity 0.4s ease 0.35s;
         }
 
         /* ══════════════════════════════════════
@@ -211,6 +234,10 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
 
         .page-transition-overlay.pt-enter .pt-vignette { opacity: 1; }
 
+        /* Reveal panel edge vignettes once panels are fully in */
+        .page-transition-overlay.pt-enter .pt-panel--left::before,
+        .page-transition-overlay.pt-enter .pt-panel--right::before { opacity: 1; }
+
         .page-transition-overlay.pt-enter .pt-crest {
           opacity: 1;
           transform: translate(-50%, -50%) scale(1);
@@ -262,9 +289,17 @@ export function PageTransitionProvider({ children }: { children: ReactNode }) {
           transition-delay: 0ms;
         }
 
+        /* Vignette lingers through reveal — fades out slowly at the end */
         .page-transition-overlay.pt-exit .pt-vignette {
           opacity: 0;
-          transition-delay: 0s;
+          transition: opacity 0.55s ease 0.45s;
+        }
+
+        /* Panel edge vignettes fade with the panels */
+        .page-transition-overlay.pt-exit .pt-panel--left::before,
+        .page-transition-overlay.pt-exit .pt-panel--right::before {
+          opacity: 0;
+          transition: opacity 0.3s ease 0s;
         }
         .page-transition-overlay.pt-exit .pt-crest {
           opacity: 0;

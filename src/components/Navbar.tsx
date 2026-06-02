@@ -50,13 +50,61 @@ const Navbar: React.FC = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <button onClick={handleLogoClick} className="cursor-pointer">
-            <img
-              src={logo}
-              alt="Logo"
-              className="h-12 max-w-[140px] object-contain scale-[2.0] pl-5"
-            />
+            {/* Glare wrapper — overflow hidden clips the sweep to the logo */}
+            <span className="navbar-logo-glare">
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-12 max-w-[140px] object-contain scale-[2.0] pl-5"
+              />
+            </span>
           </button>
         </div>
+
+        <style>{`
+          /* ── Logo glare container ── */
+          .navbar-logo-glare {
+            position: relative;
+            display: inline-block;
+            overflow: visible;  /* let scale-[2] show; glare clips via mask */
+          }
+
+          /* The glare streak */
+          .navbar-logo-glare::after {
+            content: "";
+            position: absolute;
+            /* start well off the left edge */
+            top: -40%;
+            left: -80%;
+            width: 55%;
+            height: 180%;
+            background: linear-gradient(
+              105deg,
+              transparent       0%,
+              rgba(255,255,255,0.08) 30%,
+              rgba(255,255,255,0.55) 50%,
+              rgba(255,255,255,0.08) 70%,
+              transparent       100%
+            );
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 10;
+            /* 6 s total: 0.6 s sweep + 5.4 s idle, repeats forever */
+            animation: navbar-logo-glare-sweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 2s; /* wait 2 s before very first sweep */
+          }
+
+          @keyframes navbar-logo-glare-sweep {
+            /* idle at start */
+            0%   { left: -80%; opacity: 1; }
+            /* sweep across — 10% of 6 s = 0.6 s */
+            10%  { left: 140%; opacity: 1; }
+            /* stay hidden for the remaining 90% */
+            10.01% { left: -80%; opacity: 0; }
+            99%  { left: -80%; opacity: 0; }
+            100% { left: -80%; opacity: 1; }
+          }
+        `}</style>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center">
