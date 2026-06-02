@@ -115,7 +115,7 @@ const ContactSection: React.FC = () => {
             / Get In Touch
           </p>
 
-          <p className="pt-4 font-extrabold font-outfit text-3xl md:text-4xl lg:text-7xl 2xl:text-8xl ">
+          <p className="pt-4 font-extrabold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl ">
             Start Your Journey <br />
             With{" "}
             <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
@@ -128,7 +128,7 @@ const ContactSection: React.FC = () => {
           </p>
 
           {/* Decorative Lines */}
-          <div className="absolute left-[15px] top-[300px] hidden lg:block w-full max-w-[950px] pointer-events-none">
+          <div className="absolute left-[15px] top-[300px] 2xl:top-[350px] 3xl:top-[365px] 4xl:top-[380px] hidden lg:block w-full max-w-[950px] 2xl:max-w-[1100px] 3xl:max-w-[1350px] 4xl:max-w-[1600px] pointer-events-none">
 
             <svg viewBox="0 0 950 320" className="w-full h-auto mt-6">
 
