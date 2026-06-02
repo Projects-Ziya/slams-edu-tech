@@ -128,7 +128,7 @@ const ContactSection: React.FC = () => {
           </p>
 
           {/* Decorative Lines */}
-          <div className="absolute left-[40px] top-[320px] hidden lg:block w-full max-w-[950px] pointer-events-none">
+          <div className="absolute left-[40px] top-[295px] hidden lg:block w-full max-w-[950px] pointer-events-none">
 
             <svg viewBox="0 0 950 320" className="w-full h-auto mt-6">
 
@@ -152,7 +152,6 @@ const ContactSection: React.FC = () => {
                 x1="10" y1="0"
                 x2="10" y2="80"
                 stroke="white" strokeWidth="1.5"
-                markerEnd="url(#arrow)"
               />
 
               {/* Right across */}
@@ -160,7 +159,6 @@ const ContactSection: React.FC = () => {
                 x1="10" y1="80"
                 x2="490" y2="80"
                 stroke="white" strokeWidth="1.5"
-                markerEnd="url(#arrow)"
               />
 
               {/* Down second level */}
@@ -168,7 +166,6 @@ const ContactSection: React.FC = () => {
                 x1="490" y1="80"
                 x2="490" y2="180"
                 stroke="white" strokeWidth="1.5"
-                markerEnd="url(#arrow)"
               />
 
               {/* Left back across */}
@@ -176,7 +173,6 @@ const ContactSection: React.FC = () => {
                 x1="490" y1="180"
                 x2="10" y2="180"
                 stroke="white" strokeWidth="1.5"
-                markerEnd="url(#arrow)"
               />
 
               {/* Down to final row */}
@@ -184,7 +180,6 @@ const ContactSection: React.FC = () => {
                 x1="10" y1="180"
                 x2="10" y2="245"
                 stroke="white" strokeWidth="1.5"
-                markerEnd="url(#arrow)"
               />
 
               {/* ✅ Final line pointing RIGHT toward Submit button */}

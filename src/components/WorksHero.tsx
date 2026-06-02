@@ -174,6 +174,44 @@ const WorksHero = () => {
           </motion.div>
         </motion.div>
 
+        {/* ── Premium vignette — black crushing in from all edges ── */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{ zIndex: 5 }}
+        >
+          {/* Top edge */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, transparent 28%)",
+          }} />
+          {/* Bottom edge */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 32%)",
+          }} />
+          {/* Left edge */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to right, rgba(0,0,0,0.60) 0%, transparent 22%)",
+          }} />
+          {/* Right edge */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to left, rgba(0,0,0,0.60) 0%, transparent 22%)",
+          }} />
+          {/* Corner crush — radial darkening on all four corners */}
+          <div style={{
+            position: "absolute", inset: 0,
+            background: `
+              radial-gradient(ellipse 55% 45% at 0%   0%,   rgba(0,0,0,0.65) 0%, transparent 100%),
+              radial-gradient(ellipse 55% 45% at 100% 0%,   rgba(0,0,0,0.65) 0%, transparent 100%),
+              radial-gradient(ellipse 55% 45% at 0%   100%, rgba(0,0,0,0.65) 0%, transparent 100%),
+              radial-gradient(ellipse 55% 45% at 100% 100%, rgba(0,0,0,0.65) 0%, transparent 100%)
+            `,
+          }} />
+        </div>
+
         {/* ── Bottom gradient fade: blue bg → pure black ── */}
         <div
           className="absolute bottom-0 left-0 right-0 pointer-events-none"
