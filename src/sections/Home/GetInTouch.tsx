@@ -143,7 +143,7 @@ const ContactSection: React.FC = () => {
                   orient="auto"
                   markerUnits="strokeWidth"
                 >
-                  <path d="M0,0 L0,6 L8,3 z" fill="#345D99" />
+                  <path d="M0,0 L0,6 L8,3 z" fill="#2b7cf6ff" />
                 </marker>
               </defs>
 
@@ -255,7 +255,7 @@ const ContactSection: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gray-300 text-black font-medium py-4 rounded-lg transition-all duration-300 
+              className="w-full bg-gray-300 text-black text-xl font-bold py-4 rounded-lg transition-all duration-300 
               hover:-translate-y-1 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Submitting..." : "Submit"}
