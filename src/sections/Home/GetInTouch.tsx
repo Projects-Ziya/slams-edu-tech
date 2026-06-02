@@ -115,7 +115,7 @@ const ContactSection: React.FC = () => {
             / Get In Touch
           </p>
 
-          <p className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl leading-tight tracking-tight">
+          <p className="pt-4 font-extrabold font-outfit text-3xl md:text-4xl lg:text-7xl 2xl:text-8xl ">
             Start Your Journey <br />
             With{" "}
             <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
@@ -123,12 +123,12 @@ const ContactSection: React.FC = () => {
             </span>
           </p>
 
-          <p className="text-gray-400 mt-6 max-w-md text-lg">
+          <p className="text-gray-400 mt-6 ml-5 max-w-md text-lg">
             Looking for the best IT company in Kochi? Get in touch with us to grow your business or start your career in technology.
           </p>
 
           {/* Decorative Lines */}
-          <div className="absolute left-[40px] top-[295px] hidden lg:block w-full max-w-[950px] pointer-events-none">
+          <div className="absolute left-[15px] top-[300px] hidden lg:block w-full max-w-[950px] pointer-events-none">
 
             <svg viewBox="0 0 950 320" className="w-full h-auto mt-6">
 
@@ -143,7 +143,7 @@ const ContactSection: React.FC = () => {
                   orient="auto"
                   markerUnits="strokeWidth"
                 >
-                  <path d="M0,0 L0,6 L8,3 z" fill="white" />
+                  <path d="M0,0 L0,6 L8,3 z" fill="#345D99" />
                 </marker>
               </defs>
 
@@ -151,42 +151,42 @@ const ContactSection: React.FC = () => {
               <line
                 x1="10" y1="0"
                 x2="10" y2="80"
-                stroke="white" strokeWidth="1.5"
+                stroke="white" strokeWidth="2.5"
               />
 
               {/* Right across */}
               <line
                 x1="10" y1="80"
                 x2="490" y2="80"
-                stroke="white" strokeWidth="1.5"
+                stroke="white" strokeWidth="2.5"
               />
 
               {/* Down second level */}
               <line
                 x1="490" y1="80"
                 x2="490" y2="180"
-                stroke="white" strokeWidth="1.5"
+                stroke="white" strokeWidth=" 2.5"
               />
 
               {/* Left back across */}
               <line
                 x1="490" y1="180"
                 x2="10" y2="180"
-                stroke="white" strokeWidth="1.5"
+                stroke="white" strokeWidth=" 2.5"
               />
 
               {/* Down to final row */}
               <line
                 x1="10" y1="180"
                 x2="10" y2="245"
-                stroke="white" strokeWidth="1.5"
+                stroke="white" strokeWidth="2.5"
               />
 
               {/* ✅ Final line pointing RIGHT toward Submit button */}
               <line
                 x1="10" y1="245"
                 x2="940" y2="245"
-                stroke="white" strokeWidth="1.5"
+                stroke="white" strokeWidth="2.5"
                 markerEnd="url(#arrow)"
               />
 
