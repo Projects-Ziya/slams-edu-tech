@@ -143,7 +143,7 @@ const ContactSection: React.FC = () => {
                   orient="auto"
                   markerUnits="strokeWidth"
                 >
-                  <path d="M0,0 L0,6 L8,3 z" fill="#2b7cf6ff" />
+                  <path d="M0,0 L0,6 L8,3 z" fill="#3f80e0ff" />
                 </marker>
               </defs>
 
