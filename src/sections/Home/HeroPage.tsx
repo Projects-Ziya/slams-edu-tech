@@ -343,12 +343,30 @@ export default function HeroPage() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full h-screen overflow-hidden select-none"
-      style={{ background: "#020816" }}
-    >
-
+<section
+  ref={sectionRef}
+  className="relative w-full min-h-screen overflow-hidden select-none"
+  style={{
+    background: "#020816",
+    clipPath:
+      vw >= 1024
+        ? `
+        polygon(
+          0 0,
+          100% 0,
+          100% 100%,
+          45% 100%,
+          44% 100%,
+          43% 99.9%,
+          41% 98%,
+          37% 94%,
+          32% 89%,
+          0 89%
+        )
+      `
+        : "none",
+  }}
+>
       {/* ── DEEP-SPACE CSS BACKGROUND ── */}
       <div
         className="hidden md:block absolute inset-0 pointer-events-none"
@@ -526,12 +544,17 @@ export default function HeroPage() {
       <div
         ref={textRef}
         className="absolute z-10 will-change-transform"
-        style={{
-          bottom:     "clamp(4.5rem,6.5vw,8.5rem)",
-          left:       "clamp(1.4rem,3.5vw,3.5rem)",
-          maxWidth:   "clamp(340px,54vw,860px)",
-          textShadow: "0 4px 28px rgba(0,0,0,0.7)",
-        }}
+       style={{
+  bottom: vw >= 1024
+    ? "clamp(7rem,9vw,11rem)"
+    : "clamp(3.5rem,6vw,6rem)",
+
+  left: "clamp(1.4rem,3.5vw,3.5rem)",
+
+  maxWidth: "clamp(340px,54vw,860px)",
+
+  textShadow: "0 4px 28px rgba(0,0,0,0.7)",
+}}
       >
 
         {/* ── eyebrow ── */}

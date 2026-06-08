@@ -40,6 +40,8 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         mx-auto
         grid
         grid-cols-1
+
+        
         md:grid-cols-2
         gap-10
         lg:gap-16
