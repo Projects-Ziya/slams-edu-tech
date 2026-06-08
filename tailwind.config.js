@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        "3xl": "1920px",
+        "4xl": "2560px",
+      },
        sparkle: {
       '0%, 100%': { transform: 'translateY(0px)', opacity: '0.4' },
       '50%': { transform: 'translateY(-6px)', opacity: '1' },

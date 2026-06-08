@@ -21,7 +21,7 @@ export default function InternshipCard({
       <div className="group w-full">
 
         {/* Square Image */}
-        <div className="w-full aspect-square overflow-hidden rounded-[20px] border border-gray-500">
+        <div className="w-full aspect-square overflow-hidden rounded-[20px] 3xl:rounded-[30px] border border-gray-500">
           <img
             src={image}
             alt={title}
@@ -30,21 +30,20 @@ export default function InternshipCard({
         </div>
 
         {/* Content */}
-        <div className="pt-4 space-y-2">
+        <div className="pt-4 3xl:pt-6 space-y-2 3xl:space-y-4">
 
-          <h3 className="text-[20px] md:text-[22px] font-semibold leading-snug">
+          <h3 className="font-bold text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] 3xl:text-[28px] leading-tight">
             {title}
           </h3>
 
-          <p className="text-[14px] md:text-[15px] text-gray-300 leading-relaxed">
+          <p className="font-medium text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] 3xl:text-[18px] text-gray-300 leading-relaxed">
             {text}
           </p>
 
-          <div className="flex items-center gap-1 text-blue-500 text-[16px] font-medium">
+          <div className="flex items-center gap-1 text-blue-500 text-[15px] md:text-[16px] 3xl:text-[20px] font-medium">
             {btn}
             <ArrowUpRight
-              size={18}
-              className="transition-transform duration-500 group-hover:rotate-45"
+              className="w-[18px] h-[18px] 3xl:w-[24px] 3xl:h-[24px] transition-transform duration-500 group-hover:rotate-45"
             />
           </div>
 

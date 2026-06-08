@@ -1,6 +1,7 @@
 import  { useRef, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { HashLink } from "react-router-hash-link";
+import { usePageTransition } from './PageTransition';
 
 interface GooeyNavItem {
   label: string;
@@ -29,6 +30,8 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
   initialActiveIndex = 0
 }) => {
+  const { navigateTo } = usePageTransition();
+  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const filterRef = useRef<HTMLSpanElement>(null);
@@ -122,7 +125,19 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     }
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    index: number,
+    to?: string
+  ) => {
+    // For route links — intercept & use transition
+    if (to && to !== location.pathname) {
+      e.preventDefault();
+      const liEl = e.currentTarget.parentElement;
+      if (liEl) handleClickElement(liEl, index);
+      navigateTo(to);
+      return;
+    }
     const liEl = e.currentTarget.parentElement;
     if (liEl) {
       handleClickElement(liEl, index);
@@ -328,7 +343,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
                 ) : (
                   <Link
                     to={item.to!}
-                    onClick={(e) => handleClick(e, index)}
+                    onClick={(e) => handleClick(e, index, item.to)}
                     onKeyDown={(e) => handleKeyDown(e, index)}
                     className="outline-none py-[0.6em] px-[1em] inline-block"
                   >

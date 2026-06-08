@@ -5,7 +5,44 @@ import { Clock, CircleCheck, Users, ChevronLeft } from "lucide-react";
 import ScrollToTop from "./ScrollToTop";
 import { useState } from "react";
 import { toast } from "sonner";
+import { motion, type Variants } from "framer-motion";
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: smoothEase },
+  },
+};
+
+const fadeLeft: Variants = {
+  hidden: { opacity: 0, x: 34 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.75, ease: smoothEase },
+  },
+};
+
+const staggerGroup: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.08 },
+  },
+};
+
+const cardReveal: Variants = {
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: smoothEase },
+  },
+};
 
 export default function InternshipDetails() {
 
@@ -138,7 +175,7 @@ export default function InternshipDetails() {
   if (!data) return <div className="text-white p-6">Internship not found</div>;
 
   return (
-    <div className="w-full mx-auto text-white px-4 sm:px-6 md:px-12">
+    <div className="w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] mx-auto text-white font-outfit px-4 sm:px-6 md:px-12 pt-10 pb-16">
 
 
       <ScrollToTop />
@@ -150,62 +187,82 @@ export default function InternshipDetails() {
       {/* HERO */}
       <div className="mt-20 md:mt-0 lg:mt-0 xl:mt-0 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
-        <div className="space-y-5 sm:space-y-6">
+        <motion.div
+          className="space-y-5 sm:space-y-6"
+          variants={staggerGroup}
+          initial="hidden"
+          animate="visible"
+        >
 
-          <button
+          <motion.button
             onClick={() => navigate(-1)}
-            className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[20px] mb-6 "
+            className="flex items-center text-[#A7A7A7] text-sm sm:text-base md:text-[18px] 3xl:text-[22px] mb-6 "
+            variants={fadeUp}
           >
-            <ChevronLeft />
+            <ChevronLeft className="3xl:w-6 3xl:h-6" />
             Back to all Programs
-          </button>
+          </motion.button>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium">
+          <motion.h1
+            className="text-4xl sm:text-5xl lg:text-6xl 3xl:text-7xl 4xl:text-8xl font-bold leading-tight tracking-tight text-white"
+            variants={fadeUp}
+          >
             {data.title}
-          </h1>
+          </motion.h1>
 
-          <p className="text-[#BFBFBF] text-sm sm:text-base md:text-[18px] leading-relaxed">
+          <motion.p
+            className="text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-light leading-relaxed tracking-wide"
+            variants={fadeUp}
+          >
             {data.description}
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap gap-3">
-            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm px-3 py-2 rounded-lg">
-              <Clock className="text-blue-400" size={18} />
+          <motion.div className="flex flex-wrap gap-3" variants={fadeUp}>
+            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm 3xl:text-base px-3 py-2 3xl:px-4 3xl:py-2.5 rounded-lg">
+              <Clock className="text-blue-400 3xl:w-5 3xl:h-5" size={18} />
               6 Months
             </button>
 
-            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm px-3 py-2 rounded-lg">
-              <Users className="text-blue-400" size={18} />
+            <button className="bg-[#2F2F2F] flex items-center gap-2 text-xs sm:text-sm 3xl:text-base px-3 py-2 3xl:px-4 3xl:py-2.5 rounded-lg">
+              <Users className="text-blue-400 3xl:w-5 3xl:h-5" size={18} />
               Hybrid/Remote
             </button>
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="flex flex-wrap items-center gap-6 sm:gap-8 text-gray-400 pt-4">
+          <motion.div
+            className="flex flex-wrap items-center gap-6 sm:gap-8 text-gray-400 pt-4"
+            variants={fadeUp}
+          >
 
             <div>
-              <p className="text-white text-lg sm:text-xl md:text-[22px] font-medium">500+</p>
-              <span className="text-xs sm:text-sm">Students Trained</span>
+              <p className="text-white text-[20px] md:text-[22px] lg:text-[24px] 3xl:text-[30px] font-bold leading-tight">500+</p>
+              <span className="font-medium text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] 3xl:text-[18px]">Students Trained</span>
             </div>
 
             <div className="hidden md:block w-[1px] h-10 bg-gray-600"></div>
 
             <div>
-              <p className="text-white text-lg sm:text-xl md:text-[22px] font-medium">95%</p>
-              <span className="text-xs sm:text-sm">Success Rate</span>
+              <p className="text-white text-[20px] md:text-[22px] lg:text-[24px] 3xl:text-[30px] font-bold leading-tight">95%</p>
+              <span className="font-medium text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] 3xl:text-[18px]">Success Rate</span>
             </div>
 
             <div className="hidden md:block w-[1px] h-10 bg-gray-600"></div>
 
             <div>
-              <p className="text-white text-lg sm:text-xl md:text-[22px] font-medium">4.9/5</p>
-              <span className="text-xs sm:text-sm">Student Rating</span>
+              <p className="text-white text-[20px] md:text-[22px] lg:text-[24px] 3xl:text-[30px] font-bold leading-tight">4.9/5</p>
+              <span className="font-medium text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] 3xl:text-[18px]">Student Rating</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* IMAGE */}
-        <div className="w-full max-w-[700px] h-[250px] sm:h-[320px] md:h-[550px] md:pt-24 mx-auto">
+        <motion.div
+          className="w-full max-w-[700px] 3xl:max-w-[850px] h-[250px] sm:h-[320px] md:h-[550px] 3xl:h-[650px] 4xl:h-[750px] md:pt-24 mx-auto"
+          variants={fadeLeft}
+          initial="hidden"
+          animate="visible"
+        >
           <svg viewBox="0 0 1 1" preserveAspectRatio="none" className="w-full h-full">
             <defs>
               <clipPath id="customClip2" clipPathUnits="objectBoundingBox">
@@ -228,87 +285,129 @@ export default function InternshipDetails() {
               strokeWidth="0.0018"
             />
           </svg>
-        </div>
+        </motion.div>
       </div>
 
       {/* DURATION */}
-      <div className="mx-auto space-y-6 sm:space-y-8 pt-3">
+      <motion.div
+        className="mx-auto space-y-6 sm:space-y-8 pt-3 mt-8 3xl:mt-16"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
 
         <div>
-          <p className="text-xl sm:text-2xl md:text-[30px] font-medium">
+          <p className="text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-bold leading-tight tracking-tight text-white">
             Internship Duration
           </p>
-          <p className="text-[#BFBFBF] text-sm sm:text-base">
+          <p className="pt-2 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-light leading-relaxed tracking-wide">
             Choose a timeline that fits your schedule • Flexible timings
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 3xl:gap-8"
+          variants={staggerGroup}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.18 }}
+        >
           {data.duration.map((item, i) => (
-            <div key={i} className="border border-gray-700 p-4 sm:p-6 rounded-xl space-y-3 sm:space-y-4">
-              <Clock size={24} className="text-blue-400" />
+            <motion.div key={i} className="border border-gray-700 p-4 sm:p-6 3xl:p-8 rounded-xl space-y-3 sm:space-y-4 3xl:space-y-5" variants={cardReveal}>
+              <Clock className="text-blue-400 w-6 h-6 3xl:w-8 3xl:h-8" />
 
-              <p className="text-lg sm:text-xl">{item.title}</p>
+              <p className="font-bold text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] 3xl:text-[28px] leading-tight">{item.title}</p>
 
-              <p className="text-[#BCBCBC] text-sm">
+              <p className="font-medium text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] 3xl:text-[18px] text-gray-300 leading-relaxed">
                 {data.carddetail[i]}
               </p>
 
-              <ul className="space-y-2">
+              <ul className="space-y-2 3xl:space-y-3">
                 {item.points.map((point: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2 text-sm">
+                  <li key={idx} className="flex items-start gap-2 font-medium text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] 3xl:text-[18px] text-gray-300">
                     <CircleCheck className="text-blue-400 mt-1" size={16} />
                     {point}
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* LEARN */}
-      <div className="mx-auto space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold pt-3">
+      <motion.div
+        className="mx-auto space-y-6 mt-8 3xl:mt-16"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <h2 className="text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-bold leading-tight tracking-tight text-white pt-3">
           What You'll Learn
         </h2>
 
-        <div className="border border-gray-700 rounded-xl p-5 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
+        <motion.div
+          className="border border-gray-700 rounded-xl p-5 sm:p-8 3xl:p-12 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 3xl:gap-10"
+          variants={staggerGroup}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.18 }}
+        >
           {data.learn.map((item, i) => (
-            <div key={i} className="flex gap-3 text-sm sm:text-base">
-              <CircleCheck className="text-blue-400 mt-1" />
+            <motion.div key={i} className="flex gap-3 font-medium text-[14px] md:text-[16px] lg:text-[18px] 3xl:text-[20px] text-gray-300 leading-relaxed" variants={cardReveal}>
+              <CircleCheck className="text-blue-400 mt-1 w-5 h-5 3xl:w-6 3xl:h-6 flex-shrink-0" />
               {item}
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* BENEFITS */}
-      <div className="mx-auto space-y-6">
-        <h2 className="text-xl sm:text-2xl font-semibold pt-3">
+      <motion.div
+        className="mx-auto space-y-6 mt-8 3xl:mt-16"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <h2 className="text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-bold leading-tight tracking-tight text-white pt-3">
           What You'll Get
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 3xl:gap-8"
+          variants={staggerGroup}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.18 }}
+        >
           {data.benefits.map((item, i) => {
             const Icon = item.img;
             return (
-              <div key={i} className="border border-gray-700 p-5 sm:p-6 rounded-xl space-y-3 sm:space-y-4">
-                <div className="bg-gray-900 w-10 h-10 flex items-center justify-center rounded-md">
-                  <Icon className="w-5 h-5 text-blue-500" />
+              <motion.div key={i} className="border border-gray-700 p-5 sm:p-6 3xl:p-8 rounded-xl space-y-3 sm:space-y-4 3xl:space-y-5" variants={cardReveal}>
+                <div className="bg-gray-900 w-10 h-10 3xl:w-14 3xl:h-14 flex items-center justify-center rounded-md">
+                  <Icon className="w-5 h-5 3xl:w-7 3xl:h-7 text-blue-500" />
                 </div>
-                <h3 className="text-base sm:text-lg">{item.title}</h3>
-                <p className="text-gray-400 text-sm">{item.description}</p>
-              </div>
+                <h3 className="font-bold text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] 3xl:text-[28px] leading-tight">{item.title}</h3>
+                <p className="font-medium text-[13px] sm:text-[14px] md:text-[15px] lg:text-[16px] 3xl:text-[18px] text-gray-300 leading-relaxed">{item.description}</p>
+              </motion.div>
             );
           })}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
        {/* FORM */}
-      <div className="max-w-[1900px] mx-auto border border-[#7C7C7C] rounded-xl p-5 sm:p-8 space-y-5 mt-6">
+      <motion.div
+        className="max-w-[1900px] mx-auto border border-[#7C7C7C] rounded-xl p-5 sm:p-8 3xl:p-12 space-y-5 mt-12 3xl:mt-20"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.16 }}
+      >
 
-        <p className="text-xl sm:text-2xl font-medium">
+        <p className="text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-bold leading-tight tracking-tight text-white">
           Apply for this Internship
         </p>
 
@@ -555,7 +654,7 @@ export default function InternshipDetails() {
   <button
     type="submit"
     disabled={loading}
-    className="w-full bg-white text-black text-[24px] py-3 rounded
+    className="w-full bg-white text-black text-base md:text-lg 3xl:text-xl font-semibold tracking-wide py-3 3xl:py-4 rounded
     hover:bg-gray-200
     disabled:opacity-50
     disabled:cursor-not-allowed
@@ -565,7 +664,7 @@ export default function InternshipDetails() {
   </button>
 
 </form>
-      </div>
+      </motion.div>
     </div>
   );
 }

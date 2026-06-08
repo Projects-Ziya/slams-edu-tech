@@ -1,10 +1,11 @@
 import GooeyNav from "./GooeyNav ";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logoNav.png";
+import { useLocation } from "react-router-dom";
+import logo from "../assets/slamslogo.png";
 import { HashLink } from "react-router-hash-link";
-import {lenis} from "../main"
+import { lenis } from "../main";
+import { usePageTransition } from "./PageTransition";
 
 const Navbar: React.FC = () => {
   const items = [
@@ -12,13 +13,13 @@ const Navbar: React.FC = () => {
     { label: "Services", to: "/service" },
     { label: "Works", to: "/works" },
     { label: "Careers", to: "/careers" },
-    { label: "About Us", href: "#about" }, // ✅ only this uses HashLink
-    // { label: "Blog", to: "/blog" }, // ❌ no hash here now
+    { label: "About Us", href: "#about" },
   ];
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const { navigateTo } = usePageTransition();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,17 +29,82 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /** Handles logo click — same behaviour as before but via transition */
+  const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      window.location.reload();
+    } else {
+      navigateTo("/");
+    }
+  };
+
   return (
-   <header
-  className={`fixed top-0 left-0 w-full z-50 border-b transition-all duration-300 ${
-    scrolled ? "bg-black/80 backdrop-blur-md shadow-lg border-blue-400/50" : "bg-transparent border-transparent"
-  }`}
->
+    <header
+      className={`fixed top-0 left-0 w-full z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "bg-black/80 backdrop-blur-md shadow-lg border-blue-400/50"
+          : "bg-transparent border-transparent"
+      }`}
+    >
       <div className="w-full mx-auto px-6 lg:px-8 py-5 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="h-12 max-w-[140px] object-contain scale-105" />
+          <button onClick={handleLogoClick} className="cursor-pointer">
+            {/* Glare wrapper — overflow hidden clips the sweep to the logo */}
+            <span className="navbar-logo-glare">
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-12 max-w-[140px] object-contain scale-[2.0] pl-5"
+              />
+            </span>
+          </button>
         </div>
+
+        <style>{`
+          /* ── Logo glare container ── */
+          .navbar-logo-glare {
+            position: relative;
+            display: inline-block;
+            overflow: visible;  /* let scale-[2] show; glare clips via mask */
+          }
+
+          /* The glare streak */
+          .navbar-logo-glare::after {
+            content: "";
+            position: absolute;
+            /* start well off the left edge */
+            top: -40%;
+            left: -80%;
+            width: 55%;
+            height: 180%;
+            background: linear-gradient(
+              105deg,
+              transparent       0%,
+              rgba(255,255,255,0.08) 30%,
+              rgba(255,255,255,0.55) 50%,
+              rgba(255,255,255,0.08) 70%,
+              transparent       100%
+            );
+            transform: skewX(-18deg);
+            pointer-events: none;
+            z-index: 10;
+            /* 6 s total: 0.6 s sweep + 5.4 s idle, repeats forever */
+            animation: navbar-logo-glare-sweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation-delay: 2s; /* wait 2 s before very first sweep */
+          }
+
+          @keyframes navbar-logo-glare-sweep {
+            /* idle at start */
+            0%   { left: -80%; opacity: 1; }
+            /* sweep across — 10% of 6 s = 0.6 s */
+            10%  { left: 140%; opacity: 1; }
+            /* stay hidden for the remaining 90% */
+            10.01% { left: -80%; opacity: 0; }
+            99%  { left: -80%; opacity: 0; }
+            100% { left: -80%; opacity: 1; }
+          }
+        `}</style>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center">
@@ -47,9 +113,32 @@ const Navbar: React.FC = () => {
             particleCount={5}
             particleDistances={[90, 10]}
             particleR={100}
-            initialActiveIndex={
-              items.findIndex((item) => item.to === location.pathname) || 0
-            }
+            initialActiveIndex={(() => {
+              if (location.pathname === "/" && location.hash === "#about") {
+                const aboutIndex = items.findIndex((item) => item.href === "#about");
+                if (aboutIndex !== -1) return aboutIndex;
+              }
+              if (location.pathname.startsWith("/service")) {
+                const idx = items.findIndex((item) => item.to === "/service");
+                if (idx !== -1) return idx;
+              }
+              if (
+                location.pathname.startsWith("/works") ||
+                location.pathname.startsWith("/project")
+              ) {
+                const idx = items.findIndex((item) => item.to === "/works");
+                if (idx !== -1) return idx;
+              }
+              if (
+                location.pathname.startsWith("/careers") ||
+                location.pathname.startsWith("/internship")
+              ) {
+                const idx = items.findIndex((item) => item.to === "/careers");
+                if (idx !== -1) return idx;
+              }
+              const index = items.findIndex((item) => item.to === location.pathname);
+              return index !== -1 ? index : 0;
+            })()}
             animationTime={600}
             timeVariance={300}
             colors={[1, 2, 3, 1, 4, 3, 1, 2]}
@@ -83,60 +172,57 @@ const Navbar: React.FC = () => {
         {/* Close Button */}
         <div className="flex items-center px-4 py-4 border-b border-white/10">
           <button
-          title="back"
+            title="back"
             onClick={() => setMenuOpen(false)}
-            className="text-white  p-2 hover:text-gray-300 transition"
+            className="text-white p-2 hover:text-gray-300 transition"
           >
             <X />
           </button>
         </div>
 
         {/* Mobile Items */}
-        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium ">
+        <div className="flex flex-col items-center justify-center h-[calc(100%-60px)] gap-8 text-white text-xl font-medium">
           {items.map((item, index) => {
-            // ✅ ONLY About Us → HashLink
-        if (item.label === "About Us") {
-  return (
-    
-<button
-  key={index}
-  onClick={() => {
-    setMenuOpen(false);
-
-    if (location.pathname === "/") {
-      const el = document.getElementById("about");
-
-      if (el) {
-        const yOffset = -90;
-        const y =
-          el.getBoundingClientRect().top +
-          window.scrollY +
-          yOffset;
-
-        lenis.scrollTo(y); // ✅ FIXED
-      }
-    } else {
-      // go to home and trigger scroll
-      sessionStorage.setItem("scrollTo", "about");
-      window.location.href = "/";
-    }
-  }}
-  className="hover:text-gray-300 transition"
->
-  {item.label}
-</button>
-  );
-}
-            // ✅ All others → normal Link
+            if (item.label === "About Us") {
+              return (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (location.pathname === "/") {
+                      const el = document.getElementById("about");
+                      if (el) {
+                        const yOffset = -90;
+                        const y =
+                          el.getBoundingClientRect().top +
+                          window.scrollY +
+                          yOffset;
+                        lenis.scrollTo(y);
+                      }
+                    } else {
+                      sessionStorage.setItem("scrollTo", "about");
+                      navigateTo("/");
+                    }
+                  }}
+                  className="hover:text-gray-300 transition"
+                >
+                  {item.label}
+                </button>
+              );
+            }
             return (
-              <Link
+              <button
                 key={index}
-                to={item.to}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setMenuOpen(false);
+                  if (item.to && item.to !== location.pathname) {
+                    navigateTo(item.to);
+                  }
+                }}
                 className="hover:text-gray-300 transition"
               >
                 {item.label}
-              </Link>
+              </button>
             );
           })}
 

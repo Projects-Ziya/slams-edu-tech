@@ -5,12 +5,31 @@ import { motion } from "framer-motion"
 const WhyChooseSection = () => {
   const containerVariants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } }
+    visible: { transition: { staggerChildren: 0.12, delayChildren: 0.06 } }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } }
+    hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
+  const headingVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.045 } }
+  };
+
+  const headingWordVariants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+    }
   };
 
 
@@ -31,17 +50,17 @@ const WhyChooseSection = () => {
             / Why Choose Us
           </motion.p>
 
-          <motion.h1 variants={containerVariants} className="mt-8 md:mt-12 pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-8xl 2xl:text-8xl leading-tight tracking-tight text-white flex flex-col items-center">
+          <motion.h1 variants={headingVariants} className="mt-8 md:mt-12 pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-8xl 2xl:text-8xl leading-tight tracking-tight text-white flex flex-col items-center">
             <span className="flex flex-wrap justify-center gap-x-[0.25em]">
               {["More", "than", "services", "—"].map((word, i) => (
-                <motion.span key={`l1-${i}`} variants={itemVariants} className="inline-block">
+                <motion.span key={`l1-${i}`} variants={headingWordVariants} className="inline-block">
                   {word}
                 </motion.span>
               ))}
             </span>
-            <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent flex flex-wrap justify-center gap-x-[0.25em] mt-2">
-              {["we", "create", "success", "stories."].map((word, i) => (
-                <motion.span key={`l2-${i}`} variants={itemVariants} className="inline-block pb-2">
+            <span className="flex flex-wrap justify-center gap-x-[0.25em] mt-2">
+              {["we  create success stories."].map((word, i) => (
+                <motion.span key={`l2-${i}`} variants={headingWordVariants} className="inline-block pb-2 bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
                   {word}
                 </motion.span>
               ))}

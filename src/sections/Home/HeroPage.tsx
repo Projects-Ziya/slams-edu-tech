@@ -343,40 +343,18 @@ export default function HeroPage() {
   }, []);
 
   return (
-<section
-  ref={sectionRef}
-  className="relative w-full min-h-screen overflow-hidden select-none"
-  style={{
-    background: "#020816",
-    clipPath:
-      vw >= 1024
-        ? `
-        polygon(
-          0 0,
-          100% 0,
-          100% 100%,
-          45% 100%,
-          44% 100%,
-          43% 99.9%,
-          41% 98%,
-          37% 94%,
-          32% 89%,
-          0 89%
-        )
-      `
-        : "none",
-  }}
->
+    <section
+      ref={sectionRef}
+      className="relative w-full h-screen overflow-hidden select-none"
+      style={{ background: "#000000" }}
+    >
+
       {/* ── DEEP-SPACE CSS BACKGROUND ── */}
       <div
         className="hidden md:block absolute inset-0 pointer-events-none"
         style={{
           zIndex: 0,
-          background: `
-            radial-gradient(ellipse 80% 60% at 15% 50%, rgba(10,30,80,0.9) 0%, transparent 70%),
-            radial-gradient(ellipse 60% 70% at 80% 20%, rgba(5,20,55,0.8) 0%, transparent 65%),
-            radial-gradient(ellipse 100% 100% at 50% 50%, #030d24 0%, #020816 100%)
-          `,
+          background: "#000000",
         }}
       />
 
@@ -384,11 +362,14 @@ export default function HeroPage() {
       <div
         className="hidden md:block absolute inset-0 pointer-events-none"
         style={{
-          zIndex: 0,
+          zIndex: 1,
           background: `
-            radial-gradient(ellipse 55% 35% at 72% 58%, rgba(30,90,200,0.13) 0%, transparent 60%),
-            radial-gradient(ellipse 40% 28% at 22% 72%, rgba(0,180,200,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse 30% 20% at 60% 10%, rgba(80,140,255,0.10) 0%, transparent 55%)
+            radial-gradient(ellipse 78% 52% at 50% 50%,
+              rgba(59,130,246,0.34) 0%,
+              rgba(59,130,246,0.22) 34%,
+              rgba(59,130,246,0.09) 60%,
+              transparent 84%
+            )
           `,
         }}
       />
@@ -504,7 +485,14 @@ export default function HeroPage() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(2,8,22,0.6) 0%, rgba(2,8,22,0.3) 40%, rgba(2,8,22,0.88) 100%)",
+            background: `
+              radial-gradient(ellipse 92% 58% at 50% 50%,
+                rgba(59,130,246,0.30) 0%,
+                rgba(59,130,246,0.15) 42%,
+                transparent 84%
+              ),
+              linear-gradient(to bottom, rgba(2,8,22,0.6) 0%, rgba(2,8,22,0.3) 40%, rgba(2,8,22,0.88) 100%)
+            `,
           }}
         />
       </div>
@@ -515,12 +503,12 @@ export default function HeroPage() {
         style={{
           zIndex: 7,
           background: `
-            radial-gradient(ellipse 130% 90% at 50% 50%, transparent 25%, rgba(19, 73, 197, 0.52) 100%),
+            radial-gradient(ellipse 130% 90% at 50% 50%, transparent 25%, #000000 100%),
             linear-gradient(to bottom,
-              rgba(2,8,22,0.18) 0%,
+              rgba(0,0,0,0.18) 0%,
               transparent 28%,
               transparent 50%,
-              rgba(2,8,22,0.85) 100%
+              #000000 100%
             )
           `,
         }}

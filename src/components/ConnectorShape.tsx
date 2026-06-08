@@ -40,22 +40,20 @@ max-[1400px]:origin-left-top
       >
         {/* Glow filter */}
         <defs>
-          <defs>
-  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-    {/* soft outer glow */}
-    <feGaussianBlur stdDeviation="6" result="blur1" />
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            {/* soft outer glow */}
+            <feGaussianBlur stdDeviation="6" result="blur1" />
 
-    {/* inner glow */}
-    <feGaussianBlur stdDeviation="2" result="blur2" />
+            {/* inner glow */}
+            <feGaussianBlur stdDeviation="2" result="blur2" />
 
-    {/* merge both */}
-    <feMerge>
-      <feMergeNode in="blur1" />
-      <feMergeNode in="blur2" />
-      <feMergeNode in="SourceGraphic" />
-    </feMerge>
-  </filter>
-</defs>
+            {/* merge both */}
+            <feMerge>
+              <feMergeNode in="blur1" />
+              <feMergeNode in="blur2" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
 
         {/* 1️⃣ BASE GREY DASHED LINE */}
@@ -118,17 +116,28 @@ max-[1400px]:origin-left-top
           }}
           filter="url(#glow)"
         />
+
         <motion.path
-  
-  stroke="#60A5FA"
-  strokeWidth="6"
-  strokeLinecap="round"
-  style={{
-    pathLength: headLength,
-    pathOffset: pathLength,
-  }}
-  opacity={0.25}
-/>
+          d="
+            M 0 80
+            H 770 
+            L 895 240
+            V 480
+            H 1190
+            V 350
+            H 1050 
+            V 700
+            H 1200
+          "
+          stroke="#60A5FA"
+          strokeWidth="6"
+          strokeLinecap="round"
+          style={{
+            pathLength: headLength,
+            pathOffset: pathLength,
+          }}
+          opacity={0.25}
+        />
 
         {/* 4️⃣ START DOT */}
         <circle cx="0" cy="80" r="4" fill="#6B7280" />
