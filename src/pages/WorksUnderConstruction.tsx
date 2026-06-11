@@ -33,7 +33,7 @@ const WorksUnderConstruction = () => {
             <img
               src={constructionGif}
               alt="Under Construction"
-              className="w-44 md:w-64 lg:w-72 object-contain"
+              className="w-56 md:w-80 lg:w-96 object-contain"
             />
 
             {/* Title */}
