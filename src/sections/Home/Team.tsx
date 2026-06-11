@@ -11,11 +11,14 @@ import member5 from "../../assets/member5.webp";
 import member6 from "../../assets/member6.webp";
 
 import sreekutty from "../../assets/sreekutty.webp";
-import alfread from "../../assets/alfred.webp";
+import alfred from "../../assets/alfred.png";
 import hr from "../../assets/HR.webp";
 import anoop from "../../assets/anoop.webp";
-import noufal from "../../assets/noufal.webp";
+import noufal from "../../assets/noufal.png";
 import akshay from "../../assets/Akshay-ui.webp";
+import fasil from "../../assets/fasil.png";
+import shamon from "../../assets/shamon.png";
+import shibin from "../../assets/shibin.png";
 
 interface TeamMember {
   name: string;
@@ -29,19 +32,19 @@ const teamGroups: TeamMember[][] = [
     { id: 1, name: "Anugrah Sivadasan", role: "Frontend Developer", image: member1 },
     { id: 2, name: "Athulya Jinu", role: "UI/UX Designer", image: member5 },
     { id: 3, name: "Ashvin Kunnirikkal", role: "AI/ML Developer", image: member3 },
-    { id: 4, name: "Akshay", role: "Frontend Developer", image: member4 },
-    { id: 5, name: "Jesna", role: "Finance Head", image: member2 },
-    // { id: 6, name: "Cinda Sibichan", role: "Python Developer", image: member6 },
+    { id: 4, name: "Akshay Raj", role: "Frontend Developer", image: member4 },
+    { id: 5, name: "Fasil", role: "Digital Marketing", image: fasil },
+    { id: 6, name: "Shamon", role: "MERN Stack Developer", image: shamon },
     { id: 13, name: "Cinda", role: "Python developer", image: member6 },
   ],
   [
     { id: 7, name: "Fayas", role: "HR", image: hr },
     { id: 8, name: "Sreekutty", role: "Operation Head", image: sreekutty },
-    { id: 9, name: "Alfread", role: "Digital Marketing", image: alfread },
-    { id: 10, name: "Anoop", role: "Python", image: anoop },
-    { id: 11, name: "Noufal", role: "UI/UX", image: noufal },
-    { id: 12, name: "Akshay", role: "UI/UX", image: akshay },
-    // { id: 14, name: "Akshay", role: "UI/UX", image: akshay },
+    { id: 9, name: "Alfred", role: "Software Tester", image: alfred },
+    { id: 10, name: "Anoop", role: "Python Developer", image: anoop },
+    { id: 11, name: "Noufal", role: "UI/UX Designer", image: noufal },
+    { id: 12, name: "Akshay", role: "UI/UX Designer", image: akshay },
+    { id: 14, name: "Shibin", role: "Game Developer", image: shibin },
   ],
 ];
 

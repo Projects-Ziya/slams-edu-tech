@@ -9,6 +9,7 @@ import { PageTransitionProvider } from './components/PageTransition';
 import ScrollRestorationFix from './components/ScrollRestorationFix';
 import ScrollManager from './components/ScrollManager';
 import CustomCursor from './components/CustomCursor';
+import WorksUnderConstruction from './pages/WorksUnderConstruction';
 
 
 // Lazy load pages
@@ -44,7 +45,8 @@ function App() {
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/service" element={<Service />} />
-              <Route path="/works" element={<Works />} />
+              {/* <Route path="/works" element={<Works />} /> */}
+              <Route path="/works" element={<WorksUnderConstruction />} />
               <Route path="/project/:id" element={<ProjectDetail />} />
               <Route path="/service/:id" element={<ServiceDetails />} />
               <Route path="/careers" element={<Careers />} />

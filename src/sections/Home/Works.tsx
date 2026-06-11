@@ -109,50 +109,117 @@ transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
   }}>
 
     {/* First 3 cards — always visible on md+ */}
-    {projects.slice(0, 3).map((project) => (
-      <motion.div
-        key={project.id}
-        variants={{
-          hidden: { opacity: 0, y: 40, scale: 0.95 },
-          visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
-          },
-        }}
+    {/* First 3 cards — always visible on md+ */}
+{projects.slice(0, 3).map((project) => (
+  <motion.div
+    key={project.id}
+    className="relative group cursor-not-allowed"
+    variants={{
+      hidden: { opacity: 0, y: 40, scale: 0.95 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+      },
+    }}
+  >
+    <div className="pointer-events-none">
+      <WorksCard
+        image={project.coverImage}
+        name={project.title}
+        stack={project.subtitle}
+      />
+    </div>
+
+    {/* Hover Message */}
+    <div
+      className="
+        absolute
+        inset-0
+        flex
+        items-center
+        justify-center
+        opacity-0
+        group-hover:opacity-100
+        transition-all
+        duration-300
+        bg-black/40
+        rounded-xl
+      "
+    >
+      <div
+        className="
+          px-5
+          py-3
+          rounded-full
+          bg-white/10
+          backdrop-blur-md
+          border
+          border-white/20
+          text-white
+          font-medium
+        "
       >
-        <Link to={`/project/${project.id}`}>
-          <WorksCard
-            image={project.coverImage}
-            name={project.title}
-            stack={project.subtitle}
-          />
-        </Link>
-      </motion.div>
-    ))}
+        🚧 Page Under Construction
+      </div>
+    </div>
+  </motion.div>
+))}
 
     {/* 4th card — only visible on 2xl (monitor) screens */}
-    <motion.div
-      className="hidden 2xl:block"
-      variants={{
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
-        },
-      }}
+   <motion.div
+  className="hidden 2xl:block relative group cursor-not-allowed"
+  variants={{
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
+    },
+  }}
+>
+  <div className="pointer-events-none">
+    <WorksCard
+      image={projects[3].coverImage}
+      name={projects[3].title}
+      stack={projects[3].subtitle}
+    />
+  </div>
+
+  <div
+    className="
+      absolute
+      inset-0
+      flex
+      items-center
+      justify-center
+      opacity-0
+      group-hover:opacity-100
+      transition-all
+      duration-300
+      bg-black/40
+      rounded-xl
+    "
+  >
+    <div
+      className="
+        px-5
+        py-3
+        rounded-full
+        bg-white/10
+        backdrop-blur-md
+        border
+        border-white/20
+        text-white
+        font-medium
+      "
     >
-      <Link to={`/project/${projects[3].id}`}>
-        <WorksCard
-          image={projects[3].coverImage}
-          name={projects[3].title}
-          stack={projects[3].subtitle}
-        />
-      </Link>
-    </motion.div>
+      🚧 Page Under Construction
+    </div>
+  </div>
+</motion.div>
 
       </motion.div>
 

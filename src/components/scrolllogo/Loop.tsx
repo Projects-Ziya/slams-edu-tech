@@ -48,7 +48,9 @@ function Loop() {
   hoverSpeed={0}
   fadeOut
   renderItem={(logo) => (
-    <Link to={logo.link}>
+    <Link
+    //  to={logo.link}
+     >
       <div className="h-[60px] w-[60px] min-w-[60px] overflow-hidden rounded-md bg-white flex items-center justify-center">
         <img
           src={logo.src}
