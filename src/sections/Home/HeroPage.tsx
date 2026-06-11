@@ -600,7 +600,7 @@ export default function HeroPage() {
         >
           Slams Tech is the best IT company in Kochi offering web development,
           mobile app development, AI solutions, and industry-focused internships.
-          We help businesses grow faster with scalable technology and practical digital solutions..
+          We help businesses grow faster with scalable technology and practical digital solutions.
         </p>
 
         {/* ── CTAs ── */}
