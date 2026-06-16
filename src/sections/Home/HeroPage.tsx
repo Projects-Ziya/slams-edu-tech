@@ -24,9 +24,9 @@ import robot     from "../../assets/robot.png";
 import spaceship from "../../assets/spaceship.png";
 import globe     from "../../assets/globe.png";
 
-import img1 from "../../assets/works/works2.webp";
-import img2 from "../../assets/works/works2.webp";
-import img3 from "../../assets/works/works3.webp";
+import img1 from "../../assets/robohero.jpg.jpeg";
+import img2 from "../../assets/office.jpg.jpeg";
+import img3 from "../../assets/service4.jpg";
 
 import AnimatedLinkButton from "../../components/AnimatedLinkButton";
 
