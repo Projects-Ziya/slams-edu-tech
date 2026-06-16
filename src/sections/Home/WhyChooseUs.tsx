@@ -83,34 +83,31 @@ const WhyChooseSection = () => {
         >
           {/* Card 1 */}
           <motion.div variants={itemVariants} className=" border border-[#2a2a2a] rounded-xl p-5">
-            <p className="text-lg font-semibold mb-1">Custom Solutions</p>
+            <p className="text-lg font-semibold mb-1">Scalable Solutions</p>
             <p className="text-sm text-gray-400">
-              Tailored software and digital solutions built for your business.
-            </p>
+Track record of successful projects and satisfied clients worldwide.            </p>
           </motion.div>
 
           {/* Card 2 */}
           <motion.div variants={itemVariants} className=" border border-[#2a2a2a] rounded-xl p-5">
-            <p className="text-lg font-semibold mb-1">Expert Team</p>
+            <p className="text-lg font-semibold mb-1">Security-Focused</p>
             <p className="text-sm text-gray-400">
-              Skilled developers and designers delivering quality work.
-            </p>
+We follow best practices to keep your data and systems protected.            </p>
           </motion.div>
 
           {/* Card 3 */}
           <motion.div variants={itemVariants} className=" border border-[#2a2a2a] rounded-xl p-5">
-            <p className="text-lg font-semibold mb-1">Proven Results</p>
+            <p className="text-lg font-semibold mb-1">Quality Obsessed</p>
             <p className="text-sm text-gray-400">
-              Successful projects with measurable outcomes.
+             Every feature is tested for performance, stability, and UX.
             </p>
           </motion.div>
 
           {/* Card 4 */}
           <motion.div variants={itemVariants} className=" border border-[#2a2a2a] rounded-xl p-5">
-            <p className="text-lg font-semibold mb-1">Innovation Driven</p>
+            <p className="text-lg font-semibold mb-1">Cross-Platform</p>
             <p className="text-sm text-gray-400">
-              We use modern technologies to stay ahead of competition.
-            </p>
+One solution for multiple platforms across web and mobile experiences.            </p>
           </motion.div>
         </motion.div>
 
