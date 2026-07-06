@@ -655,7 +655,7 @@ export default function HeroPage() {
           ))}
         </div> */}
       </div>
-
+         
       {/* ── STYLES ── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -673,7 +673,8 @@ export default function HeroPage() {
           92%  { opacity:1; }
           100% { top:88%; opacity:0; }
         }
-      `}</style>
+      `}
+      </style>
     </section>
   );
 }
