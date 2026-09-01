@@ -56,14 +56,14 @@ const Service = () => {
         </motion.p>
 
         <div className="flex justify-between">
-          <motion.p
+          <motion.h1
             variants={itemVariants}
            className="pt-4 font-bold font-outfit text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl tracking-tight">
   <span className="block mb-2">Best Software Development Company for</span>
   <span className="block bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
     Your Business Growth
   </span>
-          </motion.p>
+          </motion.h1>
           <div className="pt-4" />
         </div>
 

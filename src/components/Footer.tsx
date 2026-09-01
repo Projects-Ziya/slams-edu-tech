@@ -31,7 +31,8 @@ const Footer: React.FC = () => {
 
           <div className="flex gap-4 mt-6 flex-wrap">
             <a
-              title="btn"
+              title="Instagram"
+              aria-label="Slams Tech on Instagram"
               href="https://www.instagram.com/slams.tech?igsh=MWJnOTVrYXBtbm9tcA=="
             >
               <FaInstagram
@@ -41,7 +42,8 @@ const Footer: React.FC = () => {
             </a>
                 
             <a
-              title="btn"
+              title="Facebook"
+              aria-label="Slams Tech on Facebook"
               href="https://www.facebook.com/profile.php?id=61586783287019"
               className="hover:bg-blue-400 rounded-md w-8 h-8 flex items-center justify-center transition-colors duration-300"
             >
@@ -49,7 +51,8 @@ const Footer: React.FC = () => {
             </a>
 
             <a
-              title="btn"
+              title="LinkedIn"
+              aria-label="Slams Tech on LinkedIn"
               href="https://www.linkedin.com/company/slams-edutech-private-limited/"
               className="hover:bg-blue-600 rounded-md w-8 h-8 flex items-center justify-center transition-colors duration-300"
             >

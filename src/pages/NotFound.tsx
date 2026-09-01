@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import SEO from "../components/SEO";
 
 const NotFound = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -115,6 +116,7 @@ const NotFound = () => {
 
   return (
     <>
+      <SEO title="Page not found | Slams Tech" description="The requested page could not be found." noindex />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 

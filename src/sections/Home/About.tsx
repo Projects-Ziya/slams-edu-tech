@@ -76,12 +76,12 @@ const slideRight = {
     </p>
 
     <div className="flex flex-col justify-between pr-3">
-      <h1 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
+      <h2 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
         Your Partner in
 <br />
         <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
 Digital Transformation        </span>
-      </h1>
+      </h2>
 
       <p className="pt-6 text-gray-300 text-[16px] md:text-[18px] lg:text-[20px] 2xl:text-[22px] font-outfit font-light leading-relaxed tracking-wide max-w-[900px]">
 Slams Tech is a growing IT  company based in Kochi, Kerala, delivering innovative digital solutions and industry-focused training. We specialize in web development, mobile app development, digital marketing, UI/UX design, and AI-powered solutions. <br />

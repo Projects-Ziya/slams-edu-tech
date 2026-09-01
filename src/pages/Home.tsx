@@ -71,9 +71,9 @@ const Home = () => {
   return (
     <div className="">
       <SEO
-        title="Best IT Company in Kochi | Slam Tech"
-        description="Looking for the Best IT Company in Kochi? Slam Tech Offers Expert IT Consulting, Software Development, and Digital Solutions to Help Businesses Grow"
-        keywords="Best IT Company in Kochi"
+        title="Best IT Company in Kochi | Web & App Solutions"
+        description="Slam Tech is a leading IT company in Kochi offering expert software development, web and mobile apps, consulting, and digital solutions for growing businesses."
+        keywords="Best IT Company in Kochi, software development, web and app solutions"
       />
 
       <ScrollToTop />

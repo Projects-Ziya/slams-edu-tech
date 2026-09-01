@@ -76,12 +76,12 @@ const Works = () => {
   whileInView={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }} 
  viewport={{ once: true, amount: 0.2 }}>
-       <h1 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
+      <h2 className="pt-4 font-bold font-outfit text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl leading-tight tracking-tight text-white">
   Digital Solutions That{" "}
   <span className="bg-[linear-gradient(90deg,_#579AFF_0%,_#345D99_100%)] bg-clip-text text-transparent">
   Deliver Results
 </span>
-</h1>
+</h2>
 
         {/* Desktop button */}
              <div className="pt-4 hidden md:block">

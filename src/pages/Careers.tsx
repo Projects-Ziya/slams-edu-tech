@@ -112,7 +112,11 @@ export default function Careers() {
 
   return (
     <main className="relative text-white" style={{ background: "#000000" }}>
-      <SEO title="Careers" description="Join our team" />
+      <SEO
+        title="Careers at Slams Tech | Jobs and Internships"
+        description="Explore software development jobs and internships at Slams Tech. Join our team in building reliable digital products and business solutions."
+        keywords="Slams Tech careers, software jobs Kochi, developer internships"
+      />
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
           STICKY HERO

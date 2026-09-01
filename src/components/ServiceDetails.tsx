@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { services } from "../data/service";
 import { HashLink } from "react-router-hash-link";
 import ScrollToTop from "./ScrollToTop";
+import SEO from "./SEO";
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 
@@ -29,7 +30,7 @@ const ServiceDetails = () => {
   const ctaBlackOpacity = useTransform(ctaScroll, [0.65, 1], [0, 1]);
 
   if (!service) {
-    return <div className="text-white p-6">Service not found</div>;
+    return <><SEO title="Service not found | Slams Tech" description="The requested service could not be found." noindex /><div className="text-white p-6">Service not found</div></>;
   }
 
   const typingVariants = {
@@ -43,6 +44,7 @@ const ServiceDetails = () => {
 
   return (
     <div className="w-full bg-black text-white relative">
+      <SEO title={`${service.title} Services | Slams Tech`} description={service.text} keywords={`${service.title}, software development company Kochi`} image={service.image} />
       <ScrollToTop />
 
       {/* ════════════════════════════════════════════════

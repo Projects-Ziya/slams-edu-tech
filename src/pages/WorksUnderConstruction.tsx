@@ -2,9 +2,15 @@ import Works from "./Works";
 import constructionGif from "../assets/construction.png";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import SEO from "../components/SEO";
 const WorksUnderConstruction = () => {
   return (
     <div className="relative min-h-screen">
+      <SEO
+        title="Our Works | Slams Tech"
+        description="Explore Slams Tech digital products, websites, mobile apps, and software case studies. Our works portfolio is being updated."
+        keywords="Slams Tech portfolio, software projects Kochi, web and app development projects"
+      />
       {/* Background Works Page */}
       <div className="pointer-events-none select-none blur-lg scale-[1.02]">
         <Works />
