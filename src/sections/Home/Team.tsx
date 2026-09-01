@@ -12,7 +12,7 @@ import member6 from "../../assets/member6.webp";
 
 import sreekutty from "../../assets/sreekutty.webp";
 import alfred from "../../assets/alfred.png";
-import hr from "../../assets/HR.webp";
+import hr from "../../assets/sayan.png";
 import anoop from "../../assets/anoop.webp";
 import noufal from "../../assets/noufal.png";
 import akshay from "../../assets/Akshay-ui.webp";
@@ -38,7 +38,7 @@ const teamGroups: TeamMember[][] = [
     { id: 13, name: "Cinda", role: "Python developer", image: member6 },
   ],
   [
-    { id: 7, name: "Fayas", role: "HR", image: hr },
+    { id: 7, name: "Sayan Sooraj", role: "HR", image: hr },
     { id: 8, name: "Sreekutty", role: "Operation Head", image: sreekutty },
     { id: 9, name: "Alfred", role: "Software Tester", image: alfred },
     { id: 10, name: "Anoop", role: "Python Developer", image: anoop },
