@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { projects } from "../data/projects"
 import { useEffect, useState } from "react"
 import ScrollToTop from "./ScrollToTop"
+import SEO from "./SEO"
 import { motion } from "framer-motion"
 
 export default function ProjectDetail() {
@@ -22,7 +23,7 @@ export default function ProjectDetail() {
   }, [])
 
   if (!project) {
-    return <div className="p-10 text-xl text-white font-outfit">Project not found</div>
+    return <><SEO title="Project not found | Slams Tech" description="The requested project could not be found." noindex /><div className="p-10 text-xl text-white font-outfit">Project not found</div></>
   }
 
   // ── Existing fade-up (unchanged everywhere else) ──────────────────────────
@@ -93,6 +94,7 @@ export default function ProjectDetail() {
 
   return (
     <section className="px-4 sm:px-6 md:px-8 py-16 md:py-20 max-w-full mx-auto overflow-hidden">
+      <SEO title={`${project.title} | Slams Tech Case Study`} description={project.description || `${project.title} project by Slams Tech.`} keywords={`${project.title}, Slams Tech case study, software projects`} image={project.coverImage} />
       <ScrollToTop />
 
       {/* SVG clipPaths */}

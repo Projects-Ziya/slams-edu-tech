@@ -3,6 +3,7 @@ import { internship } from "@/data/internship";
 import { useNavigate } from "react-router-dom";
 import { Clock, CircleCheck, Users, ChevronLeft } from "lucide-react";
 import ScrollToTop from "./ScrollToTop";
+import SEO from "./SEO";
 import { useState } from "react";
 import { toast } from "sonner";
 import { motion, type Variants } from "framer-motion";
@@ -172,12 +173,13 @@ export default function InternshipDetails() {
   const data = internship.find((item) => item.id === id);
   const navigate = useNavigate();
 
-  if (!data) return <div className="text-white p-6">Internship not found</div>;
+  if (!data) return <><SEO title="Internship not found | Slams Tech" description="The requested internship could not be found." noindex /><div className="text-white p-6">Internship not found</div></>;
 
   return (
     <div className="w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] mx-auto text-white font-outfit px-4 sm:px-6 md:px-12 pt-10 pb-16">
 
 
+      <SEO title={`${data.title} Internship | Slams Tech`} description={data.description} keywords={`${data.title} internship, Slams Tech internship`} image={data.image} />
       <ScrollToTop />
 
       <div className="">

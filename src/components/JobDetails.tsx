@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Briefcase, MapPin, Clock, CircleChevronLeft } from "lucide-react";
 import { toast } from "sonner";
 import ScrollToTop from "./ScrollToTop";
+import SEO from "./SEO";
 
 export default function JobDetails() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ export default function JobDetails() {
 const [loading, setLoading] = useState(false);
 
   if (!job) {
-    return <div className="text-white p-6">Job not found</div>;
+     return <><SEO title="Job not found | Slams Tech" description="The requested job could not be found." noindex /><div className="text-white p-6">Job not found</div></>;
   }
    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -157,6 +158,7 @@ const handleChange = (e: any) => {
 
   return (
     <div className="w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] mx-auto text-white pt-10 mt-10 px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px] 3xl:text-[24px] pb-16">
+      <SEO title={`${job.title} | Careers at Slams Tech`} description={job.about} keywords={`${job.title}, careers at Slams Tech`} />
       {/* <ScrollToTop /> */}
 
       {/* Back */}
