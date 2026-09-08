@@ -6,9 +6,16 @@ type SEOProps = {
   keywords?: string;
   image?: string;
   noindex?: boolean;
+  jobPosting?: {
+    title: string;
+    description: string;
+    datePosted: string;
+    employmentType: string;
+    jobLocationType: string;
+  };
 };
 
-const SEO = ({ title, description, keywords, image = "/logoblk.png", noindex = false }: SEOProps) => {
+const SEO = ({ title, description, keywords, image = "/logoblk.png", noindex = false, jobPosting }: SEOProps) => {
   const siteUrl = import.meta.env.VITE_SITE_URL || "https://slamstech.com";
   const canonicalUrl = `${siteUrl}${window.location.pathname}`;
   const imageUrl = new URL(image, siteUrl).toString();
@@ -57,6 +64,27 @@ const SEO = ({ title, description, keywords, image = "/logoblk.png", noindex = f
               url: siteUrl,
               description,
             },
+            ...(jobPosting ? [{
+              "@type": "JobPosting",
+              title: jobPosting.title,
+              description: jobPosting.description,
+              datePosted: jobPosting.datePosted,
+              employmentType: jobPosting.employmentType,
+              jobLocationType: jobPosting.jobLocationType,
+              hiringOrganization: {
+                "@type": "Organization",
+                name: "Slams Tech",
+                sameAs: siteUrl,
+                logo: imageUrl,
+              },
+              jobLocation: {
+                "@type": "Place",
+                address: {
+                  "@type": "PostalAddress",
+                  addressCountry: "IN",
+                },
+              },
+            }] : []),
           ],
         })}
       </script>

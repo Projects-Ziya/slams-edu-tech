@@ -30,6 +30,22 @@ const pageMetadata = {
     description: "Explore software development jobs and internships at Slams Tech and join our team in building reliable digital products.",
     keywords: "Slams Tech careers, software jobs Kochi, developer internships",
   },
+  "/careers/mern": {
+    title: "MERN Stack Developer | Careers at Slams Tech",
+    description: "Join Slams Tech as a MERN Stack Developer and build full-stack web applications using MongoDB, Express, React, and Node.js.",
+    keywords: "MERN Stack Developer jobs, React Node.js jobs, careers at Slams Tech",
+    jobPosting: {
+      title: "MERN Stack Developer",
+      description: "We are looking for a MERN Stack Developer to build full-stack web applications using MongoDB, Express, React, and Node.js.",
+      employmentType: "FULL_TIME",
+      jobLocationType: "TELECOMMUTE",
+    },
+  },
+  "/internship/MERN": {
+    title: "MERN Stack Internship | Slams Tech",
+    description: "Become a full-stack developer through the Slams Tech MERN Stack internship, covering MongoDB, Express, React, Node.js, APIs, authentication, and deployment.",
+    keywords: "MERN Stack internship, React Node.js internship, full-stack developer internship",
+  },
 };
 
 const escapeHtml = (value) => value
@@ -52,9 +68,38 @@ const getMetadata = (route) => pageMetadata[route] || {
   keywords: `${humanize(route)}, Slams Tech, software development company Kochi`,
 };
 
+const getStructuredData = (metadata) => {
+  if (!metadata.jobPosting) return "";
+
+  return `
+    <script type="application/ld+json">${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      title: metadata.jobPosting.title,
+      description: metadata.jobPosting.description,
+      datePosted: "2026-09-01",
+      employmentType: metadata.jobPosting.employmentType,
+      jobLocationType: metadata.jobPosting.jobLocationType,
+      hiringOrganization: {
+        "@type": "Organization",
+        name: "Slams Tech",
+        sameAs: siteUrl,
+        logo: `${siteUrl}/logoblk.png`,
+      },
+      jobLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "IN",
+        },
+      },
+    })}</script>`;
+};
+
 const createPage = (route) => {
   const metadata = getMetadata(route);
   const canonicalUrl = `${siteUrl}${route === "/" ? "/" : route}`;
+  const structuredData = getStructuredData(metadata);
   const headTags = `
     <meta name="description" content="${escapeHtml(metadata.description)}" />
     <meta name="keywords" content="${escapeHtml(metadata.keywords)}" />
@@ -64,7 +109,7 @@ const createPage = (route) => {
     <meta property="og:description" content="${escapeHtml(metadata.description)}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${canonicalUrl}" />
-    <meta property="og:image" content="${siteUrl}/logoblk.png" />
+    <meta property="og:image" content="${siteUrl}/logoblk.png" />${structuredData}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(metadata.title)}" />
     <meta name="twitter:description" content="${escapeHtml(metadata.description)}" />

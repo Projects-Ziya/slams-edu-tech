@@ -158,7 +158,18 @@ const handleChange = (e: any) => {
 
   return (
     <div className="w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] mx-auto text-white pt-10 mt-10 px-4 sm:px-6 md:px-12 font-medium text-base sm:text-lg md:text-[20px] 3xl:text-[24px] pb-16">
-      <SEO title={`${job.title} | Careers at Slams Tech`} description={job.about} keywords={`${job.title}, careers at Slams Tech`} />
+      <SEO
+        title={`${job.title} | Careers at Slams Tech`}
+        description={job.about}
+        keywords={`${job.title}, careers at Slams Tech`}
+        jobPosting={{
+          title: job.title,
+          description: job.about,
+          datePosted: "2026-09-01",
+          employmentType: "FULL_TIME",
+          jobLocationType: "TELECOMMUTE",
+        }}
+      />
       {/* <ScrollToTop /> */}
 
       {/* Back */}
