@@ -71,6 +71,10 @@ const SEO = ({ title, description, keywords, image = "/logoblk.png", noindex = f
               datePosted: jobPosting.datePosted,
               employmentType: jobPosting.employmentType,
               jobLocationType: jobPosting.jobLocationType,
+              applicantLocationRequirements: {
+                "@type": "Country",
+                name: "India",
+              },
               hiringOrganization: {
                 "@type": "Organization",
                 name: "Slams Tech",

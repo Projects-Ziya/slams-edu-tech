@@ -80,6 +80,10 @@ const getStructuredData = (metadata) => {
       datePosted: "2026-09-01",
       employmentType: metadata.jobPosting.employmentType,
       jobLocationType: metadata.jobPosting.jobLocationType,
+      applicantLocationRequirements: {
+        "@type": "Country",
+        name: "India",
+      },
       hiringOrganization: {
         "@type": "Organization",
         name: "Slams Tech",
