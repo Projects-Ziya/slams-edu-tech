@@ -1,19 +1,15 @@
 /**
- * HeroPage.tsx — Premium Parallax Hero
+ * HeroPage.tsx — Premium Parallax Hero  (🎃 Halloween Edition)
  * Stack: React 18, Tailwind CSS, GSAP + ScrollTrigger
  *
- * Install dep if not present:
- *   npm install gsap
+ * NEW in this version
+ *   1. Pumpkin / lantern vine banner pinned to the top of the hero
+ *      -> ../../assets/halloweenimg.png   (change the extension if yours differs)
+ *   2. Spider that drops down from the vine on a silk thread, hangs, swings,
+ *      then climbs back up (looping GSAP timeline)
+ *   3. Warm orange flicker glow under the vine + orange headline accent
  *
- * Asset paths are identical to the original component:
- *   ../../assets/robot.png
- *   ../../assets/spaceship.png
- *   ../../assets/globe.png
- *   ../../assets/works/works2.webp  (×2)
- *   ../../assets/works/works3.webp
- *
- * Background is now pure CSS deep-space — no image file required.
- * Bebas Neue is loaded from Google Fonts for the headline.
+ * To switch Halloween off after the 31st, set HALLOWEEN = false below.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -28,9 +24,20 @@ import img1 from "../../assets/robohero.jpg.jpeg";
 import img2 from "../../assets/office.jpg.jpeg";
 import img3 from "../../assets/service4.jpg";
 
+// 🎃 Halloween vine banner
+import halloweenImg from "../../assets/halloween.png";
+
 import AnimatedLinkButton from "../../components/AnimatedLinkButton";
 
 gsap.registerPlugin(ScrollTrigger);
+
+// 🎃 master switch
+const HALLOWEEN = true;
+
+// Spider anchor point on the banner image (percent of banner width / height).
+// Picked so the thread starts on the vine, in the empty gap between pumpkins.
+const SPIDER_X = 42.2;
+const SPIDER_Y = 25;
 
 // ── tiny helpers ──────────────────────────────────────────────────────────────
 const lerp  = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -83,6 +90,41 @@ function HeadingWords({ text, accent }: { text: string; accent: string }) {
   );
 }
 
+// ── 🕷️ Spider (inline SVG, legs wiggle via CSS) ───────────────────────────────
+function Spider() {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      className="halloween-spider"
+      style={{ width: "clamp(26px,2.6vw,46px)", height: "auto", display: "block", overflow: "visible" }}
+      aria-hidden="true"
+    >
+      {/* legs — left */}
+      <g className="spider-legs-l" stroke="#0a0a0a" strokeWidth="2.6" strokeLinecap="round" fill="none">
+        <path d="M26 30 Q12 16 4 22" />
+        <path d="M25 34 Q8 30 2 40" />
+        <path d="M25 38 Q10 44 6 56" />
+        <path d="M27 42 Q18 52 16 62" />
+      </g>
+      {/* legs — right */}
+      <g className="spider-legs-r" stroke="#0a0a0a" strokeWidth="2.6" strokeLinecap="round" fill="none">
+        <path d="M38 30 Q52 16 60 22" />
+        <path d="M39 34 Q56 30 62 40" />
+        <path d="M39 38 Q54 44 58 56" />
+        <path d="M37 42 Q46 52 48 62" />
+      </g>
+      {/* abdomen + head */}
+      <ellipse cx="32" cy="40" rx="11" ry="14" fill="#0d0d0d" stroke="#2a2a2a" strokeWidth="1" />
+      <circle  cx="32" cy="24" r="8"  fill="#0d0d0d" stroke="#2a2a2a" strokeWidth="1" />
+      {/* hourglass mark */}
+      <path d="M29 36 L35 36 L32 40 L35 44 L29 44 L32 40 Z" fill="#ff6a00" opacity="0.85" />
+      {/* glowing eyes */}
+      <circle cx="29" cy="22" r="1.8" fill="#ff9a2e" />
+      <circle cx="35" cy="22" r="1.8" fill="#ff9a2e" />
+    </svg>
+  );
+}
+
 export default function HeroPage() {
   const images  = [img1, img2, img3];
   const [current, setCurrent] = useState(0);
@@ -121,6 +163,76 @@ export default function HeroPage() {
   const lineRef       = useRef<HTMLDivElement>(null);
   const badgesRef     = useRef<HTMLDivElement>(null);
   const eyebrowRef    = useRef<HTMLDivElement>(null);
+
+  // 🎃 Halloween refs
+  const bannerRef      = useRef<HTMLDivElement>(null);
+  const spiderWrapRef  = useRef<HTMLDivElement>(null);
+  const spiderThreadRef = useRef<HTMLDivElement>(null);
+
+  // ── 🕷️ Spider drop / hang / climb loop + banner entrance ─────────────────
+  useEffect(() => {
+    if (!HALLOWEEN) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ctx = gsap.context(() => {
+      // banner slides down from above the screen
+      if (bannerRef.current) {
+        gsap.fromTo(
+          bannerRef.current,
+          { yPercent: -35, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 1.6, ease: "power3.out", delay: 0.2 }
+        );
+        // slow "wind" sway of the whole vine
+        if (!reduce) {
+          gsap.to(bannerRef.current, {
+            rotation: 0.35,
+            transformOrigin: "0% 0%",
+            duration: 5,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+          });
+        }
+      }
+
+      const wrap   = spiderWrapRef.current;
+      const thread = spiderThreadRef.current;
+      if (!wrap || !thread) return;
+
+      const maxDrop = clamp(window.innerWidth * 0.1, 70, 190); // px
+      const minDrop = 14;
+
+      gsap.set(thread, { height: minDrop });
+      gsap.set(wrap,   { opacity: 0, transformOrigin: "50% 0%" });
+
+      if (reduce) {
+        gsap.set(wrap,   { opacity: 1 });
+        gsap.set(thread, { height: maxDrop * 0.6 });
+        return;
+      }
+
+      // gentle pendulum swing, independent from the drop
+      gsap.to(wrap, {
+        rotation: 4,
+        duration: 1.9,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      // drop → hang & bob → startled quick drop → climb back → rest → repeat
+      const tl = gsap.timeline({ repeat: -1, delay: 1.6 });
+      tl.to(wrap,   { opacity: 1, duration: 0.4 })
+        .to(thread, { height: maxDrop, duration: 2.6, ease: "power2.inOut" }, "<")
+        .to(thread, { height: maxDrop * 0.9, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 })
+        .to(thread, { height: maxDrop * 1.12, duration: 0.18, ease: "power4.in" })
+        .to(thread, { height: minDrop, duration: 3.4, ease: "power1.inOut" }, "+=0.35")
+        .to(wrap,   { opacity: 0, duration: 0.5 }, "-=0.5")
+        .to({}, { duration: 2.2 });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     // ── GSAP entrance ──────────────────────────────────────────────────────
@@ -342,6 +454,11 @@ export default function HeroPage() {
     };
   }, []);
 
+  // headline accent colour — orange in Halloween mode, original blue otherwise
+  const accentGradient = HALLOWEEN
+    ? "linear-gradient(90deg,#ff9a2e,#ff5e00)"
+    : "linear-gradient(90deg,#93c5fd,#67e8f9)";
+
   return (
     <section
       ref={sectionRef}
@@ -373,6 +490,25 @@ export default function HeroPage() {
           `,
         }}
       />
+
+      {/* ── 🎃 HALLOWEEN ORANGE GLOW (top, flickers like candlelight) ── */}
+      {HALLOWEEN && (
+        <div
+          className="absolute inset-x-0 top-0 pointer-events-none"
+          style={{
+            zIndex: 1,
+            height: "55%",
+            background: `
+              radial-gradient(ellipse 70% 60% at 50% 0%,
+                rgba(255,122,0,0.20) 0%,
+                rgba(255,90,0,0.09) 45%,
+                transparent 80%
+              )
+            `,
+            animation: "hwFlicker 4.5s ease-in-out infinite",
+          }}
+        />
+      )}
 
       {/* ── TECH GRID LINES ── */}
       {/* <div
@@ -514,6 +650,57 @@ export default function HeroPage() {
         }}
       />
 
+      {/* ── 🎃 HALLOWEEN VINE BANNER + HANGING SPIDER ──
+           Sits above the vignette, below the text block.
+           The wrapper keeps the image's exact aspect ratio (2060 × 763) so the
+           spider's percentage anchor always lands on the same spot of the vine. */}
+      {HALLOWEEN && (
+        <div
+          ref={bannerRef}
+          className="absolute left-0 top-0 w-full pointer-events-none"
+          style={{
+            zIndex: 9,
+            top: "-6vw",  
+            aspectRatio: "2060 / 763",
+            willChange: "transform, opacity",
+          }}
+        >
+          <img
+            src={halloweenImg}
+            alt=""
+            className="w-full h-full block"
+            style={{
+              objectFit: "fill",
+              filter: "drop-shadow(0 6px 26px rgba(255,110,0,0.35))",
+              animation: "hwGlow 3.8s ease-in-out infinite",
+            }}
+          />
+
+          {/* spider on a silk thread, anchored to the vine */}
+          <div
+            ref={spiderWrapRef}
+            className="absolute flex flex-col items-center"
+            style={{
+              left: `${SPIDER_X}%`,
+              top:  `${SPIDER_Y}%`,
+              transform: "translateX(-50%)",
+              willChange: "transform, opacity",
+            }}
+          >
+            <div
+              ref={spiderThreadRef}
+              style={{
+                width: "1.5px",
+                height: "14px",
+                background: "linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(235,235,235,0.85))",
+                boxShadow: "0 0 4px rgba(255,255,255,0.25)",
+              }}
+            />
+            <Spider />
+          </div>
+        </div>
+      )}
+
       {/* ── HORIZONTAL ACCENT LINE ── */}
       {/* <div
         ref={lineRef} 
@@ -579,7 +766,7 @@ export default function HeroPage() {
           }}
         > Best IT Company in Kochi for Smart  
         
-        <span className="sm:pl-2 pl-3" style={{ background: "linear-gradient(90deg,#93c5fd,#67e8f9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+        <span className="sm:pl-2 pl-3" style={{ background: accentGradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
         Digital Solutions & Internships  </span>
           {/* <HeadingWords
             text=" Digital Solutions & Internships"
@@ -600,7 +787,7 @@ export default function HeroPage() {
         >
           Slams Tech is the best IT company in Kochi offering web development,
           mobile app development, AI solutions, and industry-focused internships.
-          We help businesses to grow faster with scalable technology and practical digital solutions.
+          We help businesses grow faster with scalable technology and practical digital solutions.
         </p>
 
         {/* ── CTAs ── */}
@@ -672,6 +859,37 @@ export default function HeroPage() {
           8%   { opacity:1; }
           92%  { opacity:1; }
           100% { top:88%; opacity:0; }
+        }
+
+        /* 🎃 candlelight flicker for the orange wash */
+        @keyframes hwFlicker {
+          0%,100% { opacity: 0.85; }
+          18%     { opacity: 1;    }
+          32%     { opacity: 0.7;  }
+          55%     { opacity: 0.95; }
+          74%     { opacity: 0.75; }
+        }
+
+        /* 🎃 pumpkins / lanterns breathing glow */
+        @keyframes hwGlow {
+          0%,100% { filter: drop-shadow(0 6px 22px rgba(255,110,0,0.28)) brightness(0.96); }
+          50%     { filter: drop-shadow(0 8px 34px rgba(255,140,20,0.55)) brightness(1.12); }
+        }
+
+        /* 🕷️ leg twitch */
+        @keyframes spiderLegsL {
+          0%,100% { transform: rotate(0deg);  }
+          50%     { transform: rotate(-5deg); }
+        }
+        @keyframes spiderLegsR {
+          0%,100% { transform: rotate(0deg); }
+          50%     { transform: rotate(5deg); }
+        }
+        .spider-legs-l { transform-origin: 28px 34px; animation: spiderLegsL 0.45s ease-in-out infinite; }
+        .spider-legs-r { transform-origin: 36px 34px; animation: spiderLegsR 0.45s ease-in-out infinite; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .spider-legs-l, .spider-legs-r { animation: none; }
         }
       `}
       </style>
